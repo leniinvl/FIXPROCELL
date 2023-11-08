@@ -1,0 +1,16 @@
+# Ignora archivos
+#.DS_store
+
+# Ignora la carpeta
+web/facturacionphp/comprobantes/*
+
+
+# Ignora todos los archivos de texto
+*.xml
+*.pdf
+
+# Ignora los archivos relacionados a API keys
+#.env
+
+# Ignora archivos de configuración SASS
+#.sass-cache
