@@ -73,7 +73,7 @@ $.extend( $.fn.dataTable.defaults, {
 $('.datatable-basic').DataTable();
 
 // Add placeholder to the datatable filter option
-$('.dataTables_filter input[type=search]').attr('placeholder','Escriba para filtrar...');
+$('.dataTables_filter input[type=search]').attr('placeholder','Escriba para buscar...');
 
 
 // Enable Select2 select for the length option

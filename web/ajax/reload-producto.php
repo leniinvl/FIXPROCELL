@@ -32,20 +32,20 @@
 	<table class="table datatable-basic table-xxs table-hover">
 						<thead>
 							<tr>
-								<th><b>Código/Barra</b></th>
-								<th><b>Producto</b></th>
-								<th><b>Marca</b></th>
-								<th><b>Categoría</b></th>
-								<th><b>Modelo</b></th>
-								<th><b>Color</b></th>
-								<th><b>Stock</b></th>
+								<th><b>Código barra</b></th>
+								<th><b>Nombre producto</b></th>
+								<th><b>Categoría producto</b></th>
+								<th><b>Marca producto</b></th>
+								<th><b>Modelo producto</b></th>
+								<!---<th><b>Color</b></th>-->
+								<th><b>Stock disponible</b></th>
+								<th><b>Precio normal</b></th>
+								<th><b>Precio oferta</b></th>
+								<!---<th><b>Dist.1</b></th>-->
+								<!---<th><b>Dist.2</b></th>-->
+								<th><b>Precio compra</b></th>
 								<th><b>Estado</b></th> 
-								<th><b>P.Venta</b></th>
-								<th><b>P.Min</b></th>
-								<th><b>Dist.1</b></th>
-								<th><b>Dist.2</b></th>
-								<th><b>P.Compra</b></th>
-								<th><b>Bodega</b></th>
+								<th><b>Almacen</b></th>
 								<th class="text-center"><b>Opciones</b></th>
 							</tr>
 						</thead>
@@ -92,7 +92,7 @@
 		
 											$stock_print = '<span class="label label-danger label-rounded">
 												<span class="text-bold">AGOTADO</span></span>';
-										} else if ($stock == 0 && $stock_min == 0) {
+										} else if ($stock <= 0 && $stock_min == 0) {
 		
 											$stock_print = '<span class="label label-default label-rounded">
 												<span class="text-bold">POR INVENTARIAR</span></span>';
@@ -130,18 +130,18 @@
 									<tr>
 										<td><?php print($codigo_print); ?></td>
 					                	<td><?php print($column['nombre_producto']); ?></td>
-					                	<td><?php print($column['nombre_marca']); ?></td>
 										<td><?php print($column['nombre_categoria']); ?></td>
+					                	<td><?php print($column['nombre_marca']); ?></td>
 					                	<td><?php print($column['nombre_presentacion']); ?></td>
-										<td><?php print($column['nombre_color']); ?></td>
+										<!--<td><?//php print($column['nombre_color']); ?></td>-->
 					                	<td><?php print($column['stock']); ?></td>
-					                	<td class="success"><?php print($stock_print); ?></td>
-					                	<td><?php print($column['precio_venta']); ?></td>
-										<td><?php print($column['precio_venta_minimo']); ?></td>
-										<td><?php print($column['precio_venta_mayoreo']); ?></td>
-										<td><?php print($column['precio_super_mayoreo']); ?></td>
-										<td><?php print($column['precio_compra']); ?></td>
-										<td class="success"><?php print($print_sucursal); ?></td>
+					                	<td>$ <?php print($column['precio_venta']); ?></td>
+										<td>$ <?php print($column['precio_venta_minimo']); ?></td>
+										<!--<td><?//php print($column['precio_venta_mayoreo']); ?></td>-->
+										<!--<td><?//php print($column['precio_super_mayoreo']); ?></td>-->
+										<td>$ <?php print($column['precio_compra']); ?></td>
+										<td><?php print($stock_print); ?></td>
+										<td><?php print($print_sucursal); ?></td>
 					                	<td class="text-center">
 										<ul class="icons-list">
 											<li class="dropdown">

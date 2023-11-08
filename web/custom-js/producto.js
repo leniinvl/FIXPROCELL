@@ -1,3 +1,5 @@
+console.log("Init producto.js");
+
 $(function() {
 
   $(document).on('click', '#print_activos', function(e){
@@ -31,7 +33,7 @@ $(document).on('click', '#print_vigentes', function(e){
     // Setting datatable defaults
     $.extend( $.fn.dataTable.defaults, {
         autoWidth: false,
-        pageLength: 100,
+        pageLength: 50,
         columnDefs: [{
             orderable: false,
             width: '100px'
@@ -61,7 +63,7 @@ $(document).on('click', '#print_vigentes', function(e){
     $('.datatable-basic').DataTable();
 
     // Add placeholder to the datatable filter option
-    $('.dataTables_filter input[type=search]').attr('placeholder','Escriba para filtrar...');
+    $('.dataTables_filter input[type=search]').attr('placeholder','Escriba para buscar...');
 
 
     // Enable Select2 select for the length option
@@ -434,6 +436,7 @@ var validator = $("#frmFilter").validate({
 
   function buscar_datos()
   {
+  console.log("producto.js search");
   var idsucursal = $("#cbSucursal").val();
   var idcat = $("#cbFCategoria").val();
 
@@ -771,6 +774,7 @@ idpresentacion, estado, exento, inventariable, perecedero, idcolor)
 
 function enviar_frm()
 {
+  console.log("producto.js save");
   var urlprocess = 'web/ajax/ajxproducto.php';
   var proceso = $("#txtProceso").val();
   var id = $("#txtID").val();

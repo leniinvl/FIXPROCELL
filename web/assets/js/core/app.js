@@ -373,7 +373,7 @@ $(function() {
         $('body').toggleClass('sidebar-xs');
     });
 
-    $('.sidebar-main-toggle').click();
+    //$('.sidebar-main-toggle').click(); /*CAMBIO MENU COLAPSABLE*/
 
 
     // Sidebar controls

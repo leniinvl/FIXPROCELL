@@ -1,7 +1,7 @@
 <?php
 session_set_cookie_params(60*60*24*365); session_start();
 $tipo_usuario = $_SESSION['user_tipo'];
-$idsucursal_filtro = -1; //$_SESSION['sucursal_id'];
+$idsucursal_filtro = /*-1;*/ $_SESSION['sucursal_id']; /*CAMBIO FILTRO INICIAL*/
 $idsucursal_selection = $_SESSION['sucursal_id'];
 
 spl_autoload_register(function($className) {
@@ -23,23 +23,23 @@ $objCategoria = new Categoria();
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
             <li><a href="?View=Inicio"><i class="icon-home2 position-left"></i> Inicio</a></li>
-            <li><a href="javascript:;">Bodega</a></li>
+            <li><a href="javascript:;">Almacen</a></li>
             <li class="active">Productos</li>
         </ul>
     </div>
     <div class="panel-heading">
-        <h5 class="panel-title">Administracion de Productos</h5>
+        <h5 class="panel-title">Administracion de productos</h5>
 
         <div class="heading-elements" >
             <?php if ($tipo_usuario == '1') { ?>
                 
-                <button type="button" class="btn btn-primary heading-btn"
+                <button type="button" class="btn btn-info heading-btn"
                         onclick="newProducto()">
                     <i class="icon-database-add"></i> Agregar Nuevo/a</button>
 
                 <div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-printer2 position-left"></i> Imprimir Reporte
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-printer2 position-left"></i> Reporte Productos
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a id="print_agotados" href="javascript:void(0)">
@@ -59,424 +59,424 @@ $objCategoria = new Categoria();
         </div>
 
 
-    <div class="btn-group">
-        <div class="row">
-            <form role="form" autocomplete="off" class="form-validate-jquery" id="frmFilter">
-                <div class="col-sm-5"><b>Sucursal:</b>
-                    <select  data-placeholder="Seleccione una sucursal..." id="cbSucursal" name="cbSucursal"
-                        class="select-search" style="text-transform:uppercase;"
-                        onkeyup="javascript:this.value = this.value.toUpperCase();">
-                            <option value="" selected disabled> Seleccione una sucursal... </option>
-                            <?php
-                            $filas = $objSucursal->Listar_Sucursal();
-                            if (is_array($filas) || is_object($filas)) {
-                                foreach ($filas as $row => $column) {
-                                    ?>
-                                    <option value="<?php print ($column["idsucursal"]) ?>"
-                                        <?php if($column["idsucursal"]==$idsucursal_selection){print('selected');} ?> >
-                                        <?php print ($column["nombre"]) ?></option>
-                                    <?php
+        <div class="btn-group">
+            <div class="row">
+                <form role="form" autocomplete="off" class="form-validate-jquery" id="frmFilter">
+                    <div class="col-sm-5"><b>Establecimiento:</b>
+                        <select  data-placeholder="Seleccione una sucursal..." id="cbSucursal" name="cbSucursal"
+                            class="select-search" style="text-transform:uppercase;"
+                            onkeyup="javascript:this.value = this.value.toUpperCase();">
+                                <option value="" selected disabled> Seleccione una sucursal... </option>
+                                <option value="0"> TODOS </option>
+                                <?php
+                                $filas = $objSucursal->Listar_Sucursal();
+                                if (is_array($filas) || is_object($filas)) {
+                                    foreach ($filas as $row => $column) {
+                                        ?>
+                                        <option value="<?php print ($column["idsucursal"]) ?>"
+                                            <?php if($column["idsucursal"]==$idsucursal_selection){print('selected');} ?> >
+                                            <?php print ($column["nombre"]) ?></option>
+                                        <?php
+                                    }
                                 }
-                            }
-                            ?>
-                            <option value="0"> SUCURSAL "TODAS" </option>
-                    </select>
-                </div>
+                                ?>
+                        </select>
+                    </div>
 
-                <div class="col-sm-5"><b>Categoria:</b>
-                    <select  data-placeholder="Seleccione una categoria..." id="cbFCategoria" name="cbFCategoria"
-                        class="select-search" style="text-transform:uppercase;"
-                        onkeyup="javascript:this.value = this.value.toUpperCase();">
-                            <option value="" selected disabled> Seleccione una categoria... </option>
-                            <option value="0" selected> "TODAS" </option>
-                            <?php
-                            $filas = $objCategoria->Listar_Categorias();
-                            if (is_array($filas) || is_object($filas)) {
-                                foreach ($filas as $row => $column) {
-                                    ?>
-                                <option value="<?php print ($column["idcategoria"]) ?>">
-                                        <?php print ($column["nombre_categoria"]) ?></option>
-                                    <?php
+                    <div class="col-sm-5"><b>Categoría:</b>
+                        <select  data-placeholder="Seleccione una categoria..." id="cbFCategoria" name="cbFCategoria"
+                            class="select-search" style="text-transform:uppercase;"
+                            onkeyup="javascript:this.value = this.value.toUpperCase();">
+                                <option value="" selected disabled> Seleccione una categoria... </option>
+                                <option value="0" selected> TODOS </option>
+                                <?php
+                                $filas = $objCategoria->Listar_Categorias();
+                                if (is_array($filas) || is_object($filas)) {
+                                    foreach ($filas as $row => $column) {
+                                        ?>
+                                    <option value="<?php print ($column["idcategoria"]) ?>">
+                                            <?php print ($column["nombre_categoria"]) ?></option>
+                                        <?php
+                                    }
                                 }
-                            }
-                            ?>
-                    </select>
-                </div>
+                                ?>
+                        </select>
+                    </div>
 
-                <div class="col-sm-8">
-                    <button style="margin-top: 5px;" id="btnFiltrar" type="submit" class="btn btn-warning btn-m"> 
-                    <i class="icon-search4"></i> CONSULTAR PRODUCTOS </button>
-                </div>  
-            </form>      
+                    <div class="col-sm-2">
+                        <button style="margin-top: 20px;" id="btnFiltrar" type="submit" class="btn btn-info btn-m"> 
+                        <i class="icon-search4"></i> BUSCAR </button>
+                    </div>  
+                </form>      
+            </div>
         </div>
     </div>
 
-
-    </div>
     <div class="panel-body">
-    </div>
-    <div id="reload-div">
-        <table class="table datatable-basic table-borderless table-hover table-xxs">
-            <?php if ($tipo_usuario == '1') { ?>
-                <thead>
-                    <tr>
-                        <th> <b> Código/Barra </b> </th>
-                        <th> <b> Producto </b> </th>
-                        <th> <b> Marca </b> </th>
-                        <th> <b> Categoría </b> </th>
-                        <th> <b> Modelo </b> </th>
-                        <th> <b> Color </b> </th>
-                        <th> <b> Stock </b> </th>
-                        <th> <b> Estado </b> </th>
-                        <th> <b> P.Venta </b> </th>
-                        <th> <b> P.Min </b> </th>
-                        <th> <b> Dist.1 </b> </th>
-                        <th> <b> Dist.2 </b> </th>
-                        <th> <b> P.Compra </b> </th>
-                        <th> <b> Bodega </b> </th>
-                        <th class="text-center"> <b> Opciones </b> </th>
-                    </tr>
-                </thead>
+    
+        <div id="reload-div">
+            <table class="table datatable-basic table-borderless table-hover table-xxs">
+                <?php if ($tipo_usuario == '1') { ?>
+                    <thead>
+                        <tr>
+                            <th><b>Código barra</b></th>
+                            <th><b>Nombre Producto</b></th>
+                            <th><b>Categoría producto</b></th>
+                            <th><b>Marca producto</b></th>
+                            <th><b>Modelo producto</b></th>
+                            <!---<th><b>Color</b></th>-->
+                            <th><b>Stock disponible</b></th>
+                            <th><b>Precio normal</b></th>
+                            <th><b>Precio oferta</b></th>
+                            <!---<th><b>Dist.1</b></th>-->
+                            <!---<th><b>Dist.2</b></th>-->
+                            <th><b>Precio compra</b></th>
+                            <th><b>Estado</b></th> 
+                            <th><b>Almacen</b></th>
+                            <th class="text-center"><b>Opciones</b></th>
+                        </tr>
+                    </thead>
 
 
+                    <tbody>
 
-                <tbody>
+        <?php
+                        $filas = $objProducto->Listar_Productos($idsucursal_filtro);
+                        if (is_array($filas) || is_object($filas)) {
+                            foreach ($filas as $row => $column) {
+                                $stock_print = "";
+                                $codigo_print = "";
+                                $codigo_barra = $column['codigo_barra'];
+                                $inventariable = $column['inventariable'];
+                                $stock = $column['stock'];
+                                $stock_min = $column['stock_min'];
 
-                    <?php
-                    $filas = $objProducto->Listar_Productos($idsucursal_filtro);
-                    if (is_array($filas) || is_object($filas)) {
-                        foreach ($filas as $row => $column) {
-                            $stock_print = "";
-                            $codigo_print = "";
-                            $codigo_barra = $column['codigo_barra'];
-                            $inventariable = $column['inventariable'];
-                            $stock = $column['stock'];
-                            $stock_min = $column['stock_min'];
+                                if ($codigo_barra == '') {
+                                    $codigo_print = $column['codigo_interno'];
+                                } else {
 
-                            if ($codigo_barra == '') {
-                                $codigo_print = $column['codigo_interno'];
-                            } else {
+                                    $codigo_print = $codigo_barra;
+                                }
 
-                                $codigo_print = $codigo_barra;
-                            }
+                                if ($inventariable == 1) {
 
-                            if ($inventariable == 1) {
+                                    if ($stock >= 1 && $stock < $stock_min) {
 
-                                if ($stock >= 1 && $stock < $stock_min) {
+                                        $stock_print = '<span class="label label-warning label-rounded"><span
+                                            class="text-bold">POR AGOTARSE</span></span>';
+                                    } else if ($stock == $stock_min) {
 
-                                    $stock_print = '<span class="label label-warning label-rounded"><span
-					                	class="text-bold">POR AGOTARSE</span></span>';
-                                } else if ($stock == $stock_min) {
+                                        $stock_print = '<span class="label label-info label-rounded"><span
+                                            class="text-bold">EN MINIMO</span></span>';
+                                    } else if ($stock > $stock_min) {
 
-                                    $stock_print = '<span class="label label-info label-rounded"><span
-					                	class="text-bold">EN MINIMO</span></span>';
-                                } else if ($stock > $stock_min) {
+                                        $stock_print = '<span class="label label-success label-rounded"><span
+                                            class="text-bold">DISPONIBLE</span></span>';
+                                    } else if ($stock <= 0 && $stock_min >= 1) {
 
-                                    $stock_print = '<span class="label label-success label-rounded"><span
-					                	class="text-bold">DISPONIBLE</span></span>';
-                                } else if ($stock == 0 && $stock_min >= 1) {
+                                        $stock_print = '<span class="label label-danger label-rounded">
+                                            <span class="text-bold">AGOTADO</span></span>';
+                                    } else if ($stock == 0 && $stock_min == 0) {
 
-                                    $stock_print = '<span class="label label-danger label-rounded">
-					                	<span class="text-bold">AGOTADO</span></span>';
-                                } else if ($stock == 0 && $stock_min == 0) {
+                                        $stock_print = '<span class="label label-default label-rounded">
+                                            <span class="text-bold">POR INVENTARIAR</span></span>';
+                                    } 
 
-                                    $stock_print = '<span class="label label-default label-rounded">
-					                	<span class="text-bold">POR INVENTARIAR</span></span>';
-                                } 
+                                } else {
 
-                            } else {
+                                    $stock_print = '<span class="label label-primary label-rounded"><span
+                                            class="text-bold">SERVICIO</span></span>';
+                                }
 
-                                $stock_print = '<span class="label label-primary label-rounded"><span
-					                	class="text-bold">SERVICIO</span></span>';
-                            }
+                                $idsucursal = $column['idsucursal'];
+                                $nombre_sucursal = $column['nombre_sucursal'];
+                                $print_sucursal = '<span class="label label-success label-rounded"><span
+                                class="text-bold">'.$nombre_sucursal.'</span></span>';
+                                if ($idsucursal == 2) {
+                                    $print_sucursal = '<span class="label label-info label-rounded"><span
+                                            class="text-bold">'.$nombre_sucursal.'</span></span>';
+                                }elseif ($idsucursal == 3) {
+                                    $print_sucursal = '<span class="label label-warning label-rounded"><span
+                                            class="text-bold">'.$nombre_sucursal.'</span></span>';
+                                }elseif ($idsucursal == 4) {
+                                    $print_sucursal = '<span class="label label-primary label-rounded"><span 
+                                        class="text-bold">'.$nombre_sucursal.'</span></span>';
+                                }elseif ($idsucursal == 5) {
+                                    $print_sucursal = '<span class="label label-default label-rounded">
+                                            <span class="text-bold">'.$nombre_sucursal.'</span></span>';
+                                }elseif ($idsucursal == 6) {
+                                    $print_sucursal = '<span class="label label-danger label-rounded">
+                                    <span class="text-bold">'.$nombre_sucursal.'</span></span>';
+                                }
 
-                            $idsucursal = $column['idsucursal'];
-                            $nombre_sucursal = $column['nombre_sucursal'];
-                            $print_sucursal = '<span class="label label-success label-rounded"><span
+                                ?>
+                                <tr>
+                                    <td><?php print($codigo_print); ?></td>
+                                    <td><?php print($column['nombre_producto']); ?></td>
+                                    <td><?php print($column['nombre_categoria']); ?></td>
+                                    <td><?php print($column['nombre_marca']); ?></td>
+                                    <td><?php print($column['nombre_presentacion']); ?></td>
+                                    <!--<td><?//php print($column['nombre_color']); ?></td>-->
+                                    <td><?php print($column['stock']); ?></td>
+                                    <td>$ <?php print($column['precio_venta']); ?></td>
+                                    <td>$ <?php print($column['precio_venta_minimo']); ?></td>
+                                    <!--<td><?//php print($column['precio_venta_mayoreo']); ?></td>-->
+                                    <!--<td><?//php print($column['precio_super_mayoreo']); ?></td>-->
+                                    <td>$ <?php print($column['precio_compra']); ?></td>
+                                    <td><?php print($stock_print); ?></td>
+                                    <td><?php print($print_sucursal); ?></td>
+                                    <td class="text-center">
+                                        <ul class="icons-list">
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="icon-menu9"></i>
+                                                </a>
+
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li><a
+                                                            href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+                                                            onclick="openProducto('editar',
+                                                                '<?php print($column["idproducto"]); ?>',
+                                                                '<?php print($column["codigo_interno"]); ?>',
+                                                                '<?php print($column["codigo_barra"]); ?>',
+                                                                '<?php print($column["nombre_producto"]); ?>',
+                                                                '<?php print($column["precio_compra"]); ?>',
+                                                                '<?php print($column["precio_venta"]); ?>',
+                                                                '<?php print($column["precio_venta_minimo"]); ?>',
+                                                                '<?php print($column["precio_venta_mayoreo"]); ?>',
+                                                                '<?php print($column["precio_super_mayoreo"]); ?>',
+                                                                '<?php print($column["stock"]); ?>',
+                                                                '<?php print($column["stock_min"]); ?>',
+                                                                '<?php print($column["idcategoria"]); ?>',
+                                                                '<?php print($column["idmarca"]); ?>',
+                                                                '<?php print($column["idpresentacion"]); ?>',
+                                                                '<?php print($column["estado"]); ?>',
+                                                                '<?php print($column["exento"]); ?>',
+                                                                '<?php print($column["inventariable"]); ?>',
+                                                                '<?php print($column["perecedero"]); ?>',
+                                                                '<?php print($column["idcolor"]); ?>')">
+                                                            <i class="icon-pencil6">
+                                                            </i> Editar</a></li>
+                                                    <!-- <li><a
+                                                            href="javascript:;" data-toggle="modal" data-target="#modal_iconified_barcode"
+                                                            onclick="openBarcode(
+                                                                '<?php //print($column["codigo_barra"]); ?>',
+                                                                '<?php //print($column["codigo_interno"]); ?>',
+                                                                '<?php //print($column["nombre_producto"]); ?>',
+                                                                '<?php //print($column["idproducto"]); ?>')">
+                                                            <i class="icon-barcode2">
+                                                            </i>Código de Barra</a></li> -->
+                                                    <li>
+                                                        <a
+                                                            href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+                                                            onclick="openProducto('ver',
+                                                                '<?php print($column["idproducto"]); ?>',
+                                                                '<?php print($column["codigo_interno"]); ?>',
+                                                                '<?php print($column["codigo_barra"]); ?>',
+                                                                '<?php print($column["nombre_producto"]); ?>',
+                                                                '<?php print($column["precio_compra"]); ?>',
+                                                                '<?php print($column["precio_venta"]); ?>',
+                                                                '<?php print($column["precio_venta_minimo"]); ?>',
+                                                                '<?php print($column["precio_venta_mayoreo"]); ?>',
+                                                                '<?php print($column["precio_super_mayoreo"]); ?>',
+                                                                '<?php print($column["stock"]); ?>',
+                                                                '<?php print($column["stock_min"]); ?>',
+                                                                '<?php print($column["idcategoria"]); ?>',
+                                                                '<?php print($column["idmarca"]); ?>',
+                                                                '<?php print($column["idpresentacion"]); ?>',
+                                                                '<?php print($column["estado"]); ?>',
+                                                                '<?php print($column["exento"]); ?>',
+                                                                '<?php print($column["inventariable"]); ?>',
+                                                                '<?php print($column["perecedero"]); ?>',
+                                                                '<?php print($column["idcolor"]); ?>')">
+                                                            <i class=" icon-eye8">
+                                                            </i> Ver</a></li>
+                                                            <li><a id="delete_product"
+                                                            data-id="<?php print($column['idproducto']); ?>"
+                                                            href="javascript:void(0)">
+                                                            <i class=" icon-trash">
+                                                            </i> Eliminar</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
+
+                    </tbody>
+
+        <?php } else { ?>
+                    <thead>
+                        <tr>
+                            <th> <b> Código barra </b> </th>
+                            <th> <b> Nombre Producto </b> </th>
+                            <th> <b> Categoría producto </b> </th>
+                            <th> <b> Marca producto </b> </th>
+                            <th> <b> Modelo producto </b> </th>
+                            <!--<th> <b> Color </b> </th>-->
+                            <th> <b> Stock disponible </b> </th>
+                            <th> <b> Precio normal </b> </th>
+                            <th> <b> Precio oferta </b> </th>
+                            <!--<th> <b> Dist.1 </b> </th>-->
+                            <!--<th> <b> Dist.2 </b> </th>-->
+                            <th> <b> Precio compra </b> </th>
+                            <th> <b> Estado </b> </th>
+                            <th> <b> Almacen </b> </th>
+                            <th class="text-center"> <b> Opciones <b> </th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+
+        <?php
+        $filas = $objProducto->Listar_Productos($idsucursal_filtro);
+        if (is_array($filas) || is_object($filas)) {
+            foreach ($filas as $row => $column) {
+                $stock_print = "";
+                $codigo_print = "";
+                $codigo_barra = $column['codigo_barra'];
+                $inventariable = $column['inventariable'];
+                $stock = $column['stock'];
+                $stock_min = $column['stock_min'];
+
+                if ($codigo_barra == '') {
+                    $codigo_print = $column['codigo_interno'];
+                } else {
+
+                    $codigo_print = $codigo_barra;
+                }
+
+                if ($inventariable == 1) {
+
+                    if ($stock >= 1 && $stock < $stock_min) {
+
+                        $stock_print = '<span class="label label-warning label-rounded"><span
+                            class="text-bold">POR AGOTARSE</span></span>';
+                    } else if ($stock == $stock_min) {
+
+                        $stock_print = '<span class="label label-info label-rounded"><span
+                            class="text-bold">EN MINIMO</span></span>';
+                    } else if ($stock > $stock_min) {
+
+                        $stock_print = '<span class="label label-success label-rounded"><span
+                            class="text-bold">DISPONIBLE</span></span>';
+                    } else if ($stock <= 0 && $stock_min >= 1) {
+
+                        $stock_print = '<span class="label label-danger label-rounded">
+                            <span class="text-bold">AGOTADO</span></span>';
+                    } else if ($stock == 0 && $stock_min == 0) {
+
+                        $stock_print = '<span class="label label-default label-rounded">
+                            <span class="text-bold">POR INVENTARIAR</span></span>';
+                    } 
+
+                } else {
+
+                    $stock_print = '<span class="label label-primary label-rounded"><span
+                                            class="text-bold">SERVICIO</span></span>';
+                }
+
+                
+                $idsucursal = $column['idsucursal'];
+                $nombre_sucursal = $column['nombre_sucursal'];
+                $print_sucursal = '<span class="label label-success label-rounded"><span
+                class="text-bold">'.$nombre_sucursal.'</span></span>';
+                if ($idsucursal == 2) {
+                    $print_sucursal = '<span class="label label-info label-rounded"><span
                             class="text-bold">'.$nombre_sucursal.'</span></span>';
-                            if ($idsucursal == 2) {
-                                $print_sucursal = '<span class="label label-info label-rounded"><span
-                                        class="text-bold">'.$nombre_sucursal.'</span></span>';
-                            }elseif ($idsucursal == 3) {
-                                $print_sucursal = '<span class="label label-warning label-rounded"><span
-                                        class="text-bold">'.$nombre_sucursal.'</span></span>';
-                            }elseif ($idsucursal == 4) {
-                                $print_sucursal = '<span class="label label-primary label-rounded"><span 
-                                    class="text-bold">'.$nombre_sucursal.'</span></span>';
-                            }elseif ($idsucursal == 5) {
-                                $print_sucursal = '<span class="label label-default label-rounded">
-                                        <span class="text-bold">'.$nombre_sucursal.'</span></span>';
-                            }elseif ($idsucursal == 6) {
-                                $print_sucursal = '<span class="label label-danger label-rounded">
-                                <span class="text-bold">'.$nombre_sucursal.'</span></span>';
-                            }
-
-                            ?>
-                            <tr>
-                                <td><?php print($codigo_print); ?></td>
-                                <td><?php print($column['nombre_producto']); ?></td>
-                                <td><?php print($column['nombre_marca']); ?></td>
-                                <td><?php print($column['nombre_categoria']); ?></td>
-                                <td><?php print($column['nombre_presentacion']); ?></td>
-                                <td><?php print($column['nombre_color']); ?></td>
-                                <td><?php print($column['stock']); ?></td>
-                                <td><?php print($stock_print); ?></td>
-                                <td><?php print($column['precio_venta']); ?></td>
-                                <td><?php print($column['precio_venta_minimo']); ?></td>
-                                <td><?php print($column['precio_venta_mayoreo']); ?></td>
-                                <td><?php print($column['precio_super_mayoreo']); ?></td>
-                                <td><?php print($column['precio_compra']); ?></td>
-                                <td><?php print($print_sucursal); ?></td>
-                                <td class="text-center">
-                                    <ul class="icons-list">
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                <i class="icon-menu9"></i>
-                                            </a>
-
-                                            <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a
-                                                        href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-                                                        onclick="openProducto('editar',
-                                                            '<?php print($column["idproducto"]); ?>',
-                                                            '<?php print($column["codigo_interno"]); ?>',
-                                                            '<?php print($column["codigo_barra"]); ?>',
-                                                            '<?php print($column["nombre_producto"]); ?>',
-                                                            '<?php print($column["precio_compra"]); ?>',
-                                                            '<?php print($column["precio_venta"]); ?>',
-                                                            '<?php print($column["precio_venta_minimo"]); ?>',
-                                                            '<?php print($column["precio_venta_mayoreo"]); ?>',
-                                                            '<?php print($column["precio_super_mayoreo"]); ?>',
-                                                            '<?php print($column["stock"]); ?>',
-                                                            '<?php print($column["stock_min"]); ?>',
-                                                            '<?php print($column["idcategoria"]); ?>',
-                                                            '<?php print($column["idmarca"]); ?>',
-                                                            '<?php print($column["idpresentacion"]); ?>',
-                                                            '<?php print($column["estado"]); ?>',
-                                                            '<?php print($column["exento"]); ?>',
-                                                            '<?php print($column["inventariable"]); ?>',
-                                                            '<?php print($column["perecedero"]); ?>',
-                                                            '<?php print($column["idcolor"]); ?>')">
-                                                        <i class="icon-pencil6">
-                                                        </i> Editar</a></li>
-                                                <!-- <li><a
-                                                        href="javascript:;" data-toggle="modal" data-target="#modal_iconified_barcode"
-                                                        onclick="openBarcode(
-                                                            '<?php //print($column["codigo_barra"]); ?>',
-                                                            '<?php //print($column["codigo_interno"]); ?>',
-                                                            '<?php //print($column["nombre_producto"]); ?>',
-                                                            '<?php //print($column["idproducto"]); ?>')">
-                                                        <i class="icon-barcode2">
-                                                        </i>Código de Barra</a></li> -->
-                                                <li>
-                                                    <a
-                                                        href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-                                                        onclick="openProducto('ver',
-                                                            '<?php print($column["idproducto"]); ?>',
-                                                            '<?php print($column["codigo_interno"]); ?>',
-                                                            '<?php print($column["codigo_barra"]); ?>',
-                                                            '<?php print($column["nombre_producto"]); ?>',
-                                                            '<?php print($column["precio_compra"]); ?>',
-                                                            '<?php print($column["precio_venta"]); ?>',
-                                                            '<?php print($column["precio_venta_minimo"]); ?>',
-                                                            '<?php print($column["precio_venta_mayoreo"]); ?>',
-                                                            '<?php print($column["precio_super_mayoreo"]); ?>',
-                                                            '<?php print($column["stock"]); ?>',
-                                                            '<?php print($column["stock_min"]); ?>',
-                                                            '<?php print($column["idcategoria"]); ?>',
-                                                            '<?php print($column["idmarca"]); ?>',
-                                                            '<?php print($column["idpresentacion"]); ?>',
-                                                            '<?php print($column["estado"]); ?>',
-                                                            '<?php print($column["exento"]); ?>',
-                                                            '<?php print($column["inventariable"]); ?>',
-                                                            '<?php print($column["perecedero"]); ?>',
-                                                            '<?php print($column["idcolor"]); ?>')">
-                                                        <i class=" icon-eye8">
-                                                        </i> Ver</a></li>
-                                                        <li><a id="delete_product"
-                                                        data-id="<?php print($column['idproducto']); ?>"
-                                                        href="javascript:void(0)">
-                                                        <i class=" icon-trash">
-                                                        </i> Eliminar</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-
-                </tbody>
-
-<?php } else { ?>
-                <thead>
-                    <tr>
-                        <th> <b> Código/Barra </b> </th>
-                        <th> <b> Producto </b> </th>
-                        <th> <b> Marca </b> </th>
-                        <th> <b> Categoría </b> </th>
-                        <th> <b> Modelo </b> </th>
-                        <th> <b> Color </b> </th>
-                        <th> <b> Stock </b> </th>
-                        <th> <b> Estado </b> </th>
-                        <th> <b> P.Venta </b> </th>
-                        <th> <b> P.Min </b> </th>
-                        <th> <b> Dist.1 </b> </th>
-                        <th> <b> Dist.2 </b> </th>
-                        <th> <b> P.Compra </b> </th>
-                        <th> <b> Bodega </b> </th>
-                        <th class="text-center"> <b> Opciones <b> </th>
-                    </tr>
-                </thead>
-
-
-                <tbody>
-
-    <?php
-    $filas = $objProducto->Listar_Productos($idsucursal_filtro);
-    if (is_array($filas) || is_object($filas)) {
-        foreach ($filas as $row => $column) {
-            $stock_print = "";
-            $codigo_print = "";
-            $codigo_barra = $column['codigo_barra'];
-            $inventariable = $column['inventariable'];
-            $stock = $column['stock'];
-            $stock_min = $column['stock_min'];
-
-            if ($codigo_barra == '') {
-                $codigo_print = $column['codigo_interno'];
-            } else {
-
-                $codigo_print = $codigo_barra;
-            }
-
-            if ($inventariable == 1) {
-
-                if ($stock >= 1 && $stock < $stock_min) {
-
-                    $stock_print = '<span class="label label-warning label-rounded"><span
-                        class="text-bold">POR AGOTARSE</span></span>';
-                } else if ($stock == $stock_min) {
-
-                    $stock_print = '<span class="label label-info label-rounded"><span
-                        class="text-bold">EN MINIMO</span></span>';
-                } else if ($stock > $stock_min) {
-
-                    $stock_print = '<span class="label label-success label-rounded"><span
-                        class="text-bold">DISPONIBLE</span></span>';
-                } else if ($stock == 0 && $stock_min >= 1) {
-
-                    $stock_print = '<span class="label label-danger label-rounded">
-                        <span class="text-bold">AGOTADO</span></span>';
-                } else if ($stock == 0 && $stock_min == 0) {
-
-                    $stock_print = '<span class="label label-default label-rounded">
-                        <span class="text-bold">POR INVENTARIAR</span></span>';
-                } 
-
-            } else {
-
-                $stock_print = '<span class="label label-primary label-rounded"><span
-					                	class="text-bold">SERVICIO</span></span>';
-            }
-
-            
-            $idsucursal = $column['idsucursal'];
-            $nombre_sucursal = $column['nombre_sucursal'];
-            $print_sucursal = '<span class="label label-success label-rounded"><span
-            class="text-bold">'.$nombre_sucursal.'</span></span>';
-            if ($idsucursal == 2) {
-                $print_sucursal = '<span class="label label-info label-rounded"><span
+                }elseif ($idsucursal == 3) {
+                    $print_sucursal = '<span class="label label-warning label-rounded"><span
+                            class="text-bold">'.$nombre_sucursal.'</span></span>';
+                }elseif ($idsucursal == 4) {
+                    $print_sucursal = '<span class="label label-primary label-rounded"><span 
                         class="text-bold">'.$nombre_sucursal.'</span></span>';
-            }elseif ($idsucursal == 3) {
-                $print_sucursal = '<span class="label label-warning label-rounded"><span
-                        class="text-bold">'.$nombre_sucursal.'</span></span>';
-            }elseif ($idsucursal == 4) {
-                $print_sucursal = '<span class="label label-primary label-rounded"><span 
-                    class="text-bold">'.$nombre_sucursal.'</span></span>';
-            }elseif ($idsucursal == 5) {
-                $print_sucursal = '<span class="label label-default label-rounded">
-                        <span class="text-bold">'.$nombre_sucursal.'</span></span>';
-            }elseif ($idsucursal == 6) {
-                $print_sucursal = '<span class="label label-danger label-rounded">
-                <span class="text-bold">'.$nombre_sucursal.'</span></span>';
-            }
+                }elseif ($idsucursal == 5) {
+                    $print_sucursal = '<span class="label label-default label-rounded">
+                            <span class="text-bold">'.$nombre_sucursal.'</span></span>';
+                }elseif ($idsucursal == 6) {
+                    $print_sucursal = '<span class="label label-danger label-rounded">
+                    <span class="text-bold">'.$nombre_sucursal.'</span></span>';
+                }
 
 
-            ?>
-                            <tr>
-                                <td><?php print($codigo_print); ?></td>
-                                <td><?php print($column['nombre_producto']); ?></td>
-                                <td><?php print($column['nombre_marca']); ?></td>
-                                <td><?php print($column['nombre_categoria']); ?></td>
-                                <td><?php print($column['nombre_presentacion']); ?></td>
-                                <td><?php print($column['nombre_color']); ?></td>
-                                <td><?php print($column['stock']); ?></td>
-                                <td class="success"><?php print($stock_print); ?></td>
-                                <td><?php print($column['precio_venta']); ?></td>
-                                <td><?php print($column['precio_venta_minimo']); ?></td>
-                                <td><?php print($column['precio_venta_mayoreo']); ?></td>
-                                <td><?php print($column['precio_super_mayoreo']); ?></td>
-                                <td><?php print($column['precio_compra']); ?></td>
-                                <td><?php print($print_sucursal); ?></td>
-                                <td class="text-center">
-                                    <ul class="icons-list">
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                <i class="icon-menu9"></i>
-                                            </a>
+                ?>
+                                <tr>
+                                    <td><?php print($codigo_print); ?></td>
+                                    <td><?php print($column['nombre_producto']); ?></td>
+                                    <td><?php print($column['nombre_categoria']); ?></td>
+                                    <td><?php print($column['nombre_marca']); ?></td>
+                                    <td><?php print($column['nombre_presentacion']); ?></td>
+                                    <!--<td><?//php print($column['nombre_color']); ?></td>-->
+                                    <td><?php print($column['stock']); ?></td>
+                                    <td>$ <?php print($column['precio_venta']); ?></td>
+                                    <td>$ <?php print($column['precio_venta_minimo']); ?></td>
+                                    <!--<td><?//php print($column['precio_venta_mayoreo']); ?></td>-->
+                                    <!--<td><?//php print($column['precio_super_mayoreo']); ?></td>-->
+                                    <td>$ <?php print($column['precio_compra']); ?></td>
+                                    <td class="success"><?php print($stock_print); ?></td>
+                                    <td><?php print($print_sucursal); ?></td>
+                                    <td class="text-center">
+                                        <ul class="icons-list">
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="icon-menu9"></i>
+                                                </a>
 
-                                            <ul class="dropdown-menu dropdown-menu-right">
-                                                <!-- <li><a
-                                                        href="javascript:;" data-toggle="modal" data-target="#modal_iconified_barcode"
-                                                        onclick="openBarcode(
-                                                            '<?php //print($column["codigo_barra"]); ?>',
-                                                            '<?php //print($column["codigo_interno"]); ?>',
-                                                            '<?php //print($column["nombre_producto"]); ?>',
-                                                            '<?php //print($column["idproducto"]); ?>')">
-                                                        <i class="icon-barcode2">
-                                                        </i>Codigo de Barra</a></li> -->
-                                                <li><a
-                                                        href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-                                                        onclick="openProducto('ver',
-                                                            '<?php print($column["idproducto"]); ?>',
-                                                            '<?php print($column["codigo_interno"]); ?>',
-                                                            '<?php print($column["codigo_barra"]); ?>',
-                                                            '<?php print($column["nombre_producto"]); ?>',
-                                                            '<?php print($column["precio_compra"]); ?>',
-                                                            '<?php print($column["precio_venta"]); ?>',
-                                                            '<?php print($column["precio_venta_minimo"]); ?>',
-                                                            '<?php print($column["precio_venta_mayoreo"]); ?>',
-                                                            '<?php print($column["precio_super_mayoreo"]); ?>',
-                                                            '<?php print($column["stock"]); ?>',
-                                                            '<?php print($column["stock_min"]); ?>',
-                                                            '<?php print($column["idcategoria"]); ?>',
-                                                            '<?php print($column["idmarca"]); ?>',
-                                                            '<?php print($column["idpresentacion"]); ?>',
-                                                            '<?php print($column["estado"]); ?>',
-                                                            '<?php print($column["exento"]); ?>',
-                                                            '<?php print($column["inventariable"]); ?>',
-                                                            '<?php print($column["perecedero"]); ?>',
-                                                            '<?php print($column["idcolor"]); ?>')">
-                                                        <i class=" icon-eye8">
-                                                        </i> Ver</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                                                        <?php
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <!-- <li><a
+                                                            href="javascript:;" data-toggle="modal" data-target="#modal_iconified_barcode"
+                                                            onclick="openBarcode(
+                                                                '<?php //print($column["codigo_barra"]); ?>',
+                                                                '<?php //print($column["codigo_interno"]); ?>',
+                                                                '<?php //print($column["nombre_producto"]); ?>',
+                                                                '<?php //print($column["idproducto"]); ?>')">
+                                                            <i class="icon-barcode2">
+                                                            </i>Codigo de Barra</a></li> -->
+                                                    <li><a
+                                                            href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+                                                            onclick="openProducto('ver',
+                                                                '<?php print($column["idproducto"]); ?>',
+                                                                '<?php print($column["codigo_interno"]); ?>',
+                                                                '<?php print($column["codigo_barra"]); ?>',
+                                                                '<?php print($column["nombre_producto"]); ?>',
+                                                                '<?php print($column["precio_compra"]); ?>',
+                                                                '<?php print($column["precio_venta"]); ?>',
+                                                                '<?php print($column["precio_venta_minimo"]); ?>',
+                                                                '<?php print($column["precio_venta_mayoreo"]); ?>',
+                                                                '<?php print($column["precio_super_mayoreo"]); ?>',
+                                                                '<?php print($column["stock"]); ?>',
+                                                                '<?php print($column["stock_min"]); ?>',
+                                                                '<?php print($column["idcategoria"]); ?>',
+                                                                '<?php print($column["idmarca"]); ?>',
+                                                                '<?php print($column["idpresentacion"]); ?>',
+                                                                '<?php print($column["estado"]); ?>',
+                                                                '<?php print($column["exento"]); ?>',
+                                                                '<?php print($column["inventariable"]); ?>',
+                                                                '<?php print($column["perecedero"]); ?>',
+                                                                '<?php print($column["idcolor"]); ?>')">
+                                                            <i class=" icon-eye8">
+                                                            </i> Ver</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                                            <?php
+                                                        }
                                                     }
-                                                }
-                                                ?>
+                                                    ?>
 
-                </tbody>
+                    </tbody>
 
 
-                                            <?php } ?>
-        </table>
+        <?php } ?>
+            </table>
+        </div> 
+    
     </div>
 </div>
 

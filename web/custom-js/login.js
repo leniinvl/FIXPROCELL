@@ -126,7 +126,7 @@ function enviar_frm()
 
              if(data == "Validado"){
               swal({ title: "Bienvenido...",
-              confirmButtonColor: "#16A085", /*CAMBIO*/
+              confirmButtonColor: "#16A085", /*CAMBIO COLOR BOTON*/
               confirmButtonText: "Ingresar",
               imageUrl: "web/assets/images/unlock.gif"});
               setTimeout(function(){

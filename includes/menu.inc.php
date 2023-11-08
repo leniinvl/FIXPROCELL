@@ -160,7 +160,7 @@
 
 						<!-- /Acera de -->
 						<li>
-							<li class="<?php if($_GET['View']=="Acerca-de"){echo 'active';} ?>" ><a href="./?View=Acerca-de"> <i class="icon-info22"> </i> Acerca de </a></li>
+							<li class="<?php if($_GET['View']=="Acerca-de"){echo 'active';} ?>" ><a href="./?View=Acerca-de"> <i class="icon-info22"> </i> <span>Acerca de<span> </a></li>
 						</li>
 						<!--Acerca de  -->
 
@@ -261,7 +261,7 @@
 
 						<!-- /Acera de -->
 						<li>
-							<li class="<?php if($_GET['View']=="Acerca-de"){echo 'active';} ?>" ><a href="./?View=Acerca-de"> <i class="icon-info22"> </i> Acerca de </a></li>
+							<li class="<?php if($_GET['View']=="Acerca-de"){echo 'active';} ?>" ><a href="./?View=Acerca-de"> <i class="icon-info22"> </i> <span>Acerca de<span> </a></li>
 						</li>
 						<!--Acerca de  -->
 
