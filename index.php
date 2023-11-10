@@ -4,8 +4,7 @@
 	 date_default_timezone_set("America/Guayaquil");
 
 
-	  /*function __autoload($className){*/
-	  spl_autoload_register(function($className) {
+		spl_autoload_register(function($className) {
 	            $model = "model/". $className ."_model.php";
 	            $controller = "controller/". $className ."_controller.php";
 

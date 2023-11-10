@@ -43,13 +43,13 @@ class PDF extends FPDF
     }
 }
 
-    function __autoload($className){
+    spl_autoload_register(function($className){
             $model = "../model/". $className ."_model.php";
             $controller = "../controller/". $className ."_controller.php";
 
            require_once($model);
            require_once($controller);
-    }
+    });
 
    $mes = isset($_GET['mes']) ? $_GET['mes'] : '';
    $mes = DateTime::createFromFormat('m/Y', $mes)->format('m-Y');

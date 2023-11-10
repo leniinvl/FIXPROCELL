@@ -5,13 +5,13 @@
 	try
 	{
 
-	function __autoload($className){
+	spl_autoload_register(function($className){
             $model = "../model/". $className ."_model.php";
             $controller = "../controller/". $className ."_controller.php";
 
            require_once($model);
            require_once($controller);
-    }
+    });
 
     $objVenta = new Venta();
 

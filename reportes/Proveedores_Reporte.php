@@ -35,13 +35,13 @@ class PDF extends FPDF
     }
 }
 
-    function __autoload($className){
+    spl_autoload_register(function($className){
             $model = "../model/". $className ."_model.php";
             $controller = "../controller/". $className ."_controller.php";
 
            require_once($model);
            require_once($controller);
-    }
+    });
 
     $objProveedor = new Proveedor();
     $listado = $objProveedor->Listar_Proveedores();
