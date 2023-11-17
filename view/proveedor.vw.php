@@ -132,7 +132,7 @@
 
 								<div class="alert alert-info alert-styled-left text-blue-800 content-group">
 						                <span class="text-semibold">Estimado usuario</span>
-						                los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+						                los campos remarcados con <span class="text-danger"> * </span> son obligatorios.
 						                <button type="button" class="close" data-dismiss="alert">×</button>
 						                <input type="hidden" id="txtID" name="txtID" class="form-control" value="">
                                       	<input type="hidden" id="txtProceso" name="txtProceso" class="form-control" value="">
@@ -154,7 +154,7 @@
 										<div class="row">
 											<div class="col-sm-12">
 												<label>Proveedor <span class="text-danger">*</span></label>
-												<input type="text" id="txtProveedor" name="txtProveedor" placeholder="EJ. DISTRIBUIDORA BONILLA"
+												<input type="text" id="txtProveedor" name="txtProveedor" placeholder="EJEMPLO: DISTRIBUIDORA BONILLA"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
@@ -165,14 +165,14 @@
 										<div class="row">
 											<div class="col-sm-6">
 												<label>Cédula / RUC <span class="text-danger">*</span></label>
-												<input type="text" id="txtNIT" name="txtNIT" placeholder="EJ. 46591170"
+												<input type="text" id="txtNIT" name="txtNIT" placeholder="EJEMPLO: 46591170"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
 
 											<div class="col-sm-6">
 												<label>Teléfono <span class="text-danger">*</span></label>
-												<input type="text" id="txtTelefono" name="txtTelefono" placeholder="EJ. 051944039646"
+												<input type="text" id="txtTelefono" name="txtTelefono" placeholder="EJEMPLO: 051944039646"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
@@ -183,14 +183,14 @@
 										<div class="row">
 											<div class="col-sm-6">
 												<label>Personal Contacto</label>
-												<input type="text" id="txtContacto" name="txtContacto" placeholder="EJ. ABEL ALVARADO"
+												<input type="text" id="txtContacto" name="txtContacto" placeholder="EJEMPLO: ABEL ALVARADO"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
 
 											<div class="col-sm-6">
 												<label>Telefono Contacto</label>
-												<input type="text" id="txtTelefonoC" name="txtTelefonoC" placeholder="EJ. 054628824"
+												<input type="text" id="txtTelefonoC" name="txtTelefonoC" placeholder="EJEMPLO: 054628824"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
@@ -203,7 +203,7 @@
 										<div class="row" style="height: 0px;">
 											<div class="col-sm-6" style="height: 0px;">
 												<label>RUC </label>
-												<input type="text" id="txtNRC" name="txtNRC" placeholder="EJ. 10465911706"
+												<input type="text" id="txtNRC" name="txtNRC" placeholder="EJEMPLO: 10465911706"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>

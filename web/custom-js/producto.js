@@ -244,10 +244,10 @@ var validator = $("#frmFilter").validate({
           required: true
         },
         txtPVentaM:{
-          required: true
+          required: false
         },
         txtPSuperM:{
-          required: true
+          required: false
         },
         txtStock:{
           required:true
@@ -265,7 +265,7 @@ var validator = $("#frmFilter").validate({
           required: true
         },
         cbColor:{
-          required: true
+          required: false
         }
       },
 
@@ -301,7 +301,7 @@ var validator = $("#frmFilter").validate({
         max: 100000000,
         step: 0.01,
         decimals: 2,
-        prefix: '$'
+        prefix: '<i class="icon-coin-dollar"></i>'
     });
 
     $("#txtPVenta").TouchSpin({
@@ -309,7 +309,7 @@ var validator = $("#frmFilter").validate({
         max: 100000000,
         step: 0.01,
         decimals: 2,
-        prefix: '$'
+        prefix: '<i class="icon-coin-dollar"></i>'
     });
 
     $("#txtPVentaMinimo").TouchSpin({
@@ -317,7 +317,7 @@ var validator = $("#frmFilter").validate({
         max: 100000000,
         step: 0.01,
         decimals: 2,
-        prefix: '$'
+        prefix: '<i class="icon-coin-dollar"></i>'
     });
 
     $("#txtPVentaM").TouchSpin({

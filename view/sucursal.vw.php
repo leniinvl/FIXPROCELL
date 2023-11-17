@@ -106,7 +106,7 @@
 
 								<div class="alert alert-info alert-styled-left text-blue-800 content-group">
 						                <span class="text-semibold">Estimado usuario</span>
-						                los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+						                los campos remarcados con <span class="text-danger"> * </span> son obligatorios.
 						                <button type="button" class="close" data-dismiss="alert">×</button>
 						                <input type="hidden" id="txtID" name="txtID" class="form-control" value="">
                                       	<input type="hidden" id="txtProceso" name="txtProceso" class="form-control" value="">
@@ -116,7 +116,7 @@
 										<div class="row">
 											<div class="col-sm-12">
 												<label>Sucursal <span class="text-danger">*</span></label>
-												<input type="text" id="txtSucursal" name="txtSucursal" placeholder="EJ. SUCURSAL SUR"
+												<input type="text" id="txtSucursal" name="txtSucursal" placeholder="EJEMPLO: SUCURSAL SUR"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
@@ -127,7 +127,7 @@
 										<div class="row">
 											<div class="col-sm-12">
 												<label>Dirección <span class="text-danger">*</span></label>
-												<input type="text" id="txtDireccion" name="txtDireccion" placeholder="EJ. AV.MARIANA Y MORAN"
+												<input type="text" id="txtDireccion" name="txtDireccion" placeholder="EJEMPLO: AV.MARIANA Y MORAN"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
@@ -138,7 +138,7 @@
 										<div class="row">
 											<div class="col-sm-6">
 												<label>Teléfono <span class="text-danger">*</span></label>
-												<input type="text" id="txtTelefono" name="txtTelefono" placeholder="EJ. 46591170"
+												<input type="text" id="txtTelefono" name="txtTelefono" placeholder="EJEMPLO: 46591170"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>

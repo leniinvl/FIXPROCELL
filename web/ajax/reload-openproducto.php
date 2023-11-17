@@ -28,7 +28,7 @@ $objCategoria = new Categoria();
         </ul>
     </div>
     <div class="panel-heading">
-        <h5 class="panel-title">Administracion de productos</h5>
+        <h5 class="panel-title">Administración de productos</h5>
 
         <div class="heading-elements" >
             <?php if ($tipo_usuario == '1') { ?>
@@ -494,7 +494,7 @@ $objCategoria = new Categoria();
 
                     <div class="alert alert-info alert-styled-left text-blue-800 content-group">
                         <span class="text-semibold">Estimado usuario</span>
-                        los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+                        los campos remarcados con <span class="text-danger"> * </span> son obligatorios.
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         <input type="hidden" id="txtID" name="txtID" class="form-control" value="">
                         <input type="hidden" id="txtProceso" name="txtProceso" class="form-control" value="">
@@ -504,17 +504,17 @@ $objCategoria = new Categoria();
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label>Codigo</label>
+                                <label>Código de sistema</label>
                                 <input type="text" id="txtCodigo" name="txtCodigo" placeholder="AUTOGENERADO"
                                        class="form-control" style="text-transform:uppercase;"
                                        onkeyup="javascript:this.value = this.value.toUpperCase();" readonly disabled="disabled">
                             </div>
 
                             <div class="col-sm-6">
-                                <label>Barra</label>
+                                <label>Código de Barra</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="icon-barcode2"></i></span>
-                                    <input type="text" id="txtCodigoBarra" name="txtCodigoBarra" placeholder="10125150200"
+                                    <input type="text" id="txtCodigoBarra" name="txtCodigoBarra" placeholder="100200102030"
                                            class="form-control" style="text-transform:uppercase;"
                                            onkeyup="javascript:this.value = this.value.toUpperCase();">
                                 </div>
@@ -526,8 +526,8 @@ $objCategoria = new Categoria();
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-12">
-                                <label>Producto <span class="text-danger">*</span></label>
-                                <input type="text" id="txtProducto" name="txtProducto" placeholder="EJ. REDMI 9S 8/256GB"
+                                <label>Nombre de Producto <span class="text-danger">*</span></label>
+                                <input type="text" id="txtProducto" name="txtProducto" placeholder="EJEMPLO: HONOR MAGIC 5LITE 8/256GB"
                                        class="form-control" style="text-transform:uppercase;"
                                        onkeyup="javascript:this.value = this.value.toUpperCase();">
                             </div>
@@ -538,26 +538,26 @@ $objCategoria = new Categoria();
                         <div class="row">
 
                             <div class="col-sm-6">
-                                <label>Marca <span class="text-danger">*</span></label>
-                                <select  data-placeholder="Seleccione una marca..." id="cbMarca" name="cbMarca"
+                                <label>Categoría de producto<span class="text-danger"> * </span></label>
+                                <select  data-placeholder="Seleccione una categoria..." id="cbCategoria" name="cbCategoria"
                                          class="select-search" style="text-transform:uppercase;"
                                          onkeyup="javascript:this.value = this.value.toUpperCase();">
-                                             <?php
-                                             $filas = $objProducto->Listar_Marcas();
-                                             if (is_array($filas) || is_object($filas)) {
-                                                 foreach ($filas as $row => $column) {
-                                                     ?>
-                                            <option value="<?php print ($column["idmarca"]) ?>">
-                                                     <?php print ($column["nombre_marca"]) ?></option>
-                                                <?php
+                                            <?php
+                                            $filas = $objProducto->Listar_Categorias();
+                                            if (is_array($filas) || is_object($filas)) {
+                                                foreach ($filas as $row => $column) {
+                                                    ?>
+                                                                                        <option value="<?php print ($column["idcategoria"]) ?>">
+                                                    <?php print ($column["nombre_categoria"]) ?></option>
+                                                    <?php
+                                                }
                                             }
-                                        }
-                                        ?>
+                                            ?>
                                 </select>
                             </div>
 
                             <div class="col-sm-6">
-                                <label>Modelo <span class="text-danger">*</span></label>
+                                <label>Modelo de producto <span class="text-danger">*</span></label>
                                 <select  data-placeholder="Seleccione un modelo..." id="cbPresentacion" name="cbPresentacion"
                                          class="select-search" style="text-transform:uppercase;"
                                          onkeyup="javascript:this.value = this.value.toUpperCase();">
@@ -575,7 +575,6 @@ $objCategoria = new Categoria();
                                 </select>
                             </div>
                             
-
                         </div>
                     </div>
 
@@ -583,8 +582,137 @@ $objCategoria = new Categoria();
                     <div class="form-group">
                         <div class="row">
                         
-                            
                             <div class="col-sm-6">
+                                <label>Marca de producto <span class="text-danger">*</span></label>
+                                <select  data-placeholder="Seleccione una marca..." id="cbMarca" name="cbMarca"
+                                         class="select-search" style="text-transform:uppercase;"
+                                         onkeyup="javascript:this.value = this.value.toUpperCase();">
+                                             <?php
+                                             $filas = $objProducto->Listar_Marcas();
+                                             if (is_array($filas) || is_object($filas)) {
+                                                 foreach ($filas as $row => $column) {
+                                                     ?>
+                                            <option value="<?php print ($column["idmarca"]) ?>">
+                                                     <?php print ($column["nombre_marca"]) ?></option>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                </select>
+                            </div>
+
+                            <?php if ($tipo_usuario == '1'): ?>
+                                <div class="col-sm-6">
+                                    <label>Precio Compra <span class="text-danger">*</span></label>
+                                    <input type="text" id="txtPCompra" name="txtPCompra" placeholder="0.00"
+                                           class="touchspin-prefix" value="0" style="text-transform:uppercase;"
+                                           onkeyup="javascript:this.value = this.value.toUpperCase();">
+                                </div>
+                            <?php endif; ?>
+                            
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Stock <span class="text-danger"> *</span></label>
+                                <input type="text" id="txtStock" name="txtStock" placeholder="0.00"
+                                       class="touchspin-prefix" value="0" style="text-transform:uppercase;"
+                                       onkeyup="javascript:this.value = this.value.toUpperCase();">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label>Stock Mínino <span class="text-danger">*</span></label>
+                                <input type="text" id="txtSMin" name="txtSMin" placeholder="0.00"
+                                       class="touchspin-prefix" value="0" style="text-transform:uppercase;"
+                                       onkeyup="javascript:this.value = this.value.toUpperCase();">
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Precio Venta Normal <span class="text-danger">*</span></label>
+                                <input type="text" id="txtPVenta" name="txtPVenta" placeholder="0.00"
+                                       class="touchspin-prefix" value="0" style="text-transform:uppercase;"
+                                       onkeyup="javascript:this.value = this.value.toUpperCase();">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label>Precio Venta Oferta <span class="text-danger">*</span></label>
+                                <input type="text" id="txtPVentaMinimo" name="txtPVentaMinimo" placeholder="0.00"
+                                       class="touchspin-prefix" value="0" style="text-transform:uppercase;"
+                                       onkeyup="javascript:this.value = this.value.toUpperCase();">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="form-group">
+                        <div class="row">
+
+                        </div>
+                    </div>
+                    -->
+
+                    <div class="form-group" >
+                        <div class="row" >
+
+                            <div class="col-sm-4">
+                                <div class="checkbox checkbox-switchery switchery-sm">
+                                    <label>
+                                        <input type="checkbox" id="chkExento" name="chkExento"
+                                               class="switchery">
+                                        <span id="lblchk-e">APLICA IVA</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" >
+                                <div class="checkbox checkbox-switchery switchery-sm">
+                                    <label>
+                                        <input type="checkbox" id="chkPerece" name="chkPerece"
+                                               class="switchery">
+                                        <span id="lblchk-p">NO PERECEDERO</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" >
+                                <div class="checkbox checkbox-switchery switchery-sm">
+                                    <label>
+                                        <input type="checkbox" id="chkInven" name="chkInven"
+                                               class="switchery" checked="checked" >
+                                        <span id="lblchk-i">INVENTARIABLE</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- hidden  col-sm-2  --> 
+                    <div class="form-group" style="visibility: hidden; height: 0px; margin: auto;">
+                        <div class="row" style="height: 0px;" >
+                        
+                            <div class="col-sm-2">
+                                <div class="checkbox checkbox-switchery switchery-sm">
+                                    <label>
+                                        <input type="checkbox" id="chkEstado" name="chkEstado"
+                                               class="switchery" checked="checked" >
+                                        <span id="lblchk">VIGENTE</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-2">
                                 <label>Color <span class="text-danger">*</span></label>
                                 <select  data-placeholder="Seleccione un color..." id="cbColor" name="cbColor"
                                          class="select-search" style="text-transform:uppercase;"
@@ -603,84 +731,14 @@ $objCategoria = new Categoria();
                                 </select>
                             </div>
 
-                            
-                            <div class="col-sm-6">
-                                <label>Categoria <span class="text-danger"> * </span></label>
-                                <select  data-placeholder="Seleccione una categoria..." id="cbCategoria" name="cbCategoria"
-                                         class="select-search" style="text-transform:uppercase;"
-                                         onkeyup="javascript:this.value = this.value.toUpperCase();">
-<?php
-$filas = $objProducto->Listar_Categorias();
-if (is_array($filas) || is_object($filas)) {
-    foreach ($filas as $row => $column) {
-        ?>
-                                            <option value="<?php print ($column["idcategoria"]) ?>">
-        <?php print ($column["nombre_categoria"]) ?></option>
-        <?php
-    }
-}
-?>
-                                </select>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label>Stock <span class="text-danger"> *</span></label>
-                                <input type="text" id="txtStock" name="txtStock" placeholder="0.00"
-                                       class="touchspin-prefix" value="0" style="text-transform:uppercase;"
-                                       onkeyup="javascript:this.value = this.value.toUpperCase();">
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label>Stock Min <span class="text-danger">*</span></label>
-                                <input type="text" id="txtSMin" name="txtSMin" placeholder="0.00"
-                                       class="touchspin-prefix" value="0" style="text-transform:uppercase;"
-                                       onkeyup="javascript:this.value = this.value.toUpperCase();">
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label>Precio Venta <span class="text-danger">*</span></label>
-                                <input type="text" id="txtPVenta" name="txtPVenta" placeholder="0.00"
-                                       class="touchspin-prefix" value="0" style="text-transform:uppercase;"
-                                       onkeyup="javascript:this.value = this.value.toUpperCase();">
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label>Precio Venta Minimo <span class="text-danger">*</span></label>
-                                <input type="text" id="txtPVentaMinimo" name="txtPVentaMinimo" placeholder="0.00"
-                                       class="touchspin-prefix" value="0" style="text-transform:uppercase;"
-                                       onkeyup="javascript:this.value = this.value.toUpperCase();">
-                            </div>
-
-                        </div>
-                    </div>
-
-                    
-
-                    <div class="form-group">
-                        <div class="row">
-                        
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 <label>Precio Distribuidor(1) <span class="text-danger">*</span></label>
                                 <input type="text" id="txtPVentaM" name="txtPVentaM" placeholder="0.00"
                                        class="touchspin-prefix" value="0" style="text-transform:uppercase;"
                                        onkeyup="javascript:this.value = this.value.toUpperCase();">
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 <label>Precio Distribuidor(2) <span class="text-danger">*</span></label>
                                 <input type="text" id="txtPSuperM" name="txtPSuperM" placeholder="0.00"
                                         class="touchspin-prefix" value="0" style="text-transform:uppercase;"
@@ -689,74 +747,8 @@ if (is_array($filas) || is_object($filas)) {
 
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <div class="row">
-                            <?php if ($tipo_usuario == '1'): ?>
-                                <div class="col-sm-6">
-                                    <label>Precio Compra <span class="text-danger">*</span></label>
-                                    <input type="text" id="txtPCompra" name="txtPCompra" placeholder="0.00"
-                                           class="touchspin-prefix" value="0" style="text-transform:uppercase;"
-                                           onkeyup="javascript:this.value = this.value.toUpperCase();">
-                                </div>
-                            <?php endif; ?>
-                            
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="checkbox checkbox-switchery switchery-sm">
-                                    <label>
-                                        <input type="checkbox" id="chkEstado" name="chkEstado"
-                                               class="switchery" checked="checked" >
-                                        <span id="lblchk">VIGENTE</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4">
-                                <div class="checkbox checkbox-switchery switchery-sm">
-                                    <label>
-                                        <input type="checkbox" id="chkExento" name="chkExento"
-                                               class="switchery">
-                                        <span id="lblchk-e">APLICA IVA</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- hidden -->                            
-                    <div class="form-group" style="visibility: hidden; height: 0px; margin: auto;">
-                        <div class="row" style="height: 0px;" >
-                            <div class="col-sm-4" style="height: 0px;" >
-                                <div class="checkbox checkbox-switchery switchery-sm">
-                                    <label>
-                                        <input type="checkbox" id="chkPerece" name="chkPerece"
-                                               class="switchery">
-                                        <span id="lblchk-p">NO PERECEDERO</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4" style="height: 0px;" >
-                                <div class="checkbox checkbox-switchery switchery-sm">
-                                    <label>
-                                        <input type="checkbox" id="chkInven" name="chkInven"
-                                               class="switchery" checked="checked" >
-                                        <span id="lblchk-i">INVENTARIABLE</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                     <!-- hidden --> 
 
-                    
 
                 </div>
 
@@ -787,7 +779,7 @@ if (is_array($filas) || is_object($filas)) {
 
                     <div class="alert alert-info alert-styled-left text-blue-800 content-group">
                         <span class="text-semibold">Estimado usuario</span>
-                        los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+                        los campos remarcados con <span class="text-danger"> * </span> son obligatorios.
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         <input type="hidden" id="txtIDP" name="txtIDP" class="form-control" value="">
                     </div>

@@ -122,7 +122,7 @@
 
 								<div class="alert alert-info alert-styled-left text-blue-800 content-group">
 						                <span class="text-semibold">Estimado usuario</span>
-						                los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+						                los campos remarcados con <span class="text-danger"> * </span> son obligatorios.
 						                <button type="button" class="close" data-dismiss="alert">×</button>
 						                <input type="hidden" id="txtID" name="txtID" class="form-control" value="">
                                       	<input type="hidden" id="txtProceso" name="txtProceso" class="form-control" value="">
@@ -160,7 +160,7 @@
 										<div class="row">
 											<div class="col-sm-12">
 												<label>Empresa <span class="text-danger">*</span></label>
-												<input type="text" id="txtEmpresa" name="txtEmpresa" placeholder="EJ. MINI MARKET"
+												<input type="text" id="txtEmpresa" name="txtEmpresa" placeholder="EJEMPLO: MINI MARKET"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
@@ -171,7 +171,7 @@
 										<div class="row">
 											<div class="col-sm-12">
 												<label>Propietario <span class="text-danger">*</span></label>
-												<input type="text" id="txtPropietario" name="txtPropietario" placeholder="EJ. ABEL ALVARADO"
+												<input type="text" id="txtPropietario" name="txtPropietario" placeholder="EJEMPLO: ABEL ALVARADO"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
@@ -182,14 +182,14 @@
 										<div class="row">
 											<div class="col-sm-6">
 												<label>Cédula <span class="text-danger">*</span></label>
-												<input type="text" id="txtNIT" name="txtNIT" placeholder="EJ. 46591170"
+												<input type="text" id="txtNIT" name="txtNIT" placeholder="EJEMPLO: 46591170"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
 
 											<div class="col-sm-6">
 												<label>RUC <span class="text-danger">*</span></label>
-												<input type="text" id="txtNRC" name="txtNRC" placeholder="EJ. 10465911706"
+												<input type="text" id="txtNRC" name="txtNRC" placeholder="EJEMPLO: 10465911706"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
@@ -203,7 +203,7 @@
 										<div class="row">
 											<div class="col-sm-6">
 												<label>Valor IVA <span class="text-danger">*</span></label>
-												<input type="text" id="txtPIVA" name="txtPIVA" placeholder="EJ. 18.00"
+												<input type="text" id="txtPIVA" name="txtPIVA" placeholder="EJEMPLO: 18.00"
 												class="touchspin-prefix" value="0" style="text-transform:uppercase;"
                        							onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
@@ -233,7 +233,7 @@
 											<div class="col-sm-6">
 												<label>Direccion <span class="text-danger">*</span></label>
 												 <textarea rows="3" class="form-control"
-													placeholder="EJ. CALLE MALECON IQUIQUE 406 MIRAFLORES, AREQUIPA - PERU" id="txtDireccion" name="txtDireccion"
+													placeholder="EJEMPLO: CALLE MALECON IQUIQUE 406 MIRAFLORES, AREQUIPA - PERU" id="txtDireccion" name="txtDireccion"
 													value="" style="text-transform:uppercase;"
 													onkeyup="javascript:this.value=this.value.toUpperCase();">
 													</textarea>

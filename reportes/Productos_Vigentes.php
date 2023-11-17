@@ -15,8 +15,8 @@ class PDF extends FPDF
             // Move to the right
             $this->Cell(105);
             // Title
-            $this->Cell(105,10,'Reporte de productos disponibles en bodega',0,0,'C');
-            $this->Image('../web/assets/images/Logo.png', 12, 8, 50, 0, '', '', '', true, 72);    
+            $this->Cell(105,10,'Reporte de productos disponibles en almacen',0,0,'C');
+            $this->Image('../web/assets/images/Logo.png', 8, 8, 70, 0, '', '', '', true, 72);    
             // Line break
             $this->Ln(20);
         }
@@ -57,17 +57,17 @@ try {
     $pdf->SetFont('Arial','',9);
     $pdf->SetFillColor(255,255,255);
     $pdf->Cell(28,5,'Codigo',0,0,'L',1);
-    $pdf->Cell(60,5,'Producto',0,0,'L',1);
-    $pdf->Cell(22,5,'Marca',0,0,'L',1);
+    $pdf->Cell(80,5,'Producto',0,0,'L',1);
+    $pdf->Cell(25,5,'Marca',0,0,'L',1);
     $pdf->Cell(30,5,'Modelo',0,0,'L',1);
-    $pdf->Cell(22,5,'Color',0,0,'L',1);
+    //$pdf->Cell(22,5,'Color',0,0,'L',1);
     $pdf->Cell(25,5,'Categoria',0,0,'L',1);
-    $pdf->Cell(40,5,'Bodega',0,0,'L',1);
-    $pdf->Cell(14,5,'P.Costo',0,0,'L',1);
-    $pdf->Cell(14,5,'P.Venta',0,0,'L',1);
-    $pdf->Cell(14,5,'P.Min',0,0,'L',1);
-    $pdf->Cell(14,5,'Dist.1',0,0,'L',1);
-    $pdf->Cell(14,5,'Dist.2',0,0,'L',1);
+    $pdf->Cell(35,5,'Almacen',0,0,'L',1);
+    $pdf->Cell(20,5,'P.Costo',0,0,'L',1);
+    $pdf->Cell(20,5,'P.Venta',0,0,'L',1);
+    $pdf->Cell(20,5,'P.Oferta',0,0,'L',1);
+    //$pdf->Cell(14,5,'Dist.1',0,0,'L',1);
+    //$pdf->Cell(14,5,'Dist.2',0,0,'L',1);
     $pdf->Cell(14,5,'Stock',0,0,'L',1);
     $pdf->Line(322,28,10,28);
     $pdf->Line(322,37,10,37);
@@ -83,17 +83,17 @@ try {
             }else {
                 $pdf->Cell(29,5,$column["codigo_barra"],0,0,'L',1);
             }
-            $pdf->Cell(60,5,$column["nombre_producto"],0,0,'L',1);
-            $pdf->Cell(22,5,$column["nombre_marca"],0,0,'L',1);
+            $pdf->Cell(80,5,$column["nombre_producto"],0,0,'L',1);
+            $pdf->Cell(25,5,$column["nombre_marca"],0,0,'L',1);
             $pdf->Cell(30,5,$column["nombre_presentacion"],0,0,'L',1);
-            $pdf->Cell(22,5,$column["nombre_color"],0,0,'L',1);
+            //$pdf->Cell(22,5,$column["nombre_color"],0,0,'L',1);
             $pdf->Cell(25,5,$column["nombre_categoria"],0,0,'L',1);
-            $pdf->Cell(40,5,$column["nombre_sucursal"],0,0,'L',1);
-            $pdf->Cell(14,5,$column["precio_compra"],0,0,'L',1);
-            $pdf->Cell(14,5,$column["precio_venta"],0,0,'L',1);
-            $pdf->Cell(14,5,$column["precio_venta_minimo"],0,0,'L',1);
-            $pdf->Cell(14,5,$column["precio_venta_mayoreo"],0,0,'L',1);
-            $pdf->Cell(14,5,$column["precio_super_mayoreo"],0,0,'L',1);
+            $pdf->Cell(35,5,$column["nombre_sucursal"],0,0,'L',1);
+            $pdf->Cell(20,5,$column["precio_compra"],0,0,'L',1);
+            $pdf->Cell(20,5,$column["precio_venta"],0,0,'L',1);
+            $pdf->Cell(20,5,$column["precio_venta_minimo"],0,0,'L',1);
+            //$pdf->Cell(14,5,$column["precio_venta_mayoreo"],0,0,'L',1);
+            //$pdf->Cell(14,5,$column["precio_super_mayoreo"],0,0,'L',1);
             $pdf->Cell(14,5,$column["stock"],0,0,'L',1);
             $pdf->Ln(6);
             $get_Y = $pdf->GetY();
@@ -102,7 +102,7 @@ try {
 
         $pdf->Line(322,$get_Y+1,10,$get_Y+1);
         $pdf->SetFont('Arial','B',11);
-        $pdf->Text(10,$get_Y + 10,'TOTAL DE PRODUCTOS DISPONIBLES : '.number_format($total, 2, '.', ','));
+        $pdf->Text(10,$get_Y + 10,'TOTAL DE PRODUCTOS DISPONIBLES: '.number_format($total, 2, '.', ','));
     }
 
     $pdf->Output('I','Productos_Vigentes.pdf',true);

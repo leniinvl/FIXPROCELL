@@ -324,7 +324,7 @@
                             <div class="panel-body">
                               <div class="alert alert-info alert-styled-left text-blue-800 content-group">
                                     <span class="text-semibold">Estimado usuario</span>
-                                    los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+                                    los campos remarcados con <span class="text-danger"> * </span> son obligatorios.
                                     <button type="button" class="close" data-dismiss="alert">×</button>
                                </div>
                                       <form role="form" autocomplete="off" class="form-validate-jquery" id="frmInformacion">
@@ -379,7 +379,7 @@
                                                 <div class="row">
                                                   <div class="col-sm-4">
                               											<label>Equipo <span class="text-danger">*</span></label>
-                              											<input type="text" id="txtAparato" name="txtAparato" placeholder="EJ. CELULAR"
+                              											<input type="text" id="txtAparato" name="txtAparato" placeholder="EJEMPLO: CELULAR"
                               											 class="form-control" style="text-transform:uppercase;"
                                                     onkeyup="javascript:this.value=this.value.toUpperCase();">
                               										</div>
@@ -407,7 +407,7 @@
 
                                                   <div class="col-sm-4">
                               											<label>Modelo<span class="text-danger">*</span></label>
-                              										 <input type="text" id="txtModelo" name="txtModelo" placeholder="EJ. SATELLITE"
+                              										 <input type="text" id="txtModelo" name="txtModelo" placeholder="EJEMPLO: SATELLITE"
                               										  class="form-control"  style="text-transform:uppercase;"
                               										 onkeyup="javascript:this.value=this.value.toUpperCase();">
                               										</div>
@@ -420,7 +420,7 @@
 
                                                 <div class="col-sm-4">
                                                   <label>Serie/IMEI/Activo</label>
-                                                  <input type="text" id="txtSerie" name="txtSerie" placeholder="EJ.011084-08484585"
+                                                  <input type="text" id="txtSerie" name="txtSerie" placeholder="EJEMPLO:011084-08484585"
                                                    class="form-control"  style="text-transform:uppercase;"
                                                   onkeyup="javascript:this.value=this.value.toUpperCase();">
                                                 </div>
@@ -454,7 +454,7 @@
                                                   <div class="col-sm-6">
                                                     <label>Averia <span class="text-danger">*</span></label>
                                                      <textarea rows="2" class="form-control"
-                                                      placeholder="EJ. PROBLEMA DE PANTALLA" id="txtAveria" name="txtAveria"
+                                                      placeholder="EJEMPLO: PROBLEMA DE PANTALLA" id="txtAveria" name="txtAveria"
                                                       value="" style="text-transform:uppercase;"
                                                       onkeyup="javascript:this.value=this.value.toUpperCase();">
                                                       </textarea>
@@ -577,7 +577,7 @@
                         <div class="panel-body">
                           <div class="alert alert-info alert-styled-left text-blue-800 content-group">
                                 <span class="text-semibold">Estimado usuario</span>
-                                los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+                                los campos remarcados con <span class="text-danger"> * </span> son obligatorios.
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                            </div>
                                 <form role="form" autocomplete="off" class="form-validate-jquery" id="frmDiagnostico">

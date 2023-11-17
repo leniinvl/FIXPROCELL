@@ -154,7 +154,7 @@
 
 								<div class="alert alert-info alert-styled-left text-blue-800 content-group">
 						                <span class="text-semibold">Estimado usuario</span>
-						                los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+						                los campos remarcados con <span class="text-danger"> * </span> son obligatorios.
 						                <button type="button" class="close" data-dismiss="alert">×</button>
 						                <input type="hidden" id="txtID" name="txtID" class="form-control" value="">
                           	<input type="hidden" id="txtProceso" name="txtProceso" class="form-control" value="">

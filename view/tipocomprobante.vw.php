@@ -108,7 +108,7 @@
 
 								<div class="alert alert-info alert-styled-left text-blue-800 content-group">
 						                <span class="text-semibold">Estimado usuario</span>
-						                los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+						                los campos remarcados con <span class="text-danger"> * </span> son obligatorios.
 						                <button type="button" class="close" data-dismiss="alert">×</button>
 						                <input type="hidden" id="txtID" name="txtID" class="form-control" value="">
                                       	<input type="hidden" id="txtProceso" name="txtProceso" class="form-control" value="">
@@ -118,7 +118,7 @@
 										<div class="row">
 											<div class="col-sm-8">
 												<label>Comprobante <span class="text-danger">*</span></label>
-												<input type="text" id="txtComprobante" name="txtComprobante" placeholder="EJ. TICKET"
+												<input type="text" id="txtComprobante" name="txtComprobante" placeholder="EJEMPLO: TICKET"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>

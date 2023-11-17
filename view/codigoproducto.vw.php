@@ -134,7 +134,7 @@
 
 								<div class="alert alert-info alert-styled-left text-blue-800 content-group">
 						                <span class="text-semibold">Estimado usuario</span>
-						                los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+						                los campos remarcados con <span class="text-danger"> * </span> son obligatorios.
 						                <button type="button" class="close" data-dismiss="alert">×</button>
 						                <input type="hidden" id="txtID" name="txtID" class="form-control" value="">
                                       	<input type="hidden" id="txtProceso" name="txtProceso" class="form-control" value="">
@@ -167,7 +167,7 @@
 										<div class="row">
 											<div class="col-sm-12">
 												<label>IMEI -1 <span class="text-danger">*</span></label>
-												<input type="text" id="txtImei1" name="txtImei1" placeholder="EJ. 102012000123891"
+												<input type="text" id="txtImei1" name="txtImei1" placeholder="EJEMPLO: 102012000123891"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
@@ -178,7 +178,7 @@
 										<div class="row">
 											<div class="col-sm-12">
 												<label>IMEI -2 </label>
-												<input type="text" id="txtImei2" name="txtImei2" placeholder="EJ. 020001350014993"
+												<input type="text" id="txtImei2" name="txtImei2" placeholder="EJEMPLO: 020001350014993"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>

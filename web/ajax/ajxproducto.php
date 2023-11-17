@@ -38,6 +38,7 @@
 			$precio_venta_minimo = trim($_POST['precio_venta_minimo']);
 
 
+			/* N/A = 1 */
 			if($idmarca == '') 
 			{
 				$idmarca = NULL;
@@ -48,7 +49,7 @@
 			}
 			if($idcolor == '') 
 			{
-				$idcolor = NULL;
+				$idcolor = 1;
 			}
 
 
