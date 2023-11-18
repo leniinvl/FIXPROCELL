@@ -177,7 +177,7 @@ function openPresentacion(action,idpresentacion,nombre,sigla,estado)
       $('#btnGuardar').show();
       limpiarform();
 
-      modal.find('.title-form').text('Ingresar Modelo de Productos');
+      modal.find('.title-form').text('Ingresar Modelo de Producto');
      }else if(action=='editar') {
 
       $('#modal_iconified').modal('show');
@@ -209,7 +209,7 @@ function openPresentacion(action,idpresentacion,nombre,sigla,estado)
       $('#btnEditar').show();
       $('#btnGuardar').hide();
 
-      modal.find('.title-form').text('Actualizar Modelo de Productos');
+      modal.find('.title-form').text('Actualizar Modelo de Producto');
      } else if(action=='ver'){
       $('#txtProceso').val('');
       $('#txtID').val(idpresentacion);
@@ -239,7 +239,7 @@ function openPresentacion(action,idpresentacion,nombre,sigla,estado)
       $('#btnEditar').hide();
       $('#btnGuardar').hide();
 
-      modal.find('.title-form').text('Ver Modelo de Productos');
+      modal.find('.title-form').text('Ver Modelo de Producto');
      }
       
   });

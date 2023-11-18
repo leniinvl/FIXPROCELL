@@ -219,7 +219,7 @@ $("#txtF2").on("dp.change", function (e) {
   $("#txtCantidad").TouchSpin({
         min: 1,
         max: 100000000,
-        step: 0.01,
+        step: 1.00,
         decimals: 2,
         prefix: '<i class="icon-box-add"></i>'
     });
@@ -317,7 +317,7 @@ function openPerecedero(action,fecha_vencimiento,cantidad_perecedero,estado_prod
 
 
 
-      modal.find('.title-form').text('Ingresar Producto Perecedero');
+      modal.find('.title-form').text('Ingresar Caducidad de Producto');
 
      } else if(action=='editar') {
 
@@ -328,7 +328,7 @@ function openPerecedero(action,fecha_vencimiento,cantidad_perecedero,estado_prod
       $('#txtFechaV').val(fecha_vencimiento);
       $("#cbProducto").val(idproducto).trigger("change");
 
-      if (estado_producto == 'VIGENTE')
+      if (estado_producto == 1 || estado_producto == 3)
         {
           $("#chkEstado").val(true);
           setSwitchery(mySwitch, true);
@@ -360,7 +360,7 @@ function openPerecedero(action,fecha_vencimiento,cantidad_perecedero,estado_prod
       $('#txtFechaV').val(fecha_vencimiento);
       $("#cbProducto").val(idproducto).trigger("change");
 
-      if (estado_producto == 'VIGENTE')
+      if (estado_producto == 1 || estado_producto == 3)
         {
           $("#chkEstado").val(true);
           setSwitchery(mySwitch, true);
@@ -383,7 +383,7 @@ function openPerecedero(action,fecha_vencimiento,cantidad_perecedero,estado_prod
       $('#btnGuardar').hide();
 
 
-      modal.find('.title-form').text('Ver Producto Perecedero');
+      modal.find('.title-form').text('Ver Caducidad de Producto');
 
      }
 

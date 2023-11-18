@@ -18,7 +18,9 @@ class PDF extends FPDF
             // Move to the right
             $this->Cell(105);
             // Title
-            $this->Cell(105,10,'REPORTE DE PRODUCTOS A VENCER ENTRE EL '.$fecha1.' Y '.$fecha2,0,0,'C');
+            $this->Cell(105,10,'Reporte de productos entre el '.$fecha1.' - '.$fecha2,0,0,'C');
+            $this->Image('../web/assets/images/Logo.png', 8, 8, 70, 0, '', '', '', true, 72);
+
             // Line break
             $this->Ln(20);
         }
@@ -63,15 +65,15 @@ try {
     $pdf = new PDF('L','mm',array(216,330));
     $pdf->AliasNbPages();
     $pdf->AddPage();
-    $pdf->SetFont('Arial','',11);
+    $pdf->SetFont('Arial','',9);
     $pdf->SetFillColor(255,255,255);
     $pdf->Cell(30,5,'Cod. Interno',0,0,'L',1);
-    $pdf->Cell(30,5,'Cod. Barra',0,0,'L',1);
-    $pdf->Cell(100,5,'Producto',0,0,'L',1);
-    $pdf->Cell(40,5,'Marca',0,0,'L',1);
-    $pdf->Cell(30,5,'Presentacion',0,0,'L',1);
-    $pdf->Cell(25,5,'Vence',0,0,'C',1);
-    $pdf->Cell(25,5,'Cant.',0,0,'C',1);
+    $pdf->Cell(40,5,'Cod. Barra',0,0,'L',1);
+    $pdf->Cell(90,5,'Producto',0,0,'L',1);
+    $pdf->Cell(33,5,'Marca',0,0,'L',1);
+    $pdf->Cell(23,5,'Modelo',0,0,'L',1);
+    $pdf->Cell(35,5,'Vence',0,0,'C',1);
+    $pdf->Cell(25,5,'Cantidad',0,0,'C',1);
     $pdf->Cell(22,5,'Estado',0,0,'C',1);
     $pdf->Line(322,28,10,28);
     $pdf->Line(322,37,10,37);
@@ -102,12 +104,12 @@ try {
 
             $pdf->setX(9);
             $pdf->Cell(30,5,$column["codigo_interno"],0,0,'L',1);
-            $pdf->Cell(30,5,$column["codigo_barra"],0,0,'L',1);
-            $pdf->Cell(100,5,$column["nombre_producto"],0,0,'L',1);
-            $pdf->Cell(40,5,$column["nombre_marca"],0,0,'L',1);
+            $pdf->Cell(40,5,$column["codigo_barra"],0,0,'L',1);
+            $pdf->Cell(90,5,$column["nombre_producto"],0,0,'L',1);
+            $pdf->Cell(35,5,$column["nombre_marca"],0,0,'L',1);
             $pdf->Cell(30,5,$column["siglas"],0,0,'L',1);
             $pdf->Cell(25,5,$envio_date,0,0,'C',1);
-            $pdf->Cell(25,5,$column['cantidad_perecedero'],0,0,'C',1);
+            $pdf->Cell(28,5,$column['cantidad_perecedero'],0,0,'C',1);
             $pdf->Cell(22,5,$estado,0,0,'C',1);
             $pdf->Ln(6);
             $get_Y = $pdf->GetY();
@@ -116,7 +118,7 @@ try {
 
         $pdf->Line(322,$get_Y+1,10,$get_Y+1);
         $pdf->SetFont('Arial','B',11);
-        $pdf->Text(10,$get_Y + 10,'TOTAL DE PRODUCTOS PERECEDEROS ENTRE FECHAS: '.number_format($total, 2, '.', ','));
+        $pdf->Text(10,$get_Y + 10,'TOTAL DE PRODUCTOS DETALLADOS: '.number_format($total, 2, '.', ','));
     }
 
 

@@ -6,94 +6,96 @@
 
 			<!-- Basic initialization -->
 			<div class="panel panel-flat">
+
 				<div class="breadcrumb-line">
 					<ul class="breadcrumb">
 						<li><a href="?View=Inicio"><i class="icon-home2 position-left"></i> Inicio</a></li>
-						<li><a href="javascript:;">Bodega</a></li>
-						<li class="active">Categoria de Productos</li>
+						<li><a href="javascript:;">Almacen</a></li>
+						<li class="active">Categoría de Productos</li>
 					</ul>
 				</div>
-					<div class="panel-heading">
-						<h5 class="panel-title">Categoria de Productos</h5>
 
-						<div class="heading-elements">
-							<button type="button" class="btn btn-primary heading-btn"
-							onclick="newCategoria()">
-							<i class="icon-database-add"></i> Agregar Nuevo/a</button>
-						</div>
-					</div>
+				<div class="panel-heading">
+					<h5 class="panel-title">Categoría de Productos</h5>
 
-					<div class="panel-body">
-					</div>
-					<div id="reload-div">
-					<table class="table datatable-basic table-xxs table-hover">
-						<thead>
-							<tr>
-								<th><b>No</b></th>
-								<th><b>Categoria</b></th>
-								<th><b>Estado</b></th>
-								<th class="text-center"><b>Opciones</b></th>
-							</tr>
-						</thead>
-
-						<tbody>
-
-						  <?php
-								$filas = $objCategoria->Listar_Categorias();
-								if (is_array($filas) || is_object($filas))
-								{
-								foreach ($filas as $row => $column)
-								{
-								?>
-									<tr>
-					                	<td><?php print($column['idcategoria']); ?></td>
-					                	<td><?php print($column['nombre_categoria']); ?></td>
-					                	<td><?php if($column['estado'] == '1')
-					                		echo '<span class="label label-success label-rounded"><span
-					                		class="text-bold">VIGENTE</span></span>';
-					                		else
-					                		echo '<span class="label label-default label-rounded">
-					                	<span
-					                	    class="text-bold">DESCONTINUADA</span></span>'
-						                ?></td>
-					                	<td class="text-center">
-										<ul class="icons-list">
-											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-													<i class="icon-menu9"></i>
-												</a>
-
-												<ul class="dropdown-menu dropdown-menu-right">
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openCategoria('editar',
-								                     '<?php print($column["idcategoria"]); ?>',
-								                     '<?php print($column["nombre_categoria"]); ?>',
-								                     '<?php print($column["estado"]); ?>')">
-												   <i class="icon-pencil6">
-											       </i> Editar</a></li>
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openCategoria('ver',
-								                     '<?php print($column["idcategoria"]); ?>',
-								                     '<?php print($column["nombre_categoria"]); ?>',
-								                     '<?php print($column["estado"]); ?>')">
-													<i class=" icon-eye8">
-													</i> Ver</a></li>
-												</ul>
-											</li>
-										</ul>
-									</td>
-					                </tr>
-								<?php
-								}
-							}
-							?>
-
-						</tbody>
-					</table>
+					<div class="heading-elements">
+						<button type="button" class="btn btn-info heading-btn"
+						onclick="newCategoria()">
+						<i class="icon-database-add"></i> Agregar Nuevo/a</button>
 					</div>
 				</div>
+
+				<div class="panel-body">
+					<div id="reload-div">
+						<table class="table datatable-basic table-xxs table-hover">
+							<thead>
+								<tr>
+									<th><b>No</b></th>
+									<th><b>Categoría</b></th>
+									<th><b>Estado</b></th>
+									<th class="text-center"><b>Opciones</b></th>
+								</tr>
+							</thead>
+
+							<tbody>
+
+							<?php
+									$filas = $objCategoria->Listar_Categorias();
+									if (is_array($filas) || is_object($filas))
+									{
+									foreach ($filas as $row => $column)
+									{
+									?>
+										<tr>
+											<td><?php print($column['idcategoria']); ?></td>
+											<td><?php print($column['nombre_categoria']); ?></td>
+											<td><?php if($column['estado'] == '1')
+												echo '<span class="label label-success label-rounded"><span
+												class="text-bold">VIGENTE</span></span>';
+												else
+												echo '<span class="label label-default label-rounded">
+											<span
+												class="text-bold">DESCONTINUADA</span></span>'
+											?></td>
+											<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+														<i class="icon-menu9"></i>
+													</a>
+
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a
+														href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+														onclick="openCategoria('editar',
+														'<?php print($column["idcategoria"]); ?>',
+														'<?php print($column["nombre_categoria"]); ?>',
+														'<?php print($column["estado"]); ?>')">
+													<i class="icon-pencil6">
+													</i> Editar</a></li>
+														<li><a
+														href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+														onclick="openCategoria('ver',
+														'<?php print($column["idcategoria"]); ?>',
+														'<?php print($column["nombre_categoria"]); ?>',
+														'<?php print($column["estado"]); ?>')">
+														<i class=" icon-eye8">
+														</i> Ver</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+										</tr>
+									<?php
+									}
+								}
+								?>
+
+							</tbody>
+						</table>
+					</div>
+				</div>	
+			</div>
 
 			<!-- Iconified modal -->
 				<div id="modal_iconified" class="modal fade">
@@ -118,8 +120,8 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-8">
-												<label>Categoria <span class="text-danger">*</span></label>
-												<input type="text" id="txtCategoria" name="txtCategoria" placeholder="EJEMPLO: CARGADOR"
+												<label>Categoría <span class="text-danger">*</span></label>
+												<input type="text" id="txtCategoria" name="txtCategoria" placeholder="EJEMPLO: ACCESORIO"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
@@ -144,7 +146,7 @@
 								</div>
 
 								<div class="modal-footer">
-									<button id="btnGuardar" type="submit" class="btn btn-primary">Guardar</button>
+									<button id="btnGuardar" type="submit" class="btn btn-info">Guardar</button>
 									<button id="btnEditar" type="submit" class="btn btn-warning">Editar</button>
 									<button  type="reset" class="btn btn-default" id="reset"
 									class="btn btn-link" data-dismiss="modal">Cerrar</button>

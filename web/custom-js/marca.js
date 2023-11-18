@@ -195,7 +195,7 @@ function openMarca(action,idmarca,nombre,estado)
       $('#btnGuardar').show();
       limpiarform();
 
-      modal.find('.title-form').text('Ingresar Marca de Productos');
+      modal.find('.title-form').text('Ingresar Marca de Producto');
      }else if(action=='editar') {
 
       $('#modal_iconified').modal('show');
@@ -225,7 +225,7 @@ function openMarca(action,idmarca,nombre,estado)
       $('#btnEditar').show();
       $('#btnGuardar').hide();
 
-      modal.find('.title-form').text('Actualizar Marca de Productos');
+      modal.find('.title-form').text('Actualizar Marca de Producto');
      } else if(action=='ver'){
       $('#txtProceso').val('');
       $('#txtID').val(idmarca);
@@ -255,7 +255,7 @@ function openMarca(action,idmarca,nombre,estado)
       $('#btnEditar').hide();
       $('#btnGuardar').hide();
 
-      modal.find('.title-form').text('Ver Marca de Productos');
+      modal.find('.title-form').text('Ver Marca de Producto');
      }
 
   });

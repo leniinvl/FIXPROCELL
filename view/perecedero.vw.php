@@ -9,7 +9,7 @@
 				<div class="breadcrumb-line">
 					<ul class="breadcrumb">
 						<li><a href="?View=Inicio"><i class="icon-home2 position-left"></i> Inicio</a></li>
-						<li><a href="javascript:;">Bodega</a></li>
+						<li><a href="javascript:;">Almacen</a></li>
 						<li class="active">Productos Perecederos</li>
 					</ul>
 				</div>
@@ -50,7 +50,7 @@
 						<div class="heading-elements">
 
 							<div class="btn-group">
-		                    	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+		                    	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
 		                    	<i class="icon-paragraph-justify3 position-left"></i> Opciones
 		                    	<span class="caret"></span></button>
 		                    	<ul class="dropdown-menu dropdown-menu-right">
@@ -67,107 +67,107 @@
 
 					</div>
 					<div class="panel-body">
-					</div>
-					<div id="reload-div">
-					<table class="table datatable-basic table-xxs table-hover">
-						<thead>
-							<tr>
-								<th>Barra</th>
-								<th>Producto</th>
-								<th>Marca</th>
-								<th>Presentacion</th>
-								<th>Vence</th>
-								<th>Cant</th>
-								<th>Estado</th>
-								<th class="text-center">Opciones</th>
-							</tr>
-						</thead>
-
-						<tbody>
-
-						  <?php
-								$filas = $objPerecedero->Listar_Perecederos(null,null);
-								if (is_array($filas) || is_object($filas))
-								{
-								foreach ($filas as $row => $column)
-								{
-
-									$fecha_vencimiento = $column["fecha_vencimiento"];
-									if(is_null($fecha_vencimiento))
-									{
-										$envio_date = '';
-
-									} else {
-
-									$envio_date = DateTime::createFromFormat('Y-m-d',$fecha_vencimiento)->format('d/m/Y');
-
-									}
-
-								?>
+						<div id="reload-div">
+							<table class="table datatable-basic table-xxs table-hover">
+								<thead>
 									<tr>
+										<th><b>Código Barra</b></th>
+										<th><b>Producto</b></th>
+										<th><b>Marca</b></th>
+										<th><b>Modelo</b></th>
+										<th><b>Vence</b></th>
+										<th><b>Cantidad</b></th>
+										<th><b>Estado</b></th>
+										<th class="text-center"><b>Opciones</b></th>
+									</tr>
+								</thead>
 
-					                	<td><?php print($column['codigo_barra']); ?></td>
-					                	<td><?php print($column['nombre_producto']); ?></td>
-					                	<td><?php print($column['nombre_marca']); ?></td>
-					                	<td><?php print($column['siglas']); ?></td>
-					                	<td><?php print($envio_date); ?></td>
-					                	<td><?php print($column['cantidad_perecedero']); ?></td>
-														<td><?php if($column['estado_perecedero'] == '1'){
-					                		echo '<span class="label label-success label-rounded"><span
-					                		class="text-bold">VIGENTE</span></span>';
-														} else if($column['estado_perecedero'] == '0') {
-					                		echo '<span class="label label-warning label-rounded">
-					                	<span
-					                	    class="text-bold">VENCIDO</span></span>';
-														} else if ($column['estado_perecedero'] == '2'){
-															echo '<span class="label bg-violet label-rounded">
-					                	<span
-					                	    class="text-bold">CANT. AGOTADA</span></span>';
-														}
-						                ?></td>
-					                	<td class="text-center">
-										<ul class="icons-list">
-											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-													<i class="icon-menu9"></i>
-												</a>
+								<tbody>
 
-												<ul class="dropdown-menu dropdown-menu-right">
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openPerecedero('editar',
-								                     '<?php print($envio_date); ?>',
-								                     '<?php print($column["cantidad_perecedero"]); ?>',
-								                     '<?php print($column["estado_producto"]); ?>',
-								                     '<?php print($column["idproducto"]); ?>')">
-												   <i class="icon-pencil6">
-											       </i> Editar</a></li>
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openPerecedero('ver',
-								                     '<?php print($envio_date); ?>',
-								                     '<?php print($column["cantidad_perecedero"]); ?>',
-								                     '<?php print($column["estado_producto"]); ?>',
-								                     '<?php print($column["idproducto"]); ?>')">
-													<i class=" icon-eye8">
-													</i> Ver</a></li>
-													<li><a id="delete_product"
-													data-id="<?php print($column['idproducto'].','.$column['fecha_vencimiento']); ?>"
-													href="javascript:void(0)">
-													<i class=" icon-trash">
-													</i> Borrar</a></li>
-												</ul>
-											</li>
-										</ul>
-									</td>
-					                </tr>
 								<?php
-								}
-							}
-							?>
+										$filas = $objPerecedero->Listar_Perecederos(null,null);
+										if (is_array($filas) || is_object($filas))
+										{
+										foreach ($filas as $row => $column)
+										{
 
-						</tbody>
-					</table>
+											$fecha_vencimiento = $column["fecha_vencimiento"];
+											if(is_null($fecha_vencimiento))
+											{
+												$envio_date = '';
+
+											} else {
+
+											$envio_date = DateTime::createFromFormat('Y-m-d',$fecha_vencimiento)->format('d/m/Y');
+
+											}
+
+										?>
+											<tr>
+
+												<td><?php print($column['codigo_barra']); ?></td>
+												<td><?php print($column['nombre_producto']); ?></td>
+												<td><?php print($column['nombre_marca']); ?></td>
+												<td><?php print($column['siglas']); ?></td>
+												<td><?php print($envio_date); ?></td>
+												<td><?php print($column['cantidad_perecedero']); ?></td>
+																<td><?php if($column['estado_perecedero'] == '1'){
+													echo '<span class="label label-success label-rounded"><span
+													class="text-bold">VIGENTE</span></span>';
+																} else if($column['estado_perecedero'] == '0') {
+													echo '<span class="label label-warning label-rounded">
+												<span
+													class="text-bold">VENCIDO</span></span>';
+																} else if ($column['estado_perecedero'] == '2'){
+																	echo '<span class="label bg-violet label-rounded">
+												<span
+													class="text-bold">CANT. AGOTADA</span></span>';
+																}
+												?></td>
+												<td class="text-center">
+												<ul class="icons-list">
+													<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+															<i class="icon-menu9"></i>
+														</a>
+
+														<ul class="dropdown-menu dropdown-menu-right">
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openPerecedero('editar',
+															'<?php print($envio_date); ?>',
+															'<?php print($column["cantidad_perecedero"]); ?>',
+															'<?php print($column["estado_perecedero"]); ?>',
+															'<?php print($column["idproducto"]); ?>')">
+														<i class="icon-pencil6">
+														</i> Editar</a></li>
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openPerecedero('ver',
+															'<?php print($envio_date); ?>',
+															'<?php print($column["cantidad_perecedero"]); ?>',
+															'<?php print($column["estado_perecedero"]); ?>',
+															'<?php print($column["idproducto"]); ?>')">
+															<i class=" icon-eye8">
+															</i> Ver</a></li>
+															<li><a id="delete_product"
+															data-id="<?php print($column['idproducto'].','.$column['fecha_vencimiento']); ?>"
+															href="javascript:void(0)">
+															<i class=" icon-trash">
+															</i> Borrar</a></li>
+														</ul>
+													</li>
+												</ul>
+											</td>
+											</tr>
+										<?php
+										}
+									}
+									?>
+
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 
@@ -257,7 +257,7 @@
 								</div>
 
 								<div class="modal-footer">
-									<button id="btnGuardar" type="submit" class="btn btn-primary">Guardar</button>
+									<button id="btnGuardar" type="submit" class="btn btn-info">Guardar</button>
 									<button id="btnEditar" type="submit" class="btn btn-warning">Editar</button>
 									<button  type="reset" class="btn btn-default" id="reset"
 									class="btn btn-link" data-dismiss="modal">Cerrar</button>

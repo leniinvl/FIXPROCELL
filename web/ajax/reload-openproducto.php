@@ -680,7 +680,7 @@ $objCategoria = new Categoria();
                                     <label>
                                         <input type="checkbox" id="chkPerece" name="chkPerece"
                                                class="switchery">
-                                        <span id="lblchk-p">NO PERECEDERO</span>
+                                        <span id="lblchk-p">NO CADUCO</span>
                                     </label>
                                 </div>
                             </div>
@@ -753,7 +753,7 @@ $objCategoria = new Categoria();
                 </div>
 
                 <div class="modal-footer">
-                    <button id="btnGuardar" type="submit" class="btn btn-primary">Guardar</button>
+                    <button id="btnGuardar" type="submit" class="btn btn-info">Guardar</button>
                     <button id="btnEditar" type="submit" class="btn btn-warning">Editar</button>
                     <button  type="reset" class="btn btn-default" id="reset"
                              class="btn btn-link" data-dismiss="modal">Cerrar</button>

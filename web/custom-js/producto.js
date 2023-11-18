@@ -402,10 +402,10 @@ var validator = $("#frmFilter").validate({
     $("#chkPerece").change(function() {
         if(this.checked) {
            $("#chkPerece").val(true);
-           document.getElementById("lblchk-p").innerHTML = 'PERECEDERO';
+           document.getElementById("lblchk-p").innerHTML = 'CADUCO';
         } else {
           $("#chkPerece").val(false);
-          document.getElementById("lblchk-p").innerHTML = 'NO PERECEDERO';
+          document.getElementById("lblchk-p").innerHTML = 'NO CADUCO';
         }
     });
 
@@ -613,12 +613,12 @@ idpresentacion, estado, exento, inventariable, perecedero, idcolor)
           $("#chkPerece").val(true);
           setSwitchery(mySwitch2, true);
           document.getElementById("chkPerece").checked = true;
-          document.getElementById("lblchk-p").innerHTML = 'PERECEDERO';
+          document.getElementById("lblchk-p").innerHTML = 'CADUCO';
         }else {
           $("#chkPerece").val(false);
           setSwitchery(mySwitch2, false);
           document.getElementById("chkPerece").checked = false;
-          document.getElementById("lblchk-p").innerHTML = 'NO PERECEDERO';
+          document.getElementById("lblchk-p").innerHTML = 'NO CADUCO';
         }
 
         if (exento == '1')
@@ -707,12 +707,12 @@ idpresentacion, estado, exento, inventariable, perecedero, idcolor)
           $("#chkPerece").val(true);
           setSwitchery(mySwitch2, true);
           document.getElementById("chkPerece").checked = true;
-          document.getElementById("lblchk-p").innerHTML = 'PERECEDERO';
+          document.getElementById("lblchk-p").innerHTML = 'CADUCO';
         }else {
           $("#chkPerece").val(false);
           setSwitchery(mySwitch2, false);
           document.getElementById("chkPerece").checked = false;
-          document.getElementById("lblchk-p").innerHTML = 'NO PERECEDERO';
+          document.getElementById("lblchk-p").innerHTML = 'NO CADUCO';
         }
 
         if (exento == '1')

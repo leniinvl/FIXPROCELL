@@ -193,7 +193,7 @@ function openCategoria(action,idcategoria,nombre,estado)
       $('#btnGuardar').show();
       limpiarform();
 
-      modal.find('.title-form').text('Ingresar Categoria de Productos');
+      modal.find('.title-form').text('Ingresar Categoría de Producto');
      }else if(action=='editar') {
 
       $('#modal_iconified').modal('show');
@@ -223,7 +223,7 @@ function openCategoria(action,idcategoria,nombre,estado)
       $('#btnEditar').show();
       $('#btnGuardar').hide();
 
-      modal.find('.title-form').text('Actualizar Categoria de Productos');
+      modal.find('.title-form').text('Actualizar Categoría de Producto');
      } else if(action=='ver'){
       $('#txtProceso').val('');
       $('#txtID').val(idcategoria);
@@ -252,7 +252,7 @@ function openCategoria(action,idcategoria,nombre,estado)
       $('#btnEditar').hide();
       $('#btnGuardar').hide();
 
-      modal.find('.title-form').text('Ver Categoria de Productos');
+      modal.find('.title-form').text('Ver Categoría de Producto');
      }
       
   });

@@ -10,7 +10,7 @@
 								<li class="<?php if($_GET['View']=="Marca"){echo 'active';} ?>" ><a href="./?View=Marca"> <i class="icon-pushpin"></i> Marca </a></li>
 								<li class="<?php if($_GET['View']=="Presentacion"){echo 'active';} ?>" ><a href="./?View=Presentacion"><i class="icon-attachment"></i> Modelo </a></li>
 								<li class="<?php if($_GET['View']=="Color"){echo 'active';} ?>" ><a href="./?View=Color"> <i class="icon-droplet"></i> Color</a></li>
-								<li class="<?php if($_GET['View']=="Codigo"){echo 'active';} ?>" ><a href="./?View=Perecederos"> <i class="icon-calendar"></i> Caducidad</a></li>
+								<li class="<?php if($_GET['View']=="Perecederos"){echo 'active';} ?>" ><a href="./?View=Perecederos"> <i class="icon-calendar"></i> Caducidad</a></li>
 								<li class="<?php if($_GET['View']=="Codigo"){echo 'active';} ?>" ><a href="./?View=Codigo"> <i class="icon-qrcode"></i> Codificación</a></li>
 							</ul>
 						</li>

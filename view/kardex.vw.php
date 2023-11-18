@@ -210,7 +210,7 @@
 						<div class="modal-footer">
 							<button  type="reset" class="btn btn-default" id="reset" 
 							class="btn btn-link" data-dismiss="modal">Cerrar</button>
-							<button id="btnGuardar" type="submit" class="btn btn-primary">Guardar</button>
+							<button id="btnGuardar" type="submit" class="btn btn-info">Guardar</button>
 						</div>
 					</form>
 				</div>	

@@ -28,14 +28,14 @@
 					<table class="table datatable-basic table-xxs table-hover">
 						<thead>
 							<tr>
-								<th>Barra</th>
-								<th>Producto</th>
-								<th>Marca</th>
-								<th>Presentacion</th>
-								<th>Vence</th>
-								<th>Cant</th>
-								<th>Estado</th>
-								<th class="text-center">Opciones</th>
+								<th><b>Código Barra</b></th>
+								<th><b>Producto</b></th>
+								<th><b>Marca</b></th>
+								<th><b>Modelo</b></th>
+								<th><b>Vence</b></th>
+								<th><b>Cantidad</b></th>
+								<th><b>Estado</b></th>
+								<th class="text-center"><b>Opciones</b></th>
 							</tr>
 						</thead>
 
@@ -93,7 +93,7 @@
 													onclick="openPerecedero('editar',
 								                     '<?php print($envio_date); ?>',
 								                     '<?php print($column["cantidad_perecedero"]); ?>',
-								                     '<?php print($column["estado_producto"]); ?>',
+								                     '<?php print($column["estado_perecedero"]); ?>',
 								                     '<?php print($column["idproducto"]); ?>')">
 												   <i class="icon-pencil6">
 											       </i> Editar</a></li>
@@ -102,7 +102,7 @@
 													onclick="openPerecedero('ver',
 								                     '<?php print($envio_date); ?>',
 								                     '<?php print($column["cantidad_perecedero"]); ?>',
-								                     '<?php print($column["estado_producto"]); ?>',
+								                     '<?php print($column["estado_perecedero"]); ?>',
 								                     '<?php print($column["idproducto"]); ?>')">
 													<i class=" icon-eye8">
 													</i> Ver</a></li>

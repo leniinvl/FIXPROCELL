@@ -169,7 +169,7 @@ function openColor(action,idcolor,nombre_color)
       $('#btnGuardar').show();
       limpiarform();
 
-      modal.find('.title-form').text('Ingresar Color de Productos');
+      modal.find('.title-form').text('Ingresar Color de Producto');
       
      }else if(action=='editar') {
 
@@ -186,7 +186,7 @@ function openColor(action,idcolor,nombre_color)
       $('#btnEditar').show();
       $('#btnGuardar').hide();
 
-      modal.find('.title-form').text('Actualizar Color de Productos');
+      modal.find('.title-form').text('Actualizar Color de Producto');
 
      } else if(action=='ver'){
       $('#txtProceso').val('');
@@ -199,7 +199,7 @@ function openColor(action,idcolor,nombre_color)
       $('#btnEditar').hide();
       $('#btnGuardar').hide();
 
-      modal.find('.title-form').text('Ver Color de Productos');
+      modal.find('.title-form').text('Ver Color de Producto');
      }
 
   });
