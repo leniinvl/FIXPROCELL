@@ -77,12 +77,12 @@
     $y = $pdf->getY();
 
 
- /*<td>'.$td.'</td>
-          <td>'.$td.'</td>
-          <td>'.$td.'</td>
-          <td>'.$td.'</td>
-          <td>'.$td.'</td>'
-          ;*/
+  /*<td>'.$td.'</td>
+  <td>'.$td.'</td>
+  <td>'.$td.'</td>
+  <td>'.$td.'</td>
+  <td>'.$td.'</td>'
+  ;*/
 
     if($codigo == ''){
          $params = $pdf->serializeTCPDFtagParameters(array($interno, 'C128', '', '', $ancho, $alto, 0.4, $style, 'N'));
@@ -91,21 +91,18 @@
     }
     $td= '<tcpdf method="write1DBarcode" params="'.$params.'" />';
 
+    $filas = $cant / 4;
 
-    $filas = $cant / 5;
-
-       $html = '<table>';
-        for ($j=0; $j < $filas; $j++) { 
-          $html.='<tr>';
-            for ($i=0; $i < 5; $i++) { 
-              $html.='<td>'.$td.'</td>';
-              
-            }
-          $html.='</tr>';
-        }
-      $html.= '</table>';
-
-    
+    $html = '<table>';
+      for ($j=0; $j < $filas; $j++) { 
+        $html.='<tr>';
+          for ($i=0; $i < 4; $i++) { 
+            $html.='<td>'.$td.'</td>';
+            
+          }
+        $html.='</tr>';
+      }
+    $html.= '</table>';
 
 
     $pdf->writeHTML($html, true, false, true, false, '');

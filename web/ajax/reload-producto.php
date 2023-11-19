@@ -176,17 +176,6 @@
 												   <i class="icon-pencil6">
 											       </i> Editar</a></li>
 												<?php } ?>
-
-												<!--	<li><a
-													href="javascript:;" data-toggle="modal" 
-													data-target="#modal_iconified_barcode"
-													onclick="openBarcode(
-													'<?php //print($column["codigo_barra"]); ?>',
-													'<?php //print($column["codigo_interno"]); ?>',
-													'<?php //print($column["nombre_producto"]); ?>',
-													'<?php //print($column["idproducto"]); ?>')">
-													<i class="icon-barcode2">
-													</i>Codigo de Barra</a></li> -->
 													<li><a
 													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
 													onclick="openProducto('ver',
@@ -211,6 +200,16 @@
 													 '<?php print($column["idcolor"]); ?>')">
 													<i class=" icon-eye8">
 													</i> Ver</a></li>
+												<li><a
+													href="javascript:;" data-toggle="modal" 
+													data-target="#modal_iconified_barcode"
+													onclick="openBarcode(
+													'<?php print($column["codigo_barra"]); ?>',
+													'<?php print($column["codigo_interno"]); ?>',
+													'<?php print($column["nombre_producto"]); ?>',
+													'<?php print($column["idproducto"]); ?>')">
+													<i class="icon-barcode2">
+													</i>Codigo de Barra</a></li> 
 													<?php if ($tipo_usuario == '1' && $idsucursal_sesion == $idsucursal) { ?>	
 														<li><a id="delete_product"
 														data-id="<?php print($column['idproducto']); ?>"

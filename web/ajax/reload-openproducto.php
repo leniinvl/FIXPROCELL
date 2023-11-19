@@ -257,15 +257,6 @@ $objCategoria = new Categoria();
                                                                 '<?php print($column["idcolor"]); ?>')">
                                                             <i class="icon-pencil6">
                                                             </i> Editar</a></li>
-                                                    <!-- <li><a
-                                                            href="javascript:;" data-toggle="modal" data-target="#modal_iconified_barcode"
-                                                            onclick="openBarcode(
-                                                                '<?php //print($column["codigo_barra"]); ?>',
-                                                                '<?php //print($column["codigo_interno"]); ?>',
-                                                                '<?php //print($column["nombre_producto"]); ?>',
-                                                                '<?php //print($column["idproducto"]); ?>')">
-                                                            <i class="icon-barcode2">
-                                                            </i>Código de Barra</a></li> -->
                                                     <li>
                                                         <a
                                                             href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
@@ -291,6 +282,15 @@ $objCategoria = new Categoria();
                                                                 '<?php print($column["idcolor"]); ?>')">
                                                             <i class=" icon-eye8">
                                                             </i> Ver</a></li>
+                                                        <li><a
+                                                            href="javascript:;" data-toggle="modal" data-target="#modal_iconified_barcode"
+                                                            onclick="openBarcode(
+                                                                '<?php print($column["codigo_barra"]); ?>',
+                                                                '<?php print($column["codigo_interno"]); ?>',
+                                                                '<?php print($column["nombre_producto"]); ?>',
+                                                                '<?php print($column["idproducto"]); ?>')">
+                                                            <i class="icon-barcode2">
+                                                            </i>Código de Barra</a></li>
                                                             <li><a id="delete_product"
                                                             data-id="<?php print($column['idproducto']); ?>"
                                                             href="javascript:void(0)">
@@ -427,39 +427,40 @@ $objCategoria = new Categoria();
                                                 </a>
 
                                                 <ul class="dropdown-menu dropdown-menu-right">
-                                                    <!-- <li><a
-                                                            href="javascript:;" data-toggle="modal" data-target="#modal_iconified_barcode"
-                                                            onclick="openBarcode(
-                                                                '<?php //print($column["codigo_barra"]); ?>',
-                                                                '<?php //print($column["codigo_interno"]); ?>',
-                                                                '<?php //print($column["nombre_producto"]); ?>',
-                                                                '<?php //print($column["idproducto"]); ?>')">
-                                                            <i class="icon-barcode2">
-                                                            </i>Codigo de Barra</a></li> -->
+                                                    
                                                     <li><a
-                                                            href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-                                                            onclick="openProducto('ver',
-                                                                '<?php print($column["idproducto"]); ?>',
-                                                                '<?php print($column["codigo_interno"]); ?>',
-                                                                '<?php print($column["codigo_barra"]); ?>',
-                                                                '<?php print($column["nombre_producto"]); ?>',
-                                                                '<?php print($column["precio_compra"]); ?>',
-                                                                '<?php print($column["precio_venta"]); ?>',
-                                                                '<?php print($column["precio_venta_minimo"]); ?>',
-                                                                '<?php print($column["precio_venta_mayoreo"]); ?>',
-                                                                '<?php print($column["precio_super_mayoreo"]); ?>',
-                                                                '<?php print($column["stock"]); ?>',
-                                                                '<?php print($column["stock_min"]); ?>',
-                                                                '<?php print($column["idcategoria"]); ?>',
-                                                                '<?php print($column["idmarca"]); ?>',
-                                                                '<?php print($column["idpresentacion"]); ?>',
-                                                                '<?php print($column["estado"]); ?>',
-                                                                '<?php print($column["exento"]); ?>',
-                                                                '<?php print($column["inventariable"]); ?>',
-                                                                '<?php print($column["perecedero"]); ?>',
-                                                                '<?php print($column["idcolor"]); ?>')">
-                                                            <i class=" icon-eye8">
-                                                            </i> Ver</a></li>
+                                                        href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+                                                        onclick="openProducto('ver',
+                                                            '<?php print($column["idproducto"]); ?>',
+                                                            '<?php print($column["codigo_interno"]); ?>',
+                                                            '<?php print($column["codigo_barra"]); ?>',
+                                                            '<?php print($column["nombre_producto"]); ?>',
+                                                            '<?php print($column["precio_compra"]); ?>',
+                                                            '<?php print($column["precio_venta"]); ?>',
+                                                            '<?php print($column["precio_venta_minimo"]); ?>',
+                                                            '<?php print($column["precio_venta_mayoreo"]); ?>',
+                                                            '<?php print($column["precio_super_mayoreo"]); ?>',
+                                                            '<?php print($column["stock"]); ?>',
+                                                            '<?php print($column["stock_min"]); ?>',
+                                                            '<?php print($column["idcategoria"]); ?>',
+                                                            '<?php print($column["idmarca"]); ?>',
+                                                            '<?php print($column["idpresentacion"]); ?>',
+                                                            '<?php print($column["estado"]); ?>',
+                                                            '<?php print($column["exento"]); ?>',
+                                                            '<?php print($column["inventariable"]); ?>',
+                                                            '<?php print($column["perecedero"]); ?>',
+                                                            '<?php print($column["idcolor"]); ?>')">
+                                                        <i class=" icon-eye8">
+                                                        </i> Ver</a></li>
+                                                    <li><a
+                                                        href="javascript:;" data-toggle="modal" data-target="#modal_iconified_barcode"
+                                                        onclick="openBarcode(
+                                                            '<?php print($column["codigo_barra"]); ?>',
+                                                            '<?php print($column["codigo_interno"]); ?>',
+                                                            '<?php print($column["nombre_producto"]); ?>',
+                                                            '<?php print($column["idproducto"]); ?>')">
+                                                        <i class="icon-barcode2">
+                                                        </i>Codigo de Barra</a></li> 
                                                 </ul>
                                             </li>
                                         </ul>
@@ -787,7 +788,7 @@ $objCategoria = new Categoria();
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label>Codigo Interno o Barra</label>
+                                <label>Código de Barra</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="icon-barcode2"></i></span>
                                     <input type="text" id="txtCodigoBarraP" name="txtCodigoBarraP"
@@ -802,7 +803,7 @@ $objCategoria = new Categoria();
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-12">
-                                <label>Producto <span class="text-danger">*</span></label>
+                                <label>Nombre de Producto <span class="text-danger">*</span></label>
                                 <input type="text" id="txtProductoP" name="txtProductoP" placeholder="EJEMPLO: POCO-X3 PRO 8-256GB "
                                        class="form-control" style="text-transform:uppercase;"
                                        onkeyup="javascript:this.value = this.value.toUpperCase();">
@@ -813,7 +814,7 @@ $objCategoria = new Categoria();
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label>Cantidad de etiquetas<span class="text-danger">*</span></label>
+                                <label>Cantidad de etiquetas (4, 8, 12,...) <span class="text-danger">*</span></label>
                                 <input type="text" id="txtCant" name="txtCant" placeholder="0.00"
                                        class="touchspin-prefix" style="text-transform:uppercase;"
                                        onkeyup="javascript:this.value = this.value.toUpperCase();">
@@ -826,7 +827,7 @@ $objCategoria = new Categoria();
                         <div class="row">
 
                             <div class="col-sm-6">
-                                <label>Ancho de etiqueta (mm)<span class="text-danger">*</span></label>
+                                <label>Ancho de etiqueta (20-60mm) <span class="text-danger">*</span></label>
                                 <input type="text" id="txtAncho" name="txtAncho"
                                        placeholder="0.00"
                                        class="touchspin-prefix" style="text-transform:uppercase;"
@@ -834,7 +835,7 @@ $objCategoria = new Categoria();
                             </div>
 
                             <div class="col-sm-6">
-                                <label>Alto de etiqueta (mm)<span class="text-danger">*</span></label>
+                                <label>Alto de etiqueta (20-80mm) <span class="text-danger">*</span></label>
                                 <input type="text" id="txtAlto" name="txtAlto"
                                        placeholder="0.00"
                                        class="touchspin-prefix" style="text-transform:uppercase;"

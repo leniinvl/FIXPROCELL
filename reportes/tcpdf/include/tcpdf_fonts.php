@@ -1664,7 +1664,9 @@ class TCPDF_FONTS {
 	 * @public static
 	 */
 	public static function unichr($c, $unicode=true) {
-		if (!$unicode) {
+		if (empty($c)){ /*CAMBIO*/
+			return '';
+		} elseif (!$unicode) {
 			return chr($c);
 		} elseif ($c <= 0x7F) {
 			// one byte

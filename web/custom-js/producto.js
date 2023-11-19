@@ -353,24 +353,24 @@ var validator = $("#frmFilter").validate({
     });
 
     $("#txtCant").TouchSpin({
-        min: 0.00,
-        max: 100000000,
-        step: 5.00,
+        min: 4.00,
+        max: 1000,
+        step: 4.00,
         decimals: 2
     });
 
     $("#txtAncho").TouchSpin({
-        min: 0.00,
-        max: 40.00,
-        step: 0.01,
+        min: 20.00,
+        max: 60,
+        step: 1.00,
         decimals: 2,
         prefix: '<i class="icon-rulers"></i>'
     });
 
     $("#txtAlto").TouchSpin({
-        min: 0.00,
-        max: 100000000,
-        step: 0.01,
+        min: 20.00,
+        max: 80,
+        step: 1.00,
         decimals: 2,
         prefix: '<i class="icon-rulers"></i>'
     });
@@ -487,7 +487,7 @@ function openBarcode(codigo_barra,codigo_interno,nombre_producto,idproducto){
 
       var modal = $(this);
 
-       modal.find('.title-form').text('Imprimir Codigo de Barra');
+       modal.find('.title-form').text('Imprimir Código de Barra');
  
    });
 
