@@ -1,8 +1,8 @@
 <style type="text/css">
-		.select-search {
+		.select-search { /*CAMBIO*/
 			height: 30px;
 			line-height: 30px;
-			border-radius: 3px ;
+			border-radius: 5px;
 			border: 1.5px solid #3AB7C5;
 			font-size: 13.9px;
 			background-color: #3AB7C5; 
@@ -24,7 +24,7 @@
 			      	<!-- Detalle de Compra -->
 						<div class="panel panel-success">
 							<div class="panel-heading">
-								<h3 class="panel-title"><b>VENTAS</b></h3>
+								<h3 class="panel-title"><b>SISTEMA DE VENTAS</b></h3>
 								<!-- Variable sucursal --> 
 								<input type="hidden" value="<?php echo $idsucursal ?>" id="idSucursalVenta"> 
 									<div class="heading-elements">
@@ -41,40 +41,42 @@
 										</div>
 
 										<!-- Check oculto --> 
-										<div class="form-group" style="padding-top: 4px;">
+										<div class="form-group" style="padding-top: 4px; padding-left: 10px;">
 											<label>
 												<input type="hidden" id="chkPrecio"
-												data-on-text="Público" data-off-text="Distribuidor" class="-switch-" data-size="mini"
+												data-on-text="PRECIO-NORMAL" data-off-text="PRECIO-OFERTA" class="-switch-" data-size="mini"
 												data-on-color="info" data-off-color="warning" checked="checked">
 											</label>
 										</div>
 
+										<!-- Check oculto --> 
 										<div class="form-group" style="padding-top: 3px;">
 											<select  data-placeholder="..." id="tipoPrecio" name="tipoPrecio"
 												class="select-search" style="text-transform:uppercase;"
 												onkeyup="javascript:this.value=this.value.toUpperCase();">
-												<option value="PRECIO PUBLICO"> &nbsp PRECIO PUBLICO</option>
-												<option value="PRECIO MINIMO"> &nbsp PRECIO MINIMO</option>
-												<option value="DISTRIBUIDOR UNO"> &nbsp DISTRIBUIDOR UNO</option>
-												<option value="DISTRIBUIDOR DOS"> &nbsp DISTRIBUIDOR DOS</option>
+												<option value="PRECIO NORMAL"> &nbsp &nbsp PRECIO NORMAL &nbsp &nbsp</option>
+												<option value="PRECIO OFERTA"> &nbsp &nbsp PRECIO OFERTA &nbsp &nbsp</option>
+												<!--<option value="DISTRIBUIDOR UNO"> &nbsp DISTRIBUIDOR UNO</option>--> 
+												<!--<option value="DISTRIBUIDOR DOS"> &nbsp DISTRIBUIDOR DOS</option>--> 
 											</select>
 										</div>
+										<!-- Check oculto --> 
 
 									 </form>
 									</div>
 							</div>
-							<div class="panel-heading" style="background-color:#2b2b2b;">
+							<div class="panel-heading" style="background-color:#1B2631;">
 								<h4 class="panel-title"><h1 id="big_total" class="panel-title text-center text-black text-green"
 									style="font-size:42px;">0.00</h1></h4>
 							</div>
 
-							<div class="panel-body">
+							<div class="panel-body" style="background-color:#EAECEE;">
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-12">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="icon-barcode2"></i></span>
-												<input type="text" id="buscar_producto" name="buscar_producto"  placeholder="Busque y agrege un producto aqui..."
+												<input type="text" id="buscar_producto" name="buscar_producto"  placeholder="BUSCAR..."
 												 class="form-control" style="text-transform:uppercase;"
 	                      						 onkeyup="javascript:this.value=this.value.toUpperCase();">
                       						</div>
@@ -85,25 +87,25 @@
 								<div class="table-responsive">
 									<table id="tbldetalle" class="table table-xxs">
 										<thead>
-											<tr class="bg-success">
+											<tr class="bg-info-800">
 												<th></th>
-												<th class="text-center text-bold">Producto</th>
-												<th class="text-center text-bold">Cantidad</th>
-												<th class="text-center text-bold">Precio</th>
-												<th class="text-center text-bold">Precio Final</th>	<!-- DESCUENTOS 12MAY2023-->
-												<th class="text-center text-bold">Exento IVA</th>
-												<th class="text-center text-bold">Descuento</th>
-												<th class="text-center text-bold">Agregado</th>
-												<th class="text-center text-bold">Importe</th>
+												<th class="text-center">PRODUCTO</th>
+												<th class="text-center">CANTIDAD</th>
+												<th class="text-center">PRECIO</th>
+												<th class="text-center">PRECIO FINAL</th>	<!-- DESCUENTOS 12MAY2023-->
+												<th class="text-center">EXENTO IVA</th>
+												<th class="text-center">DESCUENTO</th>
+												<th class="text-center">AGREGADO</th>
+												<th class="text-center">IMPORTE</th>
 												<!--1 <th class="text-center text-bold">Vence</th>-->
-												<th class="text-center text-bold">Quitar</th>
+												<th class="text-center">ELIMINAR</th>
 											</tr>
 										</thead>
 										<tbody>
 
 										</tbody>
 										<tfoot id="totales_foot">
-											<tr class="bg-info-700">
+											<tr class="bg-info-800">
 												<td align="center" width="10%"></td>
 												<td align="center" width="30%"></td> 		<!-- DESCUENTOS 12MAY2023-->
 												<td align="center" width="10%">TARIFA 12%</td>
@@ -113,11 +115,8 @@
 												<td align="center" width="13%">TARIFA 0%</td>
 												<td align="center" width="10%">DESCUENTO</td>
 												<td align="center" width="10%">TOTAL</td>
-												<td align="center" width="20%"><b><i class="icon-cash"></i>
-												</b></td>
-												<td align="center" width="20%"><b>
-												<i class="icon-cancel-circle2"></i>
-												</b></td>
+												<td align="center" width="20%"><b><i class="icon-cash3"></i></b></td>
+												<td align="center" width="20%"><b><i class="icon-cancel-circle2"></i></b></td>
 												
 											</tr>
 											<tr>
@@ -131,10 +130,9 @@
 												<td align="center" id="descuentos"></td>
 												<td align="center" id="total"></td>
 												<td align="center"><button type="button" id="btnguardar" data-toggle="modal" data-target="#modal_iconified_cash"
-												class="btn bg-success btn-sm ">Cobrar</button></td>
+												class="btn bg-success-700 btn-sm ">&nbsp Cobrar &nbsp</button></td>
 												<td align="center"><button type="submit" id="btncancelar" class="btn bg-danger-700 btn-sm">
 												</b> Cancelar </button></td>
-
 											</tr>
 										</tfoot>
 									</table>

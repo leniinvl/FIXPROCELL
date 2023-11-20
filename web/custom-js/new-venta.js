@@ -773,7 +773,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                    $('.select-size-xs').select2();
 
                    $("input[name='tblcant']").TouchSpin({
-                       prefix:'U',
+                       prefix:'<i class="icon-ticket"></i>',
                        verticalbuttons: true,
                        verticalupclass: 'icon-arrow-up22',
                        verticaldownclass: 'icon-arrow-down22',
@@ -784,7 +784,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                    }).on('touchspin.on.startspin', function () {totales()});
 
                    $("input[name='tbladd']").TouchSpin({
-                      prefix:'$',
+                      prefix:'<i class="icon-coin-dollar"></i>',
                       verticalbuttons: true,
                       verticalupclass: 'icon-arrow-up22',
                       verticaldownclass: 'icon-arrow-down22',
@@ -795,7 +795,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                   }).on('touchspin.on.startspin', function () {totales()});
 
                   $("input[name='tblfinal']").TouchSpin({
-                    prefix:'$',
+                    prefix:'<i class="icon-coin-dollar"></i>',
                     verticalbuttons: true,
                     verticalupclass: 'icon-arrow-up22',
                     verticaldownclass: 'icon-arrow-down22',
@@ -806,7 +806,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                   }).on('touchspin.on.startspin', function () {totales()});
 
                    $("input[name='tbldesc']").TouchSpin({
-                       prefix:'$',
+                       prefix:'<i class="icon-coin-dollar"></i>',
                        verticalbuttons: true,
                        verticalupclass: 'icon-arrow-up22',
                        verticaldownclass: 'icon-arrow-down22',
@@ -883,7 +883,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                    $('.select-size-xs').select2();
 
                    $("input[name='tblcant']").TouchSpin({
-                       prefix:'U',   
+                       prefix:'<i class="icon-ticket"></i>',   
                        verticalbuttons: true,
                        verticalupclass: 'icon-arrow-up22',
                        verticaldownclass: 'icon-arrow-down22',
@@ -894,7 +894,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                    }).on('touchspin.on.startspin', function () {totales()});
 
                    $("input[name='tbladd']").TouchSpin({
-                      prefix:'$',
+                      prefix:'<i class="icon-coin-dollar"></i>',
                       verticalbuttons: true,
                       verticalupclass: 'icon-arrow-up22',
                       verticaldownclass: 'icon-arrow-down22',
@@ -905,7 +905,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                   }).on('touchspin.on.startspin', function () {totales()});
 
                   $("input[name='tblfinal']").TouchSpin({
-                    prefix:'$',
+                    prefix:'<i class="icon-coin-dollar"></i>',
                     verticalbuttons: true,
                     verticalupclass: 'icon-arrow-up22',
                     verticaldownclass: 'icon-arrow-down22',
@@ -916,7 +916,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                   }).on('touchspin.on.startspin', function () {totales()});
 
                    $("input[name='tbldesc']").TouchSpin({
-                       prefix:'$',
+                       prefix:'<i class="icon-coin-dollar"></i>',
                        verticalbuttons: true,
                        verticalupclass: 'icon-arrow-up22',
                        verticaldownclass: 'icon-arrow-down22',
@@ -991,7 +991,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
 
 
               $("input[name='tblcant']").TouchSpin({
-                  prefix:'U',
+                  prefix: '<i class="icon-ticket"></i>',
                   verticalbuttons: true,
                   verticalupclass: 'icon-arrow-up22',
                   verticaldownclass: 'icon-arrow-down22',
@@ -1002,7 +1002,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
               }).on('touchspin.on.startspin', function () {totales()});
               
               $("input[name='tbladd']").TouchSpin({
-                  prefix:'$',
+                  prefix:'<i class="icon-coin-dollar"></i>',
                   verticalbuttons: true,
                   verticalupclass: 'icon-arrow-up22',
                   verticaldownclass: 'icon-arrow-down22',
@@ -1013,7 +1013,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
               }).on('touchspin.on.startspin', function () {totales()});
 
               $("input[name='tblfinal']").TouchSpin({
-                  prefix:'$',
+                  prefix:'<i class="icon-coin-dollar"></i>',
                   verticalbuttons: true,
                   verticalupclass: 'icon-arrow-up22',
                   verticaldownclass: 'icon-arrow-down22',
@@ -1024,7 +1024,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
               }).on('touchspin.on.startspin', function () {totales()});
               
               $("input[name='tbldesc']").TouchSpin({
-                  prefix:'$',
+                  prefix:'<i class="icon-coin-dollar"></i>',
                   verticalbuttons: true,
                   verticalupclass: 'icon-arrow-up22',
                   verticaldownclass: 'icon-arrow-down22',
@@ -1078,7 +1078,7 @@ function buscar_por_codigo()
     },
 
        select: function( event, ui ) {
-        var tipo_precio = $('#chkPrecio').is(':checked') ? 1 : 0; //1-normal/0-mayoreo
+        var tipo_precio = $('#chkPrecio').is(':checked') ? 1 : 0; //1-normal 0-oferta
         var tipoPrecio = $("#tipoPrecio").val();
         var idproducto = ui.item.value;
         var producto = ui.item.producto;
@@ -1112,9 +1112,9 @@ function buscar_por_codigo()
               //precio_venta = (precio_venta/iva).toFixed(2);
               //precio_venta_mayoreo = (precio_venta_mayoreo/iva).toFixed(2);
 
-              if(tipoPrecio == "PRECIO PUBLICO"){
+              if(tipoPrecio == "PRECIO NORMAL"){
                 agregar_detalle(idproducto,producto,datos,precio_venta,0.00,stock,perecedero,inventariable);
-              } else if (tipoPrecio == "PRECIO MINIMO"){ 
+              } else if (tipoPrecio == "PRECIO OFERTA"){ 
                 agregar_detalle(idproducto,producto,datos,precio_venta_minimo,0.00,stock,perecedero,inventariable);
               } else if (tipoPrecio == "DISTRIBUIDOR UNO"){ 
                 agregar_detalle(idproducto,producto,datos,precio_venta_mayoreo,0.00,stock,perecedero,inventariable);
@@ -1124,9 +1124,9 @@ function buscar_por_codigo()
 
             } else if (exento == 1){
 
-              if(tipoPrecio == "PRECIO PUBLICO"){
+              if(tipoPrecio == "PRECIO NORMAL"){
                 agregar_detalle(idproducto,producto,datos,precio_venta,precio_venta,stock,perecedero,inventariable);
-              } else if (tipoPrecio == "PRECIO MINIMO"){
+              } else if (tipoPrecio == "PRECIO OFERTA"){
                 agregar_detalle(idproducto,producto,datos,precio_venta_minimo,precio_venta_minimo,stock,perecedero,inventariable);
               } else if (tipoPrecio == "DISTRIBUIDOR UNO"){
                 agregar_detalle(idproducto,producto,datos,precio_venta_mayoreo,precio_venta_mayoreo,stock,perecedero,inventariable);
@@ -1205,10 +1205,10 @@ function buscar_por_detalle()
 
             if(exento == 0)
             {
-              if(tipoPrecio == "PRECIO PUBLICO"){
+              if(tipoPrecio == "PRECIO NORMAL"){
                 agregar_detalle(idproducto,producto,datos,precio_venta,0.00,stock,perecedero,inventariable);
                 $('#buscar_producto').autocomplete('close');
-              } else if (tipoPrecio == "PRECIO MINIMO"){
+              } else if (tipoPrecio == "PRECIO OFERTA"){
                 agregar_detalle(idproducto,producto,datos,precio_venta_minimo,0.00,stock,perecedero,inventariable);
                 $('#buscar_producto').autocomplete('close');
               } else if (tipoPrecio == "DISTRIBUIDOR UNO"){
@@ -1221,10 +1221,10 @@ function buscar_por_detalle()
 
             } else if (exento == 1){
 
-              if(tipoPrecio == "PRECIO PUBLICO"){
+              if(tipoPrecio == "PRECIO NORMAL"){
                 agregar_detalle(idproducto,producto,datos,precio_venta,precio_venta,stock,perecedero,inventariable);
                 $('#buscar_producto').autocomplete('close');
-              } else if (tipoPrecio == "PRECIO MINIMO"){
+              } else if (tipoPrecio == "PRECIO OFERTA"){
                 agregar_detalle(idproducto,producto,datos,precio_venta_minimo,precio_venta_minimo,stock,perecedero,inventariable);
                 $('#buscar_producto').autocomplete('close');
               } else if (tipoPrecio == "DISTRIBUIDOR UNO"){
@@ -1397,9 +1397,9 @@ $.getJSON('web/ajax/ajxparametro.php?criterio=moneda',function(data){
  
                             case 8: campo8 = $(this).text();
                                     if(campo4 > 0.00){
-                                      campo8 = (campo2 * campo4) + campo7;
+                                      campo8 = (campo2 * campo4) + (campo2 * campo7);
                                     }else{
-                                      campo8 = (campo2 * campo3) + campo7;
+                                      campo8 = (campo2 * campo3) + (campo2 * campo7);
                                     }
                                     sumas = parseFloat(campo8);
                                     if(isNaN(sumas)){sumas = 0.00;}
