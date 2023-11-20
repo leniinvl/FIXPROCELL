@@ -17,12 +17,12 @@
 		<table class="table datatable-basic table-xxs table-hover">
 						<thead>
 							<tr>
-							<th><b>ID</b></th>
-								<th><b>IMEI 1</b></th>
-								<th><b>IMEI 2</b></th>
-								<th><b>Equipo</b></th>
+								<th><b>Código</b></th>
+								<th><b>IMEI</b></th>
+								<th><b>Detalle</b></th>
+								<th><b>Nombre Equipo</b></th>
 								<th><b>Registro</b></th>
-								<th><b>Sucursal</b></th>
+								<th><b>Establecimiento</b></th>
 								<th class="text-center"><b>Opciones</b></th>
 							</tr>
 						</thead>

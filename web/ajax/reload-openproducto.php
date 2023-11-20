@@ -787,21 +787,6 @@ $objCategoria = new Categoria();
 
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-sm-6">
-                                <label>Código de Barra</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="icon-barcode2"></i></span>
-                                    <input type="text" id="txtCodigoBarraP" name="txtCodigoBarraP"
-                                           placeholder="11320206505"
-                                           class="form-control" style="text-transform:uppercase;"
-                                           onkeyup="javascript:this.value = this.value.toUpperCase();">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-sm-12">
                                 <label>Nombre de Producto <span class="text-danger">*</span></label>
                                 <input type="text" id="txtProductoP" name="txtProductoP" placeholder="EJEMPLO: POCO-X3 PRO 8-256GB "
@@ -813,13 +798,25 @@ $objCategoria = new Categoria();
 
                     <div class="form-group">
                         <div class="row">
+
                             <div class="col-sm-6">
-                                <label>Cantidad de etiquetas (4, 8, 12,...) <span class="text-danger">*</span></label>
+                                <label>Código de Barra</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon-barcode2"></i></span>
+                                    <input type="text" id="txtCodigoBarraP" name="txtCodigoBarraP"
+                                           placeholder="11320206505"
+                                           class="form-control" style="text-transform:uppercase;"
+                                           onkeyup="javascript:this.value = this.value.toUpperCase();">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label>Cantidad de etiquetas <span class="text-danger">*</span></label>
                                 <input type="text" id="txtCant" name="txtCant" placeholder="0.00"
                                        class="touchspin-prefix" style="text-transform:uppercase;"
                                        onkeyup="javascript:this.value = this.value.toUpperCase();">
                             </div>
-
+                            
                         </div>
                     </div>
 
@@ -827,7 +824,7 @@ $objCategoria = new Categoria();
                         <div class="row">
 
                             <div class="col-sm-6">
-                                <label>Ancho de etiqueta (20-60mm) <span class="text-danger">*</span></label>
+                                <label>Ancho de etiqueta (40-200mm) <span class="text-danger">*</span></label>
                                 <input type="text" id="txtAncho" name="txtAncho"
                                        placeholder="0.00"
                                        class="touchspin-prefix" style="text-transform:uppercase;"
@@ -835,7 +832,7 @@ $objCategoria = new Categoria();
                             </div>
 
                             <div class="col-sm-6">
-                                <label>Alto de etiqueta (20-80mm) <span class="text-danger">*</span></label>
+                                <label>Alto de etiqueta (10-50mm) <span class="text-danger">*</span></label>
                                 <input type="text" id="txtAlto" name="txtAlto"
                                        placeholder="0.00"
                                        class="touchspin-prefix" style="text-transform:uppercase;"

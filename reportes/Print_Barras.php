@@ -91,12 +91,12 @@
     }
     $td= '<tcpdf method="write1DBarcode" params="'.$params.'" />';
 
-    $filas = $cant / 4;
+    $filas = $cant / 1;
 
     $html = '<table>';
       for ($j=0; $j < $filas; $j++) { 
         $html.='<tr>';
-          for ($i=0; $i < 4; $i++) { 
+          for ($i=0; $i < 1; $i++) { 
             $html.='<td>'.$td.'</td>';
             
           }

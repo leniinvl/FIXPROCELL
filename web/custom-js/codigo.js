@@ -233,7 +233,7 @@ $.ajax({
             swal({
                 title: "Exito!",
                 timer: 1000,
-                text: "IMEI registrado correctamente",
+                text: "Código registrado correctamente",
                 confirmButtonColor: "#66BB6A",
                 type: "success"
             });
@@ -249,7 +249,7 @@ $.ajax({
                 swal({
                     title: "Exito!",
                     timer: 1000,
-                    text: "IMEI modificado correctamente",
+                    text: "Registro modificado correctamente",
                     confirmButtonColor: "#2196F3",
                     type: "info"
                 });
@@ -262,7 +262,7 @@ $.ajax({
 
          swal({
                 title: "Lo sentimos!",
-                text: "El IMEI ya existe en el sistema",
+                text: "La codificación ya existe en el sistema",
                 confirmButtonColor: "#EF5350",
                 type: "warning"
          });

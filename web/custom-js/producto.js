@@ -353,23 +353,23 @@ var validator = $("#frmFilter").validate({
     });
 
     $("#txtCant").TouchSpin({
-        min: 4.00,
+        min: 1.00,
         max: 1000,
-        step: 4.00,
+        step: 1.00,
         decimals: 2
     });
 
     $("#txtAncho").TouchSpin({
-        min: 20.00,
-        max: 60,
+        min: 40.00,
+        max: 200.00,
         step: 1.00,
         decimals: 2,
         prefix: '<i class="icon-rulers"></i>'
     });
 
     $("#txtAlto").TouchSpin({
-        min: 20.00,
-        max: 80,
+        min: 10.00,
+        max: 50.00,
         step: 1.00,
         decimals: 2,
         prefix: '<i class="icon-rulers"></i>'
