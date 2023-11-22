@@ -933,7 +933,7 @@ function Print_Report(Criterio)
       swal({
               title: "No pudimos generarlo!",
               imageUrl: "web/assets/images/trolley.png",
-              text: "Debes seleccionar una SUCURSAL y CATEGORIA...",
+              text: "Debes seleccionar una Establecimiento y Categoria",
               confirmButtonColor: "#EF5350"
        });
 
@@ -1000,10 +1000,12 @@ function(isConfirm){
 
 function IrInventario(){
   swal({
-    title: "Abrir Inventario",
+    title: "Dirigirse a administración de Inventario",
     text: "A continuacion debe abrir el inventario para este nuevo mes",
     confirmButtonColor: "#EF5350",
-    imageUrl: "web/assets/images/unpacking.png"
+    imageUrl: "web/assets/images/unpacking.png",
+    confirmButtonText: "Aceptar",
+    timer: 1000
   },
   function() {
   setTimeout(function() {

@@ -22,9 +22,9 @@
 			 <div class="row">
 				 <div class="col-md-12 col-lg-12">
 			      	<!-- Detalle de Compra -->
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title"><b>SISTEMA DE VENTAS</b></h3>
+						<div class="panel panel-default">
+							<div class="panel-heading" style="background-color:#EAECEE;">
+								<h3 class="panel-title"><b>DETALLE DE VENTA</b></h3>
 								<!-- Variable sucursal --> 
 								<input type="hidden" value="<?php echo $idsucursal ?>" id="idSucursalVenta"> 
 									<div class="heading-elements">
@@ -65,9 +65,9 @@
 									 </form>
 									</div>
 							</div>
-							<div class="panel-heading" style="background-color:#1B2631;">
-								<h4 class="panel-title"><h1 id="big_total" class="panel-title text-center text-black text-green"
-									style="font-size:42px;">0.00</h1></h4>
+							<div class="panel-heading" style="background-color:#CACFD2;">
+								<h4 class="panel-title"><h1 id="big_total" class="panel-title text-center text-black"
+									style="font-size:50px;">0.00</h1></h4>
 							</div>
 
 							<div class="panel-body" style="background-color:#EAECEE;">
@@ -76,7 +76,7 @@
 										<div class="col-sm-12">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="icon-barcode2"></i></span>
-												<input type="text" id="buscar_producto" name="buscar_producto"  placeholder="BUSCAR..."
+												<input type="text" id="buscar_producto" name="buscar_producto"  placeholder="BUSCAR PRODUCTO..."
 												 class="form-control" style="text-transform:uppercase;"
 	                      						 onkeyup="javascript:this.value=this.value.toUpperCase();">
                       						</div>
@@ -90,12 +90,12 @@
 											<tr class="bg-info-800">
 												<th></th>
 												<th class="text-center">PRODUCTO</th>
-												<th class="text-center">CANTIDAD</th>
+												<th class="text-center">CANT.</th>
 												<th class="text-center">PRECIO</th>
-												<th class="text-center">PRECIO FINAL</th>	<!-- DESCUENTOS 12MAY2023-->
-												<th class="text-center">EXENTO IVA</th>
+												<th class="text-center">REAJUSTE</th>	<!-- DESCUENTOS 12MAY2023-->
+												<th class="text-center">EXENTO</th>
 												<th class="text-center">DESCUENTO</th>
-												<th class="text-center">AGREGADO</th>
+												<th class="text-center">ADICIONAL</th>
 												<th class="text-center">IMPORTE</th>
 												<!--1 <th class="text-center text-bold">Vence</th>-->
 												<th class="text-center">ELIMINAR</th>
@@ -106,17 +106,17 @@
 										</tbody>
 										<tfoot id="totales_foot">
 											<tr class="bg-info-800">
-												<td align="center" width="10%"></td>
-												<td align="center" width="30%"></td> 		<!-- DESCUENTOS 12MAY2023-->
-												<td align="center" width="10%">TARIFA 12%</td>
+												<td align="center" width="5%"></td>
+												<td align="center" width="50%"></td> 		<!-- DESCUENTOS 12MAY2023-->
+												<td align="center" width="5%">SUBTOTAL 12%</td>
 												<td align="center" width="10%">IVA 12%</td>
-												<td align="center" width="10%">SUBTOTAL</td>
+												<td align="center" width="5%">SUBTOTAL</td>
 												<!--1 <td align="center" width="10%">RET. (-)</td> -->
-												<td align="center" width="13%">TARIFA 0%</td>
-												<td align="center" width="10%">DESCUENTO</td>
-												<td align="center" width="10%">TOTAL</td>
-												<td align="center" width="20%"><b><i class="icon-cash3"></i></b></td>
-												<td align="center" width="20%"><b><i class="icon-cancel-circle2"></i></b></td>
+												<td align="center" width="10%">IVA 0%</td>
+												<td align="center" width="5%">DESCUENTO</td>
+												<td align="center" width="5%">TOTAL</td>
+												<td align="center" width="10%"><b><i class="icon-cash3"></i></b></td>
+												<td align="center" width="10%"><b><i class="icon-cancel-circle2"></i></b></td>
 												
 											</tr>
 											<tr>
@@ -150,7 +150,7 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h5 class="modal-title"><i class="icon-cash"></i> &nbsp; <span class="title-form">TERMINAR VENTA</span></h5>
+								<h5 class="modal-title"><i class="icon-cart"></i> &nbsp; <span class="title-form">FINALIZAR VENTA</span></h5>
 							</div>
 
 					    <form role="form" autocomplete="off" class="form-validate-jquery" id="frmPago">
@@ -167,10 +167,10 @@
 											</div>
 
 											<div class="col-sm-8">
-												<label>Seleccione el Cliente<span class="text-danger"> * </span></label>
-												<select  data-placeholder="..." id="cbCliente" name="cbCliente"
-													class="select-size-xs" style="text-transform:uppercase;"
-				                   onkeyup="javascript:this.value=this.value.toUpperCase();">
+												<label>Seleccione el cliente<span class="text-danger"> * </span></label>
+												<select data-placeholder="..." id="cbCliente" name="cbCliente"
+														class="select-size-xs" style="text-transform:uppercase;"
+				                   						onkeyup="javascript:this.value=this.value.toUpperCase();">
 													 <option value=""></option>
 			                            			  <?php
 														$filas = $objVenta->Listar_Clientes();
@@ -190,14 +190,14 @@
 											</div>
 
 											<div class="col-sm-3">
-													<label>Cupo Crédito <span class="text-danger"></span></label>
-														<div class="input-group">
-														<span class="input-group-addon"><i class="icon-cash3"></i></span>
-														<input type="text" id="txtLimitC" name="txtLimitC" placeholder="0.00"
-														 class="form-control" style="text-transform:uppercase;"
-															onkeyup="javascript:this.value=this.value.toUpperCase();" readonly="readonly" disabled="disabled">
-														</div>
+												<label>Limite crédito <span class="text-danger"></span></label>
+												<div class="input-group">
+													<span class="input-group-addon"><i class="icon-cash3"></i></span>
+													<input type="text" id="txtLimitC" name="txtLimitC" placeholder="0.00"
+														class="form-control" style="text-transform:uppercase;"
+														onkeyup="javascript:this.value=this.value.toUpperCase();" readonly="readonly" disabled="disabled">
 												</div>
+											</div>
 
 										</div>
 									</div>
@@ -207,7 +207,7 @@
 									<div class="row">
 
 										<div class="col-sm-6">
-											<label>Seleccione comprobante de Venta</label>
+											<label>Seleccione tipo de comprobante</label>
 											<select  data-placeholder="..." id="cbCompro" name="cbCompro"
 												class="select-size-xs" style="text-transform:uppercase;"
 												onkeyup="javascript:this.value=this.value.toUpperCase();">
@@ -227,105 +227,113 @@
 											 </select>
 										</div>
 
+										<div class="col-sm-6">
+											<label>Seleccione tipo de venta</label>
+											<div class="checkbox checkbox-switchery switchery-sm">
+												<label>
+												<input type="checkbox" id="chkPagado" name="chkPagado"
+													class="switchery" checked="checked" >
+													<span id="lblchk2">VENTA AL CONTADO</span>
+												</label>
+											</div>
+										</div>
+
 									</div>
 								</div>
 
 								<div class="form-group">
-									
-									<div class="col-sm-6">
-										<label>Seleccione el tipo de venta</label>
-										<div class="checkbox checkbox-switchery switchery-sm">
-											<label>
-											<input type="checkbox" id="chkPagado" name="chkPagado"
-												class="switchery" checked="checked" >
-												<span id="lblchk2">VENTA AL CONTADO</span>
-											</label>
-										</div>
-									</div>
-										<div class="row">
+									<div class="row">
+
 										<div id="div-cbMPago" class="col-sm-6">
-										 <label>Metodo de Pago</label>
+										 <label>Seleccione metodo de pago</label>
 											 <select id="cbMPago" name="cbMPago" data-placeholder="Seleccione un metodo de pago..." class="select-icons">
 													 <option value="1" data-icon="cash">EFECTIVO</option>
 													 <option value="2" data-icon="credit-card">TRANSFERENCIA</option>
 													 <option value="3" data-icon="cash4">EFECTIVO Y TRANSFERENCIA</option>
 											 </select>
 										</div>
+
+										<div id="div-txtNoTarjeta" class="col-sm-6">
+											<label> Nro. Comprobante <span class="text-danger"> * </span></label>
+											<div class="input-group">
+												<span class="input-group-addon"><i class="icon-credit-card"></i></span>
+												<input type="text" id="txtNoTarjeta" name="txtNoTarjeta" placeholder="00121482254"
+													class="form-control input-sm" style="text-transform:uppercase;"
+													onkeyup="javascript:this.value=this.value.toUpperCase();">
+											</div>
+										</div>
+
 									</div>
 								</div>
 
+								<div class="form-group">
+									<div class="row">
+											
+										<div id="div-txtMontoTar" class="col-sm-4">
+											<label> Valor Transferencia <span class="text-danger"> * </span></label>
+												<input type="text" id="txtMontoTar" name="txtMontoTar" placeholder="0.00"
+												class="touchspin-prefix" value="0" style="text-transform:uppercase;"
+												onkeyup="javascript:this.value=this.value.toUpperCase();">
+										</div>
+
+										<div id="div-txtHabiente" class="col-sm-8">
+												<label> Tipo de Banco <span class="text-danger"> * </span></label>
+												<div class="input-group">
+												<span class="input-group-addon"><i class="icon-user"></i></span>
+												<input type="text" id="txtHabiente" name="txtHabiente" placeholder="Banco: Pichincha / Produbanco"
+													class="form-control input-sm" style="text-transform:uppercase;"
+													onkeyup="javascript:this.value=this.value.toUpperCase();">
+											</div>
+										</div>
+
+									</div>
+								</div>
 
 								<div class="form-group">
 									<div class="row">
-											<div class="col-sm-4">
-													<label>A Pagar <span class="text-danger"> * </span></label>
-													<div class="input-group">
-													<span class="input-group-addon"><i class="icon-cash3"></i></span>
-													<input type="text" id="txtDeuda" name="txtDeuda" placeholder="0.00"
-													 class="form-control input-sm" style="text-transform:uppercase;"
-			                     onkeyup="javascript:this.value=this.value.toUpperCase();"
-													 readonly="readonly" disabled="disabled">
-			                 	</div>
+										<div class="col-sm-4">
+											<label>Valor Total <span class="text-danger"> * </span></label>
+											<div class="input-group">
+												<span class="input-group-addon"><i class="icon-cash3"></i></span>
+												<input type="text" id="txtDeuda" name="txtDeuda" placeholder="0.00"
+													class="form-control input-sm" style="text-transform:uppercase;"
+													onkeyup="javascript:this.value=this.value.toUpperCase();"
+													readonly="readonly" disabled="disabled">
 											</div>
+										</div>
 
 										<div id="div-txtMonto" class="col-sm-4">
-											<label>Efectivo Recibido <span class="text-danger"> * </span></label>
+											<label>Valor Recibido <span class="text-danger"> * </span></label>
 											<input type="text" id="txtMonto" name="txtMonto" placeholder="0.00"
 											 class="form-control input-sm" style="text-transform:uppercase;"
-	                     onkeyup="javascript:this.value=this.value.toUpperCase();">
+	                     					 onkeyup="javascript:this.value=this.value.toUpperCase();">
 										</div>
 
-											<div id="div-txtCambio" class="col-sm-4">
-													<label>Cambio <span class="text-danger"> * </span></label>
-													<div class="input-group">
-													<span class="input-group-addon"><i class="icon-cash"></i></span>
-													<input type="text" id="txtCambio" name="txtCambio" placeholder="0.00"
-													 class="form-control input-sm" style="text-transform:uppercase;"
-		                  		onkeyup="javascript:this.value=this.value.toUpperCase();"
+										<div id="div-txtCambio" class="col-sm-4">
+											<label>Valor Cambio <span class="text-danger"> * </span></label>
+											<div class="input-group">
+												<span class="input-group-addon"><i class="icon-cash"></i></span>
+												<input type="text" id="txtCambio" name="txtCambio" placeholder="0.00"
+													class="form-control input-sm" style="text-transform:uppercase;"
+													onkeyup="javascript:this.value=this.value.toUpperCase();"
 													readonly="readonly" disabled="disabled">
-		                  </div>
+											</div>
 										</div>
 									</div>
 								</div>
 
-								<div class="form-group">
-									<div class="row">
-											<div id="div-txtNoTarjeta" class="col-sm-6">
-													<label> Nro. Comprobante <span class="text-danger"> * </span></label>
-													<div class="input-group">
-													<span class="input-group-addon"><i class="icon-credit-card"></i></span>
-													<input type="text" id="txtNoTarjeta" name="txtNoTarjeta" placeholder="00121482254"
-													 class="form-control input-sm" style="text-transform:uppercase;"
-													 onkeyup="javascript:this.value=this.value.toUpperCase();">
-												</div>
-											</div>
-
-											<div id="div-txtHabiente" class="col-sm-6">
-													<label> Tipo de Banco <span class="text-danger"> * </span></label>
-													<div class="input-group">
-													<span class="input-group-addon"><i class="icon-user"></i></span>
-													<input type="text" id="txtHabiente" name="txtHabiente" placeholder="Banco Pichincha"
-													 class="form-control input-sm" style="text-transform:uppercase;"
-													 onkeyup="javascript:this.value=this.value.toUpperCase();">
-												</div>
-											</div>
-									</div>
-								</div>
+								
 
 								<div class="form-group">
 									<div class="row">
-											<div id="div-txtMontoTar" class="col-sm-5">
-													<label> Monto Transferencia <span class="text-danger"> * </span></label>
-													 <input type="text" id="txtMontoTar" name="txtMontoTar" placeholder="0.00"
-													 class="touchspin-prefix" value="0" style="text-transform:uppercase;"
-													 onkeyup="javascript:this.value=this.value.toUpperCase();">
-												</div>
+										
 									</div>
 								</div>
 								
-								<div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-12">
+								<!-- hidden  --> 
+								<div class="form-group" style="visibility: hidden; height: 0px; margin: auto;">
+                                    <div class="row" style="visibility: hidden; height: 0px; margin: auto;">
+                                        <div class="col-sm-12" style="visibility: hidden; height: 0px; margin: auto;">
 											<textarea rows="2" class="form-control"
 												placeholder="serie/código/IMEI/observación..." id="txtDescripcion" name="txtDescripcion"
 												value="" style="text-transform:uppercase;"
@@ -336,10 +344,10 @@
 								</div>
 
 								<div class="modal-footer">
-									<button  type="reset" class="btn btn-default" id="reset"
-									class="btn btn-link" data-dismiss="modal">Cerrar</button>
+									<button  type="reset" class="btn btn-danger" id="reset"	class="btn btn-link" data-dismiss="modal"><b><i class="icon-cross2"></i>
+									</b> &nbsp &nbsp &nbsp Cerrar &nbsp </button>
 									<button onDblClick="disabled=true" type="submit" id="btnRegistrar" class="btn bg-success-800 btn-labeled"><b><i class="icon-printer4"></i>
-									</b> Facturar e Imprimir</button>
+									</b> Finalizar </button>
 								</div>
 							</form>
 						</div>
@@ -378,8 +386,8 @@
 											</div>
 
 											<div class="col-sm-6">
-													<label>Tipo <span class="text-danger">* Requerido</span></label>
-												<!--	<input type="text" id="txtGiro" name="txtGiro" placeholder="EJEMPLO:"
+													<label>Tipo <span class="text-danger">* Obligatorio</span></label>
+													<!--	<input type="text" id="txtGiro" name="txtGiro" placeholder="EJEMPLO:"
 													 class="form-control" style="text-transform:uppercase;"
 	                         						onkeyup="javascript:this.value=this.value.toUpperCase();"> -->
 
@@ -396,7 +404,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-12">
-												<label>Nombre Cliente / Empresa <span class="text-danger">* Requerido</span></label>
+												<label>Nombre Cliente <span class="text-danger">* Obligatorio</span></label>
 												<input type="text" id="txtNombre" name="txtNombre" placeholder="EJEMPLO: FRANCISCO MORALES / SMART MOVIL S.A."
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
@@ -407,7 +415,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6">
-												<label>Cédula / RUC <span class="text-danger"> * Requerido </span></label>
+												<label>Cédula / RUC <span class="text-danger"> * Obligatorio </span></label>
 												<input type="text" id="txtNIT" name="txtNIT" placeholder="EJEMPLO: 1725465045001"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
@@ -424,12 +432,12 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6">
-												<label>Email <span class="text-danger"> * Requerido </span></label>
+												<label>Email <span class="text-danger"> * Obligatorio </span></label>
 												<input type="email" id="txtEmail" name="txtEmail" placeholder="EJEMPLO: fraciscomorales@gmail.com"
 												 class="form-control">
 											</div>
 											<div class="col-sm-6">
-												<label>Limite Crédito Venta <span class="text-danger">*</span></label>
+												<label>Limite de Crédito <span class="text-danger">*</span></label>
 												<input type="text" id="txtC" name="txtC" placeholder="250.00"
 												class="touchspin-prefix" value="0" style="text-transform:uppercase;"
 												onkeyup="javascript:this.value=this.value.toUpperCase();">
@@ -452,7 +460,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-12">
-												<label>Direccion <span class="text-danger"> * Requerido </span></label>
+												<label>Dirección <span class="text-danger"> * Obligatorio </span></label>
 												<input type="text" id="txtDireccion" name="txtDireccion" placeholder="EJEMPLO: AVENIDA NATALIA JARRIN, CAYAMBE"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
@@ -463,7 +471,7 @@
 								</div>
 
 								<div class="modal-footer">
-									<button id="btnGuardarCliente" type="reset" class="btn btn-primary" data-dismiss="modal"> Guardar </button>
+									<button id="btnGuardarCliente" type="reset" class="btn btn-info" data-dismiss="modal"> Guardar Cliente </button>
 								</div>
 							</form>
 						</div>

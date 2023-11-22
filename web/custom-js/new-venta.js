@@ -16,7 +16,7 @@ $(function() {
 
   // Initialize with options
     $(".select-icons").select2({
-        containerCssClass: 'bg-teal-400',
+        containerCssClass: 'bg-success-700',
         templateResult: iconFormat,
         minimumResultsForSearch: Infinity,
         templateSelection: iconFormat,
@@ -25,7 +25,7 @@ $(function() {
 
     // Initialize with options
     $(".select-icons-search").select2({
-        containerCssClass: 'bg-info-400',
+        containerCssClass: 'bg-teal-400',
         templateResult: iconFormat,
         minimumResultsForSearch: Infinity,
         templateSelection: iconFormat,
@@ -75,8 +75,8 @@ $(function() {
          if (data=="Cerrada"){
 
              swal({
-                      title: "Debes Abrir Caja!",
-                      text: "No tienes registrado efectivo para movimientos",
+                      title: "Se requiere abrir caja!",
+                      text: "No tienes registrado efectivo para movimientos del día",
                       confirmButtonColor: "#EF5350",
                       imageUrl: "web/assets/images/atm.png"
               },
@@ -99,15 +99,15 @@ $(function() {
                    if (data=="No Existe"){
 
                        swal({
-                              title: "Debes Abrir Inventario!",
-                              text: "El Inventario no se encuentra abierto",
+                              title: "Se requiere abrir inventario!",
+                              text: "El inventario se encuentra cerrado",
                               confirmButtonColor: "#EF5350",
                               type: "warning"
                        },
                         function() {
                             setTimeout(function() {
                                window.location.href = "?View=Abrir-Inventario";
-                            }, 1200);
+                            }, 1000);
                         });
 
 
@@ -115,7 +115,7 @@ $(function() {
 
                            swal({
                             title: "Lo sentimos...",
-                            text: "No procesamos bien tus datos!",
+                            text: "No procesamos bien los datos!",
                             confirmButtonColor: "#EF5350",
                             type: "error"
                         });
@@ -139,7 +139,7 @@ $(function() {
 
                  swal({
                   title: "Lo sentimos...",
-                  text: "No procesamos bien tus datos!",
+                  text: "No procesamos bien los datos!",
                   confirmButtonColor: "#EF5350",
                   type: "error"
               });
@@ -168,6 +168,7 @@ $(function() {
         });
       }return parseFloat(value) >= parseFloat($min.val());}, "Debe ser mayor a deuda");
 
+     var submitEjecutado = false;
 
      var validator = $("#frmPago").validate({
 
@@ -234,22 +235,22 @@ $(function() {
       },
       messages: {
           txtMonto: {
-              required: "Ingrese cantidad",
+              required: "Ingrese valor",
           },
           cbCompro: {
-              required: "Seleccione una opcion",
+              required: "Seleccione una opción",
           },
           cbCliente: {
-            required: "Seleccione un cliente",
+            required: "Seleccione el cliente",
           },
           txtNoTarjeta: {
-            required: "Ingrese Nro. Comprobante",
+            required: "Ingrese Nro.comprobante",
           },
           txtHabiente: {
-            required: "Ingrese el Banco Emisor",
+            required: "Ingrese el tipo de banco",
           },
           txtMontoTar: {
-            required: "Ingrese monto de Transferencia",
+            required: "Ingrese valor",
           }
       },
 
@@ -258,8 +259,11 @@ $(function() {
           label.addClass("validation-valid-label").text("Correcto.")
       },*/
        submitHandler: function (form) {
-         enviar_data();
-
+          if (submitEjecutado) {
+            return;
+          }
+          submitEjecutado = true;
+          enviar_data();
         }
      })
 
@@ -299,7 +303,7 @@ $(function() {
         $("#buscar_producto").val("");
         $.getJSON('web/ajax/ajxparametro.php?criterio=moneda',function(data){
           $.each(data,function(key,val){
-            var moneda = val.CurrencyISO + ' ' + val.Symbol;
+            var moneda = /*val.CurrencyISO + ' ' + */val.Symbol;
               $("#big_total").html(moneda + ' 0.00');
           });
         });
@@ -461,14 +465,14 @@ function mitad_pago(){
 
 var mySwitch = new Switchery($('#chkPagado')[0], {
     size:"small",
-    color: '#19AA8D',
-    secondaryColor: '#3cb9e9'
+    color: '#229954',
+    secondaryColor: '#ff5722'
 });
 
 
 var mySwitch = new Switchery($('#chkBusqueda')[0], {
     size:"small",
-    color: '#1fccef',
+    color: '#3AB7C5',
     secondaryColor: '#ff5722'  
 });
 
@@ -572,7 +576,7 @@ function Add_usuario(ci, cliente){
     }else if (email==''){
         swal("Alerta de datos, cliente no registrado!","Se requiere correo del cliente para facturacion","warning");
     }else if (direccion==''){
-        swal("Alerta de datos, cliente no registrado!","Se requiere una direccion del cliente","warning");
+        swal("Alerta de datos, cliente no registrado!","Se requiere una dirección del cliente","warning");
     }else{
 
         $.ajax({
@@ -587,7 +591,7 @@ function Add_usuario(ci, cliente){
                     swal({
                         title: "Exito...",
                         timer: 1400,
-                        text: "Cliente registrado",
+                        text: "Cliente registrado correctamente",
                         confirmButtonColor: "#66BB6A",
                         type: "success"
                     });
@@ -595,14 +599,14 @@ function Add_usuario(ci, cliente){
             } else if (data=="Duplicado"){
                 swal({
                       title: "Ops...",
-                      text: "El cliente que ingresaste ya existe",
+                      text: "El cliente ya existe",
                       confirmButtonColor: "#EF5350",
                       type: "warning"
                 });
             } else if(data =="Error"){
                   swal({
                       title: "Lo sentimos...",
-                      text: "No procesamos bien tus datos!",
+                      text: "No procesamos bien los datos!",
                       confirmButtonColor: "#EF5350",
                       type: "error"
                   });
@@ -664,12 +668,16 @@ $("#chkBusqueda").click(function() {
 
 // Evento Change de tipoPrecio
 $("#tipoPrecio").change(function() {
-    noty({
+    /*noty({
         force: true,
         text: 'ACTUALIZANDO A ' +$("#tipoPrecio").val() +' !',
         type: 'error',
         layout: 'top',
         timeout: 1500,
+    });*/
+    new PNotify({
+      text: 'Ajustando detalle '+$("#tipoPrecio").val(),
+      addclass: "stack-bottom-right bg-warning",
     });
     actualizar_precio();
     setTimeout(function(){
@@ -773,7 +781,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                    $('.select-size-xs').select2();
 
                    $("input[name='tblcant']").TouchSpin({
-                       prefix:'<i class="icon-ticket"></i>',
+                       //prefix:'<i class="icon-ticket"></i>',
                        verticalbuttons: true,
                        verticalupclass: 'icon-arrow-up22',
                        verticaldownclass: 'icon-arrow-down22',
@@ -784,7 +792,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                    }).on('touchspin.on.startspin', function () {totales()});
 
                    $("input[name='tbladd']").TouchSpin({
-                      prefix:'<i class="icon-coin-dollar"></i>',
+                      //prefix:'<i class="icon-coin-dollar"></i>',
                       verticalbuttons: true,
                       verticalupclass: 'icon-arrow-up22',
                       verticaldownclass: 'icon-arrow-down22',
@@ -795,7 +803,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                   }).on('touchspin.on.startspin', function () {totales()});
 
                   $("input[name='tblfinal']").TouchSpin({
-                    prefix:'<i class="icon-coin-dollar"></i>',
+                    //prefix:'<i class="icon-coin-dollar"></i>',
                     verticalbuttons: true,
                     verticalupclass: 'icon-arrow-up22',
                     verticaldownclass: 'icon-arrow-down22',
@@ -806,7 +814,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                   }).on('touchspin.on.startspin', function () {totales()});
 
                    $("input[name='tbldesc']").TouchSpin({
-                       prefix:'<i class="icon-coin-dollar"></i>',
+                       //prefix:'<i class="icon-coin-dollar"></i>',
                        verticalbuttons: true,
                        verticalupclass: 'icon-arrow-up22',
                        verticaldownclass: 'icon-arrow-down22',
@@ -816,13 +824,17 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                        decimals: 2,
                    }).on('touchspin.on.startspin', function () {totales()});
 
-                    noty({
-                           force: true,
-                           text: 'Producto agregado!',
-                           type: 'information',
-                           layout: 'top',
-                           timeout: 1000,
-                       });
+                    /*noty({
+                        force: true,
+                        text: 'Producto agregado!',
+                        type: 'information',
+                        layout: 'top',
+                        timeout: 1000,
+                    });*/
+                    new PNotify({
+                      text: 'Producto agregado al detalle.',
+                      addclass: "stack-bottom-right bg-info-800",
+                    });
 
                    totales();
 
@@ -831,13 +843,17 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                     posicion_fila=posicion_fila+1;
                     setRowCant(posicion_fila);
 
-                    noty({
-                           force: true,
-                           text: 'Producto agregado!',
-                           type: 'information',
-                           layout: 'top',
-                           timeout: 1000,
-                       });
+                    /*noty({
+                        force: true,
+                        text: 'Producto agregado!',
+                        type: 'information',
+                        layout: 'top',
+                        timeout: 1000,
+                    });*/
+                    new PNotify({
+                      text: 'Producto agregado al detalle.',
+                      addclass: "stack-bottom-right bg-info-800",
+                    });
 
                  }
 
@@ -850,7 +866,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                  tr_add += '<tr>';
                  tr_add += '<td align="center">'+idproducto+'</td>';
                  tr_add += '<td><h8 class="no-margin">'+producto+'</h8><br>'+
-                '<span class="text-muted">'+especificacion+'</span></td>';
+                           '<span class="text-muted">'+especificacion+'</span></td>';
                  tr_add += '<td width="5%"><input type="text" id="tblcant" name="tblcant" value="1.00" class="touchspin" style="width:70px;"></td>';
                  tr_add += '<td align="center">'+precio_venta+'</td>';
                  tr_add += '<td width="5%"><input type="text" id="tblfinal" name="tblfinal"  value="0.00" class="touchspin" style="width:70px;"></td>';
@@ -883,7 +899,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                    $('.select-size-xs').select2();
 
                    $("input[name='tblcant']").TouchSpin({
-                       prefix:'<i class="icon-ticket"></i>',   
+                       //prefix:'<i class="icon-ticket"></i>',   
                        verticalbuttons: true,
                        verticalupclass: 'icon-arrow-up22',
                        verticaldownclass: 'icon-arrow-down22',
@@ -894,7 +910,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                    }).on('touchspin.on.startspin', function () {totales()});
 
                    $("input[name='tbladd']").TouchSpin({
-                      prefix:'<i class="icon-coin-dollar"></i>',
+                      //prefix:'<i class="icon-coin-dollar"></i>',
                       verticalbuttons: true,
                       verticalupclass: 'icon-arrow-up22',
                       verticaldownclass: 'icon-arrow-down22',
@@ -905,7 +921,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                   }).on('touchspin.on.startspin', function () {totales()});
 
                   $("input[name='tblfinal']").TouchSpin({
-                    prefix:'<i class="icon-coin-dollar"></i>',
+                    //prefix:'<i class="icon-coin-dollar"></i>',
                     verticalbuttons: true,
                     verticalupclass: 'icon-arrow-up22',
                     verticaldownclass: 'icon-arrow-down22',
@@ -916,7 +932,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                   }).on('touchspin.on.startspin', function () {totales()});
 
                    $("input[name='tbldesc']").TouchSpin({
-                       prefix:'<i class="icon-coin-dollar"></i>',
+                       //prefix:'<i class="icon-coin-dollar"></i>',
                        verticalbuttons: true,
                        verticalupclass: 'icon-arrow-up22',
                        verticaldownclass: 'icon-arrow-down22',
@@ -926,13 +942,17 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                        decimals: 2,
                    }).on('touchspin.on.startspin', function () {totales()});
 
-                    noty({
-                           force: true,
-                           text: 'Producto agregado!',
-                           type: 'information',
-                           layout: 'top',
-                           timeout: 1000,
-                       });
+                    /*noty({
+                        force: true,
+                        text: 'Producto agregado!',
+                        type: 'information',
+                        layout: 'top',
+                        timeout: 1000,
+                    });*/
+                    new PNotify({
+                      text: 'Producto agregado al detalle.',
+                      addclass: "stack-bottom-right bg-info-800",
+                    });
 
                    totales();
 
@@ -941,13 +961,17 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                     posicion_fila=posicion_fila+1;
                     setRowCant(posicion_fila);
 
-                    noty({
-                           force: true,
-                           text: 'Producto agregado!',
-                           type: 'information',
-                           layout: 'top',
-                           timeout: 1000,
-                       });
+                    /*noty({
+                        force: true,
+                        text: 'Producto agregado!',
+                        type: 'information',
+                        layout: 'top',
+                        timeout: 1000,
+                    });*/
+                    new PNotify({
+                      text: 'Producto agregado al detalle.',
+                      addclass: "stack-bottom-right bg-info-800",
+                    });
 
                  }
 
@@ -991,7 +1015,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
 
 
               $("input[name='tblcant']").TouchSpin({
-                  prefix: '<i class="icon-ticket"></i>',
+                  //prefix:'<i class="icon-ticket"></i>',
                   verticalbuttons: true,
                   verticalupclass: 'icon-arrow-up22',
                   verticaldownclass: 'icon-arrow-down22',
@@ -1002,7 +1026,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
               }).on('touchspin.on.startspin', function () {totales()});
               
               $("input[name='tbladd']").TouchSpin({
-                  prefix:'<i class="icon-coin-dollar"></i>',
+                  //prefix:'<i class="icon-coin-dollar"></i>',
                   verticalbuttons: true,
                   verticalupclass: 'icon-arrow-up22',
                   verticaldownclass: 'icon-arrow-down22',
@@ -1013,7 +1037,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
               }).on('touchspin.on.startspin', function () {totales()});
 
               $("input[name='tblfinal']").TouchSpin({
-                  prefix:'<i class="icon-coin-dollar"></i>',
+                  //prefix:'<i class="icon-coin-dollar"></i>',
                   verticalbuttons: true,
                   verticalupclass: 'icon-arrow-up22',
                   verticaldownclass: 'icon-arrow-down22',
@@ -1024,7 +1048,7 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
               }).on('touchspin.on.startspin', function () {totales()});
               
               $("input[name='tbldesc']").TouchSpin({
-                  prefix:'<i class="icon-coin-dollar"></i>',
+                  //prefix:'<i class="icon-coin-dollar"></i>',
                   verticalbuttons: true,
                   verticalupclass: 'icon-arrow-up22',
                   verticaldownclass: 'icon-arrow-down22',
@@ -1034,13 +1058,17 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                   decimals: 2,
               }).on('touchspin.on.startspin', function () {totales()});
 
-               noty({
-                      force: true,
-                      text: 'Producto agregado!',
-                      type: 'information',
-                      layout: 'top',
-                      timeout: 1000,
-                  });
+                /*noty({
+                    force: true,
+                    text: 'Producto agregado!',
+                    type: 'information',
+                    layout: 'top',
+                    timeout: 1000,
+                });*/
+                new PNotify({
+                  text: 'Producto agregado al detalle.',
+                  addclass: "stack-bottom-right bg-info-800",
+                });
 
               totales();
 
@@ -1258,7 +1286,10 @@ $(document).on("click",".Delete",function(){
   var parent = $(this).parents().get(0);
   $(parent).remove();
   totales();
-
+  new PNotify({
+    text: 'Producto eliminado del detalle.',
+    addclass: "stack-bottom-right bg-orange",
+  });
 });
 
 
@@ -1270,8 +1301,8 @@ $(document).on("focusout","#tblcant, #tblfinal, #tbldesc, #tbladd",function(){
 $("#btncancelar").click(function(){
 
         swal({
-            title: "¿Está seguro que desea cancelar la Venta?",
-            text: "Se eliminaran todos los datos que ya ingreso!",
+            title: "¿Está seguro que desea cancelar la venta?",
+            text: "Se eliminaran todos los detalles venta ingresada!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#EF5350",
@@ -1284,7 +1315,7 @@ $("#btncancelar").click(function(){
             if (isConfirm) {
                 swal({
                     title: "Cancelado!",
-                    text: "Su proceso fue cancelado con exito.",
+                    text: "La venta fue cancelado con exito.",
                     confirmButtonColor: "#66BB6A",
                     type: "success"
                 },
@@ -1318,7 +1349,7 @@ $.getJSON('web/ajax/ajxparametro.php?criterio=moneda',function(data){
 
   $.each(data,function(key,val){
 
-    var moneda = val.CurrencyISO + ' ' + val.Symbol;
+    var moneda = /*val.CurrencyISO + ' ' + */val.Symbol;
 
       $.getJSON('web/ajax/ajxparametro.php?criterio=iva',function(data){
 
@@ -1612,7 +1643,7 @@ function enviar_data(){
 function procesar_venta(){
 
   return new Promise((resolve, reject) => {
-      $("#btnRegistrar").prop("disabled",false);
+      $("#btnRegistrar").prop("disabled",true);
       var i=0;
       var StringDatos="";
       var pagado = $('#chkPagado').is(':checked') ? 1 : 0;
@@ -1705,9 +1736,9 @@ function procesar_venta(){
           dataString+='&retenido='+retenido+'&exento='+exento+'&descuento='+descuentos+'&total='+total+'&pagado='+pagado;
           dataString+='&efectivo='+efectivo+'&pago_tarjeta='+pago_tarjeta+'&numero_tarjeta='+numero_tarjeta+'&tarjeta_habiente='+tarjeta_habiente+'&cambio='+cambio+'&descripcion='+descripcion;
 
-          if(total < 5.00 && comprobante==2){ //Validacion Facturacion
+          if(total < 0.10 && comprobante==2){ //Validacion Facturacion  $4.00
 
-              swal("Importante!","No se puede emitir una Factura por un monto menor a $4.00","warning"); 
+              swal("Importante!","No se puede emitir una Factura por un monto menor a $0.10","warning"); 
   
           }else if(total > 50.00 && comprobante==2 && idcliente==1){ //Validacion Facturacion
   
@@ -1728,7 +1759,7 @@ function procesar_venta(){
 
                 },error: function() {
 
-                  swal("Ups! Ocurrio un error","Revise en Reporte del dia su comprobante","error");
+                  swal("Ups! Ocurrio un error","Revise su comprobante en el reporte del dia","error");
               }
 
 
@@ -1737,7 +1768,7 @@ function procesar_venta(){
 
           } else {
 
-            swal("Imposible","No se puede registrar una compra con valor 0.00","warning");
+            swal("Imposible","No se puede registrar una venta con valor $0.00","warning");
 
           }
     });
@@ -1768,7 +1799,7 @@ function procesar_comprobante(resp){
                 if(data != "Error"){
                     alert(data);
                     swal({
-                      title: "¿Desea Imprimir el Comprobante?",
+                      title: "¿Desea imprimir el comprobante de venta?",
                       text: "Su cliente lo puede solicitar",
                       imageUrl: "web/assets/images/receipt.png",
                       showCancelButton: true,
@@ -1780,23 +1811,18 @@ function procesar_comprobante(resp){
                       closeOnCancel: false,
                     },
                     function(isConfirm){
+                      submitEjecutado = false;
                       if (isConfirm) {
                           window.open('reportes/Ticket.php?venta=""',
                           'win2',
                           'status=yes,toolbar=yes,scrollbars=yes,titlebar=yes,menubar=yes,'+
                           'resizable=yes,width=600,height=600,directories=no,location=no'+
                           'fullscreen=yes');
-                          window.location.href = "?View=Venta-Diaria";
-                          //window.location.replace('http://localhost/ac/?View=Venta-Diaria');
-                          //window.location.replace('https://palaciodelcelular.com/?View=Venta-Diaria');
-                          //location.reload();
+                          window.location.href = "?View=POS"; //Venta-Diaria
                       } else {
                         setTimeout(function(){
                             swal("Venta finalizada correctamente.");
-                            window.location.href = "?View=Venta-Diaria";
-                            //window.location.replace('http://localhost/ac/?View=Venta-Diaria');
-                            //window.location.replace('https://palaciodelcelular.com/?View=Venta-Diaria');
-                            //location.reload();
+                            window.location.href = "?View=POS"; //Venta-Diaria
                         }, 150);
                       }
                     });
@@ -1817,23 +1843,18 @@ function procesar_comprobante(resp){
                   closeOnCancel: false,
                 },
                 function(isConfirm){
+                  submitEjecutado = false;
                   if (isConfirm) {
                       window.open('reportes/Ticket.php?venta=""',
                       'win2',
                       'status=yes,toolbar=yes,scrollbars=yes,titlebar=yes,menubar=yes,'+
                       'resizable=yes,width=600,height=600,directories=no,location=no'+
                       'fullscreen=yes');
-                      window.location.href = "?View=Venta-Diaria";
-                      //window.location.replace('http://localhost/ac/?View=Venta-Diaria');
-                      //window.location.replace('https://palaciodelcelular.com/?View=Venta-Diaria');
-                      //location.reload();
+                      window.location.href = "?View=POS"; //Venta-Diaria
                   } else {
                     setTimeout(function(){
                         swal("Venta finalizada correctamente.");
-                        window.location.href = "?View=Venta-Diaria";
-                        //window.location.replace('http://localhost/ac/?View=Venta-Diaria');
-                        //window.location.replace('https://palaciodelcelular.com/?View=Venta-Diaria');
-                        //location.reload();
+                        window.location.href = "?View=POS"; //Venta-Diaria
                     }, 150);
                   }
                 });
@@ -1841,7 +1862,7 @@ function procesar_comprobante(resp){
           });
       }else{
         swal({
-            title: "¿Desea Imprimir el Comprobante?",
+            title: "¿Desea imprimir el comprobante de venta?",
             text: "Su cliente lo puede solicitar",
             imageUrl: "web/assets/images/receipt.png",
             showCancelButton: true,
@@ -1853,29 +1874,25 @@ function procesar_comprobante(resp){
             closeOnCancel: false,
           },
           function(isConfirm){
+            submitEjecutado = false;
             if (isConfirm) {
                 window.open('reportes/Ticket.php?venta=""',
                 'win2',
                 'status=yes,toolbar=yes,scrollbars=yes,titlebar=yes,menubar=yes,'+
                 'resizable=yes,width=600,height=600,directories=no,location=no'+
                 'fullscreen=yes');
-                window.location.href = "?View=Venta-Diaria";
-                //window.location.replace('http://localhost/ac/?View=Venta-Diaria');
-                //window.location.replace('https://palaciodelcelular.com/?View=Venta-Diaria');
-                //location.reload();
+                window.location.href = "?View=POS"; //Venta-Diaria
             } else {
               setTimeout(function(){
                   swal("Venta finalizada correctamente.");
-                  window.location.href = "?View=Venta-Diaria";
-                  //window.location.replace('http://localhost/ac/?View=Venta-Diaria');
-                  //window.location.replace('https://palaciodelcelular.com/?View=Venta-Diaria');
-                  //location.reload();
+                  window.location.href = "?View=POS"; //Venta-Diaria
               }, 150);
             }
           });
       }
       
     } else {
+      submitEjecutado = false;
       swal('Lo sentimos, no pudimos registrar tu informacion!', "Intentalo nuevamente", "error");
     }
     

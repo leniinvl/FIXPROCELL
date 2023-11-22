@@ -452,7 +452,7 @@
 				while($recResult = $stmt->fetch(PDO::FETCH_ASSOC)) {
 					
 					$json_row["value"] = $recResult['idproducto'];
-					$json_row["label"] = $recResult['nombre_producto'].' '.$recResult['nombre_marca'].' '.$recResult['siglas'].'ㅤ//ㅤPRECIO= $'.$recResult['precio_venta'].' ---- MINIMO= $'.$recResult['precio_venta_minimo'].' ---- DIST1= $'.$recResult['precio_venta_mayoreo'].' ---- DIST2= $'.$recResult['precio_super_mayoreo'];
+					$json_row["label"] = $recResult['nombre_producto'].' '.$recResult['nombre_marca'].' '.$recResult['siglas'].'ㅤㅤPRECIO NORMAL: $'.$recResult['precio_venta'].'ㅤPRECIO OFERTA: $'.$recResult['precio_venta_minimo'];/*.' ---- DIST1= $'.$recResult['precio_venta_mayoreo'].' ---- DIST2= $'.$recResult['precio_super_mayoreo']*/
 					$json_row["producto"] = $recResult['nombre_producto'];
 					$json_row["precio_venta"] = $recResult['precio_venta'];
 					$json_row["precio_venta_minimo"] = $recResult['precio_venta_minimo'];
@@ -462,7 +462,7 @@
 					$json_row["exento"] = $recResult['exento'];
 					$json_row["perecedero"] = $recResult['perecedero'];
 					$json_row["inventariable"] = $recResult['inventariable'];
-					$json_row["datos"] = '('.$recResult['nombre_categoria'].')ㅤCOLOR: '.$recResult['nombre_color'].'ㅤSTOCK: '.$recResult['stock']; 
+					$json_row["datos"] = $recResult['nombre_categoria'].' - STOCK: '.$recResult['stock']; //ㅤCOLOR: '.$recResult['nombre_color'].' 
 
 					array_push($sugg_json, $json_row);
 				}
