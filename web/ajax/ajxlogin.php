@@ -9,15 +9,7 @@
 	});
 	$funcion = new Login();
 
- 
-	//Con este codigo hago logout
-
-	if(isset($_GET['logout']) && $_GET['logout']=="true")
-	{
-		#destruyo las sesiones muajajaja
-		/*unset($_SESSION['user_name']);
-		unset($_SESSION['user_tipo']);
-		unset($_SESSION['user_name']);*/
+	if(isset($_GET['logout']) && $_GET['logout']=="true"){
 		
 		unset($_SESSION['user_id']);
 		unset($_SESSION['user_name']); 
@@ -33,12 +25,10 @@
 		}
 	}
 
-	//Con este codigo hago logout
-
-
 	if(isset($_POST['usuario']) && isset($_POST['password']) && isset($_POST['nombre']) && isset($_POST['proceso'])){
 		
 		try {
+
 			$proceso = trim($_POST['proceso']);
 			$usuario = trim($_POST['usuario']);
 			$password = trim($_POST['password']);
@@ -52,14 +42,12 @@
 				break;
 
 			}
-
-
-			
 	
 		} catch (Exception $e) {
 			
 			$data = "Fake";
  	   		echo json_encode($data);
+			
 		}
 
 	}

@@ -260,4 +260,10 @@
     //Cuentas
 
 
+    //Password 
+    $conf["Reset-password"] = array(
+        "file" => "password.vw.php"
+    );
+    //Password
+
  ?>

@@ -101,7 +101,7 @@
 					</a>
 
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="web/ajax/ajxlogin.php?logout=true"><i class="icon-spell-check"></i> Cambiar contraseña</a></li>
+						<li><a href="./?View=Reset-password"><i class="icon-spell-check"></i> Cambiar contraseña</a></li>
 						<li><a href="web/ajax/ajxlogin.php?logout=true"><i class="icon-lock"></i> Cerrar Sesión </a></li>
 					</ul>
 				</li>
@@ -161,7 +161,7 @@
 				<div class="content">
 
 
-				<!-- Mini modal -->
+				<!-- Mini modal 
 				<div id="modal_reset" class="modal fade">
 					<div class="modal-dialog modal-xs">
 						<div class="modal-content">
@@ -171,7 +171,6 @@
 							</div>
 
 							<div class="modal-body">
-							 <!-- Password recovery -->
 								<form id="frmResend" method="POST" action="" class="form-validate-jquery">
 									<div class="panel panel-body login-form">
 										<div class="text-center">
@@ -198,12 +197,11 @@
 										<button type="submit" class="btn bg-blue btn-block">Restaurar<i class="icon-key position-right"></i></button>
 									</div>
 								</form>
-								<!-- /password recovery -->
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- /mini modal -->
+				 /mini modal -->
 
 				<!-- Aqui entra el Layout, // Las vistas se cargaran aqui adentro -->
 				<?php

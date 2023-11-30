@@ -11,10 +11,11 @@
 			$dbconec = Conexion::Conectar();
 			try 
 			{
+				$contrasena1 = password_hash($contrasena, PASSWORD_DEFAULT, array("cost"=>10));
 				$query = "CALL sp_reset_password_usuario(:usuario,:contrasena)";
 				$stmt = $dbconec->prepare($query);
 				$stmt->bindParam(":usuario",$usuario);
-				$stmt->bindParam(":contrasena",$contrasena);
+				$stmt->bindParam(":contrasena",$contrasena1);
 
 				if($stmt->execute())
 				{
@@ -86,20 +87,20 @@
 
 						$data = "Bad Pass";
 						echo json_encode($data);
+
 					}
 
 				}
 
 			}  catch (Exception $e) {
+
 				$data = "Error";
 				echo json_encode($data);
 			
 			}
 						
-
 		}
-
 
 }
 
- ?>
+?>
