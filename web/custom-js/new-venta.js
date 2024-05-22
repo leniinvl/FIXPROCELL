@@ -1178,22 +1178,21 @@ function buscar_por_codigo()
     },
 
     /*_renderItem: function( ul, item ) {
-    var re = new RegExp( "(" + this.term + ")", "gi" ),
-        cls = this.options.highlightClass,
-        template = "<span class='" + cls + "'>$1</span>",
-        label = item.label.replace( re, template ),
-        $li = $( "<li/>" ).appendTo( ul );
-           
-    $( "<a/>" ).attr( "href", "#" )
-               .html( label )
-               .appendTo( $li );
-            
+        var re = new RegExp( "(" + this.term + ")", "gi" ),
+            cls = this.options.highlightClass,
+            template = "<span class='" + cls + "'>$1</span>",
+            label = item.label.replace( re, template ),
+            $li = $( "<li/>" ).appendTo( ul );
+              
+        $( "<a/>" ).attr( "href", "#" )
+                   .html( label )
+                   .appendTo( $li );
     return $li;
     }*/
 
 })
-.autocomplete("instance")._renderItem = function(ul, item) {
-    return $("<li>").append("<span class='text-bold text-size-base'>" + item.label + '</span>' + "<br>" + '<span class="text-note text-size-base">' + item.datos + '</span>').appendTo(ul);
+.autocomplete("instance")._renderItem = function(ul, item) { /*CAMBIO PANEL VENTA (ui-autocomplete)*/
+    return $("<li>").append("<span class='text-bold text-sale text-size-base'>" + item.label + '</span>' + "<br>" + '<span class="text-bold text-note text-size-base">' + item.datos + '</span>').appendTo(ul);
 }
 
 }

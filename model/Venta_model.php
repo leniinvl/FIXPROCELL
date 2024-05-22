@@ -452,7 +452,7 @@
 				while($recResult = $stmt->fetch(PDO::FETCH_ASSOC)) {
 					
 					$json_row["value"] = $recResult['idproducto'];
-					$json_row["label"] = $recResult['nombre_producto'].' '.$recResult['nombre_marca'].' '.$recResult['siglas'].'ㅤㅤPRECIO NORMAL: $'.$recResult['precio_venta'].'ㅤPRECIO OFERTA: $'.$recResult['precio_venta_minimo'];/*.' ---- DIST1= $'.$recResult['precio_venta_mayoreo'].' ---- DIST2= $'.$recResult['precio_super_mayoreo']*/
+					$json_row["label"] = $recResult['nombre_producto'].' - '.$recResult['nombre_marca'].' '.$recResult['siglas'].'ㅤㅤNORMAL: $'.$recResult['precio_venta'].'ㅤOFERTA: $'.$recResult['precio_venta_minimo'];/*.' ---- DIST1= $'.$recResult['precio_venta_mayoreo'].' ---- DIST2= $'.$recResult['precio_super_mayoreo']*/
 					$json_row["producto"] = $recResult['nombre_producto'];
 					$json_row["precio_venta"] = $recResult['precio_venta'];
 					$json_row["precio_venta_minimo"] = $recResult['precio_venta_minimo'];

@@ -82,15 +82,15 @@
 						</ul>
 					</div>
 						<div class="panel-heading">
-							<h4 class="panel-title">Administración de Caja de Recaudación</h4>
+							<h4 class="panel-title">Administrar Movimientos de Caja</h4>
 
-							<small class="display-block">Fecha : <?php echo $c_fecha_apertura ?> - <strong>
+							<small class="display-block">Estado : <?php echo $c_fecha_apertura ?> - <strong>
 							<?php echo $estado ?> </strong></small>
 
 							<div class="heading-elements">
 								<div class="btn-group heading-btn">
 								<?php if ($veces_abierta == "0" && $estado_caja == "") { ?>
-									<button type="button" class="btn bg-danger-700 dropdown-toggle" data-toggle="dropdown">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 									<i class="icon-box position-left"></i> <strong>Opciones</strong> <span class="caret"></span></button>
 									<ul class="dropdown-menu dropdown-menu-right">
 										<li><a href="#" data-toggle="modal" data-target="#modal_iconified"
@@ -99,7 +99,7 @@
 								 </div>
 								<?php } else if ($veces_abierta == "1" && $estado_caja == "1"){?>
 
-									<button type="button" class="btn bg-green-700 dropdown-toggle" data-toggle="dropdown">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 									<i class="icon-cash3 position-left"></i> <strong>Opciones</strong> <span class="caret"></span></button>
 									<ul class="dropdown-menu dropdown-menu-right">
 
@@ -122,7 +122,7 @@
 
 
 	                            <div class="btn-group heading-btn">
-	                                <button type="button" class="btn bg-blue-400 dropdown-toggle" data-toggle="dropdown"><i class="icon-coin-dollar position-left"></i> <strong> Movimientos de Caja</strong> <span class="caret"></span></button>
+	                                <button type="button" class="btn bg-blue-700 dropdown-toggle" data-toggle="dropdown"><i class="icon-coin-dollar position-left"></i> <strong> Movimientos de Caja</strong> <span class="caret"></span></button>
 									<ul class="dropdown-menu dropdown-menu-right">
 										<li><a href="#" data-toggle="modal" data-target="#modal_iconified_movimiento"
 										onclick="openMovimiento('devolucion','')"><i class="icon-rotate-ccw3 pull-right"></i> Devolucion</a></li>
@@ -138,7 +138,7 @@
 								<?php } else if ($veces_abierta == "1" && $estado_caja == "0"){ ?>
 
 
-								<button type="button" class="btn bg-green-700 dropdown-toggle" data-toggle="dropdown">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 									<i class="icon-cash3 position-left"></i> <strong>Opciones</strong> <span class="caret"></span></button>
 									<ul class="dropdown-menu dropdown-menu-right">
 										<li><a href="#" data-toggle="modal" data-target="#modal_iconified"
@@ -153,81 +153,75 @@
 						<div class="panel-body">
 							<div class="row" >
 
-								<div class="col-md-6">
-									<div class="chart-container text-center">
-										<div class="display-inline-block" id="c3-pie-chart"></div>
-									</div>
-								</div>
-								
-						 		<div class="col-md-5">
+						 		<div class="col-md-6">
 						 		  <!-- Navigation widget -->
-								  <div class="panel panel-flat" style="background-color: #F4F6F6;">
+								  <div class="panel panel-flat" style="background-color: #EAECEE;">
 									<div class="table-responsive">
 										<table class="table table-xxs">
 											<tbody>
 												<tr>
-													<td><i class="icon-cash"  style="color:#0288D1;" aria-hidden="true"></i></td>
+													<td><i class="icon-cash"  style="color:#34495E;" aria-hidden="true"></i></td>
 													<td class="#444"><left><b>MONTO INICIAL</b></left> <a data-toggle="modal" data-target=".bs-example-modal-sm" style='color:#5b5d5f'></a></td>
 													<td></td>
 													<td id="inicial" class="text-right text-bold"> <?php if($monto_inicial!='')echo  $simbolo.' '.$monto_inicial; else echo $simbolo.' 0.00'; ?></td>
 													<input type="hidden" id="txtinicial" value="<?php echo  $monto_inicial; ?>"></td>
 												</tr>
 												<tr>
-													<td><i class="icon-cash"  style="color:#5cb85c;" aria-hidden="true"></i></td>
-													<td class="#444"><left><b>INGRESOS</b></left> <a data-toggle="modal" data-target=".bs-example-modal-sm" style='color:#5b5d5f'> </a></td>
+													<td><i class="icon-cash"  style="color:#2ECC71;" aria-hidden="true"></i></td>
+													<td class="#444"><left><b>INGRESOS EN VENTAS</b></left> <a data-toggle="modal" data-target=".bs-example-modal-sm" style='color:#5b5d5f'> </a></td>
 													<td></td>
 													<td id="ingresos" class="text-right text-bold"><?php if($ingresos!='')echo  $simbolo.' '.$ingresos; else echo $simbolo.' 0.00'; ?></td>
 												</tr>
 												<tr>
-													<td><i class="icon-cash" style="color:#e9573f;" aria-hidden="true"></i></td>
+													<td><i class="icon-cash" style="color:#D68910;" aria-hidden="true"></i></td>
 													<td><left><b>DEVOLUCIONES</b></left></td>
 													<td></td>
 													<td id="devoluciones" class="text-right text-bold"><?php if($devoluciones!='')echo  $simbolo.' '.$devoluciones; else $simbolo.' 0.00'; ?></td>
 												</tr>
 												<tr>
-													<td><i class="icon-cash" style="color:#f6bb42;" aria-hidden="true"></i></td>
+													<td><i class="icon-cash" style="color:#D4AC0D;" aria-hidden="true"></i></td>
 													<td><left><b>PR&Eacute;STAMOS</b></left></td>
 													<td></td>
 													<td id="prestamos" class="text-right text-bold"><?php if($prestamos!='')echo  $simbolo.' '.$prestamos; else echo $simbolo.' 0.00'; ?></td>
 												</tr>
 
 												<tr>
-													<td><i class="icon-cash"  style="color:#63d3e9;" aria-hidden="true"></i></td>
+													<td><i class="icon-cash"  style="color:#5499C7;" aria-hidden="true"></i></td>
 													<td class=" "><left><b>GASTOS</b></left></td>
 													<td></td>
 													<td id="gastos" class="text-right text-bold"><?php if($gastos!='')echo  $simbolo.' '.$gastos; else echo $simbolo.' 0.00'; ?></td>
 												</tr>
 												<tr class="">
 													<th class=""></th>
-													<th class="text-success "><h5><left><strong>INGRESOS TOTALES</strong></left></h5></th>
+													<th class="text-success-700"><left><strong>INGRESOS TOTALES</strong></left></th>
 													<th class=""></th>
-													<th class="text-right text-success"><h5><strong id="Ingresos"><?php if($ingresos_totales!='')
-													echo  $simbolo.' '.$ingresos_totales; else echo  $simbolo.' 0.00'; ?></strong></h5></th>
+													<th class="text-right text-success-700"><strong id="Ingresos"><?php if($ingresos_totales!='')
+													echo  $simbolo.' '.$ingresos_totales; else echo  $simbolo.' 0.00'; ?></strong></th>
 												</tr>
 												<tr class="">
 													<th class=""></th>
-													<th class="text-danger "><h5><left><strong>EGRESOS TOTALES</strong></left></h5></th>
+													<th class="text-danger-700"><left><strong>EGRESOS TOTALES</strong></left></th>
 													<th class=""></th>
-													<th class="text-right text-danger"><h5><strong id="Egresos"><?php if($egresos!='')echo  $simbolo.' '.$egresos; else echo $simbolo.' 0.00'; ?></strong></h5></th>
-												</tr>
-												<tr class="">
-													<td class=""></td>
-													<td class=""><h5><left><strong>SALDO</strong></left></h5></td>
-													<th class=""></th>
-													<th class="text-right"><h5><strong id="Saldo"><?php if($saldo!='')echo  $simbolo.' '.$saldo; else echo $simbolo.' 0.00'; ?></strong></h5></th>
+													<th class="text-right text-danger-700"><strong id="Egresos"><?php if($egresos!='')echo  $simbolo.' '.$egresos; else echo $simbolo.' 0.00'; ?></strong></th>
 												</tr>
 												<tr class="">
 													<td class=""></td>
-													<td class="text-info"><h5><left><strong>SALDO + MONTO INICIAL </strong></left></h5></td>
+													<td class="text-teal-700"><left><strong>SALDO</strong></left></td>
 													<th class=""></th>
-													<th class="text-right text-info"><h5><strong id="Diferencia"><?php if($diferencia!='')echo $simbolo.' '.number_format($diferencia, 2, '.', ','); else echo $simbolo.' 0.00';?></strong></h5></th>
+													<th class="text-right text-teal-700"><strong id="Saldo"><?php if($saldo!='')echo  $simbolo.' '.$saldo; else echo $simbolo.' 0.00'; ?></strong></th>
+												</tr>
+												<tr class="">
+													<td class=""></td>
+													<td class="text-info-700"><left><strong>SALDO + MONTO INICIAL</strong></left></td>
+													<th class=""></th>
+													<th class="text-right text-info-700"><strong id="Diferencia"><?php if($diferencia!='')echo $simbolo.' '.number_format($diferencia, 2, '.', ','); else echo $simbolo.' 0.00';?></strong></th>
 													<input type="hidden" id="txtdiferencia"  value="<?php echo  $diferencia; ?>"></th>
 												</tr>
 												<tr class="">
 													<td class=""></td>
-													<td class="text-warning"><h5><left><strong>TRANSFERENCIAS </strong></left></h5></td>
+													<td class="text-indigo-800"><left><strong>TRANSFERENCIAS</strong></left></td>
 													<th class=""></th>
-													<th class="text-right text-warning"><h5><strong id="Transferencia"><?php if($ingreso_transferencia!='')echo $simbolo.' '.number_format($ingreso_transferencia, 2, '.', ','); else echo $simbolo.' 0.00';?></strong></h5></th>
+													<th class="text-right text-indigo-800"><strong id="Transferencia"><?php if($ingreso_transferencia!='')echo $simbolo.' '.number_format($ingreso_transferencia, 2, '.', ','); else echo $simbolo.' 0.00';?></strong></th>
 													<input type="hidden" id="txttransferencia"  value="<?php echo  $ingreso_transferencia; ?>"></th>
 												</tr>
 											</tbody>
@@ -235,6 +229,13 @@
 									 </div>
 								   </div>
 								</div>
+
+								<div class="col-md-6" style="background-color: #EAECEE;">
+									<div class="chart-container text-center">
+										<div class="display-inline-block" id="c3-pie-chart"></div>
+									</div>
+								</div>		
+
 							</div>
 
 
@@ -397,7 +398,7 @@
 
 			  <!-- Iconified modal -->
 				<div id="modal_iconified_movimiento" class="modal fade">
-					<div class="modal-dialog modal-sm">
+					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -416,7 +417,7 @@
 
 									<div class="form-group">
 										<div class="row">
-											<div class="col-sm-12">
+											<div class="col-sm-6">
 												<label>Monto <span class="text-danger">*</span></label>
 												<input type="text" id="txtMonto" name="txtMonto" placeholder="EJEMPLO: 25.00"
 												class="touchspin-prefix" value="0" style="text-transform:uppercase;"
@@ -454,7 +455,7 @@
 
 			  <!-- Iconified modal -->
 				<div id="modal_iconified" class="modal fade">
-					<div class="modal-dialog modal-sm">
+					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -473,7 +474,7 @@
 
 									<div class="form-group">
 										<div class="row">
-											<div class="col-sm-12">
+											<div class="col-sm-6">
 												<label>Monto <span class="text-danger">*</span></label>
 												<input type="text" id="txtCantidad" name="txtCantidad" placeholder="EJEMPLO: 15.00"
 												class="touchspin-prefix" value="0" style="text-transform:uppercase;"

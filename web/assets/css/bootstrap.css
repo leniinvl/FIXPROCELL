@@ -1349,8 +1349,11 @@ mark,
 .text-muted {
   color: #999999;
 }
-.text-note {  /*CAMBIO COLOR TEXTO*/
-  color: #00838F; /*#138d2b*/
+.text-note {  /*CAMBIO COLOR TEXTO PANEL VENTA*/
+  color: #00454b; /*#138d2b*/
+}
+.text-sale {  /*CAMBIO COLOR TEXTO PANEL VENTA*/
+  color: #515151; /*#138d2b*/
 }
 .text-primary {
   color: #2196F3;

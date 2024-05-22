@@ -88,7 +88,7 @@
 									<table id="tbldetalle" class="table table-xxs">
 										<thead>
 											<tr class="bg-info-800">
-												<th></th>
+												<th class="text-center">ID</th>
 												<th class="text-center">PRODUCTO</th>
 												<th class="text-center">CANT.</th>
 												<th class="text-center">PRECIO</th>
@@ -130,8 +130,8 @@
 												<td align="center" id="descuentos"></td>
 												<td align="center" id="total"></td>
 												<td align="center"><button type="button" id="btnguardar" data-toggle="modal" data-target="#modal_iconified_cash"
-												class="btn bg-success-700 btn-sm ">&nbsp Cobrar &nbsp</button></td>
-												<td align="center"><button type="submit" id="btncancelar" class="btn bg-danger-700 btn-sm">
+												class="btn bg-success-400 btn-sm ">&nbsp Cobrar &nbsp</button></td>
+												<td align="center"><button type="submit" id="btncancelar" class="btn bg-warning-400 btn-sm">
 												</b> Cancelar </button></td>
 											</tr>
 										</tfoot>
