@@ -10,6 +10,11 @@
 
 			try 
 			{
+				/** UPDATE PERECEDEROS **/
+				$query = "CALL sp_sacar_vencidos();";
+				$stmt = $dbconec->prepare($query);
+				$stmt->execute();
+
 				$query = "CALL sp_view_perecedero(:fecha1,:fecha2);";
 				$stmt = $dbconec->prepare($query);
 				$stmt->bindParam(":fecha1",$fecha1);

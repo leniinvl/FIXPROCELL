@@ -436,7 +436,7 @@ var validator = $("#frmFilter").validate({
 
   function buscar_datos()
   {
-  console.log("producto.js search");
+  console.log("Search producto.js");
   var idsucursal = $("#cbSucursal").val();
   var idcat = $("#cbFCategoria").val();
 
@@ -774,7 +774,7 @@ idpresentacion, estado, exento, inventariable, perecedero, idcolor)
 
 function enviar_frm()
 {
-  console.log("producto.js save");
+  console.log("Save producto.js");
   var urlprocess = 'web/ajax/ajxproducto.php';
   var proceso = $("#txtProceso").val();
   var id = $("#txtID").val();
@@ -943,7 +943,6 @@ function Print_Report(Criterio)
 }
 
 function Imprimir_Barra(){
-
       var id = $("#txtIDP").val();
       var cant = $("#txtCant").val();
       var ancho = $("#txtAncho").val();

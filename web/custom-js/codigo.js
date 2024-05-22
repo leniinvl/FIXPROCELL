@@ -97,7 +97,7 @@ $(function() {
         required:true
       },
       txtImei1:{
-        maxlength:20,
+        maxlength:150,
         minlength: 3,
         required: true,
       },
@@ -163,7 +163,7 @@ function openParametro(action, idcodigo, codigo_uno, codigo_dos, idproducto)
     $('#btnGuardar').show();
     limpiarform();
 
-    modal.find('.title-form').text('Ingresar IMEI de Equipo');
+    modal.find('.title-form').text('Ingresar codificación  de Equipo');
    }else if(action=='editar') {
 
     $('#modal_iconified').modal('show');
@@ -182,7 +182,7 @@ function openParametro(action, idcodigo, codigo_uno, codigo_dos, idproducto)
     $('#btnEditar').show();
     $('#btnGuardar').hide();
 
-    modal.find('.title-form').text('Actualizar IMEI de Equipo');
+    modal.find('.title-form').text('Actualizar codificación  de Equipo');
    } else if(action=='ver'){
 
     $('#txtProceso').val('');
@@ -199,7 +199,7 @@ function openParametro(action, idcodigo, codigo_uno, codigo_dos, idproducto)
     $('#btnEditar').hide();
     $('#btnGuardar').hide();
 
-    modal.find('.title-form').text('Ver IMEI de Equipo');
+    modal.find('.title-form').text('Ver codificación  de Equipo');
    }
 
 });
@@ -237,9 +237,7 @@ $.ajax({
                 confirmButtonColor: "#66BB6A",
                 type: "success"
             });
-
             $('#modal_iconified').modal('toggle');
-
             cargarDiv("#reload-div","web/ajax/reload-codigoproducto.php");
             limpiarform();
 
@@ -253,12 +251,13 @@ $.ajax({
                     confirmButtonColor: "#2196F3",
                     type: "info"
                 });
-                 $('#modal_iconified').modal('toggle');
+                $('#modal_iconified').modal('toggle');
                 cargarDiv("#reload-div","web/ajax/reload-codigoproducto.php");
+                limpiarform();
 
             }
 
-      } else if (data=="Duplicado"){
+      } else if (data=="Duplicado"){X
 
          swal({
                 title: "Lo sentimos!",
@@ -270,7 +269,7 @@ $.ajax({
 
       } else if(data =="Error"){
 
-             swal({
+          swal({
               title: "Lo sentimos...",
               text: "No procesamos bien tus datos!",
               confirmButtonColor: "#EF5350",

@@ -652,22 +652,31 @@
 			$dbconec = Conexion::Conectar();
 			try
 			{
+				$count = 0;
 				$dbconec = Conexion::Conectar();
 				$query = "CALL sp_insert_codigo_producto(:codigo_uno,:codigo_dos,:idproducto)";
-				$stmt = $dbconec->prepare($query);
-				$stmt->bindParam(":codigo_uno",$codigo_uno);
-				$stmt->bindParam(":codigo_dos",$codigo_dos);
-				$stmt->bindParam(":idproducto",$idproducto);
-
-				if($stmt->execute()){
-					$count = $stmt->rowCount();
-					if($count == 0){
-						$data = "Duplicado";
-					} else {
-						$data = "Validado";
+				
+				$valores = explode(',', $codigo_uno);
+				$size = count($valores);
+				for ($i = 0; $i < $size; $i++) {
+					$codigo = trim($valores[$i]);
+					if (!empty($codigo)) {
+						$stmt = $dbconec->prepare($query);
+						$stmt->bindParam(":codigo_uno",$codigo);
+						$stmt->bindParam(":codigo_dos",$codigo_dos);
+						$stmt->bindParam(":idproducto",$idproducto);
+						if($stmt->execute()){
+							$count = $stmt->rowCount();
+						} else {
+							break;
+						}
 					}
+				}
+
+				if($count == 0){
+					$data = "Duplicado";
 				} else {
-					$data = "Error";
+					$data = "Validado";
 				}
 
 				echo json_encode($data);

@@ -67,18 +67,22 @@
 					                	<td><?php print($column['siglas']); ?></td>
 					                	<td><?php print($envio_date); ?></td>
 					                	<td><?php print($column['cantidad_perecedero']); ?></td>
-														<td><?php if($column['estado_perecedero'] == '1'){
+										<td><?php if($column['estado_perecedero'] == '1'){
 					                		echo '<span class="label label-success label-rounded"><span
 					                		class="text-bold">VIGENTE</span></span>';
-														} else if($column['estado_perecedero'] == '0') {
-					                		echo '<span class="label label-warning label-rounded">
-					                	<span
+										} else if($column['estado_perecedero'] == '0') {
+					                		echo '<span class="label label-danger label-rounded">
+					                		<span
 					                	    class="text-bold">VENCIDO</span></span>';
-														} else if ($column['estado_perecedero'] == '2'){
-															echo '<span class="label bg-violet label-rounded">
-					                	<span
+										} else if ($column['estado_perecedero'] == '2'){
+											echo '<span class="label bg-violet label-rounded">
+					                		<span
 					                	    class="text-bold">CANT. AGOTADA</span></span>';
-														}
+										} else if ($column['estado_perecedero'] == '3'){
+											echo '<span class="label bg-warning label-rounded">
+					                		<span
+					                	    class="text-bold">POR VENCER</span></span>';
+										}
 						                ?></td>
 					                	<td class="text-center">
 										<ul class="icons-list">
