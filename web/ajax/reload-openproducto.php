@@ -1,7 +1,9 @@
 <?php
 session_set_cookie_params(60*60*24*365); session_start();
 $tipo_usuario = $_SESSION['user_tipo'];
-$idsucursal_filtro = /*-1;*/ $_SESSION['sucursal_id']; /*CAMBIO FILTRO INICIAL*/
+/*CAMBIO FILTRO INICIAL*/
+//$idsucursal_filtro = $_SESSION['sucursal_id']; 
+$idsucursal_filtro = -1; 
 $idsucursal_selection = $_SESSION['sucursal_id'];
 
 spl_autoload_register(function($className) {

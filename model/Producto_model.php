@@ -434,11 +434,11 @@
 		public static function Insertar_Producto($codigo_barra,$nombre_producto,$precio_compra,$precio_venta,
 		$precio_venta_mayoreo,$precio_super_mayoreo,$stock,$stock_min,$idcategoria,$idmarca,$idpresentacion,$exento,$inventariable,$perecedero,$idsucursal,$idcolor,$precio_venta_minimo)
 		{
-			$dbconec = Conexion::Conectar();
+			//$dbconec = Conexion::Conectar();
 			$dbconec2 = Conexion::Conectar();
 			try
 			{
-				if($idsucursal <> 3){
+				/*if($idsucursal <> 3){
 
 					$stock_0 = 0;
 					$stock_min_1 = 1;
@@ -524,7 +524,7 @@
 						} 
 					}
 
-				}else{
+				}else{*/
 
 					$query = "CALL sp_insert_producto(:codigo_barra,:nombre_producto,:precio_compra,:precio_venta,
 					:precio_venta_mayoreo,:stock,:stock_min,:idcategoria,:idmarca,:idpresentacion,:exento,:inventariable,:perecedero,:idsucursal,:idcolor,:precio_super_mayoreo,:precio_venta_minimo)";
@@ -558,10 +558,10 @@
 						$data = "Error";
 					}
 
-				}
+				//}
 
 				echo json_encode($data);
-				$dbconec = null;
+				//$dbconec = null;
 				$dbconec2 = null;
 			} catch (Exception $e) {
 				//echo $e;
