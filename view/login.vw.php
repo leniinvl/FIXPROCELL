@@ -1,9 +1,9 @@
 
 	<script type="text/javascript" src="web/custom-js/login.js"></script>
-	<!-- /*CAMBIO*/ -->
+	<!-- /*CAMBIO FONDO LOGIN*/ -->
 	<style type="text/css">
 		body{
-			background: linear-gradient(to left, #D1D4C9, #556E53, #29435C, #152A38);
+			background: linear-gradient(to left, #7C8B87, #3E7362, #245244, #030A08);
 		}
 		.select-search {
 			height: 37px;
@@ -98,7 +98,7 @@
 <div class="row">
 	<div class="col-sm-6">
 			<?php
-				echo '<img src="web/assets/images/initVenta.png" width="70%" class="img-responsive" alt="">';
+				echo '<img src="web/assets/images/initVenta.png" width="65%" class="img-responsive" alt="">';
 			?>
 	</div>
 </div>

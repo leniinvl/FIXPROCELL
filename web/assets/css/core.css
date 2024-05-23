@@ -3212,7 +3212,7 @@ li + .dropdown-header.highlight,
 }
 
 .sidebar-main{
-    background: linear-gradient(to right, #152D35, #345B63);  /*CAMBIO COLOR MENU*/
+    background: linear-gradient(to right, #152D35, #345c57);  /*CAMBIO COLOR MENU*/
 }
 
 .navbar-component {
@@ -3401,7 +3401,7 @@ li + .dropdown-header.highlight,
 .navbar-bottom-xs-xs {
   padding-bottom: 88px;
 }
-.navbar-brand > img { /*CAMBIO DE ICONO BARRA*/
+.navbar-brand > img { /*CAMBIO TAMANIO ICONO BARRA*/
   margin-top: -8px;
   margin-left: -14px;
   margin-right: -34px;
@@ -3768,7 +3768,7 @@ li + .dropdown-header.highlight,
 .navbar-inverse {
   border-bottom-color: rgba(255, 255, 255, 0.1);
   color: #fff;
-  background: linear-gradient(to right, #556E53, #29435C, #152A38); /*CAMBIO COLOR BARRA*/
+  background: linear-gradient(to right, #000504, #0A1512, #191F1D); /*CAMBIO COLOR BARRA*/
 }
 .navbar-inverse .navbar-collapse {
   border-color: rgba(0, 0, 0, 0.2);
@@ -6007,7 +6007,7 @@ a.list-group-item-danger:focus {
 * ---------------------------------------------------------------------------- */
 .panel {
   margin-bottom: 20px;
-  border-color: #ddd;
+  border-color: #ddd; /*CAMBIO COLOR BORDE PANEL*/
   color: #333333;
 }
 .panel.has-scroll {
@@ -6097,7 +6097,7 @@ a.list-group-item-danger:focus {
 .panel-flat > .panel-heading {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #fff;
+  background-color: #f5f5f5;  /*CAMBIO COLOR HEADER PANEL*/
 }
 .panel-flat > .panel-heading > .panel-title {
   margin-top: 2px;
@@ -6506,4 +6506,4 @@ h6.panel-title,
 .page-container{                                                  
     background: linear-gradient(to right, #d1ffd9, #d1ffd1);
 }*/
-/*CAMBIO COLOR PAGINA*/
+/*CAMBIO COLOR LOGIN*/

@@ -355,7 +355,7 @@ a.badge,
 .navigation > li.active > a,
 .navigation > li.active > a:hover,
 .navigation > li.active > a:focus {
-  background-color: #6BA8A9; /*CAMBIO COLOR*/
+  background-color: #6BA8A9; /*CAMBIO COLOR ITEM MENU*/
   color: #fff;
 }
 .navigation > li.active > a > [class*=text-] {
@@ -783,7 +783,7 @@ a.badge,
     position: absolute;
     top: 0;
     right: -260px;
-    background-color: #6BA8A9; /*CAMBIO MENU*/
+    background-color: #6BA8A9; /*CAMBIO MENU ITEM*/
     border: 1px solid #6BA8A9; 
     padding: 12px 20px; 
     width: 260px;
@@ -2878,7 +2878,7 @@ label.checkbox-switch.checkbox-inline {
   color: rgba(255, 255, 255, 0.6);
 }
 .select2-results__option[aria-selected=true] {
-  background-color: #8c9993; /*CAMBIO SELECT ITEMS*/
+  background-color: #8c9993; /*CAMBIO SELECT ITEMS ACTIVE*/
   color: #fff;
 }
 .select2-results__options--nested > .select2-results__option {
@@ -10436,7 +10436,7 @@ body.stop-scrolling {
   display: none;
   padding: 7px 0;
   z-index: 1000;
-  max-height: 500px; /*CAMBIO AUTO-BUSCADOR*/
+  max-height: 500px; /*CAMBIO LONGITUD AUTO-BUSCADOR*/
   overflow-y: auto;
   overflow-x: hidden;
 }

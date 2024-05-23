@@ -19,8 +19,8 @@
 							<tr>
 								<th><b>Código</b></th>
 								<th><b>IMEI</b></th>
-								<th><b>Detalle</b></th>
 								<th><b>Nombre Equipo</b></th>
+								<th><b>Detalle</b></th>
 								<th><b>Registro</b></th>
 								<th><b>Establecimiento</b></th>
 								<th class="text-center"><b>Opciones</b></th>
@@ -62,8 +62,8 @@
 									<tr>
 					                	<td><?php print($column['idcodigo']); ?></td>
 					                	<td><?php print($column['codigo_uno']); ?></td>
-					                	<td><?php print($column['codigo_dos']); ?></td>
 										<td><?php print($column['producto']); ?></td>
+										<td><?php print($column['codigo_dos']); ?></td>
 					                	<td><?php print($column['fecha_registro']); ?></td>
 					                	<td><?php print($print_sucursal); ?></td>
 					                	<td class="text-center">

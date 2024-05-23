@@ -82,7 +82,7 @@
 					</div>
 
 					<div class="col-sm-6 col-md-3">
-						<div class="panel panel-body bg-blue-600 has-bg-image">
+						<div class="panel panel-body bg-blue-800 has-bg-image">
 							<div class="media no-margin">
 								<div class="media-left media-middle">
 									<i class="icon-cash3 icon-3x opacity-100"></i>
@@ -276,13 +276,13 @@
 						<!-- Traffic sources -->
 						<div class="panel panel-flat">
 							<div class="panel-heading">
-								<h6 class="panel-title text-center text-uppercase text-black">VENTAS (<?php echo date('Y') ?>) </h6>
+								<h6 class="panel-title bg-info-800 text-center text-uppercase text-black">VENTAS (<?php echo date('Y') ?>) </h6>
 							</div>
 							<div class="panel panel-flat bg-white has-bg-image">
 								<div class="chart-container text-center">
 									<div class="display-inline-block" id="chart-ventas"></div>
 								</div>
-								</div>
+							</div>
 						</div>
 						<!-- /traffic sources -->
 
@@ -293,7 +293,7 @@
 						<!-- Sales stats -->
 						<div class="panel panel-flat">
 							<div class="panel-heading">
-								<h6 class="panel-title text-center text-uppercase text-black">COMPRAS (<?php echo date('Y') ?>)</h6>
+								<h6 class="panel-title bg-info-800 text-center text-uppercase text-black">COMPRAS (<?php echo date('Y') ?>)</h6>
 							</div>
 							<div class="panel panel-flat bg-white has-bg-image">
 								<div class="chart-container text-center">
@@ -311,7 +311,7 @@
 						<!-- Simple line chart ---->
 							<div class="panel panel-flat">
 								<div class="panel-heading">
-									<h6 class="panel-title text-center text-uppercase text-black">GRÁFICO DE VENTAS Y COMPRAS (<?php echo date('Y') ?>) </h6>
+									<h6 class="panel-title bg-info-800 text-center text-uppercase text-black">GRÁFICO DE VENTAS Y COMPRAS (<?php echo date('Y') ?>) </h6>
 								</div>
 								<div class="panel panel-flat bg-white has-bg-image">
 									<div class="chart-container">

@@ -59,7 +59,7 @@
 	<script type="text/javascript" src="web/assets/js/plugins/extensions/jquery.number.min.js"></script>
 	
 	<script type="text/javascript" src="web/assets/js/core/app.js"></script>
-	<!-- /theme JS files /*CAMBIO*/ -->
+	<!-- /theme JS files /*CAMBIO FONDO*/ -->
 	<style type="text/css">
 		.page-container{
 			background: linear-gradient(to left, #A5C9CA, #ECF9FF); 
@@ -89,7 +89,7 @@
 			
 			<!--  nav navbar-nav-->
 			
-			<p class="navbar-text"><span class="label bg-green">En Linea</span></p>
+			<p class="navbar-text"><span class="label bg-green-700">En Linea</span></p>
 			<p class="navbar-text"><span class="label bg-orange"><?php echo $sucursal_nombre ?></span></p>
 			<p class="navbar-text"><span class="label bg-info-700"><?php echo $cargo ?></span></p>
 
