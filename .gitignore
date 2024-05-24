@@ -2,10 +2,10 @@
 #.DS_store
 
 # Ignora la carpeta
-web/facturacionphp/comprobantes/autorizados/*
-web/facturacionphp/comprobantes/no_firmados/*
-web/facturacionphp/comprobantes/pdf/*
-web/facturacionphp/comprobantes/si_firmados/*
+#web/facturacionphp/comprobantes/autorizados/*
+#web/facturacionphp/comprobantes/no_firmados/*
+#web/facturacionphp/comprobantes/pdf/*
+#web/facturacionphp/comprobantes/si_firmados/*
 
 
 # Ignora todos los archivos de texto
