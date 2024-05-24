@@ -14,9 +14,9 @@
  <table class="table datatable-basic table-xxs table-hover">
 	 <thead>
 		 <tr>
-			 <th><b>No</b></th>
-			 <th><b>Nombre Cliente</b></th>
-			 <th><b>Cédula / RUC</b></th>
+			 <th><b>Código</b></th>
+			 <th><b>Nombre de Cliente</b></th>
+			 <th><b>Cédula/RUC</b></th>
 			 <th><b>Telefono</b></th>
 			 <th><b>Email</b></th>
 			 <th><b>Tipo</b></th>
@@ -41,7 +41,7 @@
 									 <td><?php print($column['numero_telefono']); ?></td>
 									 <td><?php print($column['email']); ?></td>
 									<td><?php if($column['giro'] == 'CLIENTE NORMAL')
-										echo '<span class="label label-info label-rounded"><span
+										echo '<span class="label label-success label-rounded"><span
 										class="text-bold">CLIENTE NORMAL</span></span>';
 										else
 										echo '<span class="label label-warning label-rounded">

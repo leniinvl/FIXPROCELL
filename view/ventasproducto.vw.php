@@ -22,7 +22,7 @@
 							</ul>
 						</div>
 						<div class="panel-heading">
-							<h6 class="panel-title">Ventas de Productos <span class="text-danger">*</span></h6>
+							<h6 class="panel-title"><b>Ventas de Productos</b> <span class="text-danger">*</span></h6>
 
 						<div class="row">
 							 <div class="col-sm-12 col-md-8">
@@ -47,7 +47,7 @@
 												</select>
 											</div>
 											<div class="col-sm-4">
-												<button style="margin-top: 0px;" id="btnGuardar" type="submit" class="btn btn-primary btn-sm">
+												<button style="margin-top: 0px;" id="btnGuardar" type="submit" class="btn btn-info btn-sm">
 												<i class="icon-search4"></i> Consultar</button>
 											</div>
 										</div>

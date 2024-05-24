@@ -35,7 +35,7 @@ spl_autoload_register(function($className){
 			position-right"><?php echo $ventas_anuladas ?></span></a></li>
 			<li><a href="#label-tab3" data-toggle="tab">VENTAS AL CONTADO <span id="span-pre" class="label bg-warning
 			position-right"><?php echo $ventas_contado ?></span></a></li>
-			<li><a href="#label-tab4" data-toggle="tab">VENTAS AL CREDITO <span id="span-gas" class="label bg-info
+			<li><a href="#label-tab4" data-toggle="tab">VENTAS AL CREDITO <span id="span-gas" class="label bg-info-800
 			position-right"><?php echo $ventas_credito ?></span></a></li>
 		</ul>
 
@@ -46,7 +46,7 @@ spl_autoload_register(function($className){
 					<div class="panel-heading">
 						<h5 class="panel-title">Ventas Vigentes</h5>
 						<div class="heading-elements">
-							<button type="button" class="btn bg-danger-400 heading-btn" id="btnPrint" value="vigentes">
+							<button type="button" class="btn bg-info-800 heading-btn" id="btnPrint" value="vigentes">
 							<i class="icon-printer2"></i> Imprimir Reporte</button>
 						</div>
 					</div>
@@ -172,7 +172,7 @@ spl_autoload_register(function($className){
 					<div class="panel-heading">
 						<h5 class="panel-title">Ventas Anuladas</h5>
 						<div class="heading-elements">
-							<button type="button" class="btn bg-danger-400 heading-btn" id="btnPrint" value="anuladas">
+							<button type="button" class="btn bg-info-800 heading-btn" id="btnPrint" value="anuladas">
 							<i class="icon-printer2"></i> Imprimir Reporte</button>
 						</div>
 					</div>
@@ -288,7 +288,7 @@ spl_autoload_register(function($className){
 					<div class="panel-heading">
 						<h5 class="panel-title">Ventas al Contado</h5>
 						<div class="heading-elements">
-							<button type="button" class="btn bg-danger-400 heading-btn" id="btnPrint" value="contado">
+							<button type="button" class="btn bg-info-800 heading-btn" id="btnPrint" value="contado">
 							<i class="icon-printer2"></i> Imprimir Reporte</button>
 						</div>
 					</div>
@@ -409,7 +409,7 @@ spl_autoload_register(function($className){
 					<div class="panel-heading">
 						<h5 class="panel-title">Ventas al Credito</h5>
 						<div class="heading-elements">
-							<button type="button" class="btn bg-danger-400 heading-btn" id="btnPrint" value="credito">
+							<button type="button" class="btn bg-info-800 heading-btn" id="btnPrint" value="credito">
 							<i class="icon-printer2"></i> Imprimir Reporte</button>
 						</div>
 					</div>

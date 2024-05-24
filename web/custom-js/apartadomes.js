@@ -374,7 +374,7 @@ $(document).on('click', '#print_contado', function(e){
 
  var mySwitch = new Switchery($('.switchery')[0], {
           size:"small",
-          color: '#0D74E9',
+          color: '#2980B9',
           secondaryColor :'#26A69A'
       });
 

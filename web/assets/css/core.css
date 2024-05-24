@@ -6097,7 +6097,7 @@ a.list-group-item-danger:focus {
 .panel-flat > .panel-heading {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #f5f5f5;  /*CAMBIO COLOR HEADER PANEL*/
+  background-color: #e5e5e5;  /*CAMBIO COLOR HEADER PANEL*/
 }
 .panel-flat > .panel-heading > .panel-title {
   margin-top: 2px;

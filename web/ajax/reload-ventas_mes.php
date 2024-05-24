@@ -49,7 +49,7 @@
 			position-right"><?php echo $ventas_anuladas ?></span></a></li>
 			<li><a href="#label-tab3" data-toggle="tab">VENTAS AL CONTADO <span id="span-pre" class="label bg-warning
 			position-right"><?php echo $ventas_contado ?></span></a></li>
-			<li><a href="#label-tab4" data-toggle="tab">VENTAS AL CREDITO <span id="span-gas" class="label bg-info
+			<li><a href="#label-tab4" data-toggle="tab">VENTAS AL CREDITO <span id="span-gas" class="label bg-info-800
 			position-right"><?php echo $ventas_credito ?></span></a></li>
 		</ul>
 
@@ -61,7 +61,7 @@
 						<h5 class="panel-title">Ventas Vigentes</h5>
 						<div class="heading-elements">
 							<button type="button" id="print_vigentes"
-							class="btn bg-danger-400 heading-btn" id="btnPrint" value="vigentes">
+							class="btn bg-info-800 heading-btn" id="btnPrint" value="vigentes">
 							<i class="icon-printer2"></i> Imprimir Reporte</button>
 						</div>
 					</div>
@@ -188,7 +188,7 @@
 						<h5 class="panel-title">Ventas Anuladas</h5>
 						<div class="heading-elements">
 							<button type="button"  id="print_anuladas"
-							class="btn bg-danger-400 heading-btn" id="btnPrint" value="anuladas">
+							class="btn bg-info-800 heading-btn" id="btnPrint" value="anuladas">
 							<i class="icon-printer2"></i> Imprimir Reporte</button>
 						</div>
 					</div>
@@ -305,7 +305,7 @@
 						<h5 class="panel-title">Ventas al Contado</h5>
 						<div class="heading-elements">
 							<button type="button" id="print_contado"
-							class="btn bg-danger-400 heading-btn" id="btnPrint" value="contado">
+							class="btn bg-info-800 heading-btn" id="btnPrint" value="contado">
 							<i class="icon-printer2"></i> Imprimir Reporte</button>
 						</div>
 					</div>
@@ -427,7 +427,7 @@
 						<h5 class="panel-title">Ventas al Credito</h5>
 						<div class="heading-elements">
 							<button type="button"  id="print_credito"
-							class="btn bg-danger-400 heading-btn" id="btnPrint" value="credito">
+							class="btn bg-info-800 heading-btn" id="btnPrint" value="credito">
 							<i class="icon-printer2"></i> Imprimir Reporte</button>
 						</div>
 					</div>

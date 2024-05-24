@@ -98,7 +98,7 @@
 <div class="row">
 	<div class="col-sm-6">
 			<?php
-				echo '<img src="web/assets/images/initVenta.png" width="65%" class="img-responsive" alt="">';
+				echo '<img src="web/assets/images/initVenta.png" width="70%" class="img-responsive" alt="">';
 			?>
 	</div>
 </div>
