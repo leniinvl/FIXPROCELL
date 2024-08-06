@@ -97,7 +97,8 @@
 		include('../includes/ticketheader.inc.php');
 
 		$pdf->SetFont('Arial', '', 9.2);
-		$pdf->Text(2, $get_YH + 1, '------------------------------------------------------------------');
+		$pdf->Text(2, $get_YH + 1, '');
+		//$pdf->Text(2, $get_YH + 1, '------------------------------------------------------------------');
 
 		$get_Y = $pdf->GetY();
 		$pdf->SetFont('Arial','B',14);

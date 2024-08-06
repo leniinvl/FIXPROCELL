@@ -15,7 +15,7 @@
 					</ul> 
 				</div>
 					<div class="panel-heading">
-						<h5 class="panel-title">Historico de Caja de Recaudación</h5>
+						<h5 class="panel-title"><b>Historico de Caja de Recaudación</b></h5>
 						<br>
 						 <div class="row">
 							 <div class="col-sm-6 col-md-5">
@@ -39,7 +39,7 @@
 						                		</div>
 											</div>
 											<div class="col-sm-2">
-												<button style="margin-top: 0px;" id="btnBuscar" type="submit" class="btn btn-success btn-sm"> 
+												<button style="margin-top: 0px;" id="btnBuscar" type="submit" class="btn btn-info btn-sm"> 
 												<i class="icon-search4"></i> Consultar</button>
 											</div>
 										</div>
@@ -48,94 +48,95 @@
 						   	  </div>
 						  </div>
 					</div>
+
 					<div class="panel-body">
-					</div>
-					<div id="reload-div">
-					<table class="table datatable-basic table-xxs table-hover">
-						<thead>
-							<tr>
-								<th><b>Fecha Apertura</b></th>
-								<th><b>Monto Apertura</b></th>
-								<th><b>Monto Cierre</b></th>
-								<th><b>Fecha Cierre</b></th>
-								<th><b>Estado</b></th>
-								<th class="text-center"><b>Opciones</b></th>
-							</tr>
-						</thead>
-
-						<tbody>
-
-						  <?php 
-								$filas = $objCaja->Listar_Historico('','',$idsucursal); 
-								if (is_array($filas) || is_object($filas))
-								{
-								foreach ($filas as $row => $column) 
-								{
-
-									$fecha_apertura = $column["fecha_apertura"];
-									if(is_null($fecha_apertura))
-									{
-										$envio_date = '';
-
-									} else {
-
-									$envio_date = DateTime::createFromFormat('Y-m-d H:i:s',$fecha_apertura)->format('d/m/Y H:i:s');
-
-									}
-
-									$fecha_cierre = $column["fecha_cierre"];
-									if(is_null($fecha_cierre))
-									{
-										$envio_date2 = '';
-
-									} else {
-
-									$envio_date2 = DateTime::createFromFormat('Y-m-d H:i:s',$fecha_cierre)->format('d/m/Y H:i:s');
-
-									}
-
-								?>
+						<div id="reload-div">
+							<table class="table datatable-basic table-xxs table-hover">
+								<thead>
 									<tr>
-					                	<td><?php print($envio_date); ?></td>
-					                	<td><?php print($column['monto_apertura']); ?></td>
-					                	<td><?php print($column['monto_cierre']); ?></td>
-					                	<td><?php print($envio_date2 ); ?></td>
-					                	<td><?php if($column['estado'] == '1')
-					                		echo '<span class="label label-success label-rounded"><span 
-					                		class="text-bold">ABIERTA</span></span>';
-					                		else 
-					                		echo '<span class="label label-default label-rounded">
-					                	<span 
-					                	    class="text-bold">CERRADA</span></span>'
-						                ?></td>
-					                	<td class="text-center">
-					                	<?php if($column['estado']=='1'){ ?>
-										<ul class="icons-list">
-											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-													<i class="icon-menu9"></i>
-												</a>
+										<th><b>Fecha Apertura</b></th>
+										<th><b>Monto Apertura</b></th>
+										<th><b>Monto Cierre</b></th>
+										<th><b>Fecha Cierre</b></th>
+										<th><b>Estado</b></th>
+										<th class="text-center"><b>Opciones</b></th>
+									</tr>
+								</thead>
 
-												<ul class="dropdown-menu dropdown-menu-right">
-													<li><a id="delete_product" 	
-													data-id="<?php print($column['idcaja']); ?>" 
-													href="javascript:void(0)">
-													<i class="icon-safe">
-													</i> Cerrar</a></li>
+								<tbody>
+
+								<?php 
+										$filas = $objCaja->Listar_Historico('','',$idsucursal); 
+										if (is_array($filas) || is_object($filas))
+										{
+										foreach ($filas as $row => $column) 
+										{
+
+											$fecha_apertura = $column["fecha_apertura"];
+											if(is_null($fecha_apertura))
+											{
+												$envio_date = '';
+
+											} else {
+
+											$envio_date = DateTime::createFromFormat('Y-m-d H:i:s',$fecha_apertura)->format('d/m/Y H:i:s');
+
+											}
+
+											$fecha_cierre = $column["fecha_cierre"];
+											if(is_null($fecha_cierre))
+											{
+												$envio_date2 = '';
+
+											} else {
+
+											$envio_date2 = DateTime::createFromFormat('Y-m-d H:i:s',$fecha_cierre)->format('d/m/Y H:i:s');
+
+											}
+
+										?>
+											<tr>
+												<td><?php print($envio_date); ?></td>
+												<td><?php print($column['monto_apertura']); ?></td>
+												<td><?php print($column['monto_cierre']); ?></td>
+												<td><?php print($envio_date2 ); ?></td>
+												<td><?php if($column['estado'] == '1')
+													echo '<span class="label label-success label-rounded"><span 
+													class="text-bold">ABIERTA</span></span>';
+													else 
+													echo '<span class="label label-info label-rounded">
+												<span 
+													class="text-bold">CERRADA</span></span>'
+												?></td>
+												<td class="text-center">
+												<?php if($column['estado']=='1'){ ?>
+												<ul class="icons-list">
+													<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+															<i class="icon-menu9"></i>
+														</a>
+
+														<ul class="dropdown-menu dropdown-menu-right">
+															<li><a id="delete_product" 	
+															data-id="<?php print($column['idcaja']); ?>" 
+															href="javascript:void(0)">
+															<i class="icon-safe">
+															</i> Cerrar</a></li>
+														</ul>
+													</li>
 												</ul>
-											</li>
-										</ul>
-										<?php } ?>
-									</td>
-					                </tr>
-								<?php  
-								}
-							}
-							?>
-						
-						</tbody>
-					</table>
-					</div>	
+												<?php } ?>
+											</td>
+											</tr>
+										<?php  
+										}
+									}
+									?>
+								
+								</tbody>
+							</table>
+						</div>
+					</div>		
 				</div>
 				<?php include('./includes/footer.inc.php'); ?>
 			</div>

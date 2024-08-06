@@ -81,7 +81,7 @@
 	                		echo '<span class="label label-success label-rounded"><span 
 	                		class="text-bold">ABIERTA</span></span>';
 	                		else 
-	                		echo '<span class="label label-default label-rounded">
+	                		echo '<span class="label label-info label-rounded">
 	                	<span 
 	                	    class="text-bold">CERRADA</span></span>'
 		                ?></td>

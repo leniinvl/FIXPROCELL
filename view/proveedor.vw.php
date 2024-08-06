@@ -7,6 +7,7 @@
 
 			<!-- Basic initialization -->
 			<div class="panel panel-flat">
+
 				<div class="breadcrumb-line">
 					<ul class="breadcrumb">
 						<li><a href="?View=Inicio"><i class="icon-home2 position-left"></i> Inicio</a></li>
@@ -14,108 +15,110 @@
 						<li class="active">Proveedores</li>
 					</ul>
 				</div>
+
 					<div class="panel-heading">
 						<h5 class="panel-title">Proveedores</h5>
 
 						<div class="heading-elements">
-							<button type="button" class="btn btn-primary heading-btn"
+							<button type="button" class="btn btn-info heading-btn"
 							onclick="newProveedor()">
 							<i class="icon-database-add"></i> Agregar Nuevo/a</button>
 
 
-							<button type="button" id="print_proveedor" class="btn btn-info heading-btn">
+							<button type="button" id="print_proveedor" class="btn btn-default heading-btn">
 							<i class="icon-file-pdf"></i> Imprimir Reporte</button>
 
 						</div>
 					</div>
+
 					<div class="panel-body">
-					</div>
-					<div id="reload-div">
-					<table class="table datatable-basic table-xxs table-hover">
-						<thead>
-							<tr>
-								<th><b>No</b></th>
-								<th><b>Proveedor</b></th>
-								<th><b>Cédula / RUC</b></th>
-								<th><b>Telefono</b></th>
-								<th><b>Estado</b></th>
-								<th class="text-center"><b>Opciones</b></th>
-							</tr>
-						</thead>
-
-						<tbody>
-
-						  <?php
-								$filas = $objProveedor->Listar_Proveedores();
-								if (is_array($filas) || is_object($filas))
-								{
-								foreach ($filas as $row => $column)
-								{
-
-							
-								?>
+						<div id="reload-div">
+							<table class="table datatable-basic table-xxs table-hover">
+								<thead>
 									<tr>
-					                	<td><?php print($column['codigo_proveedor']); ?></td>
-					                	<td><?php print($column['nombre_proveedor']); ?></td>
-					                	<td><?php print($column['numero_nit']); ?></td>
-					                	<td><?php print($column['numero_telefono']); ?></td>
-					                	<td><?php if($column['estado'] == '1')
-					                		echo '<span class="label label-success label-rounded"><span
-					                		class="text-bold">ACTIVO</span></span>';
-					                		else
-					                		echo '<span class="label label-default label-rounded">
-					                	<span
-					                	    class="text-bold">INACTIVO</span></span>'
-						                ?></td>
-					                	<td class="text-center">
-										<ul class="icons-list">
-											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-													<i class="icon-menu9"></i>
-												</a>
+										<th><b>No</b></th>
+										<th><b>Proveedor</b></th>
+										<th><b>Cédula / RUC</b></th>
+										<th><b>Telefono</b></th>
+										<th><b>Estado</b></th>
+										<th class="text-center"><b>Opciones</b></th>
+									</tr>
+								</thead>
 
-												<ul class="dropdown-menu dropdown-menu-right">
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openProveedor('editar',
-								                     '<?php print($column["idproveedor"]); ?>',
-								                     '<?php print($column["codigo_proveedor"]); ?>',
-								                     '<?php print($column["nombre_proveedor"]); ?>',
-								                     '<?php print($column["numero_telefono"]); ?>',
-								                     '<?php print($column["numero_nit"]); ?>',
-								                     '<?php print($column["numero_nrc"]); ?>',
-								                     '<?php print($column["nombre_contacto"]); ?>',
-								                     '<?php print($column["telefono_contacto"]); ?>',
-								                     '<?php print($column["estado"]); ?>')">
-												   <i class="icon-pencil6">
-											       </i> Editar</a></li>
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openProveedor('ver',
-								                     '<?php print($column["idproveedor"]); ?>',
-								                     '<?php print($column["codigo_proveedor"]); ?>',
-								                     '<?php print($column["nombre_proveedor"]); ?>',
-								                     '<?php print($column["numero_telefono"]); ?>',
-								                     '<?php print($column["numero_nit"]); ?>',
-								                     '<?php print($column["numero_nrc"]); ?>',
-								                     '<?php print($column["nombre_contacto"]); ?>',
-								                     '<?php print($column["telefono_contacto"]); ?>',
-								                     '<?php print($column["estado"]); ?>')">
-													<i class=" icon-eye8">
-													</i> Ver</a></li>
-												</ul>
-											</li>
-										</ul>
-									</td>
-					                </tr>
+								<tbody>
+
 								<?php
-								}
-							}
-							?>
+										$filas = $objProveedor->Listar_Proveedores();
+										if (is_array($filas) || is_object($filas))
+										{
+										foreach ($filas as $row => $column)
+										{
 
-						</tbody>
-					</table>
-					</div>
+									
+										?>
+											<tr>
+												<td><?php print($column['codigo_proveedor']); ?></td>
+												<td><?php print($column['nombre_proveedor']); ?></td>
+												<td><?php print($column['numero_nit']); ?></td>
+												<td><?php print($column['numero_telefono']); ?></td>
+												<td><?php if($column['estado'] == '1')
+													echo '<span class="label label-success label-rounded"><span
+													class="text-bold">ACTIVO</span></span>';
+													else
+													echo '<span class="label label-default label-rounded">
+												<span
+													class="text-bold">INACTIVO</span></span>'
+												?></td>
+												<td class="text-center">
+												<ul class="icons-list">
+													<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+															<i class="icon-menu9"></i>
+														</a>
+
+														<ul class="dropdown-menu dropdown-menu-right">
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openProveedor('editar',
+															'<?php print($column["idproveedor"]); ?>',
+															'<?php print($column["codigo_proveedor"]); ?>',
+															'<?php print($column["nombre_proveedor"]); ?>',
+															'<?php print($column["numero_telefono"]); ?>',
+															'<?php print($column["numero_nit"]); ?>',
+															'<?php print($column["numero_nrc"]); ?>',
+															'<?php print($column["nombre_contacto"]); ?>',
+															'<?php print($column["telefono_contacto"]); ?>',
+															'<?php print($column["estado"]); ?>')">
+														<i class="icon-pencil6">
+														</i> Editar</a></li>
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openProveedor('ver',
+															'<?php print($column["idproveedor"]); ?>',
+															'<?php print($column["codigo_proveedor"]); ?>',
+															'<?php print($column["nombre_proveedor"]); ?>',
+															'<?php print($column["numero_telefono"]); ?>',
+															'<?php print($column["numero_nit"]); ?>',
+															'<?php print($column["numero_nrc"]); ?>',
+															'<?php print($column["nombre_contacto"]); ?>',
+															'<?php print($column["telefono_contacto"]); ?>',
+															'<?php print($column["estado"]); ?>')">
+															<i class=" icon-eye8">
+															</i> Ver</a></li>
+														</ul>
+													</li>
+												</ul>
+											</td>
+											</tr>
+										<?php
+										}
+									}
+									?>
+
+								</tbody>
+							</table>
+						</div>
+					</div>	
 				</div>
 
 			<!-- Iconified modal -->

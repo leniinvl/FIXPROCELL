@@ -82,7 +82,7 @@
 						</ul>
 					</div>
 						<div class="panel-heading">
-							<h4 class="panel-title">Administrar Movimientos de Caja</h4>
+							<h4 class="panel-title"><b>Administrar Movimientos de Caja</b></h4>
 
 							<small class="display-block">Estado : <?php echo $c_fecha_apertura ?> - <strong>
 							<?php echo $estado ?> </strong></small>
@@ -100,11 +100,11 @@
 								<?php } else if ($veces_abierta == "1" && $estado_caja == "1"){?>
 
 									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-									<i class="icon-cash3 position-left"></i> <strong>Opciones</strong> <span class="caret"></span></button>
+									<i class="icon-box position-left"></i> <strong>Opciones</strong> <span class="caret"></span></button>
 									<ul class="dropdown-menu dropdown-menu-right">
 
 										<li><a href="#" data-toggle="modal" data-target="#modal_iconified"
-										onclick="openMovimiento('update','')"><i class="icon-database-edit2 pull-right"></i> Ajustar Monto Inicial</a></li>
+										onclick="openMovimiento('update','')"><i class="icon-database-edit2 pull-right"></i> Ajustar Monto</a></li>
 
 										<li><a href="#" data-toggle="modal" data-target="#modal_iconified"
 										onclick="openMovimiento('cerrar','')"><i class="icon-box pull-right"></i> Cerrar Caja</a></li>
@@ -113,10 +113,10 @@
 
 
 	                            <div class="btn-group heading-btn">
-	                                <button type="button" class="btn bg-slate-700 dropdown-toggle" data-toggle="dropdown"><i class="icon-price-tag position-left"></i> <strong> Cortes de Caja</strong> <span class="caret"></span></button>
+	                                <button type="button" class="btn bg-slate-700 dropdown-toggle" data-toggle="dropdown"><i class="icon-cash3 position-left"></i> <strong> Reporte de Caja</strong> <span class="caret"></span></button>
 									<ul class="dropdown-menu dropdown-menu-right">
-										<li><a id="print_diario" href="javascript:void(0)"><i class="icon-flag8 pull-right"></i> Corte Z - Diario</a></li>
-										<li><a id="print_mes" href="javascript:void(0)"><i class="icon-flag7 pull-right"></i> Corte Z - Mensual</a></li>
+										<li><a id="print_diario" href="javascript:void(0)"><i class="icon-clipboard2 pull-right"></i> Reporte - Diario</a></li>
+										<li><a id="print_mes" href="javascript:void(0)"><i class="icon-clipboard2 pull-right"></i> Reporte - Mensual</a></li>
 									</ul>
 	                            </div>
 
@@ -125,11 +125,11 @@
 	                                <button type="button" class="btn bg-blue-700 dropdown-toggle" data-toggle="dropdown"><i class="icon-coin-dollar position-left"></i> <strong> Movimientos de Caja</strong> <span class="caret"></span></button>
 									<ul class="dropdown-menu dropdown-menu-right">
 										<li><a href="#" data-toggle="modal" data-target="#modal_iconified_movimiento"
-										onclick="openMovimiento('devolucion','')"><i class="icon-rotate-ccw3 pull-right"></i> Devolucion</a></li>
+										onclick="openMovimiento('devolucion','')"><i class="icon-rotate-ccw3 pull-right"></i>Registrar Devolucion</a></li>
 										<li><a href="#" data-toggle="modal" data-target="#modal_iconified_movimiento"
-										onclick="openMovimiento('prestamo','')"> <i class="icon-cash2 pull-right"></i> Prestamo</a></li>
+										onclick="openMovimiento('prestamo','')"> <i class="icon-cash2 pull-right"></i>Registrar Prestamo</a></li>
 										<li><a href="#" data-toggle="modal" data-target="#modal_iconified_movimiento"
-										onclick="openMovimiento('gasto','')"><i class="icon-coins pull-right"></i> Gasto</a></li>
+										onclick="openMovimiento('gasto','')"><i class="icon-coins pull-right"></i>Registrar Gasto</a></li>
 									</ul>
 	                            </div>
 
@@ -139,7 +139,7 @@
 
 
 								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-									<i class="icon-cash3 position-left"></i> <strong>Opciones</strong> <span class="caret"></span></button>
+									<i class="icon-box position-left"></i> <strong>Opciones</strong> <span class="caret"></span></button>
 									<ul class="dropdown-menu dropdown-menu-right">
 										<li><a href="#" data-toggle="modal" data-target="#modal_iconified"
 										onclick="openMovimiento('abrir','')"><i class="icon-drawer-in pull-right"></i> Abrir Caja</a></li>
@@ -149,7 +149,9 @@
 							    <?php } ?>
 							</div>
 						</div>
+
 						<hr>
+
 						<div class="panel-body">
 							<div class="row" >
 
@@ -244,9 +246,9 @@
 							<div class="col-md-12">
 								<div class="panel panel-flat">
 									<div class="panel-heading">
-										<h6 class="panel-title">Movimientos de Caja</h6>
+										<h6 class="panel-title"><b>Movimientos de Caja</b></h6>
 									</div>
-
+									<b></b>
 									<div class="panel-body">
 										<div class="tabbable">
 											<ul class="nav nav-tabs nav-tabs-highlight">
@@ -256,7 +258,7 @@
 												position-right"></span></a></li>
 												<li><a href="#label-tab3" data-toggle="tab">PR&Eacute;STAMOS <span id="span-pre" class="label bg-warning
 												position-right"></span></a></li>
-												<li><a href="#label-tab4" data-toggle="tab">GASTOS <span id="span-gas" class="label bg-info
+												<li><a href="#label-tab4" data-toggle="tab">GASTOS <span id="span-gas" class="label bg-info-800
 												position-right"></span></a></li>
 											</ul>
 
@@ -265,8 +267,8 @@
 													<table class="table datatable-basic table-xxs table-hover">
 														<thead>
 															<tr>
-																<th><b>Descripcion</b></th>
-																<th><b>Monto</b></th>
+																<th><b>Descripcion de movimiento</b></th>
+																<th><b>Monto en dolares</b></th>
 															</tr>
 														</thead>
 
@@ -296,8 +298,8 @@
 													<table class="table datatable-basic table-xxs table-hover">
 														<thead>
 															<tr>
-																<th><b>Descripcion</b></th>
-																<th><b>Monto</b></th>
+																<th><b>Descripcion de movimiento</b></th>
+																<th><b>Monto en dolares</b></th>
 															</tr>
 														</thead>
 
@@ -328,8 +330,8 @@
 													<table class="table datatable-basic table-xxs table-hover">
 														<thead>
 															<tr>
-																<th><b>Descripcion</b></th>
-																<th><b>Monto</b></th>
+																<th><b>Descripcion de movimiento</b></th>
+																<th><b>Monto en dolares</b></th>
 															</tr>
 														</thead>
 
@@ -359,8 +361,8 @@
 													<table class="table datatable-basic table-xxs table-hover">
 														<thead>
 															<tr>
-																<th><b>Descripcion</b></th>
-																<th><b>Monto</b></th>
+																<th><b>Descripcion de movimiento</b></th>
+																<th><b>Monto en dolares</b></th>
 															</tr>
 														</thead>
 
@@ -394,9 +396,9 @@
 						<!-- /labels -->
 					</div>
 				</div>
-			</div>
 
-			  <!-- Iconified modal -->
+			</div>
+			  	<!-- Iconified modal -->
 				<div id="modal_iconified_movimiento" class="modal fade">
 					<div class="modal-dialog">
 						<div class="modal-content">

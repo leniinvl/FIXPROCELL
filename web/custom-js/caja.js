@@ -12,10 +12,10 @@
 $(function () {
 
 
-  $(document).on('click', '#print_diario', function(e){
+  $(document).off('click', '#print_diario').on('click', '#print_diario', function(e){
 
         bootbox.dialog({
-                title: "Imprimir Corte Z - Diario",
+                title: "Imprimir reporte - Diario",
                 size: "small",
                 message: '<div class="row">  ' +
                     '<div class="col-md-12">' +
@@ -34,7 +34,7 @@ $(function () {
                 buttons: {
                     success: {
                         label: "<i class='icon-printer2 position-left'></i> Imprimir Corte",
-                        className: "btn-info",
+                        className: "btn-success",
                         callback: function () {
 
                            var dia = $('#txtDia').val();
@@ -68,10 +68,10 @@ $(function () {
 
   });
 
-  $(document).on('click', '#print_mes', function(e){
+  $(document).off('click', '#print_mes').on('click', '#print_mes', function(e){
 
       bootbox.dialog({
-                title: "Imprimir Corte Z - Mensual",
+                title: "Imprimir reporte - Mensual",
                 size: "small",
                 message: '<div class="row">  ' +
                     '<div class="col-md-12">' +
@@ -90,7 +90,7 @@ $(function () {
                 buttons: {
                     success: {
                         label: "<i class='icon-printer2 position-left'></i> Imprimir Corte",
-                        className: "btn-info",
+                        className: "btn-success",
                         callback: function () {
 
                           var mes = $("#txtMes").val();
@@ -361,7 +361,7 @@ function openMovimiento(action,id)
       $('#btnGuardar').show();
 
 
-      modal.find('.title-form').text('Devolucion de Efectivo de Caja');
+      modal.find('.title-form').text('Devolucion efectivo de Caja');
      }else if(action=='prestamo') {
 
       $('#modal_iconified_movimiento').modal('show');
@@ -372,7 +372,7 @@ function openMovimiento(action,id)
 
       $('#btnGuardar').show();
 
-      modal.find('.title-form').text('Prestamo de Efectivo de Caja');
+      modal.find('.title-form').text('Prestamo efectivo de Caja');
      } else if(action=='gasto'){
 
      $('#modal_iconified_movimiento').modal('show');
@@ -384,7 +384,7 @@ function openMovimiento(action,id)
       $('#btnGuardar').show();
 
 
-      modal.find('.title-form').text('Gasto de Efectivo de Caja');
+      modal.find('.title-form').text('Gasto efectivo de Caja');
      }
 
   });
@@ -422,7 +422,7 @@ function openMovimiento(action,id)
 
      $('#btnGuardar').show();
 
-      modal.find('.title-form').text('Editar Monto Inicial de Caja');
+      modal.find('.title-form').text('Editar Monto Inicial');
    }
 
 });
@@ -431,8 +431,8 @@ function openMovimiento(action,id)
 }
 
 function cargarDiv(div,url)
-{
-      $(div).load(url);
+{       
+    $(div).load(url);
 }
 
 function enviar_frm()
@@ -606,7 +606,6 @@ function Print_Report(Criterio,parameter)
       }
 
      /* } else {
-
 
           swal({
                   title: "Ops!",

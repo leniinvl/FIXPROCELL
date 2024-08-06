@@ -38,8 +38,8 @@
 							<ul>
 								<li class="<?php if($_GET['View']=="Compras"){echo 'active';} ?>" ><a href="./?View=Compras"> <i class="icon-briefcase3"></i> <b>Registrar Compra</b></a></li>		
 								<li class="<?php if($_GET['View']=="Proveedor"){echo 'active';} ?>" ><a href="./?View=Proveedor"> <i class="icon-user-check"></i> Proveedores</a></li>
-								<li class="<?php if($_GET['View']=="Compras-Mes"){echo 'active';} ?>" ><a href="./?View=Compras-Mes"> <i class="icon-clipboard2"></i> Reporte por Mes</a></li>
-								<li class="<?php if($_GET['View']=="Compras-Fecha"){echo 'active';} ?>" ><a href="./?View=Compras-Fecha"> <i class="icon-clipboard2"></i> Reporte por Fecha</a></li>
+								<li class="<?php if($_GET['View']=="Compras-Mes"){echo 'active';} ?>" ><a href="./?View=Compras-Mes"> <i class="icon-clipboard3"></i> Reporte por Mes</a></li>
+								<li class="<?php if($_GET['View']=="Compras-Fecha"){echo 'active';} ?>" ><a href="./?View=Compras-Fecha"> <i class="icon-clipboard3"></i> Reporte por Fecha</a></li>
 								<!--<li><a href="./?View=Historico-Precios">Historial de Precios</a></li>-->
 							</ul>
 						</li>
