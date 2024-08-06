@@ -101,32 +101,32 @@
 												<td><?php print($column['monto_cierre']); ?></td>
 												<td><?php print($envio_date2 ); ?></td>
 												<td><?php if($column['estado'] == '1')
-													echo '<span class="label label-success label-rounded"><span 
-													class="text-bold">ABIERTA</span></span>';
+														echo '<span class="label label-success label-rounded"><span 
+														class="text-bold">ABIERTA</span></span>';
 													else 
-													echo '<span class="label label-info label-rounded">
-												<span 
-													class="text-bold">CERRADA</span></span>'
+														echo '<span class="label label-info label-rounded">
+														<span 
+														class="text-bold">CERRADA</span></span>'
 												?></td>
 												<td class="text-center">
-												<?php if($column['estado']=='1'){ ?>
-												<ul class="icons-list">
-													<li class="dropdown">
-														<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-															<i class="icon-menu9"></i>
-														</a>
+													<?php if($column['estado']=='1'){ ?>
+													<ul class="icons-list">
+														<li class="dropdown">
+															<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+																<i class="icon-menu9"></i>
+															</a>
 
-														<ul class="dropdown-menu dropdown-menu-right">
-															<li><a id="delete_product" 	
-															data-id="<?php print($column['idcaja']); ?>" 
-															href="javascript:void(0)">
-															<i class="icon-safe">
-															</i> Cerrar</a></li>
-														</ul>
-													</li>
-												</ul>
-												<?php } ?>
-											</td>
+															<ul class="dropdown-menu dropdown-menu-right">
+																<li><a id="delete_product" 	
+																data-id="<?php print($column['idcaja']); ?>" 
+																href="javascript:void(0)">
+																<i class="icon-safe">
+																</i> Cerrar</a></li>
+															</ul>
+														</li>
+													</ul>
+													<?php } ?>
+												</td>
 											</tr>
 										<?php  
 										}
