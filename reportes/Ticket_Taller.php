@@ -48,7 +48,7 @@
       $deposito_revision = $column["deposito_revision"];
       $deposito_reparacion = $column["deposito_reparacion"];
       $parcial_pagar = $column["parcial_pagar"];
-
+	  	$idsucursal = $column["idsucursal"];
     }
 
     $fecha_ingreso = DateTime::createFromFormat('Y-m-d H:i:s', $fecha_ingreso)->format('d/m/Y H:i:s');

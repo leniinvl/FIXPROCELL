@@ -585,7 +585,7 @@ repuestos, mano_obra, fecha_alta, fecha_retiro, ubicacion, parcial_pagar)
            $('#txtManoObra').prop( "disabled" , false);
            $('#txtCosto').prop( "disabled" , true);
            $('#txtUbicacion').prop( "disabled" , false);
-           modal.find('.title-form').text('Ingresar Diagnostico de Aparato');
+           modal.find('.title-form').text('Ingresar Diagnostico del Equipo');
            limpiarform2();
 
 
@@ -610,7 +610,7 @@ repuestos, mano_obra, fecha_alta, fecha_retiro, ubicacion, parcial_pagar)
              $('#txtDRepa-D').val(deposito_reparacion);
              $('#txtParcial-D').val(parcial_pagar);
 
-             modal.find('.title-form').text('Editar Diagnostico de Aparato');
+             modal.find('.title-form').text('Editar Diagnostico del Equipo');
          }
 
    });

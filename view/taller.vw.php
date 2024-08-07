@@ -29,6 +29,7 @@
 							</ul>
 						</div>
 						<div class="panel-heading">
+              <h5 class="panel-title"><b>Ordenes de Taller por Fechas</b></h5>
 							<div class="row">
 								<div class="col-sm-6 col-md-5">
 								 <form role="form" autocomplete="off" class="form-validate-jquery" id="frmSearch">
@@ -52,7 +53,7 @@
 											 </div>
 											 <div class="col-sm-2">
 												 <button style="margin-top: 0px;" id="btnGuardar"
-												 type="submit" class="btn btn-primary btn-sm">
+												 type="submit" class="btn btn-info btn-sm">
 												 <i class="icon-search4"></i> Consultar</button>
 											 </div>
 										 </div>
@@ -80,7 +81,7 @@
 												<h5 class="panel-title">Ordenes de Taller</h5>
 												<div class="heading-elements">
 
-                          <button type="button" class="btn btn-primary heading-btn"
+                          <button type="button" class="btn btn-info heading-btn"
             							onclick="newOrden()">
             							<i class="icon-database-add"></i> Agregar Nuevo/a</button>
 
@@ -92,10 +93,10 @@
 															<tr>
                                 <th><b>Fecha Ingreso</b></th>
 																<th><b>Orden</b></th>
-																<th><b>Cliente</b></th>
-																<th><b>Aparato</b></th>
+																<th><b>Nombre Cliente</b></th>
+																<th><b>Equipo</b></th>
 																<th><b>Marca</b></th>
-																<th><b>Averia</b></th>
+																<th><b>Detalle Averia</b></th>
 																<th><b>Opciones</b></th>
 															</tr>
 														</thead>
@@ -407,7 +408,7 @@
 
                                                   <div class="col-sm-4">
                               											<label>Modelo<span class="text-danger">*</span></label>
-                              										 <input type="text" id="txtModelo" name="txtModelo" placeholder="EJEMPLO: SATELLITE"
+                              										 <input type="text" id="txtModelo" name="txtModelo" placeholder="EJEMPLO: 5X-PRO"
                               										  class="form-control"  style="text-transform:uppercase;"
                               										 onkeyup="javascript:this.value=this.value.toUpperCase();">
                               										</div>
@@ -548,8 +549,8 @@
                         </div>
 
       							<div class="modal-footer">
-                      <button type="submit" id="btnSaveDatos" class="btn btn-primary">Guardar Datos
-                        <i class="icon-file-upload position-right"></i></button>
+                      <button type="submit" id="btnSaveDatos" class="btn btn-info">Guardar Datos
+                        <i class="icon-box-add position-right"></i></button>
     									<button  class="btn btn-default"
     									class="btn btn-link" data-dismiss="modal">Cerrar</button>
       							</div>
@@ -724,7 +725,7 @@
               </div>
 
                   <div class="modal-footer">
-                    <button type="submit"  id="btnSaveDiagnostico" class="btn btn-primary">Guardar Diagnostico
+                    <button type="submit"  id="btnSaveDiagnostico" class="btn btn-info">Guardar Diagnostico
                       <i class="icon-arrow-right14 position-right"></i></button>
                     <button  type="reset" class="btn btn-default" id="reset"
                     class="btn btn-link" data-dismiss="modal">Cerrar</button>

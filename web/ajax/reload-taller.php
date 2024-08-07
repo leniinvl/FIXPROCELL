@@ -49,7 +49,7 @@
             <h5 class="panel-title">Ordenes de Taller</h5>
             <div class="heading-elements">
 
-              <button type="button" class="btn btn-primary heading-btn"
+              <button type="button" class="btn btn-info heading-btn"
               onclick="newOrden()">
               <i class="icon-database-add"></i> Agregar Nuevo/a</button>
 
@@ -59,13 +59,13 @@
               <table class="table datatable-basic table-xs table-hover">
                 <thead>
                   <tr>
-                    <th><b>Fecha Ingreso</b></th>
-                    <th><b>Orden</b></th>
-                    <th><b>Cliente</b></th>
-                    <th><b>Aparato</b></th>
-                    <th><b>Marca</b></th>
-                    <th><b>Averia</b></th>
-                    <th><b>Opciones</b></th>
+				  	<th><b>Fecha Ingreso</b></th>
+					<th><b>Orden</b></th>
+					<th><b>Nombre Cliente</b></th>
+					<th><b>Equipo</b></th>
+					<th><b>Marca</b></th>
+					<th><b>Detalle Averia</b></th>
+					<th><b>Opciones</b></th>
                   </tr>
                 </thead>
 
