@@ -36,6 +36,7 @@
       $simbolo = $column["p_simbolo"];
       $cliente = $column["p_cliente"];
 			$usuario = $column["p_usuario"];
+        $idsucursal = $column["p_idsucursal"];
     }
 
     $p_fecha_abono = DateTime::createFromFormat('Y-m-d H:i:s', $p_fecha_abono)->format('d/m/Y H:i:s');

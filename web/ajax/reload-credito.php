@@ -26,10 +26,10 @@
 		 <ul class="nav nav-tabs nav-tabs-highlight">
 			 <li class="active"><a href="#label-tab1" data-toggle="tab">VIGENTES <span id="span-ing" class="label
 			 label-success position-right"><?php echo $total_vigentes  ?></span></a></li>
-			 <li><a href="#label-tab2" data-toggle="tab">FINALIZADOS <span id="span-dev" class="label bg-danger
+			 <li><a href="#label-tab2" data-toggle="tab">FINALIZADOS <span id="span-dev" class="label bg-warning
 			 position-right"><?php echo $total_pagados  ?></span></a></li>
-			 <li><a href="#label-tab3" data-toggle="tab">ABONOS <span id="span-pre" class="label bg-warning
-			 position-right"></span></a></li>
+			 <li><a href="#label-tab3" data-toggle="tab">PAGOS <span id="span-pre" class="label bg-info-600
+			 position-right"><?php echo "--" ?></span></a></li>
 		 </ul>
 
 		 <div class="tab-content">
@@ -37,7 +37,7 @@
 				 <!-- Basic initialization -->
 				 <div class="panel panel-flat">
 					 <div class="panel-heading">
-						 <h5 class="panel-title">Creditos Vigentes</h5>
+						 <h5 class="panel-title">Créditos Vigentes</h5>
 						 <div class="heading-elements">
 
 						 </div>
@@ -46,12 +46,12 @@
 							 <table class="table datatable-basic table-xs table-hover">
 								 <thead>
 									 <tr>
-										 <th><b>Credito</b></th>
-										 <th><b>Venta</b></th>
+										 <th><b>Crédito</b></th>
+										 <th><b>No. Venta</b></th>
 										 <th><b>Monto</b></th>
 										 <th><b>Abonado</b></th>
 										 <th><b>Restante</b></th>
-										 <th><b>Cliente</b></th>
+										 <th><b>Nombre Cliente</b></th>
 										 <th><b>Opciones</b></th>
 									 </tr>
 								 </thead>
@@ -138,7 +138,7 @@
 				 <!-- Basic initialization -->
 				 <div class="panel panel-flat">
 					 <div class="panel-heading">
-						 <h5 class="panel-title">Creditos Finalizados</h5>
+						 <h5 class="panel-title">Créditos Finalizados</h5>
 						 <div class="heading-elements">
 
 						 </div>
@@ -147,12 +147,12 @@
 							 <table class="table datatable-basic table-xs table-hover">
 								 <thead>
 									 <tr>
-										 <th><b>Credito</b></th>
-										 <th><b>Venta</b></th>
+										 <th><b>Crédito</b></th>
+										 <th><b>No. Venta</b></th>
 										 <th><b>Monto</b></th>
 										 <th><b>Abonado</b></th>
 										 <th><b>Restante</b></th>
-										 <th><b>Cliente</b></th>
+										 <th><b>Nombre Cliente</b></th>
 										 <th><b>Opciones</b></th>
 									 </tr>
 								 </thead>
@@ -217,17 +217,17 @@
 				 <!-- Basic initialization -->
 				 <div class="panel panel-flat">
 					 <div class="panel-heading">
-						 <h5 class="panel-title">Abonos</h5>
+						 <h5 class="panel-title">Pagos</h5>
 						 <div class="heading-elements">
 							 <?php $filas = $objCredito->Listar_Creditos(0,$idsucursal);
 							 if (is_array($filas) || is_object($filas))
 							 { ?>
-							 <button type="button" class="btn btn-primary heading-btn"
+							 <button type="button" class="btn btn-info heading-btn"
 							 onclick="newAbono()">
-							 <i class="icon-database-add"></i> Abonar Credito</button>
+							 <i class="icon-database-add"></i> Abonar Crédito</button>
 							 <?php } ?>
 
-							 <button type="button" class="btn btn-danger heading-btn"
+							 <button type="button" class="btn btn-default heading-btn"
 							 data-toggle="modal" data-target="#modal_print">
 							 <i class="icon-printer2"></i> Imprimir Reporte</button>
 						 </div>
@@ -236,7 +236,7 @@
 							 <table class="table datatable-basic table-xs table-hover">
 								 <thead>
 									 <tr>
-										 <th><b>Credito</b></th>
+										 <th><b>Crédito</b></th>
 										 <th><b>Fecha Abono</b></th>
 										 <th><b>Monto Abonado</b></th>
 										 <th><b>Opciones</b></th>
@@ -284,7 +284,7 @@
 																		'<?php print($c_fecha_abono); ?>',
 																		'<?php print($column['monto_abono']); ?>',
 																		'<?php print($column["idcredito"]); ?>')">
-																	<i class="icon-eye">
+																	<i class="icon-eye8">
 																	</i> Ver</a></li>
 
 																	<?php if($tipo_usuario==1){ ?>
