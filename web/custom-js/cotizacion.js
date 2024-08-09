@@ -771,14 +771,13 @@ $.getJSON('web/ajax/ajxparametro.php?criterio=moneda',function(data){
                             case 6:  campo6 = $(this).find("#tbldesc").val();
                                      descuentos = parseFloat(campo6);
                                      var calculo_precio = campo3 * campo4;
-                                     if(descuentos > calculo_precio)
-                                     {
-                                      descuentos = 0.00;
-                                      $(this).find("#tbldesc").val(descuentos);
-                                      $("#tbldesc").trigger("touchspin.updatesettings", {max: calculo_precio});
+                                     if(descuentos >= calculo_precio){
+                                        descuentos = calculo_precio - 0.01;
+                                        $(this).find("#tbldesc").val(descuentos.toFixed(2));
+                                        //$("#tbldesc").trigger("touchspin.updatesettings", {max: calculo_precio});
                                      } else {
-                                      descuentos = parseFloat(campo5);
-                                      $("#tbldesc").trigger("touchspin.updatesettings", {max: calculo_precio});
+                                        descuentos = parseFloat(campo6);
+                                        //$("#tbldesc").trigger("touchspin.updatesettings", {max: calculo_precio});
                                      }
                                      break;
 
