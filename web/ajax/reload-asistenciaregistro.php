@@ -24,8 +24,8 @@
 ?>
 
 
-<div class="panel-body">
-		<div class="box box-primary">
+<div class="panel-body" style="background-color: #c6dcd4;">
+		<div class="box box-primary" style="background-color: #dee8e5;">
 			<table class="table table-bordered table-hover">
 				<thead>
 					<th><b>EMPLEADO</b></th>

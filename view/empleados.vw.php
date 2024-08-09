@@ -17,7 +17,7 @@
 						<h5 class="panel-title">Empleados</h5>
 
 						<div class="heading-elements">
-							<button type="button" class="btn btn-primary heading-btn"
+							<button type="button" class="btn btn-info heading-btn"
 							onclick="newEmpleado()">
 							<i class="icon-database-add"></i> Agregar Nuevo/a</button>
 						</div>
@@ -28,8 +28,8 @@
 					<table class="table datatable-basic table-xxs table-hover">
 						<thead>
 							<tr>
-								<th><b>No</b></th>
-								<th><b>Empleado</b></th>
+								<th><b>Codigo</b></th>
+								<th><b>Nombre Empleado</b></th>
 								<th><b>Telefono</b></th>
 								<th><b>Estado</b></th>
 								<th class="text-center"><b>Opciones</b></th>

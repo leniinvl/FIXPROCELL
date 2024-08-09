@@ -16,7 +16,7 @@
 							</ul>
 						</div>
 						<div class="panel-heading">
-							<h6 class="panel-title">Asistencia de Empleados</h6>
+							<h6 class="panel-title"><b>Asistencia de Empleados por Fechas</b></h6>
 
 							<div class="row">
 								 <div class="col-sm-6 col-md-5">
@@ -41,7 +41,7 @@
 												</div>
 												<div class="col-sm-2">
 													<button style="margin-top: 0px;" id="btnGuardar"
-													type="submit" class="btn btn-primary btn-sm">
+													type="submit" class="btn btn-info btn-sm">
 													<i class="icon-search4"></i> Consultar</button>
 												</div>
 											</div>

@@ -51,7 +51,7 @@
 </style>	
 
 <div class="panel-body">
-		<div class="panel-heading" style="background-color: #F4F6F6;">
+		<div class="panel-heading" style="background-color: #c6dcd4;">
 			<h5><b>Lista de Asistencia</b></h5>
 			<b>A</b>=Asistencia   <b>R</b>=Retrasado   <b>J</b>=Justificado   <b>F</b>=Falta
 		</div>

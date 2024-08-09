@@ -14,8 +14,8 @@
 		<table class="table datatable-basic table-xxs table-hover">
 						<thead>
 							<tr>
-							<th><b>No</b></th>
-								<th><b>Empleado</b></th>
+							<th><b>Codigo</b></th>
+								<th><b>Nombre Empleado</b></th>
 								<th><b>Telefono</b></th>
 								<th><b>Estado</b></th>
 								<th class="text-center"><b>Opciones</b></th>

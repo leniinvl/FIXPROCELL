@@ -17,7 +17,7 @@
 						<h5 class="panel-title">Usuarios del Sistema</h5>
 
 						<div class="heading-elements">
-							<button type="button" class="btn btn-primary heading-btn"
+							<button type="button" class="btn btn-info heading-btn"
 							onclick="newUsuario()">
 							<i class="icon-database-add"></i> Agregar Nuevo/a</button>
 						</div>
