@@ -16,7 +16,7 @@ $(function() {
 
   // Initialize with options
     $(".select-icons").select2({
-        containerCssClass: 'bg-orange-800',
+        containerCssClass: 'bg-teal',
         templateResult: iconFormat,
         minimumResultsForSearch: Infinity,
         templateSelection: iconFormat,
@@ -145,8 +145,8 @@ buscar_por_codigo();
 
 var mySwitch = new Switchery($('#chkBusqueda')[0], {
     size:"small",
-    color: '#1fccef',
-    secondaryColor: '#0095f2'
+    color: '#3AB7C5',
+    secondaryColor: '#ff5722'
 });
 
 
@@ -164,8 +164,8 @@ $('#modal_iconified_cash').on('hidden.bs.modal', function () {
 
 var mySwitch = new Switchery($('#chkPagado')[0], {
     size:"small",
-    color: '#19AA8D',
-    secondaryColor: '#3cb9e9'
+    color: '#3AB7C5',
+    secondaryColor: '#ff5722' 
 });
 
 
@@ -173,16 +173,37 @@ var mySwitch = new Switchery($('#chkPagado')[0], {
 $("#chkBusqueda").change(function() {
    if(this.checked) {
       $("#chkBusqueda").val(true);
-      document.getElementById("lblchk3").innerHTML = ' BUSCAR POR CODIGO';
+      document.getElementById("lblchk3").innerHTML = 'BUSCAR POR DETALLE';
       $("#buscar_producto").val('');
       buscar_por_codigo();
    } else {
      $("#chkBusqueda").val(false);
-     document.getElementById("lblchk3").innerHTML = 'BUSCAR POR DETALLE';
+     document.getElementById("lblchk3").innerHTML = 'BUSCAR POR CODIGO';
      $("#buscar_producto").val('');
      buscar_por_detalle();
    }
 })
+
+
+// Evento Change de tipoPrecio
+$("#tipoPrecio").change(function() {
+  /*noty({
+      force: true,
+      text: 'ACTUALIZANDO A ' +$("#tipoPrecio").val() +' !',
+      type: 'error',
+      layout: 'top',
+      timeout: 1500,
+  });*/
+  new PNotify({
+    text: 'Ajustando detalle '+$("#tipoPrecio").val(),
+    addclass: "stack-bottom-right bg-warning",
+  });
+  actualizar_precio();
+  setTimeout(function(){
+    totales();
+  }, 1800);
+})
+
 
 //---------************* Agrego al detalle
 function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,stock,perecedero){
@@ -277,9 +298,9 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                    verticalbuttons: true,
                    verticalupclass: 'icon-arrow-up22',
                    verticaldownclass: 'icon-arrow-down22',
-                   min: 0.01,
+                   min: 1.00,
                    max: 100000000000,
-                   step: 0.01,
+                   step: 1.00,
                    decimals: 2,
                }).on('touchspin.on.startspin', function () {totales()});
 
@@ -294,13 +315,17 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                    decimals: 2,
                }).on('touchspin.on.startspin', function () {totales()});;
 
-                noty({
-                       force: true,
-                       text: 'Producto agregado!',
-                       type: 'information',
-                       layout: 'top',
-                       timeout: 500,
-                   });
+                /*noty({
+                    force: true,
+                    text: 'Producto agregado!',
+                    type: 'information',
+                    layout: 'top',
+                    timeout: 500,
+                });*/
+                new PNotify({
+                  text: 'Producto agregado.',
+                  addclass: "stack-bottom-right bg-info-800",
+                });
 
                totales();
 
@@ -309,13 +334,17 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
                 posicion_fila=posicion_fila+1;
                 setRowCant(posicion_fila);
 
-                noty({
-                       force: true,
-                       text: 'Producto agregado!',
-                       type: 'information',
-                       layout: 'top',
-                       timeout: 500,
-                   });
+                /*noty({
+                      force: true,
+                      text: 'Producto agregado!',
+                      type: 'information',
+                      layout: 'top',
+                      timeout: 500,
+                });*/
+                new PNotify({
+                  text: 'Producto agregado.',
+                  addclass: "stack-bottom-right bg-info-800",
+                });
 
              }
 
@@ -360,9 +389,9 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
               verticalbuttons: true,
               verticalupclass: 'icon-arrow-up22',
               verticaldownclass: 'icon-arrow-down22',
-              min: 0.01,
+              min: 1.00,
               max: 100000000000,
-              step: 0.01,
+              step: 1.00,
               decimals: 2,
           }).on('touchspin.on.startspin', function () {totales()});
 
@@ -377,13 +406,17 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
               decimals: 2,
           }).on('touchspin.on.startspin', function () {totales()});;
 
-           noty({
+            /*noty({
                   force: true,
                   text: 'Producto agregado!',
                   type: 'information',
                   layout: 'top',
                   timeout: 500,
-              });
+            });*/
+            new PNotify({
+              text: 'Producto agregado.',
+              addclass: "stack-bottom-right bg-info-800",
+            });  
 
           totales();
 
@@ -392,13 +425,17 @@ function agregar_detalle(idproducto,producto,especificacion,precio_venta,exento,
            posicion_fila=posicion_fila+1;
            setRowCant(posicion_fila);
 
-           noty({
-                  force: true,
-                  text: 'Producto agregado!',
-                  type: 'information',
-                  layout: 'top',
-                  timeout: 500,
-              });
+          /*noty({
+              force: true,
+              text: 'Producto agregado!',
+              type: 'information',
+              layout: 'top',
+              timeout: 500,
+          });*/
+          new PNotify({
+            text: 'Producto agregado.',
+            addclass: "stack-bottom-right bg-info-800",
+          });
 
         }
 
@@ -418,18 +455,22 @@ function setRowCant(rowId){
 };
 
 
-function buscar_por_codigo()
+function buscar_por_detalle()
 {
+  var idSucursal = $("#idSucursalVenta").val();
   $("#buscar_producto").autocomplete({
-    minLength: 1,
-    source: "web/ajax/autocomplete_venta.php",
+    minLength: 2,
+    source: "web/ajax/autocomplete_venta.php?id="+idSucursal,
     autoFocus: true,
     focus: function( event, ui ) {
        var tipo_precio = $('#chkPrecio').is(':checked') ? 1 : 0;
+       var tipoPrecio = $("#tipoPrecio").val();
         var idproducto = ui.item.value;
         var producto = ui.item.producto;
         var precio_venta = ui.item.precio_venta;
+        var precio_venta_minimo = ui.item.precio_venta_minimo;
         var precio_venta_mayoreo = ui.item.precio_venta_mayoreo;
+        var precio_super_mayoreo = ui.item.precio_super_mayoreo;
         var datos = ui.item.datos;
         var exento = ui.item.exento;
         var stock = ui.item.stock;
@@ -446,26 +487,51 @@ function buscar_por_codigo()
 
             if(exento == 0)
             {
-              if(tipo_precio == 1)
-              {
+              if(tipoPrecio == "PRECIO NORMAL"){
                 agregar_detalle(idproducto,producto,datos,precio_venta,0.00,stock,perecedero,inventariable);
                 $('#buscar_producto').autocomplete('close');
-              } else if (tipo_precio == 0){
-
+              } else if (tipoPrecio == "PRECIO OFERTA"){
+                agregar_detalle(idproducto,producto,datos,precio_venta_minimo,0.00,stock,perecedero,inventariable);
+                $('#buscar_producto').autocomplete('close');
+              } else if (tipoPrecio == "DISTRIBUIDOR UNO"){
                 agregar_detalle(idproducto,producto,datos,precio_venta_mayoreo,0.00,stock,perecedero,inventariable);
+                $('#buscar_producto').autocomplete('close');
+              } else if (tipoPrecio == "DISTRIBUIDOR DOS"){
+                agregar_detalle(idproducto,producto,datos,precio_super_mayoreo,0.00,stock,perecedero,inventariable);
                 $('#buscar_producto').autocomplete('close');
               }
 
+              /*if(tipo_precio == 1){
+                agregar_detalle(idproducto,producto,datos,precio_venta,0.00,stock,perecedero,inventariable);
+                $('#buscar_producto').autocomplete('close');
+              } else if (tipo_precio == 0){
+                agregar_detalle(idproducto,producto,datos,precio_venta_mayoreo,0.00,stock,perecedero,inventariable);
+                $('#buscar_producto').autocomplete('close');
+              }*/
+
             } else if (exento == 1){
 
-              if(tipo_precio == 1)
-              {
+              if(tipoPrecio == "PRECIO NORMAL"){
+                agregar_detalle(idproducto,producto,datos,precio_venta,precio_venta,stock,perecedero,inventariable);
+                $('#buscar_producto').autocomplete('close');
+              } else if (tipoPrecio == "PRECIO OFERTA"){
+                agregar_detalle(idproducto,producto,datos,precio_venta_minimo,precio_venta_minimo,stock,perecedero,inventariable);
+                $('#buscar_producto').autocomplete('close');
+              } else if (tipoPrecio == "DISTRIBUIDOR UNO"){
+                agregar_detalle(idproducto,producto,datos,precio_venta_mayoreo,precio_venta_mayoreo,stock,perecedero,inventariable);
+                $('#buscar_producto').autocomplete('close');
+              } else if (tipoPrecio == "DISTRIBUIDOR DOS"){
+                agregar_detalle(idproducto,producto,datos,precio_super_mayoreo,precio_super_mayoreo,stock,perecedero,inventariable);
+                $('#buscar_producto').autocomplete('close');
+              }
+
+              /*if(tipo_precio == 1){
                 agregar_detalle(idproducto,producto,datos,precio_venta,precio_venta,stock,perecedero,inventariable);
                 $('#buscar_producto').autocomplete('close');
               } else if (tipo_precio == 0){
                 agregar_detalle(idproducto,producto,datos,precio_venta_mayoreo,precio_venta_mayoreo,stock,perecedero,inventariable);
                 $('#buscar_producto').autocomplete('close');
-              }
+              }*/
 
             }
           
@@ -482,11 +548,12 @@ function buscar_por_codigo()
 }
 
 
-function buscar_por_detalle()
+function buscar_por_codigo()
 {
+  var idSucursal = $("#idSucursalVenta").val();
   $("#buscar_producto").autocomplete({
-    minLength: 3,
-    source: "web/ajax/autocomplete_venta.php",
+    minLength: 2,
+    source: "web/ajax/autocomplete_venta.php?id="+idSucursal,
 
     focus: function( event, ui ) {
      // $("#buscar_producto").val(ui.item.label);
@@ -495,10 +562,13 @@ function buscar_por_detalle()
 
        select: function( event, ui ) {
         var tipo_precio = $('#chkPrecio').is(':checked') ? 1 : 0;
+        var tipoPrecio = $("#tipoPrecio").val();
         var idproducto = ui.item.value;
         var producto = ui.item.producto;
         var precio_venta = ui.item.precio_venta;
+        var precio_venta_minimo = ui.item.precio_venta_minimo;
         var precio_venta_mayoreo = ui.item.precio_venta_mayoreo;
+        var precio_super_mayoreo = ui.item.precio_super_mayoreo;
         var datos = ui.item.datos;
         var exento = ui.item.exento;
         var stock = ui.item.stock;
@@ -514,26 +584,38 @@ function buscar_por_detalle()
 
             if(exento == 0)
             {
-              if(tipo_precio == 1)
-              {
+              if(tipoPrecio == "PRECIO NORMAL"){
                 agregar_detalle(idproducto,producto,datos,precio_venta,0.00,stock,perecedero,inventariable);
-
-              } else if (tipo_precio == 0){
-
+              } else if (tipoPrecio == "PRECIO OFERTA"){ 
+                agregar_detalle(idproducto,producto,datos,precio_venta_minimo,0.00,stock,perecedero,inventariable);
+              } else if (tipoPrecio == "DISTRIBUIDOR UNO"){ 
                 agregar_detalle(idproducto,producto,datos,precio_venta_mayoreo,0.00,stock,perecedero,inventariable);
-
+              } else if (tipoPrecio == "DISTRIBUIDOR DOS"){ 
+                agregar_detalle(idproducto,producto,datos,precio_super_mayoreo,0.00,stock,perecedero,inventariable);
               }
+              /*if(tipo_precio == 1) {
+                agregar_detalle(idproducto,producto,datos,precio_venta,0.00,stock,perecedero,inventariable);
+              } else if (tipo_precio == 0){
+                agregar_detalle(idproducto,producto,datos,precio_venta_mayoreo,0.00,stock,perecedero,inventariable);
+              }*/
 
             } else if (exento == 1){
 
-              if(tipo_precio == 1)
-              {
+              if(tipoPrecio == "PRECIO NORMAL"){
                 agregar_detalle(idproducto,producto,datos,precio_venta,precio_venta,stock,perecedero,inventariable);
+              } else if (tipoPrecio == "PRECIO OFERTA"){
+                agregar_detalle(idproducto,producto,datos,precio_venta_minimo,precio_venta_minimo,stock,perecedero,inventariable);
+              } else if (tipoPrecio == "DISTRIBUIDOR UNO"){
+                agregar_detalle(idproducto,producto,datos,precio_venta_mayoreo,precio_venta_mayoreo,stock,perecedero,inventariable);
+              } else if (tipoPrecio == "DISTRIBUIDOR DOS"){
+                agregar_detalle(idproducto,producto,datos,precio_super_mayoreo,precio_super_mayoreo,stock,perecedero,inventariable);
+              }
 
+              /*if(tipo_precio == 1) {
+                agregar_detalle(idproducto,producto,datos,precio_venta,precio_venta,stock,perecedero,inventariable);
               } else if (tipo_precio == 0){
                 agregar_detalle(idproducto,producto,datos,precio_venta_mayoreo,precio_venta_mayoreo,stock,perecedero,inventariable);
-
-              }
+              }*/
 
             }
 
@@ -638,7 +720,7 @@ $.getJSON('web/ajax/ajxparametro.php?criterio=moneda',function(data){
 
   $.each(data,function(key,val){
 
-    var moneda = val.CurrencyISO + ' ' + val.Symbol;
+    var moneda = /*val.CurrencyISO + ' ' + */val.Symbol;
 
       $.getJSON('web/ajax/ajxparametro.php?criterio=iva',function(data){
 
@@ -785,6 +867,83 @@ $.getJSON('web/ajax/ajxparametro.php?criterio=moneda',function(data){
 }
 
 //---------************* Totales
+
+
+// -------************** Actualizar precios
+function ajaxGet(dataString) { //AQUI
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type:'POST',
+      url:'web/ajax/ajxprecio.php',
+      data: dataString,
+      dataType:'json',
+      success: function(data){
+        resolve(data);
+      },
+      error: function (data) {
+        reject(data)
+      }
+    });
+  });
+}
+
+function actualizar_precio(){
+
+  $("#tbldetalle tbody tr").each(function (index)
+  {
+      var campo1, campo2, campo3, campo4, campo5, campo6, campo7, campo8, campo9;
+      $(this).children("td").each(function (index2)
+      {
+          switch (index2)
+          {
+              case 0: campo0 = $(this).text();
+                      break;
+              case 1: break;
+              case 2: break;
+              case 3: break;
+              case 4: campo3 = $(this).text();
+                      var idproducto = campo0;
+                      var tipoprecio = $("#tipoPrecio").val();
+                      var dataString='idproducto='+idproducto+'&tipoprecio='+tipoprecio;
+
+                      ajaxGet(dataString).then((data) => {
+                        $("#tbldetalle tbody tr").each(function (index)
+                          {
+                              var campo1, campo2, campo3, campo4, campo5, campo6, campo7, campo8, campo9;
+                              $(this).children("td").each(function (index2)
+                              {
+                                  switch (index2){
+                                      case 0: campo0 = $(this).text();
+                                              break;
+                                      case 1: break;
+                                      case 2: break;
+                                      case 3: break;
+                                      case 4: listadata=data.split('#');
+                                              if (data!="Error"){
+                                                if(campo0 == listadata[0]){
+                                                  campo3 = listadata[1];
+                                                  campo3 = parseFloat(campo3);
+                                                  $(this).text(campo3.toFixed(2));
+                                                }
+                                              } 
+                                              break;
+                                      case 5: break;
+                                      case 6: break;
+                                      case 7: break;
+                                  }
+                              })
+                          })
+                      });
+                      break;
+              case 5: break;
+              case 6: break;
+              case 7: break;
+          }
+      })
+  })
+}
+// -------************** Actualizar precios
+
 
 //---------************* Enviar datos y guardar compra
 

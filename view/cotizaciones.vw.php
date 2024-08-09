@@ -18,10 +18,11 @@
 							<ul class="breadcrumb">
 								<li><a href="?View=Inicio"><i class="icon-home2 position-left"></i> Inicio</a></li>
 								<li><a href="javascript:;"> Cotizaciones </a></li>
-								<li class="active">Ver Cotizaciones</li>
+								<li class="active"> Gestion Cotizaciones</li>
 							</ul>
 						</div>
 						<div class="panel-heading">
+							<h5 class="panel-title"><b>Cotizaciones por Fechas</b></h5>
 							<div class="row">
 								<div class="col-sm-6 col-md-5">
 								 <form role="form" autocomplete="off" class="form-validate-jquery" id="frmSearch">
@@ -45,7 +46,7 @@
 											 </div>
 											 <div class="col-sm-2">
 												 <button style="margin-top: 0px;" id="btnGuardar"
-												 type="submit" class="btn btn-primary btn-sm">
+												 type="submit" class="btn btn-info btn-sm">
 												 <i class="icon-search4"></i> Consultar</button>
 											 </div>
 										 </div>
@@ -60,7 +61,7 @@
 							<div class="tabbable">
 								<ul class="nav nav-tabs nav-tabs-highlight">
 									<li class="active"><a href="#label-tab1" data-toggle="tab">COTIZACIONES REALIZADAS <span id="span-ing" class="label
-									label-success position-right"><?php echo $total_cotizaciones  ?></span></a></li>
+									label-warning position-right"><?php echo $total_cotizaciones  ?></span></a></li>
 								</ul>
 
 								<div class="tab-content">
@@ -78,13 +79,13 @@
 													<table class="table datatable-basic table-xs table-hover">
 														<thead>
 															<tr>
-																<th>Fecha</th>
-																<th>Numero</th>
-																<th>A Nombre De</th>
-																<th>Tipo Pago</th>
-																<th>Entrega</th>
-																<th>Total</th>
-																<th>Opciones</th>
+																<th><b>Fecha<b></th>
+																<th><b>No. Cotizacion<b></th>
+																<th><b>Nombre Cliente<b></th>
+																<th><b>Tipo Pago<b></th>
+																<th><b>Entrega<b></th>
+																<th><b>Total<b></th>
+																<th><b>Opciones<b></th>
 															</tr>
 														</thead>
 

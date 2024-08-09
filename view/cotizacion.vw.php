@@ -1,4 +1,19 @@
+<style type="text/css">
+		.select-search { /*CAMBIO*/
+			height: 30px;
+			line-height: 30px;
+			border-radius: 5px;
+			border: 1.5px solid #3AB7C5;
+			font-size: 13.9px;
+			background-color: #3AB7C5; 
+			color:white;
+		}
+</style>
+
 <?php
+
+	$idsucursal = $_SESSION['sucursal_id'];
+	$sucursal = $_SESSION['sucursal_name'];
 
 	$objProducto =  new Producto();
 	$objVenta = new Venta();
@@ -8,44 +23,62 @@
 				 <div class="col-md-12 col-lg-12">
 			      	<!-- Detalle de Compra -->
 						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">Generar Cotizacion de Productos</h4>
+							<div class="panel-heading" style="background-color:#D1E3DF;">
+								<h3 class="panel-title"><b>COTIZACIONES</b></h3>
+								<!-- Variable sucursal --> 
+								<input type="hidden" value="<?php echo $idsucursal ?>" id="idSucursalVenta"> 
 									<div class="heading-elements">
 										<form class="heading-form" action="#">
 											
-										<div class="form-group">
-											<div class="checkbox checkbox-switchery switchery-sm">
-												<label>
-												<input type="checkbox" id="chkBusqueda" name="chkBusqueda"
-												 class="switchery" checked="checked" >
-												  <i class="icon-search4"></i> <span id="lblchk3"> PRODUCTO POR CODIGO</span>
-											   </label>
-											</div>
-										</div>
-
 											<div class="form-group">
-													<input type="checkbox" id="chkPrecio"
-													data-on-text="P.P." data-off-text="P.M." class="switch" data-size="mini"
-													data-on-color="primary" data-off-color="success" checked="checked">
+												<div class="checkbox checkbox-switchery switchery-sm">
+													<label>
+														<input type="checkbox" id="chkBusqueda" name="chkBusqueda"
+														class="switchery" checked="checked" >
+														<i class="icon-search4"></i> <span id="lblchk3">BUSCAR POR DETALLE</span>
+													</label>
+												</div>
+											</div>
+
+											<!-- Check oculto -switch- --> 
+											<div class="form-group" style="padding-top: 4px; padding-left: 10px;">
+												<label>
+													<input type="hidden" id="chkPrecio"
+													data-on-text="PRECIO-NORMAL" data-off-text="PRECIO-OFERTA" class="-switch-" data-size="mini"
+													data-on-color="info" data-off-color="warning" checked="checked">
 												</label>
 											</div>
+
+											<!-- Check oculto --> 
+											<div class="form-group" style="padding-top: 3px;">
+												<select  data-placeholder="..." id="tipoPrecio" name="tipoPrecio"
+													class="select-search" style="text-transform:uppercase;"
+													onkeyup="javascript:this.value=this.value.toUpperCase();">
+													<option value="PRECIO NORMAL"> &nbsp &nbsp PRECIO NORMAL &nbsp &nbsp</option>
+													<option value="PRECIO OFERTA"> &nbsp &nbsp PRECIO OFERTA &nbsp &nbsp</option>
+													<!--<option value="DISTRIBUIDOR UNO"> &nbsp DISTRIBUIDOR UNO</option>--> 
+													<!--<option value="DISTRIBUIDOR DOS"> &nbsp DISTRIBUIDOR DOS</option>--> 
+												</select>
+											</div>
+											<!-- Check oculto --> 
+
 										</form>
 									</div>
 							</div>
 							<div class="panel-heading" style="background-color:#2b2b2b;">
 								<h4 class="panel-title"><h1 id="big_total" class="panel-title text-center text-black text-green"
-									style="font-size:42px;">0.00</h1></h4>
+									style="font-size:40px;">0.00</h1></h4>
 							</div>
-							<div class="panel-body">
+							<div class="panel-body" style="background-color:#D1E3DF;">
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-12">
 											<div class="input-group">
-											<span class="input-group-addon"><i class="icon-barcode2"></i></span>
-											<input type="text" id="buscar_producto" name="buscar_producto"  placeholder="Busque un producto aqui..."
-											 class="form-control" style="text-transform:uppercase;"
-                       onkeyup="javascript:this.value=this.value.toUpperCase();">
-                      </div>
+												<span class="input-group-addon"><i class="icon-barcode2"></i></span>
+												<input type="text" id="buscar_producto" name="buscar_producto"  placeholder="BUSCAR PRODUCTO..."
+												class="form-control" style="text-transform:uppercase;"
+												onkeyup="javascript:this.value=this.value.toUpperCase();">
+											</div>
 										</div>
 									</div>
 								</div>
@@ -53,16 +86,16 @@
 								<div class="table-responsive">
 									<table id="tbldetalle" class="table table-xxs">
 										<thead>
-											<tr class="bg-teal">
-												<th></th>
-												<th class="text-center text-bold">Producto</th>
-												<th class="text-center text-bold">Dispo.</th>
-												<th class="text-center text-bold">Cant.</th>
-												<th class="text-center text-bold">Precio</th>
-												<th class="text-center text-bold">Exento</th>
-												<th class="text-center text-bold">Descuento</th>
-												<th class="text-center text-bold">Importe</th>
-												<th class="text-center text-bold">Quitar</th>
+											<tr class="bg-info-800">
+												<th class="text-center">ID</th>
+												<th class="text-center">PRODUCTO</th>
+												<th class="text-center">DISPONIBLE</th>
+												<th class="text-center">CANTIDAD</th>
+												<th class="text-center">PRECIO</th>
+												<th class="text-center">EXENTO</th>
+												<th class="text-center">DESCUENTO</th>
+												<th class="text-center">IMPORTE</th>
+												<th class="text-center">ELIMINAR</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -70,11 +103,11 @@
 										</tbody>
 										<tfoot id="totales_foot">
 											<tr class="bg-info-800">
-												<td align="center" width="10%">SUMAS</td>
-												<td align="center" width="26%">IGV %</td>
 												<td align="center" width="10%">SUBTOTAL</td>
+												<td align="center" width="26%">IVA 12%</td>
+												<td align="center" width="10%">TOTAL</td>
 												<td align="center" width="10%">RET. (-)</td>
-												<td align="center" width="10%">TOT. SIN IGV</td>
+												<td align="center" width="10%">IVA 0%</td>
 												<td align="center" width="10%">DESCUENTO</td>
 												<td align="center" width="10%">TOTAL</td>
 												<td align="center" width="30%"><b><i class="icon-cash"></i>
@@ -92,8 +125,8 @@
 												<td align="center" id="descuentos"></td>
 												<td align="center" id="total"></td>
 												<td align="center"><button type="button" id="btnguardar" data-toggle="modal" data-target="#modal_iconified_cash"
-												class="btn bg-blue-600 btn-sm ">Guardar</button></td>
-												<td align="center"><button type="submit" id="btncancelar" class="btn bg-danger-700 btn-sm">
+												class="btn bg-success btn-sm">&nbsp Guardar &nbsp</button></td>
+												<td align="center"><button type="submit" id="btncancelar" class="btn bg-warning btn-sm">
 												</b> Cancelar </button></td>
 											</tr>
 										</tfoot>
@@ -162,7 +195,7 @@
 
 										<div id="div-cbEntrega" class="col-sm-6">
 										 <label>Forma de Entrega</label>
-											 <select id="cbEntrega" name="cbEntrega" data-placeholder="Seleccione un metodo de pago..." class="select-icons">
+											 <select id="cbEntrega" name="cbEntrega" data-placeholder="Seleccione metodo de pago..." class="select-icons">
 													 <option value="1" data-icon="store">INMEDIATA</option>
 													 <option value="2" data-icon="truck">POR PEDIDO</option>
 											 </select>
@@ -177,7 +210,7 @@
 								<div class="modal-footer">
 									<button  type="reset" class="btn btn-default" id="reset"
 									class="btn btn-link" data-dismiss="modal">Cerrar</button>
-									<button type="submit" id="btnRegistrar" class="btn bg-info btn-labeled"><b><i class="icon-printer4"></i>
+									<button type="submit" id="btnRegistrar" class="btn bg-info-800 btn-labeled"><b><i class="icon-printer4"></i>
 									</b> Guardar e Imprimir</button>
 								</div>
 							</form>

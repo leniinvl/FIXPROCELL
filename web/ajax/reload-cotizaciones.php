@@ -34,7 +34,7 @@
   <div class="tabbable">
     <ul class="nav nav-tabs nav-tabs-highlight">
       <li class="active"><a href="#label-tab1" data-toggle="tab">COTIZACIONES REALIZADAS <span id="span-ing" class="label
-      label-success position-right"><?php echo $total_cotizaciones  ?></span></a></li>
+      label-warning position-right"><?php echo $total_cotizaciones  ?></span></a></li>
     </ul>
 
     <div class="tab-content">
@@ -52,13 +52,13 @@
               <table class="table datatable-basic table-xs table-hover">
                 <thead>
                   <tr>
-                    <th>Fecha</th>
-                    <th>Numero</th>
-                    <th>A Nombre De</th>
-                    <th>Tipo Pago</th>
-                    <th>Entrega</th>
-                    <th>Total</th>
-                    <th>Opciones</th>
+                    <th><b>Fecha<b></th>
+                    <th><b>No. Cotizacion<b></th>
+                    <th><b>Nombre Cliente<b></th>
+                    <th><b>Tipo Pago<b></th>
+                    <th><b>Entrega<b></th>
+                    <th><b>Total<b></th>
+                    <th><b>Opciones<b></th>
                   </tr>
                 </thead>
 
