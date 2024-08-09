@@ -226,7 +226,7 @@ function openParametro(action, idparametro, nombre_empresa, propietario, numero_
       $('#btnGuardar').show();
       limpiarform();
 
-      modal.find('.title-form').text('Ingresar Parametro');
+      modal.find('.title-form').text('Ingresar Parametro de Sistema');
      }else if(action=='editar') {
 
       $('#modal_iconified').modal('show');
@@ -258,7 +258,7 @@ function openParametro(action, idparametro, nombre_empresa, propietario, numero_
       $('#btnEditar').show();
       $('#btnGuardar').hide();
 
-      modal.find('.title-form').text('Actualizar Parametro');
+      modal.find('.title-form').text('Actualizar Parametro de Sistema');
      } else if(action=='ver'){
       $('#txtProceso').val('');
       $('#txtID').val(idparametro);
@@ -286,7 +286,7 @@ function openParametro(action, idparametro, nombre_empresa, propietario, numero_
       $('#btnEditar').hide();
       $('#btnGuardar').hide();
 
-      modal.find('.title-form').text('Ver Parametro');
+      modal.find('.title-form').text('Ver Parametro de Sistema');
      }
 
   });

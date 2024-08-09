@@ -23,86 +23,86 @@
 						</div>
 					</div>
 					<div class="panel-body">
-					</div>
-					<div id="reload-div">
-					<table class="table datatable-basic table-xxs table-hover">
-						<thead>
-							<tr>
-								<th><b>Codigo</b></th>
-								<th><b>Nombre Empleado</b></th>
-								<th><b>Telefono</b></th>
-								<th><b>Estado</b></th>
-								<th class="text-center"><b>Opciones</b></th>
-							</tr>
-						</thead>
-
-						<tbody>
-
-						  <?php
-								$filas = $objEmpleado->Listar_Empleados();
-								if (is_array($filas) || is_object($filas))
-								{
-								foreach ($filas as $row => $column)
-								{
-
-								
-								?>
+						<div id="reload-div">
+							<table class="table datatable-basic table-xxs table-hover">
+								<thead>
 									<tr>
-					                	<td><?php print($column['codigo_empleado']); ?></td>
-					                	<td><?php print($column['nombre_empleado'].' '.$column['apellido_empleado']); ?></td>
-					                	<td><?php print($column['telefono_empleado']); ?></td>
-					                	<td><?php if($column['estado'] == '1')
-					                		echo '<span class="label label-success label-rounded"><span
-					                		class="text-bold">ACTIVO</span></span>';
-					                		else
-					                		echo '<span class="label label-default label-rounded">
-					                	<span
-					                	    class="text-bold">INACTIVO</span></span>'
-						                ?></td>
-					                	<td class="text-center">
-										<ul class="icons-list">
-											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-													<i class="icon-menu9"></i>
-												</a>
+										<th><b>Codigo</b></th>
+										<th><b>Nombre Empleado</b></th>
+										<th><b>Telefono</b></th>
+										<th><b>Estado</b></th>
+										<th class="text-center"><b>Opciones</b></th>
+									</tr>
+								</thead>
 
-												<ul class="dropdown-menu dropdown-menu-right">
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openEmpleado('editar',
-								                     '<?php print($column["idempleado"]); ?>',
-								                     '<?php print($column["codigo_empleado"]); ?>',
-								                     '<?php print($column["nombre_empleado"]); ?>',
-								                     '<?php print($column["apellido_empleado"]); ?>',
-								                     '<?php print($column['telefono_empleado']); ?>',
-								                     '<?php print($column["email_empleado"]); ?>',
-								                     '<?php print($column["estado"]); ?>')">
-												   <i class="icon-pencil6">
-											       </i> Editar</a></li>
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openEmpleado('ver',
-								                     '<?php print($column["idempleado"]); ?>',
-								                     '<?php print($column["codigo_empleado"]); ?>',
-								                     '<?php print($column["nombre_empleado"]); ?>',
-								                     '<?php print($column["apellido_empleado"]); ?>',
-								                     '<?php print($column['telefono_empleado']); ?>',
-								                     '<?php print($column["email_empleado"]); ?>',
-								                     '<?php print($column["estado"]); ?>')">
-													<i class=" icon-eye8">
-													</i> Ver</a></li>
-												</ul>
-											</li>
-										</ul>
-									</td>
-					                </tr>
+								<tbody>
+
 								<?php
-								}
-							}
-							?>
+										$filas = $objEmpleado->Listar_Empleados();
+										if (is_array($filas) || is_object($filas))
+										{
+										foreach ($filas as $row => $column)
+										{
 
-						</tbody>
-					</table>
+										
+										?>
+											<tr>
+												<td><?php print($column['codigo_empleado']); ?></td>
+												<td><?php print($column['nombre_empleado'].' '.$column['apellido_empleado']); ?></td>
+												<td><?php print($column['telefono_empleado']); ?></td>
+												<td><?php if($column['estado'] == '1')
+													echo '<span class="label label-success label-rounded"><span
+													class="text-bold">ACTIVO</span></span>';
+													else
+													echo '<span class="label label-default label-rounded">
+												<span
+													class="text-bold">INACTIVO</span></span>'
+												?></td>
+												<td class="text-center">
+												<ul class="icons-list">
+													<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+															<i class="icon-menu9"></i>
+														</a>
+
+														<ul class="dropdown-menu dropdown-menu-right">
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openEmpleado('editar',
+															'<?php print($column["idempleado"]); ?>',
+															'<?php print($column["codigo_empleado"]); ?>',
+															'<?php print($column["nombre_empleado"]); ?>',
+															'<?php print($column["apellido_empleado"]); ?>',
+															'<?php print($column['telefono_empleado']); ?>',
+															'<?php print($column["email_empleado"]); ?>',
+															'<?php print($column["estado"]); ?>')">
+														<i class="icon-pencil6">
+														</i> Editar</a></li>
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openEmpleado('ver',
+															'<?php print($column["idempleado"]); ?>',
+															'<?php print($column["codigo_empleado"]); ?>',
+															'<?php print($column["nombre_empleado"]); ?>',
+															'<?php print($column["apellido_empleado"]); ?>',
+															'<?php print($column['telefono_empleado']); ?>',
+															'<?php print($column["email_empleado"]); ?>',
+															'<?php print($column["estado"]); ?>')">
+															<i class=" icon-eye8">
+															</i> Ver</a></li>
+														</ul>
+													</li>
+												</ul>
+											</td>
+											</tr>
+										<?php
+										}
+									}
+									?>
+
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 

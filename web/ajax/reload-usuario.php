@@ -37,7 +37,7 @@
 										<td><?php print($column['idusuario']); ?></td>
 					                	<td><?php print($column['usuario']); ?></td>
 					            		<td><?php if($column['tipo_usuario'] == '1')
-					                		echo '<span class="label label-warning label-rounded"><span 
+					                		echo '<span class="label label-success label-rounded"><span 
 					                		class="text-bold">ADMINISTRADOR</span></span>';
 					                		else 
 					                		echo '<span class="label label-info label-rounded">

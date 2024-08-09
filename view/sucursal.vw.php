@@ -9,86 +9,86 @@
 				<div class="breadcrumb-line">
 					<ul class="breadcrumb">
 						<li><a href="?View=Inicio"><i class="icon-home2 position-left"></i> Inicio</a></li>
-						<li><a href="javascript:;">Parametros</a></li>
-						<li class="active">Sucursales</li>
+						<li><a href="javascript:;">Negocio</a></li>
+						<li class="active">Establecimientos</li>
 					</ul>
 				</div>
 					<div class="panel-heading">
-						<h5 class="panel-title">Sucursales</h5>
+						<h5 class="panel-title">Establecimientos</h5>
 
 						<div class="heading-elements">
-							<button type="button" class="btn btn-primary heading-btn"
+							<button type="button" class="btn btn-info heading-btn"
 							onclick="newSucursal()">
 							<i class="icon-database-add"></i> Agregar Nuevo/a</button>
 						</div>
 					</div>
 					<div class="panel-body">
-					</div>
-					<div id="reload-div">
-					<table class="table datatable-basic table-xxs table-hover">
-						<thead>
-							<tr>
-								<th><b>No</b></th>
-								<th><b>Nombre</b></th>
-								<th><b>Dirección</b></th>
-								<th><b>Teléfono</b></th>
-								<th class="text-center"><b>Opciones</b></th>
-							</tr>
-						</thead>
-
-						<tbody>
-
-						  <?php 
-								$filas = $objParametro->Listar_Sucursal();
-								if (is_array($filas) || is_object($filas))
-								{
-								foreach ($filas as $row => $column)
-								{
-									
-								?>
+						<div id="reload-div">
+							<table class="table datatable-basic table-xxs table-hover">
+								<thead>
 									<tr>
-					                	<td><?php print($column['idsucursal']); ?></td>
-					                	<td><?php print($column['nombre']); ?></td>
-					                	<td><?php print($column['direccion']); ?></td>
-					                	<td><?php print($column['telefono']); ?></td>
-					                	<td class="text-center">
-										<ul class="icons-list">
-											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-													<i class="icon-menu9"></i>
-												</a>
+										<th><b>No</b></th>
+										<th><b>Nombre Establecimiento</b></th>
+										<th><b>Dirección</b></th>
+										<th><b>Teléfono</b></th>
+										<th class="text-center"><b>Opciones</b></th>
+									</tr>
+								</thead>
 
-												<ul class="dropdown-menu dropdown-menu-right">
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openParametro('editar',
-								                     '<?php print($column["idsucursal"]); ?>',
-								                     '<?php print($column["nombre"]); ?>',
-								                     '<?php print($column["direccion"]); ?>',
-								                     '<?php print($column["telefono"]); ?>')">
-												   <i class="icon-pencil6">
-											       </i> Editar</a></li>
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openParametro('ver',
-								                     '<?php print($column["idsucursal"]); ?>',
-								                     '<?php print($column["nombre"]); ?>',
-								                     '<?php print($column["direccion"]); ?>',
-								                     '<?php print($column["telefono"]); ?>')">
-													<i class=" icon-eye8">
-													</i> Ver</a></li>
+								<tbody>
+
+								<?php 
+										$filas = $objParametro->Listar_Sucursal();
+										if (is_array($filas) || is_object($filas))
+										{
+										foreach ($filas as $row => $column)
+										{
+											
+										?>
+											<tr>
+												<td><?php print($column['idsucursal']); ?></td>
+												<td><?php print($column['nombre']); ?></td>
+												<td><?php print($column['direccion']); ?></td>
+												<td><?php print($column['telefono']); ?></td>
+												<td class="text-center">
+												<ul class="icons-list">
+													<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+															<i class="icon-menu9"></i>
+														</a>
+
+														<ul class="dropdown-menu dropdown-menu-right">
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openParametro('editar',
+															'<?php print($column["idsucursal"]); ?>',
+															'<?php print($column["nombre"]); ?>',
+															'<?php print($column["direccion"]); ?>',
+															'<?php print($column["telefono"]); ?>')">
+														<i class="icon-pencil6">
+														</i> Editar</a></li>
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openParametro('ver',
+															'<?php print($column["idsucursal"]); ?>',
+															'<?php print($column["nombre"]); ?>',
+															'<?php print($column["direccion"]); ?>',
+															'<?php print($column["telefono"]); ?>')">
+															<i class=" icon-eye8">
+															</i> Ver</a></li>
+														</ul>
+													</li>
 												</ul>
-											</li>
-										</ul>
-									</td>
-					                </tr>
-								<?php
-								}
-							}
-							?>
+											</td>
+											</tr>
+										<?php
+										}
+									}
+									?>
 
-						</tbody>
-					</table>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 
@@ -115,7 +115,7 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-12">
-												<label>Sucursal <span class="text-danger">*</span></label>
+												<label>Establecimiento <span class="text-danger">*</span></label>
 												<input type="text" id="txtSucursal" name="txtSucursal" placeholder="EJEMPLO: SUCURSAL SUR"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">

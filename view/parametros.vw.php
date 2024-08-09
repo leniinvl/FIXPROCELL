@@ -9,102 +9,102 @@
 				<div class="breadcrumb-line">
 					<ul class="breadcrumb">
 						<li><a href="?View=Inicio"><i class="icon-home2 position-left"></i> Inicio</a></li>
-						<li><a href="javascript:;">Parametros</a></li>
+						<li><a href="javascript:;">Negocio</a></li>
 						<li class="active">Parametros del Sistema</li>
 					</ul>
 				</div>
 					<div class="panel-heading">
-						<h5 class="panel-title">Parametros</h5>
+						<h5 class="panel-title">Parametros del Sistema</h5>
 
 						<div class="heading-elements">
-							<button type="button" class="btn btn-primary heading-btn"
+							<button type="button" class="btn btn-info heading-btn"
 							onclick="newParametro()">
 							<i class="icon-database-add"></i> Agregar Nuevo/a</button>
 						</div>
 					</div>
 					<div class="panel-body">
-					</div>
-					<div id="reload-div">
-					<table class="table datatable-basic table-xxs table-hover">
-						<thead>
-							<tr>
-								<th><b>No</b></th>
-								<th><b>Empresa</b></th>
-								<th><b>Propietario</b></th>
-								<th><b>RUC</b></th>
-								<th><b>Valor IVA</b></th>
-								<th class="text-center"><b>Opciones</b></th>
-							</tr>
-						</thead>
-
-						<tbody>
-
-						  <?php
-								$filas = $objParametro->Listar_Parametros();
-								if (is_array($filas) || is_object($filas))
-								{
-								foreach ($filas as $row => $column)
-								{
-
-									$nit = $column['numero_nit'];
-									
-								?>
+						<div id="reload-div">
+							<table class="table datatable-basic table-xxs table-hover">
+								<thead>
 									<tr>
-					                	<td><?php print($column['idparametro']); ?></td>
-					                	<td><?php print($column['nombre_empresa']); ?></td>
-					                	<td><?php print($column['propietario']); ?></td>
-					                	<td><?php print($column['numero_nrc']); ?></td>
-					                	<td><?php print($column['porcentaje_iva']); ?></td>
-					                	<td class="text-center">
-										<ul class="icons-list">
-											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-													<i class="icon-menu9"></i>
-												</a>
+										<th><b>No</b></th>
+										<th><b>Empresa</b></th>
+										<th><b>Propietario</b></th>
+										<th><b>RUC</b></th>
+										<th><b>Valor IVA</b></th>
+										<th class="text-center"><b>Opciones</b></th>
+									</tr>
+								</thead>
 
-												<ul class="dropdown-menu dropdown-menu-right">
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openParametro('editar',
-								                     '<?php print($column["idparametro"]); ?>',
-								                     '<?php print($column["nombre_empresa"]); ?>',
-								                     '<?php print($column["propietario"]); ?>',
-								                     '<?php print($nit); ?>',
-								                     '<?php print($column["numero_nrc"]); ?>',
-								                     '<?php print($column["porcentaje_iva"]); ?>',
-																		 '<?php print($column["porcentaje_retencion"]); ?>',
-																		 '<?php print($column["monto_retencion"]); ?>',
-																		 '<?php print($column["idcurrency"]); ?>',
-								                     '<?php print($column["direccion_empresa"]); ?>')">
-												   <i class="icon-pencil6">
-											       </i> Editar</a></li>
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openParametro('ver',
-								                     '<?php print($column["idparametro"]); ?>',
-								                     '<?php print($column["nombre_empresa"]); ?>',
-								                     '<?php print($column["propietario"]); ?>',
-								                     '<?php print($nit); ?>',
-								                     '<?php print($column["numero_nrc"]); ?>',
-								                     '<?php print($column["porcentaje_iva"]); ?>',
-																		 '<?php print($column["porcentaje_retencion"]); ?>',
-																		 '<?php print($column["monto_retencion"]); ?>',
-																		 '<?php print($column["idcurrency"]); ?>',
-								                     '<?php print($column["direccion_empresa"]); ?>')">
-													<i class=" icon-eye8">
-													</i> Ver</a></li>
-												</ul>
-											</li>
-										</ul>
-									</td>
-					                </tr>
+								<tbody>
+
 								<?php
-								}
-							}
-							?>
+										$filas = $objParametro->Listar_Parametros();
+										if (is_array($filas) || is_object($filas))
+										{
+										foreach ($filas as $row => $column)
+										{
 
-						</tbody>
-					</table>
+											$nit = $column['numero_nit'];
+											
+										?>
+											<tr>
+												<td><?php print($column['idparametro']); ?></td>
+												<td><?php print($column['nombre_empresa']); ?></td>
+												<td><?php print($column['propietario']); ?></td>
+												<td><?php print($column['numero_nrc']); ?></td>
+												<td><?php print($column['porcentaje_iva']); ?></td>
+												<td class="text-center">
+												<ul class="icons-list">
+													<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+															<i class="icon-menu9"></i>
+														</a>
+
+														<ul class="dropdown-menu dropdown-menu-right">
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openParametro('editar',
+															'<?php print($column["idparametro"]); ?>',
+															'<?php print($column["nombre_empresa"]); ?>',
+															'<?php print($column["propietario"]); ?>',
+															'<?php print($nit); ?>',
+															'<?php print($column["numero_nrc"]); ?>',
+															'<?php print($column["porcentaje_iva"]); ?>',
+																				'<?php print($column["porcentaje_retencion"]); ?>',
+																				'<?php print($column["monto_retencion"]); ?>',
+																				'<?php print($column["idcurrency"]); ?>',
+															'<?php print($column["direccion_empresa"]); ?>')">
+														<i class="icon-pencil6">
+														</i> Editar</a></li>
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openParametro('ver',
+															'<?php print($column["idparametro"]); ?>',
+															'<?php print($column["nombre_empresa"]); ?>',
+															'<?php print($column["propietario"]); ?>',
+															'<?php print($nit); ?>',
+															'<?php print($column["numero_nrc"]); ?>',
+															'<?php print($column["porcentaje_iva"]); ?>',
+																				'<?php print($column["porcentaje_retencion"]); ?>',
+																				'<?php print($column["monto_retencion"]); ?>',
+																				'<?php print($column["idcurrency"]); ?>',
+															'<?php print($column["direccion_empresa"]); ?>')">
+															<i class=" icon-eye8">
+															</i> Ver</a></li>
+														</ul>
+													</li>
+												</ul>
+											</td>
+											</tr>
+										<?php
+										}
+									}
+									?>
+
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 
@@ -198,6 +198,20 @@
 									</div>
 
 
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-12">
+												<label>Direccion <span class="text-danger">*</span></label>
+												 <textarea rows="3" class="form-control"
+													placeholder="EJEMPLO: CALLE MALECON IQUIQUE 406 MIRAFLORES, AREQUIPA - PERU" id="txtDireccion" name="txtDireccion"
+													value="" style="text-transform:uppercase;"
+													onkeyup="javascript:this.value=this.value.toUpperCase();">
+													</textarea>
+											</div>
+										</div>
+									</div>
+
+
 
 									<div class="form-group">
 										<div class="row">
@@ -230,14 +244,8 @@
 												onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
 
-											<div class="col-sm-6">
-												<label>Direccion <span class="text-danger">*</span></label>
-												 <textarea rows="3" class="form-control"
-													placeholder="EJEMPLO: CALLE MALECON IQUIQUE 406 MIRAFLORES, AREQUIPA - PERU" id="txtDireccion" name="txtDireccion"
-													value="" style="text-transform:uppercase;"
-													onkeyup="javascript:this.value=this.value.toUpperCase();">
-													</textarea>
-											</div>
+
+
 										</div>
 									</div>
 

@@ -15,7 +15,7 @@
 						<thead>
 							<tr>
 								<th><b>No</b></th>
-								<th><b>Nombre</b></th>
+								<th><b>Nombre Establecimiento</b></th>
 								<th><b>Dirección</b></th>
 								<th><b>Teléfono</b></th>
 								<th class="text-center"><b>Opciones</b></th>

@@ -165,7 +165,7 @@ function openParametro(action, idsucursal, nombre, direccion, telefono)
     $('#btnGuardar').show();
     limpiarform();
 
-    modal.find('.title-form').text('Ingresar Sucursal');
+    modal.find('.title-form').text('Ingresar Establecimiento');
    }else if(action=='editar') {
 
     $('#modal_iconified').modal('show');
@@ -184,7 +184,7 @@ function openParametro(action, idsucursal, nombre, direccion, telefono)
     $('#btnEditar').show();
     $('#btnGuardar').hide();
 
-    modal.find('.title-form').text('Actualizar Sucursal');
+    modal.find('.title-form').text('Actualizar Establecimiento');
    } else if(action=='ver'){
     $('#txtProceso').val('');
     $('#txtID').val(idsucursal);
@@ -200,7 +200,7 @@ function openParametro(action, idsucursal, nombre, direccion, telefono)
     $('#btnEditar').hide();
     $('#btnGuardar').hide();
 
-    modal.find('.title-form').text('Ver Sucursal');
+    modal.find('.title-form').text('Ver Establecimiento');
    }
 
 });

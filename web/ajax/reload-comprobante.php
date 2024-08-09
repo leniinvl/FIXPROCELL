@@ -16,10 +16,10 @@
 		<table class="table datatable-basic table-xxs table-hover">
 						<thead>
 							<tr>
-								<th>No</th>
-								<th>Comprobante</th>
-								<th>Estado</th>
-								<th class="text-center">Opciones</th>
+								<th><b>No</b></th>
+								<th><b>Comprobante</b></th>
+								<th><b>Estado</b></th>
+								<th class="text-center"><b>Opciones</b></th>
 							</tr>
 						</thead>
 

@@ -14,110 +14,110 @@
 					</ul>
 				</div>
 					<div class="panel-heading">
-						<h5 class="panel-title">Numeración-Serie de Comprobantes</h5>
+						<h5 class="panel-title">Numeración / Serie de Comprobantes</h5>
 
 						<!-- <div class="heading-elements">
-							<button type="button" class="btn btn-primary heading-btn"
+							<button type="button" class="btn btn-info heading-btn"
 							onclick="newTiraje()">
 							<i class="icon-database-add"></i> Agregar Nuevo/a</button>
 						</div> -->
 					</div>
 					
 					<div class="panel-body">
-					</div>
-					<div id="reload-div">
-					<table class="table datatable-basic table-xxs table-hover">
-						<thead>
-							<tr>
-								<th><b>Codigo</b></th>
-								<th><b>Sucursal</b></th>
-								<th><b>Fecha Resolucion</b></th>
-								<th><b>Tipo Comprobante</b></th>
-								<th><b>Serie</b></th>
-								<th><b>Tickets Disponibles</b></th>
-								<th><b>Numeracion Actual</b></th>
-								<th class="text-center"><b>Opciones</b></th>
-							</tr>
-						</thead>
-
-						<tbody>
-
-						  <?php
-								$filas = $objTiraje->Listar_Tirajes();
-								if (is_array($filas) || is_object($filas))
-								{
-								foreach ($filas as $row => $column)
-								{
-									$fecha_resolucion = $column["fecha_resolucion"];
-									if(is_null($fecha_resolucion))
-									{
-										$envio_date = '';
-
-									} else {
-
-										$envio_date = DateTime::createFromFormat('Y-m-d H:i:s',$fecha_resolucion)->format('d/m/Y H:i:s');
-									}
-
-
-								?>
+						<div id="reload-div">
+							<table class="table datatable-basic table-xxs table-hover">
+								<thead>
 									<tr>
-										<td><?php print($column['idtiraje']); ?></td>
-										<td><?php print($column['nombre_sucursal']); ?></td>
-					                	<td><?php print($envio_date); ?></td>
-					            		<td><?php print($column['nombre_comprobante']); ?></td>
-										<td><?php print($column['serie']); ?></td>
-					            		<td><?php print($column['disponibles']); ?></td>
-					            		<td><?php print($column['usados']); ?></td>
-					                	<td class="text-center">
-										<ul class="icons-list">
-											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-													<i class="icon-menu9"></i>
-												</a>
+										<th><b>Codigo</b></th>
+										<th><b>Establecimiento</b></th>
+										<th><b>Fecha Resolucion</b></th>
+										<th><b>Tipo Comprobante</b></th>
+										<th><b>Serie</b></th>
+										<th><b>Tickets Disponibles</b></th>
+										<th><b>Numeracion Actual</b></th>
+										<th class="text-center"><b>Opciones</b></th>
+									</tr>
+								</thead>
 
-												<ul class="dropdown-menu dropdown-menu-right">
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openTiraje('editar',
-								                     '<?php print($column["idtiraje"]); ?>',
-								                     '<?php print($envio_date); ?>',
-								                     '<?php print($column["numero_resolucion"]); ?>',
-													 '<?php print($column["clave_acceso"]); ?>',
-								                     '<?php print($column["serie"]); ?>',
-								                     '<?php print($column["desde"]); ?>',
-								                     '<?php print($column["hasta"]); ?>',
-								                     '<?php print($column["disponibles"]); ?>',
-								                     '<?php print($column["usados"]); ?>',
-								                     '<?php print($column["idcomprobante"]); ?>')">
-												   <i class="icon-pencil6">
-											       </i> Editar</a></li>
-													<li><a
-													href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
-													onclick="openTiraje('ver',
-								                     '<?php print($column["idtiraje"]); ?>',
-								                     '<?php print($envio_date); ?>',
-								                     '<?php print($column["numero_resolucion"]); ?>',
-													 '<?php print($column["clave_acceso"]); ?>',
-								                     '<?php print($column["serie"]); ?>',
-								                     '<?php print($column["desde"]); ?>',
-								                     '<?php print($column["hasta"]); ?>',
-								                     '<?php print($column["disponibles"]); ?>',
-								                     '<?php print($column["usados"]); ?>',
-								                     '<?php print($column["idcomprobante"]); ?>')">
-													<i class=" icon-eye8">
-													</i> Ver</a></li>
-												</ul>
-											</li>
-										</ul>
-									</td>
-					                </tr>
+								<tbody>
+
 								<?php
-								}
-							}
-							?>
+										$filas = $objTiraje->Listar_Tirajes();
+										if (is_array($filas) || is_object($filas))
+										{
+										foreach ($filas as $row => $column)
+										{
+											$fecha_resolucion = $column["fecha_resolucion"];
+											if(is_null($fecha_resolucion))
+											{
+												$envio_date = '';
 
-						</tbody>
-					</table>
+											} else {
+
+												$envio_date = DateTime::createFromFormat('Y-m-d H:i:s',$fecha_resolucion)->format('d/m/Y H:i:s');
+											}
+
+
+										?>
+											<tr>
+												<td><?php print($column['idtiraje']); ?></td>
+												<td><?php print($column['nombre_sucursal']); ?></td>
+												<td><?php print($envio_date); ?></td>
+												<td><?php print($column['nombre_comprobante']); ?></td>
+												<td><?php print($column['serie']); ?></td>
+												<td><?php print($column['disponibles']); ?></td>
+												<td><?php print($column['usados']); ?></td>
+												<td class="text-center">
+												<ul class="icons-list">
+													<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+															<i class="icon-menu9"></i>
+														</a>
+
+														<ul class="dropdown-menu dropdown-menu-right">
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openTiraje('editar',
+															'<?php print($column["idtiraje"]); ?>',
+															'<?php print($envio_date); ?>',
+															'<?php print($column["numero_resolucion"]); ?>',
+															'<?php print($column["clave_acceso"]); ?>',
+															'<?php print($column["serie"]); ?>',
+															'<?php print($column["desde"]); ?>',
+															'<?php print($column["hasta"]); ?>',
+															'<?php print($column["disponibles"]); ?>',
+															'<?php print($column["usados"]); ?>',
+															'<?php print($column["idcomprobante"]); ?>')">
+														<i class="icon-pencil6">
+														</i> Editar</a></li>
+															<li><a
+															href="javascript:;" data-toggle="modal" data-target="#modal_iconified"
+															onclick="openTiraje('ver',
+															'<?php print($column["idtiraje"]); ?>',
+															'<?php print($envio_date); ?>',
+															'<?php print($column["numero_resolucion"]); ?>',
+															'<?php print($column["clave_acceso"]); ?>',
+															'<?php print($column["serie"]); ?>',
+															'<?php print($column["desde"]); ?>',
+															'<?php print($column["hasta"]); ?>',
+															'<?php print($column["disponibles"]); ?>',
+															'<?php print($column["usados"]); ?>',
+															'<?php print($column["idcomprobante"]); ?>')">
+															<i class=" icon-eye8">
+															</i> Ver</a></li>
+														</ul>
+													</li>
+												</ul>
+											</td>
+											</tr>
+										<?php
+										}
+									}
+									?>
+
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 
