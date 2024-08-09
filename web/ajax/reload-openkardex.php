@@ -24,9 +24,9 @@
 			</ul> 
 	  		<div class="row">
 				<div class="breadcrumb col-lg-12">
-					<div style="background-color: #4988C0;color: white;padding: 2px;font-size: 20px;
-					text-align: center; text-transform: uppercase;font-weight: bold;width: 100%;">
-						<span>Movimientos y saldos generales de productos</span>
+					<div style="background-color: #508d77;color: white;padding: 2px;font-size: 20px;
+						text-align: center; text-transform: uppercase;font-weight: bold;width: 100%;">
+						<br><span>Movimientos y saldos generales de productos</span><br><br>
 					</div>
 				</div>
 	  		</div>
@@ -47,7 +47,7 @@
 							</div>
 							<div class="col-sm-6">
 								<button style="margin-top: auto;" id="btnGuardar" type="submit" class="btn btn-info btn-sm"> 
-								<i class="icon-search4"></i> Consultar por mes</button>
+								<i class="icon-search4"></i> Consultar</button>
 							</div>
 						</div>
 					</div>
@@ -66,7 +66,7 @@
 						<?php  if($tipo_usuario == '1'){ ?>
 
 							<div class="btn-group">
-								<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 								<i class="icon-printer2 position-left"></i> Imprimir Reporte 
 								<span class="caret"></span></button>
 								<ul class="dropdown-menu dropdown-menu-right">
