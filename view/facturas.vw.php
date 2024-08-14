@@ -82,7 +82,7 @@
 												<h5 class="panel-title">FACTURAS VIGENTES</h5>
 												<div class="heading-elements">
 													<button type="button" id="print_vigentes"
-													class="btn bg-danger-400 heading-btn" id="btnPrint" value="vigentes">
+													class="btn bg-info-800 heading-btn" id="btnPrint" value="vigentes">
 													<i class="icon-printer2"></i> Imprimir Reporte</button>
 												</div>
 											</div>
@@ -213,7 +213,7 @@
 												<h5 class="panel-title">FACTURAS ANULADAS</h5>
 												<div class="heading-elements">
 													<button type="button" id="print_anuladas"
-													class="btn bg-danger-400 heading-btn" id="btnPrint" value="anuladas">
+													class="btn bg-info-800 heading-btn" id="btnPrint" value="anuladas">
 													<i class="icon-printer2"></i> Imprimir Reporte</button>
 												</div>
 											</div>
