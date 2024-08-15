@@ -274,7 +274,7 @@
 					<div class="col-lg-6">
 
 						<!-- Traffic sources -->
-						<div class="panel panel-flat">
+						<div class="panel-flat bg-info-800">
 							<div class="panel-heading">
 								<h6 class="panel-title bg-info-800 text-center text-uppercase text-black">VENTAS (<?php echo date('Y') ?>) </h6>
 							</div>
@@ -291,7 +291,7 @@
 					<div class="col-lg-6">
 
 						<!-- Sales stats -->
-						<div class="panel panel-flat">
+						<div class="panel-flat bg-info-800">
 							<div class="panel-heading">
 								<h6 class="panel-title bg-info-800 text-center text-uppercase text-black">COMPRAS (<?php echo date('Y') ?>)</h6>
 							</div>
@@ -309,7 +309,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<!-- Simple line chart ---->
-							<div class="panel panel-flat">
+							<div class="panel-flat bg-info-800">
 								<div class="panel-heading">
 									<h6 class="panel-title bg-info-800 text-center text-uppercase text-black">GRÁFICO DE VENTAS Y COMPRAS (<?php echo date('Y') ?>) </h6>
 								</div>
