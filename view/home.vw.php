@@ -274,11 +274,11 @@
 					<div class="col-lg-6">
 
 						<!-- Traffic sources -->
-						<div class="panel-flat bg-info-800">
+						<div class="panel-flat bg-teal-600">
 							<div class="panel-heading">
-								<h6 class="panel-title bg-info-800 text-center text-uppercase text-black">VENTAS (<?php echo date('Y') ?>) </h6>
+								<h6 class="panel-title bg-teal-600 text-center text-uppercase text-black">VENTAS (<?php echo date('Y') ?>) </h6>
 							</div>
-							<div class="panel panel-flat bg-white has-bg-image">
+							<div class="panel panel-flat bg-white has-bg-image" style="padding-top: 30px;padding-bottom: 20px;">
 								<div class="chart-container text-center">
 									<div class="display-inline-block" id="chart-ventas"></div>
 								</div>
@@ -291,11 +291,11 @@
 					<div class="col-lg-6">
 
 						<!-- Sales stats -->
-						<div class="panel-flat bg-info-800">
+						<div class="panel-flat bg-teal-600">
 							<div class="panel-heading">
-								<h6 class="panel-title bg-info-800 text-center text-uppercase text-black">COMPRAS (<?php echo date('Y') ?>)</h6>
+								<h6 class="panel-title bg-teal-600 text-center text-uppercase text-black">COMPRAS (<?php echo date('Y') ?>)</h6>
 							</div>
-							<div class="panel panel-flat bg-white has-bg-image">
+							<div class="panel panel-flat bg-white has-bg-image" style="padding-top: 30px;padding-bottom: 20px;">
 								<div class="chart-container text-center">
 									<div class="display-inline-block" id="chart-compras"></div>
 								</div>
@@ -309,11 +309,11 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<!-- Simple line chart ---->
-							<div class="panel-flat bg-info-800">
+							<div class="panel-flat bg-teal-600">
 								<div class="panel-heading">
-									<h6 class="panel-title bg-info-800 text-center text-uppercase text-black">GRÁFICO DE VENTAS Y COMPRAS (<?php echo date('Y') ?>) </h6>
+									<h6 class="panel-title bg-teal-600 text-center text-uppercase text-black">GRÁFICO DE VENTAS Y COMPRAS (<?php echo date('Y') ?>) </h6>
 								</div>
-								<div class="panel panel-flat bg-white has-bg-image">
+								<div class="panel panel-flat bg-white has-bg-image" style="padding: 25px;">
 									<div class="chart-container">
 										<div class="chart" id="c3-line-chart"></div>
 									</div>
