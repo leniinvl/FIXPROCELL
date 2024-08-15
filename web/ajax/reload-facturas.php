@@ -67,6 +67,7 @@
 										<th><b>No. Venta</b></th>
 										<th><b>Comprobante</b></th>
 										<th><b>No.Comprobante</b></th>
+										<th><b>SRI</b></th>
 										<th><b>Fecha y Hora</b></th>
 										<th><b>Metodo Pago</b></th>
 										<th><b>Total</b></th>
@@ -120,11 +121,46 @@
 
 										}
 
+										$respuesta = $column['respuesta'];
+										if(strlen(stristr($respuesta,'Comprobante AUTORIZADO'))>0){
+											$respuesta = 'AUTORIZADO Y ENVIADO';
+										}else if(strlen(stristr($respuesta,'NO AUTORIZADO'))>0){
+											$respuesta = 'NO AUTORIZADO';
+										}else if(strlen(stristr($respuesta,'EN PROCESO'))>0){
+											$respuesta = 'EN PROCESO';
+										}else if(strlen(stristr($respuesta,'DEVUELTA'))>0){
+											$respuesta = 'DEVUELTA';
+										}else if(strlen(stristr($respuesta,'n/a'))>0){
+											$respuesta = 'PENDIENTE FACTURAR';
+										}else{
+											$respuesta = 'VALIDAR PROCESO';
+										}
+
 										?>
 											<tr>
 												<td><?php print($column['numero_venta']); ?></td>
 												<td><?php print($tipo_comprobante); ?></td>
 							                	<td><?php print($column['serie_comprobante']); ?></td>
+												<td><?php if($respuesta == 'AUTORIZADO Y ENVIADO'){
+															echo '<span class="label label-success label-rounded"><span
+															class="text-bold">AUTORIZADO Y ENVIADO</span></span>';
+													}else if($respuesta == 'NO AUTORIZADO'){
+															echo '<span class="label label-default label-rounded"><span
+															class="text-bold">NO AUTORIZADO</span></span>';
+													}else if($respuesta == 'EN PROCESO'){
+															echo '<span class="label label-info label-rounded"><span
+															class="text-bold">EN PROCESO</span></span>';
+													}else if($respuesta == 'DEVUELTA'){
+															echo '<span class="label label-primary label-rounded"><span
+															class="text-bold">DEVUELTA</span></span>';
+													}else if($respuesta == 'PENDIENTE FACTURAR'){
+															echo '<span class="label label-warning label-rounded"><span
+															class="text-bold">PENDIENTE FACTURAR</span></span>';
+													}else{
+															echo '<span class="label label-detail label-rounded"><span
+															class="text-bold">VALIDAR PROCESO</span></span>';
+													}?>
+												</td>
 							                	<td><?php print($c_fecha_venta); ?></td>
 							                	<td><?php print($tipo_pago); ?></td>
 							                	<td><?php print($column['total']); ?></td>
@@ -155,15 +191,15 @@
 															   <i class="icon-typewriter">
 														       </i> Comprobante</a></li>
 
-															    <!-- EMERGENTE -->
-																
-																	<li><a id="facturation"
+															    <!-- FACTURACION -->
+																<?php if($respuesta == 'PENDIENTE FACTURAR'){ ?>
+																	<li><a id="facturacion"
 																	data-id="<?php print($column['idventa']); ?>"
 																		href="javascript:void(0)">
 																	<i class="icon-qrcode">
-																	</i> Facturar</a></li>
-																
-																<!-- EMERGENTE -->
+																	</i> Facturar </a></li>
+																<?php } ?>
+																<!-- FACTURACION -->
 
 															</ul>
 														</li>
@@ -198,6 +234,7 @@
 										<th><b>No. Venta</b></th>
 										<th><b>Comprobante</b></th>
 										<th><b>No.Comprobante</b></th>
+										<th><b>SRI</b></th>
 										<th><b>Fecha y Hora</b></th>
 										<th><b>Metodo Pago</b></th>
 										<th><b>Total</b></th>
@@ -251,12 +288,32 @@
 
 										}
 
+										$respuesta = $column['respuesta'];
+										if(strlen(stristr($respuesta,'Comprobante AUTORIZADO'))>0){
+											$respuesta = 'AUTORIZADO Y ENVIADO';
+										}else if(strlen(stristr($respuesta,'NO AUTORIZADO'))>0){
+											$respuesta = 'NO AUTORIZADO';
+										}else if(strlen(stristr($respuesta,'EN PROCESO'))>0){
+											$respuesta = 'EN PROCESO';
+										}else if(strlen(stristr($respuesta,'DEVUELTA'))>0){
+											$respuesta = 'DEVUELTA';
+										}else if(strlen(stristr($respuesta,'n/a'))>0){
+											$respuesta = 'PENDIENTE FACTURAR';
+										}else{
+											$respuesta = 'VALIDAR PROCESO';
+										}
+
 										?>
 											<tr>
 												<td><?php print($column['numero_venta']); ?></td>
 												<td><?php print($tipo_comprobante); ?></td>
 							                	<td><?php print($column['serie_comprobante']); ?></td>
-							                	<td><?php print($c_fecha_venta); ?></td>
+												<td><?php 
+													echo '<span class="label label-default label-rounded"><span
+													class="text-bold">' .$respuesta. '</span></span>';
+												    ?>
+												</td>
+												<td><?php print($c_fecha_venta); ?></td>
 							                	<td><?php print($tipo_pago); ?></td>
 							                	<td><?php print($column['total']); ?></td>
 							                	<td><?php if($column['estado_venta'] == '1')

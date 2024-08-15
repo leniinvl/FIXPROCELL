@@ -55,7 +55,7 @@
 			}
 		}
 
-		public static function Compras_Anuales()
+		public static function Compras_Anuales($idsucursal)
 		{
 			$dbconec = Conexion::Conectar();
 

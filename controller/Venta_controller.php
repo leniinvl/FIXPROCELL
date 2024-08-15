@@ -59,6 +59,8 @@
 
 		}
 
+		/* FACTURACION */
+
 		public static function Obtener_idventa_facturar($idcliente){
 
 			$filas = VentaModel::Obtener_idventa_facturar($idcliente);
@@ -72,6 +74,21 @@
 			return $filas;
 
 		}
+
+		public static function actualizar_respuesta_factura($p_respuesta, $p_idventa){
+
+			$cmd = VentaModel::actualizar_respuesta_factura($p_respuesta, $p_idventa);
+	
+		}
+
+		public static function actualizar_clave_venta($p_claveacceso, $p_idventa){
+
+			$cmd = VentaModel::actualizar_clave_venta($p_claveacceso, $p_idventa);
+	
+		}
+
+
+		/* FACTURACION */
 
 		public static function Imprimir_Corte_Z_Dia($date, $tipoComprobante, $idsucursal){
 
@@ -194,13 +211,6 @@
 	
 		}
 
-		public static function actualizar_clave_venta($p_claveacceso, $p_idventa){
-
-			$cmd = VentaModel::actualizar_clave_venta($p_claveacceso, $p_idventa);
-	
-		}
-
 	}
-
 
  ?>

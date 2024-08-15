@@ -804,6 +804,28 @@
 			}
 		}
 
+		public static function actualizar_respuesta_factura($p_respuesta, $p_idventa)
+		{
+			$dbconec = Conexion::Conectar();
+
+			try
+			{
+				$query = "CALL sp_update_respuesta(:p_respuesta, :p_idventa)";
+				$stmt = $dbconec->prepare($query);
+				$stmt->bindParam(":p_respuesta",$p_respuesta);
+				$stmt->bindParam(":p_idventa",$p_idventa);
+				$stmt->execute();
+
+				$dbconec = null;
+
+			} catch (Exception $e) {
+
+				$data = "Error";
+ 	   			echo json_encode($data);
+
+			}
+		}
+
 	}
 
 

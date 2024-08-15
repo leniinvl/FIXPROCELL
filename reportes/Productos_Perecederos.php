@@ -82,11 +82,14 @@ try {
         }
 
         $estado = $column['estado_perecedero'];
-        if($estado == '1')
-        {
+        if($estado == '1'){
           $estado = 'VIGENTE';
-        } else {
+        } else if($estado == '0'){
           $estado = 'VENCIDO';
+        } else if($estado == '2'){
+            $estado = 'AGOTADO';
+        } else {
+            $estado = 'POR VENCER';
         }
 
             $pdf->setX(9);

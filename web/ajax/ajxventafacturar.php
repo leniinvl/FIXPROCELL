@@ -24,9 +24,10 @@
 			$idventa = $_POST['idventa'];
 			/*******************************/
 			/*******************************/
-			//FACTURACION ELECTRONICA V1.0.0 - FORMA EMERGENTE		
+			//FACTURACION ELECTRONICA V1.0.0		
 			/*******************************/
 			/*******************************/
+			
 			//Obtener identificador venta
 			$datos = $funcion->Obtener_datos_venta_facturar($idventa);
 			foreach ($datos as $row => $column) {
@@ -44,6 +45,9 @@
 			//Autorizacion xml
 			$xmla=new autorizar();
 			$response = $xmla->autorizar_xml($namefile,$correo,$id_venta);
+
+			//Actualizar respuesta facturacion
+			$funcion->actualizar_respuesta_factura($response, $id_venta);
 
 			$data = $response;
 			echo json_encode($data);

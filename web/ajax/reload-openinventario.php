@@ -5,7 +5,7 @@
 			<!-- Widget with rounded icon -->
 			<div class="panel">
 				<div class="panel-body text-center">
-					<div class="icon-object border-primary-400 text-primary-400"><i class="icon-box-add icon-3x text-primary-400"></i>
+					<div class="icon-object border-success-400 text-success-400"><i class="icon-box-add icon-3x text-success-800"></i>
 					</div>
 					<h2 class="no-margin text-semibold">INVENTARIO SIN APERTURA </h2>
 					<span class="text-uppercase text-size-mini text-muted">Debe abrir un nuevo inventario para

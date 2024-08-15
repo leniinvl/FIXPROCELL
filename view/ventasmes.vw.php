@@ -30,22 +30,22 @@
 							</ul>
 						</div>
 						<div class="panel-heading">
+							
 							<h6 class="panel-title"><b>Ventas general de empresa</b></h6>
 
 							<div class="heading-elements">
-									<form class="heading-form" action="#">
-										<div class="form-group">
-											<div class="checkbox checkbox-switchery switchery-sm">
-												<label>
-												<input type="checkbox" id="chkEstado" name="chkEstado"
-												 class="switchery" checked="checked" >
-												 <span id="lblchk">REPORTES DETALLADOS</span>
-												 </label>
-											</div>
+								<form class="heading-form" action="#">
+									<div class="form-group">
+										<div class="checkbox checkbox-switchery switchery-sm">
+											<label>
+											<input type="checkbox" id="chkEstado" name="chkEstado"
+												class="switchery" checked="checked" >
+												<span id="lblchk">REPORTES DETALLADOS</span>
+												</label>
 										</div>
-									</form>
-								</div>
-
+									</div>
+								</form>
+							</div>
 
 
 						 <div class="row">
@@ -70,9 +70,6 @@
 								  </form>
 						   	  </div>
 						  </div>
-
-
-
 
 						</div>
 

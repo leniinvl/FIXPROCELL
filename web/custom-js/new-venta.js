@@ -1785,7 +1785,7 @@ function procesar_comprobante(resp){
       $("#btncancelar").hide();
       $('#modal_iconified_cash').modal('toggle');
 
-      if(tipoComprobante == "2"){
+      if(tipoComprobante == "2.0"){ // FACTURACION ELECTRONICA V1.0 DISABLED
           var datos = 'idcliente='+cliente;
           $.ajax({
               type:'POST',

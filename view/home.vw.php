@@ -358,36 +358,39 @@
 		 data: {
 				 x: 'x', //add
 				 columns: [
-						 ['x', <?php  foreach ($ventas as $row => $column) {if($column['mes']=='JAN'){ //add
-																				print('"ENE",');
-																			}else if($column['mes']=='FEB'){
-																				print('"FEB",');
-																			}else if($column['mes']=='MAR'){
-																				print('"MAR",');
-																			}else if($column['mes']=='APR'){
-																				print('"ABR",');
-																			}else if($column['mes']=='MAY'){
-																				print('"MAY",');
-																			}else if($column['mes']=='JUN'){
-																				print('"JUN",');
-																			}else if($column['mes']=='JUL'){
-																				print('"JUL",');
-																			}else if($column['mes']=='AUG'){
-																				print('"AGO",');
-																			}else if($column['mes']=='SEP'){
-																				print('"SEP",');
-																			}else if($column['mes']=='OCT'){
-																				print('"OCT",');
-																			}else if($column['mes']=='NOV'){
-																				print('"NOV",');
-																			}else if($column['mes']=='DEC'){
-																				print('"DIC",');
-																			}else{
-																				print('"'.$column['mes'].'",'); //ORIGINAL
-																			}
-																			}?>], 
-						 ['COMPRAS', <?php  foreach ($compras as $row => $column) {print($column['total'].',');}?>],
-						 ['VENTAS', <?php  foreach ($ventas as $row => $column) {print($column['total'].',');}?>]
+						 ['x', <?php if (!empty($ventas)){
+  										foreach ($ventas as $row => $column) {  if($column['mes']=='JAN'){ //add
+																					print('"ENE",');
+																				}else if($column['mes']=='FEB'){
+																					print('"FEB",');
+																				}else if($column['mes']=='MAR'){
+																					print('"MAR",');
+																				}else if($column['mes']=='APR'){
+																					print('"ABR",');
+																				}else if($column['mes']=='MAY'){
+																					print('"MAY",');
+																				}else if($column['mes']=='JUN'){
+																					print('"JUN",');
+																				}else if($column['mes']=='JUL'){
+																					print('"JUL",');
+																				}else if($column['mes']=='AUG'){
+																					print('"AGO",');
+																				}else if($column['mes']=='SEP'){
+																					print('"SEP",');
+																				}else if($column['mes']=='OCT'){
+																					print('"OCT",');
+																				}else if($column['mes']=='NOV'){
+																					print('"NOV",');
+																				}else if($column['mes']=='DEC'){
+																					print('"DIC",');
+																				}else{
+																					print('"'.$column['mes'].'",'); //ORIGINAL
+																				}
+																			 }
+						  				}
+						  ?>], 
+						 ['COMPRAS', <?php if (!empty($compras)){ foreach ($compras as $row => $column) {print($column['total'].',');} } ?>],
+						 ['VENTAS', <?php if (!empty($ventas)){ foreach ($ventas as $row => $column) {print($column['total'].',');} } ?>]
 				 ],
 				 type: 'area-spline'
 		 },
@@ -409,41 +412,44 @@
  });
 
 
-    var pie_chart = c3.generate({
+    var pie_chart_compras = c3.generate({
         bindto: '#chart-compras',
         size: { width: 500 },
         data: {
 	        x: 'x',
 	        columns: [
-	            ['x', <?php  foreach ($compras as $row => $column) {if($column['mes']=='JAN'){ //add
-																				print('"ENE",');
-																			}else if($column['mes']=='FEB'){
-																				print('"FEB",');
-																			}else if($column['mes']=='MAR'){
-																				print('"MAR",');
-																			}else if($column['mes']=='APR'){
-																				print('"ABR",');
-																			}else if($column['mes']=='MAY'){
-																				print('"MAY",');
-																			}else if($column['mes']=='JUN'){
-																				print('"JUN",');
-																			}else if($column['mes']=='JUL'){
-																				print('"JUL",');
-																			}else if($column['mes']=='AUG'){
-																				print('"AGO",');
-																			}else if($column['mes']=='SEP'){
-																				print('"SEP",');
-																			}else if($column['mes']=='OCT'){
-																				print('"OCT",');
-																			}else if($column['mes']=='NOV'){
-																				print('"NOV",');
-																			}else if($column['mes']=='DEC'){
-																				print('"DIC",');
-																			}else{
-																				print('"'.$column['mes'].'",'); //ORIGINAL
-																			}
-																			}?>],
-	            ['VALOR', <?php  foreach ($compras as $row => $column) {print($column['total'].',');}?>]
+	            ['x', <?php if (!empty($compras)){ 
+							foreach ($compras as $row => $column) {if($column['mes']=='JAN'){ //add
+																		print('"ENE",');
+																	}else if($column['mes']=='FEB'){
+																		print('"FEB",');
+																	}else if($column['mes']=='MAR'){
+																		print('"MAR",');
+																	}else if($column['mes']=='APR'){
+																		print('"ABR",');
+																	}else if($column['mes']=='MAY'){
+																		print('"MAY",');
+																	}else if($column['mes']=='JUN'){
+																		print('"JUN",');
+																	}else if($column['mes']=='JUL'){
+																		print('"JUL",');
+																	}else if($column['mes']=='AUG'){
+																		print('"AGO",');
+																	}else if($column['mes']=='SEP'){
+																		print('"SEP",');
+																	}else if($column['mes']=='OCT'){
+																		print('"OCT",');
+																	}else if($column['mes']=='NOV'){
+																		print('"NOV",');
+																	}else if($column['mes']=='DEC'){
+																		print('"DIC",');
+																	}else{
+																		print('"'.$column['mes'].'",'); //ORIGINAL
+																	}
+																	}
+							}
+				?>],
+	            ['VALOR', <?php if (!empty($compras)){ foreach ($compras as $row => $column) {print($column['total'].',');} } ?>]
 	        ],
 	        type : 'bar',
 	        colors: {
@@ -468,41 +474,44 @@
 		}
     });
 
-    var pie_chart = c3.generate({
+    var pie_chart_ventas = c3.generate({
         bindto: '#chart-ventas',
         size: { width: 500 },
         data: {
 	        x: 'x',
 	        columns: [
-	            ['x', <?php  foreach ($ventas as $row => $column) {if($column['mes']=='JAN'){ //add
-																				print('"ENE",');
-																			}else if($column['mes']=='FEB'){
-																				print('"FEB",');
-																			}else if($column['mes']=='MAR'){
-																				print('"MAR",');
-																			}else if($column['mes']=='APR'){
-																				print('"ABR",');
-																			}else if($column['mes']=='MAY'){
-																				print('"MAY",');
-																			}else if($column['mes']=='JUN'){
-																				print('"JUN",');
-																			}else if($column['mes']=='JUL'){
-																				print('"JUL",');
-																			}else if($column['mes']=='AUG'){
-																				print('"AGO",');
-																			}else if($column['mes']=='SEP'){
-																				print('"SEP",');
-																			}else if($column['mes']=='OCT'){
-																				print('"OCT",');
-																			}else if($column['mes']=='NOV'){
-																				print('"NOV",');
-																			}else if($column['mes']=='DEC'){
-																				print('"DIC",');
-																			}else{
-																				print('"'.$column['mes'].'",'); //ORIGINAL
-																			}
-																			}?>],
-	            ['VALOR', <?php  foreach ($ventas as $row => $column) {print($column['total'].',');}?>]
+	            ['x', <?php if (!empty($ventas)){ 
+							foreach ($ventas as $row => $column) { if($column['mes']=='JAN'){ //add
+																		print('"ENE",');
+																	}else if($column['mes']=='FEB'){
+																		print('"FEB",');
+																	}else if($column['mes']=='MAR'){
+																		print('"MAR",');
+																	}else if($column['mes']=='APR'){
+																		print('"ABR",');
+																	}else if($column['mes']=='MAY'){
+																		print('"MAY",');
+																	}else if($column['mes']=='JUN'){
+																		print('"JUN",');
+																	}else if($column['mes']=='JUL'){
+																		print('"JUL",');
+																	}else if($column['mes']=='AUG'){
+																		print('"AGO",');
+																	}else if($column['mes']=='SEP'){
+																		print('"SEP",');
+																	}else if($column['mes']=='OCT'){
+																		print('"OCT",');
+																	}else if($column['mes']=='NOV'){
+																		print('"NOV",');
+																	}else if($column['mes']=='DEC'){
+																		print('"DIC",');
+																	}else{
+																		print('"'.$column['mes'].'",'); //ORIGINAL
+																	}
+																  }
+							}
+				?>],
+	            ['VALOR', <?php if (!empty($ventas)){ foreach ($ventas as $row => $column) {print($column['total'].',');} } ?>]
 	        ],
 	        type : 'bar',
 	        colors: {

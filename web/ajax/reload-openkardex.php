@@ -16,24 +16,26 @@
 
  ?>
 	<div class="breadcrumb-line">
+
 		<div class="breadcrumb-line">
 			<ul class="breadcrumb">
 				<li><a href="?View=Inicio"><i class="icon-home2 position-left"></i> Inicio</a></li>
 				<li><a href="javascript:;">Inventario</a></li>
 				<li class="active">Kardex de Productos</li>
 			</ul> 
-	  		<div class="row">
-				<div class="breadcrumb col-lg-12">
-					<div style="background-color: #508d77;color: white;padding: 2px;font-size: 20px;
-						text-align: center; text-transform: uppercase;font-weight: bold;width: 100%;">
-						<br><span>Movimientos y saldos generales de productos</span><br><br>
-					</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-lg-12">
+				<div style="background-color: #508d77;color: white;padding: 25px;font-size: 20px;
+					text-align: center; text-transform: uppercase;font-weight: bold;">
+					<span>Movimientos y saldos generales de productos</span>
 				</div>
-	  		</div>
+			</div>
 		</div>
 		<br>
 		<div class="row">
 			<div class="col-sm-3 col-md-6">
+				<h6 class="panel-title"><b>Kardex por Mes</b></h6>
 		 		<form role="form" autocomplete="off" class="form-validate-jquery" id="frmSearch">
 					<div class="form-group">
 						<div class="row">
@@ -55,115 +57,117 @@
 	   		</div>
 		</div>
 
-	  <div class="row">
+	  	<div class="row">
 		 	<div class="col-md-12 col-lg-12">
 				<!-- Basic initialization -->
-				<div class="panel panel-flat">
+				<div class="panel-flat">
+					
 					<div class="panel-heading">
 						<h5 class="panel-title">Kardex de productos</h5>
 						<div class="heading-elements">
+							<?php  if($tipo_usuario == '1'){ ?>
 
-						<?php  if($tipo_usuario == '1'){ ?>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+									<i class="icon-printer2 position-left"></i> Imprimir Reporte 
+									<span class="caret"></span></button>
+									<ul class="dropdown-menu dropdown-menu-right">
+										<li><a id="print_saldos" href="javascript:void(0)"
+										><i class="icon-file-pdf"></i> Saldos y Movimientos</a></li>
+										<li class="divider"></li>
+										<li><a id="print_entradas" href="javascript:void(0)">
+										<i class="icon-file-pdf"></i> Entradas del Mes</a></li>
+										<li class="divider"></li>
+										<li><a id="print_salidas" href="javascript:void(0)">
+										<i class="icon-file-pdf"></i> Salidas del Mes</a></li>
+									</ul>
+								</div>
 
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-printer2 position-left"></i> Imprimir Reporte 
-								<span class="caret"></span></button>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li><a id="print_saldos" href="javascript:void(0)"
-									><i class="icon-file-pdf"></i> Saldos y Movimientos</a></li>
-									<li class="divider"></li>
-									<li><a id="print_entradas" href="javascript:void(0)">
-									<i class="icon-file-pdf"></i> Entradas del Mes</a></li>
-									<li class="divider"></li>
-									<li><a id="print_salidas" href="javascript:void(0)">
-									<i class="icon-file-pdf"></i> Salidas del Mes</a></li>
-								</ul>
-							</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+									<i class="icon-pencil6 position-left"></i> Registrar Movimiento 
+									<span class="caret"></span></button>
+									<ul class="dropdown-menu dropdown-menu-right">
+										<li><a data-toggle="modal" data-target="#modal_iconified" 
+										id="new_entrada" href="javascript:void(0)">
+										<i class="icon-point-right"></i> Registrar Entrada</a></li>
+										<li class="divider"></li>
+										<li><a data-toggle="modal" data-target="#modal_iconified" 
+										id="new_salida" href="javascript:void(0)">
+										<i class="icon-point-left"></i> Registrar Salida</a></li>
+									</ul>
+								</div>
 
-							<div class="btn-group">
-								<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-pencil6 position-left"></i> Registrar Movimiento 
-								<span class="caret"></span></button>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li><a data-toggle="modal" data-target="#modal_iconified" 
-									id="new_entrada" href="javascript:void(0)">
-									<i class="icon-point-right"></i> Registrar Entrada</a></li>
-									<li class="divider"></li>
-									<li><a data-toggle="modal" data-target="#modal_iconified" 
-									id="new_salida" href="javascript:void(0)">
-									<i class="icon-point-left"></i> Registrar Salida</a></li>
-								</ul>
-							</div>
+								<?php } else { ?>
 
-							<?php } else { ?>
+									<div class="btn-group">
+										<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+										<i class="icon-printer2 position-left"></i> Imprimir Reporte 
+										<span class="caret"></span></button>
+										<ul class="dropdown-menu dropdown-menu-right">
+											<li><a id="print_saldos" href="javascript:void(0)"
+											><i class="icon-file-pdf"></i> Saldos y Movimientos</a></li>
+											<li class="divider"></li>
+											<li><a id="print_entradas" href="javascript:void(0)">
+											<i class="icon-file-pdf"></i> Entradas del Mes</a></li>
+											<li class="divider"></li>
+											<li><a id="print_salidas" href="javascript:void(0)">
+											<i class="icon-file-pdf"></i> Salidas del Mes</a></li>
+										</ul>
+									</div>
 
-							<div class="btn-group">
-								<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-printer2 position-left"></i> Imprimir Reporte 
-								<span class="caret"></span></button>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li><a id="print_saldos" href="javascript:void(0)"
-									><i class="icon-file-pdf"></i> Saldos y Movimientos</a></li>
-									<li class="divider"></li>
-									<li><a id="print_entradas" href="javascript:void(0)">
-									<i class="icon-file-pdf"></i> Entradas del Mes</a></li>
-									<li class="divider"></li>
-									<li><a id="print_salidas" href="javascript:void(0)">
-									<i class="icon-file-pdf"></i> Salidas del Mes</a></li>
-								</ul>
-							</div>
-
-						<?php } ?>
+							<?php } ?>
+						</div>
 					</div>
-				</div>
 
-				<div id="reload-div">
-				   <div class="panel panel-body">
-						<table class="table datatable-basic table-borderless table-hover table-xs">
-							<thead>
-								<tr>
-									<th><b>No</b></th>
-									<th><b>PRODUCTO</b></th>
-									<th><b>MARCA</b></th>
-									<th><b>SALDO INICIAL</b></th>
-									<th><b>ENTRADAS</b></th>
-									<th><b>SALIDAS</b></th>
-									<th><b>SALDO</b></th>
-								</tr>
-							</thead>
+					<div id="reload-div">
+						<div class="panel panel-body">
+							<table class="table datatable-basic table-borderless table-hover table-xs">
+								<thead>
+									<tr>
+										<th><b>No</b></th>
+										<th><b>PRODUCTO</b></th>
+										<th><b>MARCA</b></th>
+										<th><b>SALDO INICIAL</b></th>
+										<th><b>ENTRADAS</b></th>
+										<th><b>SALIDAS</b></th>
+										<th><b>SALDO</b></th>
+									</tr>
+								</thead>
 
-							<tbody>
-							
-							<?php 
-									$filas = $objInventario->Listar_Kardex('', $idsucursal); 
-									if (is_array($filas) || is_object($filas))
-									{
-									foreach ($filas as $row => $column) 
-									{
+								<tbody>
+								
+									<?php 
+										$filas = $objInventario->Listar_Kardex('', $idsucursal); 
+										if (is_array($filas) || is_object($filas))
+										{
+											foreach ($filas as $row => $column) 
+											{
+											?>
+												<tr>
+													<td><?php print($column['idproducto']); ?></td>
+													<td><?php print($column['producto']); ?></td>
+													<td><?php print($column['nombre_marca']); ?></td>
+													<td><?php print($column['saldo_inicial']); ?></td>
+													<td><?php print($column['entradas']); ?></td>
+													<td><?php print($column['salidas']); ?></td>
+													<td><?php print($column['saldo_final']); ?></td>
+												</tr>
+											<?php  
+											}
+										}
 									?>
-										<tr>
-											<td><?php print($column['idproducto']); ?></td>
-											<td><?php print($column['producto']); ?></td>
-											<td><?php print($column['nombre_marca']); ?></td>
-											<td><?php print($column['saldo_inicial']); ?></td>
-											<td><?php print($column['entradas']); ?></td>
-											<td><?php print($column['salidas']); ?></td>
-											<td><?php print($column['saldo_final']); ?></td>
-										</tr>
-									<?php  
-									}
-								}
-								?>
-							
-							</tbody>
-						</table>
-					</div>
-				</div>	
-			</div>
-	   	</div>
-	</div>
+								
+								</tbody>
+							</table>
+						</div>
+					</div>	
 
+				</div>
+	   		</div>
+		</div>
+
+	</div>
 
 	  <!-- Iconified modal -->
 		<div id="modal_iconified" class="modal fade">

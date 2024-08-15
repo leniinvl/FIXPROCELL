@@ -124,8 +124,8 @@ $(function() {
 
         /*Evento change de ChkEstado en el cual al chequear o deschequear cambia el label*/
 
-    var elem = document.querySelector('.switchery');
-    var init = new Switchery(elem);
+    //var elem = document.querySelector('.switchery');
+    //var init = new Switchery(elem);
 
   $.fn.modal.Constructor.prototype.enforceFocus = function() {};
 

@@ -22,7 +22,7 @@
 							<i class="icon-database-add"></i> Agregar Nuevo/a</button>
 
 					<!--
-							<button type="button" id="print_marca" class="btn btn-info heading-btn">
+							<button type="button" id="print_color" class="btn btn-info heading-btn">
 							<i class="icon-file-pdf"></i> Imprimir Reporte</button>
 					-->
 						</div>

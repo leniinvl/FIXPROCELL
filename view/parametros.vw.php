@@ -15,12 +15,13 @@
 				</div>
 					<div class="panel-heading">
 						<h5 class="panel-title">Parametros del Sistema</h5>
-
+					<!--
 						<div class="heading-elements">
 							<button type="button" class="btn btn-info heading-btn"
 							onclick="newParametro()">
 							<i class="icon-database-add"></i> Agregar Nuevo/a</button>
 						</div>
+					-->
 					</div>
 					<div class="panel-body">
 						<div id="reload-div">

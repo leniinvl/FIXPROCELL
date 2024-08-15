@@ -22,12 +22,12 @@
 			<!-- Widget with rounded icon -->
 			<div class="panel">
 				<div class="panel-body text-center">
-					<div class="icon-object border-primary-400 text-primary-400"><i class="icon-calendar icon-3x text-primary-400"></i>
+					<div class="icon-object border-success-400 text-success-400"><i class="icon-calendar icon-3x text-success-800"></i>
 					</div>
 					<h2 class="no-margin text-semibold">INVENTARIO VIGENTE DESDE <?php echo _data_first_month_day() ?> HASTA
 						<?php echo _data_last_month_day() ?> </h2>
 					<span class="text-uppercase text-size-mini text-muted">Este se cerrara al finalizar el periodo</span> <br><br>
-					<button id="btnInventario" onclick="CerrarInventario()" type="button" class="btn btn-danger heading-btn"> 
+					<button id="btnInventario" onclick="CerrarInventario()" type="button" class="btn btn-default-800 heading-btn"> 
 					<i class="icon-lock5"></i> Cerrar Inventario</button>
 				</div>
 			</div>

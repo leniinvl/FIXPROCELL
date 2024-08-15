@@ -142,15 +142,57 @@ $("#txtF2").on("dp.change", function (e) {
        e.preventDefault();
   });
 
-  /* EMERGENTE */
-    $(document).on('click', '#facturation', function(e){
-      var productId = $(this).data('id');
-      facturar(productId);
-      e.preventDefault();
-    });
-  /* EMERGENTE */
+  /* FACTURACION */
+  var isRequestInProgress = false;
+
+  $(document).off('click', '#facturacion').on('click', '#facturacion', function(e){
+    if (isRequestInProgress) {
+        e.preventDefault(); // Evita la ejecución del código si ya hay una petición en curso
+        return;
+    }
+    isRequestInProgress = true; // Establece la bandera para indicar que la petición está en curso
+
+    var productId = $(this).data('id');
+    generarFactura(productId);
+    e.preventDefault();
+  });
+  /* FACTURACION */
 
 });
+
+var isRequestInProgress = false;
+
+/* FACTURACION */
+function generarFactura(VentaNo)
+{
+    var datos = 'idventa='+VentaNo;
+    $.ajax({
+        type:'POST',
+        url:'web/ajax/ajxventafacturar.php',
+        data: datos,
+        cache: false,
+        dataType: 'json',
+        success: function(data){
+
+          if(data != "Error"){
+            //cargarDiv("#reload-div","web/ajax/reload-facturas.php");
+            location.reload();
+            alert(data);
+          }
+
+        },error: function() {
+            //cargarDiv("#reload-div","web/ajax/reload-facturas.php");
+            location.reload();
+            alert("Comprobante Electronico no procesado");
+        }
+    });
+}
+/* FACTURACION */
+
+function cargarDiv(div,url)
+{
+      $(div).load(url);
+}
 
 function buscar_datos()
 {
