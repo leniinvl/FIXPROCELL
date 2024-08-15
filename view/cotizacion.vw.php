@@ -94,7 +94,7 @@
 												<th class="text-center">PRECIO</th>
 												<th class="text-center">EXENTO</th>
 												<th class="text-center">DESCUENTO</th>
-												<th class="text-center">IMPORTE</th>
+												<th class="text-center">TOTAL</th>
 												<th class="text-center">ELIMINAR</th>
 											</tr>
 										</thead>

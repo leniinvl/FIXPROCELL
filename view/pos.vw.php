@@ -96,8 +96,8 @@
 												<th class="text-center">EXENTO</th>
 												<th class="text-center">DESCUENTO</th>
 												<th class="text-center">ADICIONAL</th>
-												<th class="text-center">IMPORTE</th>
-												<!--1 <th class="text-center text-bold">Vence</th>-->
+												<th class="text-center">TOTAL</th>
+												<!--1 <th class="text-center text-bold">VENCE</th>-->
 												<th class="text-center">ELIMINAR</th>
 											</tr>
 										</thead>
