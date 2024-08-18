@@ -3,6 +3,13 @@ require('fpdf/fpdf.php');
 
 class PDF extends FPDF
 {
+    private $idsucursal;
+
+    // Pase imagen
+    function SetIdSucursal($idsucursal) {
+        $this->idsucursal = $idsucursal;
+    }
+
     // Page header
     function Header()
     {
@@ -17,12 +24,16 @@ class PDF extends FPDF
             // Logo
             //  $this->Image('logo.png',10,6,30);
             // Arial bold 15
-            $this->SetFont('Arial','B',13);
+            $this->SetFont('Arial','B',12);
             // Move to the right 
             $this->Cell(100);
             // Title
             $this->Cell(115,10,'RESUMEN DE SALDOS Y MOVIMIENTOS DE PRODUCTOS DEL MES DE '.strtoupper($meses[date(substr($mes,0,2))-1].' del '.$ano),0,0,'C');
-            $this->Image('../web/assets/images/Logo.png', 12, 8, 50, 0, '', '', '', true, 72);
+            if ($this->idsucursal == 1) {
+                $this->Image('../web/assets/images/logo.png', 8, 5, 40, 22, '', '', '', true, 72);
+            } else {
+                $this->Image('../web/assets/images/logo2.png', 8, 8, 65, 0, '', '', '', true, 72);
+            }
             // Line break
             $this->Ln(20);
         }
@@ -70,6 +81,7 @@ try {
     // Instanciation of inherited class
     $pdf = new PDF('L','mm',array(216,330));
     $pdf->AliasNbPages();
+    $pdf->SetIdSucursal($idsucursal);
     $pdf->AddPage();
     $pdf->SetFont('Arial','B',10);
     $pdf->SetFillColor(255,255,255);

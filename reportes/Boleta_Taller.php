@@ -13,6 +13,9 @@
            require_once($controller); 
     });
 
+      session_set_cookie_params(60*60*24*365); session_start();
+      $idsucursal = $_SESSION['sucursal_id'];	
+
       $objTaller = new Taller();
 
 
@@ -31,6 +34,18 @@
             
 
           }
+      }
+
+      //Recuperacion de datos sucursal
+      $objSucursal =  new Sucursal();
+      $sucursal = $objSucursal->Consultar_Sucursal($idsucursal);
+
+      if (is_array($sucursal) || is_object($sucursal)){
+        foreach ($sucursal as $row => $column){
+          $nombre_sucursal = $column['nombre'];
+          $direccion_sucursal = $column['direccion'];
+          $telefono_sucursal = $column['telefono'];
+        }
       }
 
       $param_moneda = $objTaller->Ver_Moneda_Reporte();
@@ -101,8 +116,12 @@
 
     $pdf->SetFont('Arial','B',16);
     $pdf->setXY(10,6);
-    $pdf->Cell(40,10,$empresa);
-    $pdf->Image('../web/assets/images/Logo.png', 155, 8, 50, 0, '', '', '', true, 72);
+    $pdf->Cell(40,10,$nombre_sucursal);
+    if ($idsucursal == 1) {
+      $pdf->Image('../web/assets/images/logo.png', 175, 8, 30, 0, '', '', '', true, 72);
+    } else {
+      $pdf->Image('../web/assets/images/logo2.png', 155, 8, 50, 0, '', '', '', true, 72);
+    }
 
     $pdf->setXY(145,30);
     $pdf->SetFont('Arial','',14);
@@ -115,7 +134,7 @@
     $pdf->setXY(10,6);
     $pdf->Cell(50,20,$propietario);
     $pdf->setX(10);
-    $pdf->Cell(2,30,$direccion_empresa);
+    $pdf->Cell(2,30,$direccion_sucursal);
     $pdf->setX(10);
     $pdf->SetFont('Arial','B',10);
     $pdf->Cell(2,40,'RUC : ');

@@ -77,8 +77,8 @@
 
 		public static function Listar_Comprobantes(){
 
-			$filas = ApartadoModel::Listar_Comprobantes();
-			return $filas;
+			//$filas = ApartadoModel::Listar_Comprobantes();
+			//return $filas;
 
 		}
 

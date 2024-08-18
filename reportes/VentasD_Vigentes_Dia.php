@@ -3,6 +3,13 @@ require('fpdf/fpdf.php');
 
 class PDF extends FPDF
 {
+    private $idsucursal;
+
+    // Pase imagen
+    function SetIdSucursal($idsucursal) {
+        $this->idsucursal = $idsucursal;
+    }
+
     // Page header
     function Header()
     {
@@ -12,7 +19,7 @@ class PDF extends FPDF
             // Logo
             //  $this->Image('logo.png',10,6,30);
             // Arial bold 15
-            $this->SetFont('Arial','B',14);
+            $this->SetFont('Arial','B',12);
             // Move to the right
             $this->Cell(98);
             // Title
@@ -22,7 +29,11 @@ class PDF extends FPDF
 
             $this->Cell(105,10,'DETALLE DE VENTAS VIGENTES DEL DIA '.strtoupper($dias[date('w')])." ".strtoupper(date('d'))." DE ".strtoupper(
             $meses[date('n')-1]). " DEL ".strtoupper(date('Y')),0,0,'C');
-            $this->Image('../web/assets/images/Logo.png', 12, 8, 50, 0, '', '', '', true, 72);
+            if ($this->idsucursal == 1) {
+                $this->Image('../web/assets/images/logo.png', 8, 5, 45, 24, '', '', '', true, 72);
+            } else {
+                $this->Image('../web/assets/images/logo2.png', 8, 8, 70, 0, '', '', '', true, 72);
+            }     
             // Line break
             $this->Ln(20);
         }
@@ -50,12 +61,12 @@ class PDF extends FPDF
            require_once($controller);
     });
 
-  //  $mes = isset($_GET['mes']) ? $_GET['mes'] : '';
-   // $mes = DateTime::createFromFormat('m/Y', $mes)->format('m-Y');
+    // $mes = isset($_GET['mes']) ? $_GET['mes'] : '';
+    // $mes = DateTime::createFromFormat('m/Y', $mes)->format('m-Y');
 
-   session_set_cookie_params(60*60*24*365); session_start();
-   //$tipo_usuario = $_SESSION['user_tipo'];
-   $idsucursal = $_SESSION['sucursal_id'];	
+    session_set_cookie_params(60*60*24*365); session_start();
+    //$tipo_usuario = $_SESSION['user_tipo'];
+    $idsucursal = $_SESSION['sucursal_id'];	
 
     $objVenta =  new Venta();
     $listado = $objVenta->Listar_Ventas_Detalle('HOY','','',1,$idsucursal);
@@ -82,6 +93,7 @@ try {
     // Instanciation of inherited class
     $pdf = new PDF('L','mm',array(216,330));
     $pdf->AliasNbPages();
+    $pdf->SetIdSucursal($idsucursal);
     $pdf->AddPage();
     $pdf->SetFont('Arial','',10);
     $pdf->SetFillColor(255,255,255);

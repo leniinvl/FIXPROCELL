@@ -12,6 +12,7 @@ class pdf extends FPDF{
 		$detalle = $objVenta->Imprimir_Ticket_DetalleVenta($idventa); 
 		$datos = $objVenta->Imprimir_Ticket_Venta($idventa);
 
+		//Parametrizar
 		$ambiente = 'PRUEBAS';
 		if($vtipoambiente==2){
 			$ambiente = 'PRODUCCION';
@@ -54,12 +55,61 @@ class pdf extends FPDF{
 			$moneda = $column["p_moneda"];
 			$estado = $column["p_estado"];
 			$desc = $column["p_descripcion"];
+
+			$idsucursal = $column["p_idsucursalventa"];
+		}
+
+		//Recuperacion de datos empresa
+		$objParametro =  new Parametro();
+      	$parametros = $objParametro->Listar_Parametros();
+
+		if (is_array($parametros) || is_object($parametros)){
+			foreach ($parametros as $row => $column){
+				$nombre_empresa = $column['nombre_empresa'];
+				$razon_social = $column['propietario'];
+				$numero_ruc = $column['numero_nrc'];
+				$direccion_empresa = $column['direccion_empresa'];
+				$valorTarifaIVA = $column['porcentaje_iva'];
+			}
+		}
+
+		//Recuperacion de datos sucursal
+		$objSucursal =  new Sucursal();
+      	$sucursal = $objSucursal->Consultar_Sucursal($idsucursal);
+
+		if (is_array($sucursal) || is_object($sucursal)){
+			foreach ($sucursal as $row => $column){
+				$nombre_sucursal = $column['nombre'];
+				$direccion_sucursal = $column['direccion'];
+				$telefono_sucursal = $column['telefono'];
+			}
+		}
+
+		$imagenLogo = '../facturacionphp/img/logo.png';
+		if($idsucursal==2){
+			$imagenLogo = '../facturacionphp/img/logo2.png';
 		}
 
 
+		$direccionMatriz = $direccion_empresa;
+		$direccionSucursal = '';
+
+		if($idsucursal==2){
+			$direccionSucursal= $direccion_sucursal;
+		}else{
+			$sucursal2 = $objSucursal->Consultar_Sucursal(2);
+			if (is_array($sucursal2) || is_object($sucursal2)){
+				foreach ($sucursal2 as $row => $column){
+					$direccion_2 = $column['direccion'];
+				}
+				$direccionSucursal= $direccion_2;
+			}
+		}
+		
+
 		$pdf = new FPDF();
-		$pdf->SetCreator('PALACIO DEL CELULAR');
-		$pdf->SetAuthor('PALACIO DEL CELULAR');
+		$pdf->SetCreator($nombre_sucursal);
+		$pdf->SetAuthor($nombre_sucursal);
 		$pdf->SetTitle('factura');
 		$pdf->SetSubject('PDF');
 		$pdf->SetKeywords('FPDF, PDF, cheque, impresion, guia');
@@ -67,7 +117,7 @@ class pdf extends FPDF{
 		$pdf->SetAutoPageBreak(TRUE);
 		$pdf->SetFont('Arial', '', 7);
 		$pdf->AddPage();
-		$pdf->Image('../facturacionphp/img/logo.png',20,15,70);
+		$pdf->Image($imagenLogo,20,15,70);
 		$pdf->SetXY(107, 10);
 		$pdf->Cell(93, 84, '', 1, 1);
 		$pdf->SetXY(10, 54);
@@ -79,9 +129,9 @@ class pdf extends FPDF{
 		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(12, 54);$pdf->Cell(93, 10, $propietario , 0 , 1, 'L');
 		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(12, 59);$pdf->Cell(93, 10, $empresa , 0 , 1, 'L');
 		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(12, 68);$pdf->MultiCell(15, 4, 'Direccion Matriz', 0 , 'L');
-		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(26, 68);$pdf->MultiCell(78, 4, 'PICHINCHA / CAYAMBE / CAYAMBE / LIBERTAD OE1-20 Y RESTAURACION', 0 , 'L');
+		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(26, 68);$pdf->MultiCell(78, 4, $direccionMatriz, 0 , 'L');
 		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(11, 80);$pdf->MultiCell(15, 4, 'Direccion Sucursal', 0 , 'C');
-		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(26, 80);$pdf->MultiCell(78, 4, 'IMBABURA / OTAVALO / JORDAN / SALINAS V1P55355 Y BOLIVAR', 0 , 'L');
+		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(26, 80);$pdf->MultiCell(78, 4, $direccionSucursal, 0 , 'L');
 		$pdf->SetFont('Arial', '', 9);$pdf->SetXY(110, 10);$pdf->Cell(40, 8, 'R.U.C.: '.$nrc , 0 , 1);
 		$pdf->SetFont('Arial', '', 9);$pdf->SetXY(110, 16);$pdf->Cell(93, 8, 'FACTURA', 0 , 1);
 		$pdf->SetFont('Arial', '', 9);$pdf->SetXY(110, 20);$pdf->Cell(40, 8, 'No: '.$serie_comprobante , 0 , 1);
@@ -98,9 +148,9 @@ class pdf extends FPDF{
 		$pdf->Cell(93, 5, $clave_acceso, 0 , 1, 'C');
 
 
-		$pdf->SetFont('Arial', 'B', 6);$pdf->SetXY(12, 100);$pdf->Cell(30, 3, 'RAZON SOCIAL / NOMBRES Y APELLIDOS ', 0 , 1, 'L');
+		$pdf->SetFont('Arial', 'B', 6);$pdf->SetXY(12, 100);$pdf->Cell(30, 3, 'RAZON SOCIAL / NOMBRES Y APELLIDOS:', 0 , 1, 'L');
 		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(60, 100);$pdf->MultiCell(160, 3, $cliente_nombre ,0,'L');
-		$pdf->SetFont('Arial', 'B', 6);$pdf->SetXY(12, 104);$pdf->Cell(30, 6, 'FECHA DE EMISION', 0 , 1, 'L');
+		$pdf->SetFont('Arial', 'B', 6);$pdf->SetXY(12, 104);$pdf->Cell(30, 6, 'FECHA DE EMISION:', 0 , 1, 'L');
 		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(40, 104);$pdf->Cell(100, 6, substr($fecha_venta,0,10) , 0 , 1);
 		$pdf->SetFont('Arial', 'B', 6);$pdf->SetXY(125, 100);$pdf->Cell(30, 3, 'IDENTIFICACION:', 0 , 1);
 		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(145, 100);$pdf->Cell(30, 3, $cliente_ruc, 0 , 1);
@@ -115,7 +165,7 @@ class pdf extends FPDF{
 		$pdf->SetXY(23, 114);$pdf->Cell(13, 3, 'Cod.', 0 , 1, 'C');
 		$pdf->SetXY(23, 117);$pdf->Cell(13, 3, 'Auxiliar', 0 , 1, 'C');
 		$pdf->SetXY(36, 114);$pdf->Cell(13, 6, 'Cant', 1 , 1, 'C');
-		$pdf->SetXY(49, 114);$pdf->Cell(110, 6, 'DESCRIPCION', 1 , 1, 'C');
+		$pdf->SetXY(49, 114);$pdf->Cell(110, 6, 'Descripcion', 1 , 1, 'C');
 		$pdf->SetXY(159, 114);$pdf->Cell(13, 6, false, 1 , 1);
 		$pdf->SetXY(159, 114);$pdf->Cell(13, 3, 'Precio', 0 , 1, 'C');
 		$pdf->SetXY(159, 117);$pdf->Cell(13, 3, 'Unitario', 0 , 1, 'C');
@@ -141,26 +191,31 @@ class pdf extends FPDF{
 
 		$ejey += 4;
 		//KARDEX TOTALES
+		//SELECT CONCAT(ROUND(porcentaje_iva), '%') AS porcentaje_iva FROM `parametro`;
+		$textoPorcetajeIVA = (round((float)$valorTarifaIVA)).'%';
+		$valorPorcentajeIVA = ( (float)$valorTarifaIVA ) / 100;
+		$porcentajeIVAMasUno = $valorPorcentajeIVA + 1;
+
 		$pdf->SetFont('Arial', 'B', 7);
 		$pdf->SetXY(120, $ejey);$pdf->Cell(50, 4, 'SUBTOTAL SIN IMPUESTOS', 1 , 1, 'L');
-		$pdf->SetXY(120, $ejey+4);$pdf->Cell(50, 4, 'SUBTOTAL 12%', 1 , 1, 'L');
+		$pdf->SetXY(120, $ejey+4);$pdf->Cell(50, 4, 'SUBTOTAL '.$textoPorcetajeIVA, 1 , 1, 'L');
 		$pdf->SetXY(120, $ejey+8);$pdf->Cell(50, 4, 'SUBTOTAL 0%', 1 , 1, 'L');
-		$pdf->SetXY(120, $ejey+12);$pdf->Cell(50, 4, 'IVA 12%', 1 , 1, 'L');
+		$pdf->SetXY(120, $ejey+12);$pdf->Cell(50, 4, 'IVA '.$textoPorcetajeIVA, 1 , 1, 'L');
 		$pdf->SetXY(120, $ejey+16);$pdf->Cell(50, 4, 'DESCUENTO', 1 , 1, 'L');
 		$pdf->SetXY(120, $ejey+20);$pdf->Cell(50, 4, 'VALOR TOTAL', 1 , 1, 'L');
 
-		$pdf->SetXY(170, $ejey);$pdf->Cell(30, 4, number_format((($sumas - ($descuento / 1.12)) + $exento) , 2), 1 , 1, 'R');
-		$pdf->SetXY(170, $ejey+4);$pdf->Cell(30, 4, number_format(($sumas - ($descuento / 1.12)),2) , 1 , 1, 'R');
+		$pdf->SetXY(170, $ejey);$pdf->Cell(30, 4, number_format((($sumas - ($descuento / $porcentajeIVAMasUno)) + $exento) , 2), 1 , 1, 'R');
+		$pdf->SetXY(170, $ejey+4);$pdf->Cell(30, 4, number_format(($sumas - ($descuento / $porcentajeIVAMasUno)),2) , 1 , 1, 'R');
 		$pdf->SetXY(170, $ejey+8);$pdf->Cell(30, 4, $exento , 1 , 1, 'R');
-		$pdf->SetXY(170, $ejey+12);$pdf->Cell(30, 4, number_format((($sumas - ($descuento / 1.12)) * 0.12),2) , 1 , 1, 'R');
-		$pdf->SetXY(170, $ejey+16);$pdf->Cell(30, 4, number_format(($descuento / 1.12),2) , 1 , 1, 'R');
+		$pdf->SetXY(170, $ejey+12);$pdf->Cell(30, 4, number_format((($sumas - ($descuento / $porcentajeIVAMasUno)) * $valorPorcentajeIVA),2) , 1 , 1, 'R');
+		$pdf->SetXY(170, $ejey+16);$pdf->Cell(30, 4, number_format(($descuento / $porcentajeIVAMasUno),2) , 1 , 1, 'R');
 		$pdf->SetXY(170, $ejey+20);$pdf->Cell(30, 4, $total, 1 , 1, 'R');
 
 		//INFO ADICIONAL
 		$pdf->SetFont('Arial', 'B', 8);
 		$pdf->SetXY(10, $ejey);$pdf->Cell(105, 6, 'INFORMACION ADICIONAL', 1 , 1, 'C');
 		$pdf->SetFont('Arial', '', 7);
-		$pdf->SetXY(10, $ejey+6);$pdf->Cell(20, 6, '       Email: ', 'L' , 1, 'L');
+		$pdf->SetXY(10, $ejey+6);$pdf->Cell(20, 6, '       Correo: ', 'L' , 1, 'L');
 		$pdf->SetXY(10, $ejey+12);$pdf->Cell(20, 6, '', 'L' , 1, 'L');
 		$pdf->SetXY(10, $ejey+18);$pdf->Cell(20, 6, '', 'L' , 1, 'L');
 		$pdf->SetXY(30, $ejey+6);$pdf->Cell(85, 6, $correo, 'R' , 1, 'L');

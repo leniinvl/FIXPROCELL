@@ -55,6 +55,32 @@ class xml{
 			$correo = $column["p_cliente_correo"];
 		}
 
+		//Recuperacion de datos empresa
+		$objParametro =  new Parametro();
+      	$parametros = $objParametro->Listar_Parametros();
+
+		if (is_array($parametros) || is_object($parametros)){
+			foreach ($parametros as $row => $column){
+				$nombre_empresa = $column['nombre_empresa'];
+				$razon_social = $column['propietario'];
+				$numero_ruc = $column['numero_nrc'];
+				$direccion_empresa = $column['direccion_empresa'];
+				$valorTarifaIVA = $column['porcentaje_iva'];
+			}
+		}
+
+		//Recuperacion de datos sucursal
+		$objSucursal =  new Sucursal();
+      	$sucursal = $objSucursal->Consultar_Sucursal($idsucursal);
+
+		if (is_array($sucursal) || is_object($sucursal)){
+			foreach ($sucursal as $row => $column){
+				$nombre_sucursal = $column['nombre'];
+				$direccion_sucursal = $column['direccion'];
+				$telefono_sucursal = $column['telefono'];
+			}
+		}
+
 		/****************************/
 		/****************************/
 		//PARAMETROS DE FACTURACION//
@@ -62,23 +88,35 @@ class xml{
 		/****************************/
 
 		$ambiente = '1'; // 1 Pruebas - 2 Produccion
-		$ruc = '1004337927001';
-		$establecimiento = '001';
-		$dirEstablecimiento = 'PICHINCHA / CAYAMBE / CAYAMBE / LIBERTAD OE1-20 Y RESTAURACION';
-		$numserie='001001';
-		$tipoIdentificacionComprador='05'; //cedula
-		if(strlen($cliente_ruc)==13 && substr($cliente_ruc, 10)=="001"){$tipoIdentificacionComprador='04';} //ruc
-		//if(strlen($cliente_ruc)>=13 && substr($cliente_ruc, 10)!="001"){$tipoIdentificacionComprador='06';} //pasaporte
-		if($idsucursal==2){ //OTAVALO
+		
+		$codigoNumerico = '12345678';
+		$puntoEmision = '001';
+		$tipoComprobante = '01';
+		$tipoEmision = '1';
+		$obligadoContabilidad = 'NO';
+
+		$ruc = $numero_ruc;
+		$establecimiento = substr($serie_comprobante, 0, 3); // 001  -  002
+		$secuencial=substr($serie_comprobante, 8);
+		$dirEstablecimiento = $direccion_sucursal;
+		$numserie= $establecimiento.$puntoEmision;
+		$tipoIdentificacionComprador='05'; //cedula:05  ruc:04  pasaporte:06
+		if(strlen($cliente_ruc)==13 && substr($cliente_ruc, 10)=="001"){
+			$tipoIdentificacionComprador='04';
+		}
+		/*if(strlen($cliente_ruc)>=13 && substr($cliente_ruc, 10)!="001"){
+			$tipoIdentificacionComprador='06';
+		}*/
+		/*if($idsucursal == 2){
 			$establecimiento = '002';
 			$dirEstablecimiento = 'IMBABURA / OTAVALO / JORDAN / SALINAS V1P55355 Y BOLIVAR';
 			$numserie='002001';
-		}
+		}*/
+
 		$fecha_claveacceso = DateTime::createFromFormat('d/m/Y H:i', $fecha_venta)->format('dmY');
 		$fecha_emision = DateTime::createFromFormat('d/m/Y H:i', $fecha_venta)->format('d/m/Y');
-		$secuencial=substr($serie_comprobante, 8);
 		if($correo==''){
-			$correo='cusinadriana@gmail.com';
+			$correo='lideresentecnologia1997@gmail.com';
 		}
 
 		/****************************/
@@ -87,12 +125,12 @@ class xml{
 		/****************************/
 		/****************************/
 		
-
 		
 		$xml = new DOMDocument('1.0', 'UTF-8');
 		$xml->formatOutput = true;
-		
-		//PRIMERA PARTE
+
+		//FORMATOS XML VERSIÓN 1.1.0 
+		//PRIMERA PARTE ---------------------------------------------------------
 		$xml_fac = $xml->createElement('factura');
 			$cabecera = $xml->createAttribute('id');
 			$cabecera->value = 'comprobante';
@@ -101,21 +139,21 @@ class xml{
 
 		$xml_inf = $xml->createElement('infoTributaria');
 			$xml_amb = $xml->createElement('ambiente',$ambiente);
-			$xml_tip = $xml->createElement('tipoEmision','1');
-			$xml_raz = $xml->createElement('razonSocial','CUSIN TORRES ADRIANA VERONICA');
-			$xml_nom = $xml->createElement('nombreComercial','PALACIO DEL CELULAR');
+			$xml_tip = $xml->createElement('tipoEmision',$tipoEmision);
+			$xml_raz = $xml->createElement('razonSocial',$razon_social);
+			$xml_nom = $xml->createElement('nombreComercial',$nombre_sucursal);
 			$xml_ruc = $xml->createElement('ruc', $ruc);
 			$dig = new modulo();
-			$clave_acceso=$fecha_claveacceso.'01'.$ruc.$ambiente.$numserie.$secuencial.'123456781';
+			$clave_acceso=$fecha_claveacceso.$tipoComprobante.$ruc.$ambiente.$numserie.$secuencial.$codigoNumerico.$tipoEmision;
 			$clave_acceso=$clave_acceso.$dig->getMod11Dv($clave_acceso);
 			$xml_cla = $xml->createElement('claveAcceso', $clave_acceso);
-			$xml_doc = $xml->createElement('codDoc','01');
+			$xml_doc = $xml->createElement('codDoc',$tipoComprobante);
 			$xml_est = $xml->createElement('estab',$establecimiento);
-			$xml_emi = $xml->createElement('ptoEmi','001');
+			$xml_emi = $xml->createElement('ptoEmi',$puntoEmision);
 			$xml_sec = $xml->createElement('secuencial',$secuencial);
-			$xml_dir = $xml->createElement('dirMatriz','PICHINCHA / CAYAMBE / CAYAMBE / LIBERTAD OE1-20 Y RESTAURACION');
+			$xml_dir = $xml->createElement('dirMatriz', $direccion_empresa);
 
-			//PRIMERA PARTE
+		//PRIMERA PARTE
 			$xml_inf->appendChild($xml_amb);
 			$xml_inf->appendChild($xml_tip);
 			$xml_inf->appendChild($xml_raz);
@@ -131,33 +169,47 @@ class xml{
 
 
 
+		$tipoImpuestoIVA = '2';
 
+		$codigoTarifaIva0 = '0';
+		$codigoTarifaIva12 = '2';
+		$codigoTarifaIva14 = '3';
+		$codigoTarifaIva15 = '4';
+		$codigoTarifaIva5 = '5';
+		$codigoTarifaIvaNA = '6';
+		$codigoTarifaIvaExento = '7';
+		$codigoTarifaIvaDiferenciado = '8';
+		$codigoTarifaIva13 = '10';
 
+		$tipoMoneda = 'DOLAR';
 
-		//SEGUNDA PARTE
+		$valorPorcentajeIVA = ( (float)$valorTarifaIVA ) / 100;
+		$porcentajeIVAMasUno = $valorPorcentajeIVA + 1;
+
+		//SEGUNDA PARTE ---------------------------------------------------------
 		$xml_def = $xml->createElement('infoFactura');
 			$xml_fec = $xml->createElement('fechaEmision',$fecha_emision);
 			$xml_des = $xml->createElement('dirEstablecimiento',$dirEstablecimiento);
 			//$xml_con = $xml->createElement('contribuyenteEspecial','NO');
-			$xml_obl = $xml->createElement('obligadoContabilidad','NO');
+			$xml_obl = $xml->createElement('obligadoContabilidad',$obligadoContabilidad);
 			$xml_ide = $xml->createElement('tipoIdentificacionComprador',$tipoIdentificacionComprador);
 			$xml_rco = $xml->createElement('razonSocialComprador',$cliente_nombre);
 			$xml_idc = $xml->createElement('identificacionComprador',$cliente_ruc);
-			$xml_tsi = $xml->createElement('totalSinImpuestos',round((($sumas - ($descuento / 1.12)) + $exento) , 2));
-			$xml_tds = $xml->createElement('totalDescuento', round(($descuento / 1.12),2));
+			$xml_tsi = $xml->createElement('totalSinImpuestos',round((($sumas - ($descuento / $porcentajeIVAMasUno)) + $exento),2));
+			$xml_tds = $xml->createElement('totalDescuento', round(($descuento / $porcentajeIVAMasUno),2));
 
 		//SEGUNDA PARTE 2.2
 		$xml_imp = $xml->createElement('totalConImpuestos');
 		$xml_tim = $xml->createElement('totalImpuesto');
-			$xml_tco = $xml->createElement('codigo','2');
-			$xml_cpr = $xml->createElement('codigoPorcentaje','2');
-			$xml_bas = $xml->createElement('baseImponible',round(($sumas - ($descuento / 1.12)),2));
-			$xml_val = $xml->createElement('valor', round((($sumas - ($descuento / 1.12)) * 0.12),2));
+			$xml_tco = $xml->createElement('codigo',$tipoImpuestoIVA);
+			$xml_cpr = $xml->createElement('codigoPorcentaje',$codigoTarifaIva15);
+			$xml_bas = $xml->createElement('baseImponible',round(($sumas - ($descuento / $porcentajeIVAMasUno)),2));
+			$xml_val = $xml->createElement('valor', round((($sumas - ($descuento / $porcentajeIVAMasUno)) * $valorPorcentajeIVA),2));
 
 		//PARTE 2.3
 		$xml_pro = $xml->createElement('propina', '0.00');
 		$xml_imt = $xml->createElement('importeTotal', $total);
-		$xml_mon = $xml->createElement('moneda','DOLAR');
+		$xml_mon = $xml->createElement('moneda',$tipoMoneda);
 
 
 		//SEGUNDA PARTE
@@ -185,14 +237,12 @@ class xml{
 
 
 
+		$formaPago = '01';
 
-
-
-
-		//PARTE PAGOS
+		//PARTE PAGOS ---------------------------------------------------------
 		$xml_pgs = $xml->createElement('pagos');
 		$xml_pag = $xml->createElement('pago');
-			$xml_fpa = $xml->createElement('formaPago','01');
+			$xml_fpa = $xml->createElement('formaPago',$formaPago);
 			$xml_tot = $xml->createElement('total',$total);
 			$xml_pla = $xml->createElement('plazo','1');
 			$xml_uti = $xml->createElement('unidadTiempo','dias');
@@ -207,11 +257,7 @@ class xml{
 
 
 
-
-
-
-
-		//DETALLES
+		//DETALLES ---------------------------------------------------------
 		$xml_dts = $xml->createElement('detalles');
 		$xml_fac->appendChild($xml_dts);  // 1.0
 
@@ -226,21 +272,24 @@ class xml{
 	
 			$xml_ips = $xml->createElement('impuestos');
 			$xml_ipt = $xml->createElement('impuesto');
-				$xml_cdg = $xml->createElement('codigo','2');
-					$codigoPorcentaje = '2';
-					$tarifa = '12.00';
-					$baseImponible = $row['sin_impuesto_total'];
-					$valor_iva = $row['iva'];
-					if($row['producto_exento']=='1'){
-						$codigoPorcentaje = '0';
-						$tarifa = '0.00';
-						//$baseImponible = '0.00';
-						$valor_iva = '0.00';
-					}
-				$xml_cpt = $xml->createElement('codigoPorcentaje', $codigoPorcentaje);
-				$xml_trf = $xml->createElement('tarifa', $tarifa);
-				$xml_bsi = $xml->createElement('baseImponible', $baseImponible);
-				$xml_vlr = $xml->createElement('valor', $valor_iva);
+			$xml_cdg = $xml->createElement('codigo',$tipoImpuestoIVA);
+			
+			$codigoPorcentaje = $codigoTarifaIva15;
+			$tarifa = $valorTarifaIVA;
+			$baseImponible = $row['sin_impuesto_total'];
+			$valor_iva = $row['iva'];
+
+			if($row['producto_exento']=='1'){
+				$codigoPorcentaje = $codigoTarifaIva0;
+				$tarifa = '0.00';
+				//$baseImponible = '0.00';
+				$valor_iva = '0.00';
+			}
+
+			$xml_cpt = $xml->createElement('codigoPorcentaje', $codigoPorcentaje);
+			$xml_trf = $xml->createElement('tarifa', $tarifa);
+			$xml_bsi = $xml->createElement('baseImponible', $baseImponible);
+			$xml_vlr = $xml->createElement('valor', $valor_iva);
 
 			$xml_dts->appendChild($xml_det);
 			$xml_det->appendChild($xml_cop);
@@ -260,10 +309,7 @@ class xml{
 
 
 
-
-
-
-		//INFO ADICIONAL
+		//INFO ADICIONAL ---------------------------------------------------------
 		$xml_ifa = $xml->createElement('infoAdicional');
 			$xml_cp1 = $xml->createElement('campoAdicional',$correo);
 			$atributo = $xml->createAttribute('nombre');
@@ -277,11 +323,11 @@ class xml{
 		$xml_fac->appendChild($cabecerav);
 		$xml->appendChild($xml_fac);
 
-
 		//$xml->save("file.xml");
 		//print_r ($xml->saveXML());
+
 		$xml->save('../facturacionphp/comprobantes/no_firmados/'.$clave_acceso.'.xml');
-		//"./no_firmado/".$xml_cla.".xml"
+
 		return $clave_acceso;
 
 	}

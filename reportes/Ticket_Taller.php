@@ -5,11 +5,11 @@
 	{
 
 	spl_autoload_register(function($className){
-            $model = "../model/". $className ."_model.php";
-            $controller = "../controller/". $className ."_controller.php";
+		$model = "../model/". $className ."_model.php";
+		$controller = "../controller/". $className ."_controller.php";
 
-           require_once($model);
-           require_once($controller);
+		require_once($model);
+		require_once($controller);
     });
 
 
@@ -33,21 +33,21 @@
 
     foreach ($datos as $row => $column) {
 
-     $fecha_ingreso = $column["fecha_ingreso"];
-      $numero_orden = $column["numero_orden"];
-      $nombre_cliente = $column["nombre_cliente"];
-      $aparato = $column["aparato"];
-      $nombre_marca = $column["nombre_marca"];
-      $modelo = $column["modelo"];
-      $serie_aparato = $column["serie"];
-      $averia = $column["averia"];
-      $observaciones = $column["observaciones"];
-      $diagnostico = $column["diagnostico"];
-      $fecha_alta = $column["fecha_alta"];
-      $fecha_retiro = $column["fecha_retiro"];
-      $deposito_revision = $column["deposito_revision"];
-      $deposito_reparacion = $column["deposito_reparacion"];
-      $parcial_pagar = $column["parcial_pagar"];
+     	$fecha_ingreso = $column["fecha_ingreso"];
+		$numero_orden = $column["numero_orden"];
+		$nombre_cliente = $column["nombre_cliente"];
+		$aparato = $column["aparato"];
+		$nombre_marca = $column["nombre_marca"];
+		$modelo = $column["modelo"];
+		$serie_aparato = $column["serie"];
+		$averia = $column["averia"];
+		$observaciones = $column["observaciones"];
+		$diagnostico = $column["diagnostico"];
+		$fecha_alta = $column["fecha_alta"];
+		$fecha_retiro = $column["fecha_retiro"];
+		$deposito_revision = $column["deposito_revision"];
+		$deposito_reparacion = $column["deposito_reparacion"];
+		$parcial_pagar = $column["parcial_pagar"];
 	  	$idsucursal = $column["idsucursal"];
     }
 
@@ -78,6 +78,42 @@
 
 	$total = $parcial_pagar + $deposito_reparacion + $deposito_revision;
 
+	//Recuperacion de datos empresa
+	$objParametro =  new Parametro();
+	$parametros = $objParametro->Listar_Parametros();
+
+	if (is_array($parametros) || is_object($parametros)){
+		foreach ($parametros as $row => $column){
+			$nombre_empresa = $column['nombre_empresa'];
+			$direccion_empresa = $column['direccion_empresa'];
+		}
+	}
+
+	//Recuperacion de datos sucursal
+	$objSucursal =  new Sucursal();
+	$sucursal = $objSucursal->Consultar_Sucursal($idsucursal);
+
+	if (is_array($sucursal) || is_object($sucursal)){
+		foreach ($sucursal as $row => $column){
+			$nombre_sucursal = $column['nombre'];
+			$direccion_sucursal = $column['direccion'];
+			$telefono_sucursal = $column['telefono'];
+		}
+	}
+
+	$direccion1 = $direccion_empresa;
+	$direccion2 = ' ';
+	if($idsucursal == 2){
+		$direccion2= $direccion_sucursal;
+	}else{
+		$sucursal2 = $objSucursal->Consultar_Sucursal(2);
+		if (is_array($sucursal2) || is_object($sucursal2)){
+			foreach ($sucursal2 as $row => $column){
+				$direccion_2 = $column['direccion'];
+			}
+			$direccion2= $direccion_2;
+		}
+	}
 
 	$pdf = new TICKET('P','mm',array(76,297));
 	$pdf->AddPage();

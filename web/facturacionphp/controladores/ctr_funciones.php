@@ -103,20 +103,20 @@ class fac_ele{
             // Si necesitamos autentificarnos
             $mail->SMTPAuth = true;
             // Usuario del correo desde el cual queremos enviar, para Gmail recordar usar el usuario completo (usuario@gmail.com)
-            $mail->Username = 'cusinadriana@gmail.com';
+            $mail->Username = 'lideresentecnologia1997@gmail.com';
             // Contraseña
-            $mail->Password = 'advblnxastflyxxd';
+            $mail->Password = 'dasataxztafsfixt'; //lideresentecnologia
             //Añadimos la direccion de quien envia el corre, en este caso
             //YARR Blog, primero el correo, luego el nombre de quien lo envia.
-            $mail->setFrom('cusinadriana@gmail.com', 'IMPERI CELL');
+            $mail->setFrom('lideresentecnologia1997@gmail.com', 'DIEGO CELL');
             $mail->addAddress($correo);
             $mail->AddAttachment($filep, $namefile.'.pdf');
             $mail->AddAttachment($filex, $namefile.'.xml');
-            $mail->Subject = 'DOCUMENTO ELECTRONICO - IMPERI CELL';;
+            $mail->Subject = 'DOCUMENTO ELECTRONICO - DIEGO CELL';
             //Creamos el mensaje
-            $message = 'Le informamos que ha sido creado un Documento Electrónico '. substr($numeroAutorizacion, 24, 15)
-                       .', el mismo que se encuentra disponible para su descarga. '
-                       .'Fecha de emisión:'. DateTime::createFromFormat('dmY', substr($numeroAutorizacion, 0, 8))->format('d/m/Y');
+            $message = 'Le comunicamos que se ha generado un Documento Electrónico '. substr($numeroAutorizacion, 24, 15)
+                       .', el mismo que está disponible para su descarga. '
+                       .'Fecha Emisión:'. DateTime::createFromFormat('dmY', substr($numeroAutorizacion, 0, 8))->format('d/m/Y');
             //Agregamos el mensaje al correo
             $mail->msgHTML($message);
             // Enviamos el Mensaje

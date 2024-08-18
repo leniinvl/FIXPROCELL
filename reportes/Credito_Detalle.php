@@ -3,6 +3,13 @@ require('fpdf/fpdf.php');
 
 class PDF extends FPDF
 {
+    private $idsucursal;
+
+    // Pase imagen
+    function SetIdSucursal($idsucursal) {
+        $this->idsucursal = $idsucursal;
+    }
+
     // Page header
     function Header()
     {
@@ -23,7 +30,11 @@ class PDF extends FPDF
              }
             // Title
             $this->Cell(105,10,'ESTADO DE CUENTA DE CREDITO '.$codigo_credito,0,0,'C');
-            $this->Image('../web/assets/images/Logo.png', 12, 8, 50, 0, '', '', '', true, 72);
+            if ($this->idsucursal == 1) {
+                $this->Image('../web/assets/images/logo.png', 8, 5, 40, 22, '', '', '', true, 72);
+            } else {
+                $this->Image('../web/assets/images/logo2.png', 8, 8, 65, 0, '', '', '', true, 72);
+            }
             // Line break
             $this->Ln(20);
         }
@@ -49,6 +60,9 @@ class PDF extends FPDF
            require_once($model);
            require_once($controller);
     });
+
+    session_set_cookie_params(60*60*24*365); session_start();
+    $idsucursal = $_SESSION['sucursal_id'];	
 
     $codigo =  base64_decode(isset($_GET['cod']) ? $_GET['cod'] : '');
     $arreglo = explode(",", $codigo);
@@ -104,6 +118,7 @@ try {
     // Instanciation of inherited class
     $pdf = new PDF('L','mm',array(216,330));
     $pdf->AliasNbPages();
+    $pdf->SetIdSucursal($idsucursal);
     $pdf->AddPage();
     $pdf->SetFont('Arial','I',11);
     $pdf->Text(10, 30, 'DESCRIPCION DE CREDITO : ');

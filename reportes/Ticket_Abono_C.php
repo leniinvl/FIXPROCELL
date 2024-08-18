@@ -6,11 +6,11 @@
 	{
 
 	spl_autoload_register(function($className){
-            $model = "../model/". $className ."_model.php";
-            $controller = "../controller/". $className ."_controller.php";
+		$model = "../model/". $className ."_model.php";
+		$controller = "../controller/". $className ."_controller.php";
 
-           require_once($model);
-           require_once($controller);
+		require_once($model);
+		require_once($controller);
     });
 
     $objCredito = new Credito();
@@ -24,7 +24,6 @@
     	$nit = $column["p_numero_nit"];
     	$nrc = $column["p_numero_nrc"];
 
-
     	$p_fecha_abono = $column["p_fecha_abono"];
     	$p_monto_abono = $column["p_monto_abono"];
     	$p_codigo_credito = $column["p_codigo_credito"];
@@ -33,12 +32,50 @@
     	$p_monto_restante = $column["p_monto_restante"];
     	$p_total_abonado = $column["p_total_abonado"];
     	$p_restante_credito = $column["p_restante_credito"];
-      $moneda = $column["p_moneda"];
-      $simbolo = $column["p_simbolo"];
-      $cliente = $column["p_cliente"];
-			$usuario = $column["p_usuario"];
+		$moneda = $column["p_moneda"];
+		$simbolo = $column["p_simbolo"];
+		$cliente = $column["p_cliente"];
+		
+		$usuario = $column["p_usuario"];
 		$idsucursal = $column["p_idsucursal"];
     }
+
+	//Recuperacion de datos empresa
+	$objParametro =  new Parametro();
+	$parametros = $objParametro->Listar_Parametros();
+
+	if (is_array($parametros) || is_object($parametros)){
+		foreach ($parametros as $row => $column){
+			$nombre_empresa = $column['nombre_empresa'];
+			$direccion_empresa = $column['direccion_empresa'];
+		}
+	}
+
+	//Recuperacion de datos sucursal
+	$objSucursal =  new Sucursal();
+	$sucursal = $objSucursal->Consultar_Sucursal($idsucursal);
+
+	if (is_array($sucursal) || is_object($sucursal)){
+		foreach ($sucursal as $row => $column){
+			$nombre_sucursal = $column['nombre'];
+			$direccion_sucursal = $column['direccion'];
+			$telefono_sucursal = $column['telefono'];
+		}
+	}
+
+	$direccion1 = $direccion_empresa;
+	$direccion2 = ' ';
+	if($idsucursal == 2){
+		$direccion2= $direccion_sucursal;
+	}else{
+		$sucursal2 = $objSucursal->Consultar_Sucursal(2);
+		if (is_array($sucursal2) || is_object($sucursal2)){
+			foreach ($sucursal2 as $row => $column){
+				$direccion_2 = $column['direccion'];
+			}
+			$direccion2= $direccion_2;
+		}
+	}
 
     $p_fecha_abono = DateTime::createFromFormat('Y-m-d H:i:s', $p_fecha_abono)->format('d/m/Y H:i:s');
 
@@ -93,8 +130,6 @@
 		$pdf->Text(23,$get_Y + 105,'Abonado por : ');
 		$pdf->SetFont('Arial','BI',8.5);
 		$pdf->Text(43,$get_Y + 105, $usuario);*/
-
-
 
 
 	$pdf->Output('I','ABONO_CREDITO_C'.$p_codigo_credito.'.pdf',true);

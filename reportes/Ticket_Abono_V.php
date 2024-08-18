@@ -17,13 +17,11 @@
     $datos = $objCredito->Imprimir_Ticket_Abono($idabono);
 
     foreach ($datos as $row => $column) {
-
     	$empresa = $column["p_empresa"];
     	$propietario = $column["p_propietario"];
     	$direccion = $column["p_direccion"];
     	$nit = $column["p_numero_nit"];
     	$nrc = $column["p_numero_nrc"];
-    	
 
     	$p_fecha_abono = $column["p_fecha_abono"];
     	$p_monto_abono = $column["p_monto_abono"];
@@ -33,25 +31,62 @@
     	$p_monto_restante = $column["p_monto_restante"];
     	$p_total_abonado = $column["p_total_abonado"];
     	$p_restante_credito = $column["p_restante_credito"];
-      $moneda = $column["p_moneda"];
-      $simbolo = $column["p_simbolo"];
-      $cliente = $column["p_cliente"];
-			$usuario = $column["p_usuario"];
+		$moneda = $column["p_moneda"];
+		$simbolo = $column["p_simbolo"];
+		$cliente = $column["p_cliente"];
+		$usuario = $column["p_usuario"];
 		$idsucursal = $column["p_idsucursal"];
     }
 
     $p_fecha_abono = DateTime::createFromFormat('Y-m-d H:i:s', $p_fecha_abono)->format('d/m/Y H:i:s');
 
+    //Recuperacion de datos empresa
+	$objParametro =  new Parametro();
+	$parametros = $objParametro->Listar_Parametros();
+
+	if (is_array($parametros) || is_object($parametros)){
+		foreach ($parametros as $row => $column){
+			$nombre_empresa = $column['nombre_empresa'];
+			$direccion_empresa = $column['direccion_empresa'];
+		}
+	}
+
+	//Recuperacion de datos sucursal
+	$objSucursal =  new Sucursal();
+	$sucursal = $objSucursal->Consultar_Sucursal($idsucursal);
+
+	if (is_array($sucursal) || is_object($sucursal)){
+		foreach ($sucursal as $row => $column){
+			$nombre_sucursal = $column['nombre'];
+			$direccion_sucursal = $column['direccion'];
+			$telefono_sucursal = $column['telefono'];
+		}
+	}
+
+    $direccion1 = $direccion_empresa;
+    $direccion2 = ' ';
+	if($idsucursal == 2){
+		$direccion2= $direccion_sucursal;
+	}else{
+		$sucursal2 = $objSucursal->Consultar_Sucursal(2);
+		if (is_array($sucursal2) || is_object($sucursal2)){
+			foreach ($sucursal2 as $row => $column){
+				$direccion_2 = $column['direccion'];
+			}
+			$direccion2= $direccion_2;
+		}
+	}
+
 		$pdf = new TICKET('P','mm',array(76,150));
 		$pdf->AddPage();
 
 
-			$pdf->SetFont('Arial', '', 10);
-			$pdf->SetAutoPageBreak(true,10);
+		$pdf->SetFont('Arial', '', 10);
+		$pdf->SetAutoPageBreak(true,10);
 
-			include('../includes/ticketheader.inc.php');
+		include('../includes/ticketheader.inc.php');
 
-			$pdf->SetFont('Arial', '', 9.2);
+		$pdf->SetFont('Arial', '', 9.2);
 	    $pdf->Text(2, $get_YH + 23, '-------------------------------------------------------------------');
 	    $pdf->SetXY(2,40);
 	    $pdf->SetFillColor(255,255,255);
@@ -59,7 +94,7 @@
 	    $pdf->SetFont('Arial','B',12);
 	    $pdf->Text(7,$get_YH + 27,'TICKET DE ABONO A CREDITO ');
 	    $pdf->Text(23,$get_YH + 32,$p_codigo_credito);
-			$pdf->Text(30,$get_YH + 38,'CAJA #1');
+		$pdf->Text(30,$get_YH + 38,'CAJA #1');
 
 	    $pdf->SetFont('Arial','B',10);
 	    $pdf->Text(24,$get_YH + 44,'FECHA Y HORA');
@@ -86,20 +121,18 @@
 	    $pdf->Text(11,$get_Y + 89,$cliente);
 	    $pdf->SetFont('Arial','I',8.5);
 	    $pdf->Text(4.5,$get_Y + 100,'**********************ORIGINAL**********************');
-			$pdf->Text(23,$get_Y + 105,'Abonado por : ');
-			$pdf->SetFont('Arial','BI',8.5);
-			$pdf->Text(43,$get_Y + 105, $usuario);
-
-
+		$pdf->Text(23,$get_Y + 105,'Abonado por : ');
+		$pdf->SetFont('Arial','BI',8.5);
+		$pdf->Text(43,$get_Y + 105, $usuario);
 
 	    $pdf->AddPage();
 
 	    $pdf->SetFont('Arial', '', 10);
 	    $pdf->SetAutoPageBreak(true,1);
 
-			include('../includes/ticketheader.inc.php');
+		include('../includes/ticketheader.inc.php');
 
-			$pdf->SetFont('Arial', '', 9.2);
+		$pdf->SetFont('Arial', '', 9.2);
 	    $pdf->Text(2, $get_YH + 23, '-------------------------------------------------------------------');
 	    $pdf->SetXY(2,40);
 	    $pdf->SetFillColor(255,255,255);
@@ -107,7 +140,7 @@
 	    $pdf->SetFont('Arial','B',12);
 	    $pdf->Text(7,$get_YH + 27,'TICKET DE ABONO A CREDITO ');
 	    $pdf->Text(23,$get_YH + 32,$p_codigo_credito);
-			$pdf->Text(30,$get_YH + 38,'CAJA #1');
+		$pdf->Text(30,$get_YH + 38,'CAJA #1');
 
 	    $pdf->SetFont('Arial','B',10);
 	    $pdf->Text(24,$get_YH + 44,'FECHA Y HORA');
@@ -134,26 +167,20 @@
 	    $pdf->Text(11,$get_Y + 89,$cliente);
 	    $pdf->SetFont('Arial','I',8.5);
 	    $pdf->Text(4.5,$get_Y + 100,'*******************COPIA CLIENTE*******************');
-			$pdf->Text(23,$get_Y + 105,'Abonado por : ');
-			$pdf->SetFont('Arial','BI',8.5);
-			$pdf->Text(43,$get_Y + 105, $usuario);
+		$pdf->Text(23,$get_Y + 105,'Abonado por : ');
+		$pdf->SetFont('Arial','BI',8.5);
+		$pdf->Text(43,$get_Y + 105, $usuario);
 
 
-			$pdf->IncludeJS("print('true');");
+		$pdf->IncludeJS("print('true');");
 
-	$pdf->Output('I','ABONO_CREDITO'.$p_codigo_credito.'.pdf',true);
+		$pdf->Output('I','ABONO_CREDITO'.$p_codigo_credito.'.pdf',true);
+	
 	} catch (Exception $e) {
 
-		$pdf->Text(22.8, 5, 'ERROR AL IMPRIMIR TICKET');
-		$pdf->Output('I','Ticket_ERROR.pdf',true);
+			$pdf->Text(22.8, 5, 'ERROR AL IMPRIMIR TICKET');
+			$pdf->Output('I','Ticket_ERROR.pdf',true);
 
 	}
-
-
-
-
-
-
-
 
  ?>

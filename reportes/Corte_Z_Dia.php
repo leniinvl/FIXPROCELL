@@ -13,7 +13,7 @@
            require_once($controller);
     });
 
-	  $fecha =  isset($_GET['day']) ? $_GET['day'] : '';
+	$fecha =  isset($_GET['day']) ? $_GET['day'] : '';
     $objVenta = new Venta();
     $fecha = DateTime::createFromFormat('d/m/Y', $fecha)->format('Y-m-d');
     $datos = $objVenta->Imprimir_Ticket_Venta('0');
@@ -80,7 +80,42 @@
     	$p_total_venta2 = $column2["p_total_venta"];
     }
 
-    
+	//Recuperacion de datos empresa
+	$objParametro =  new Parametro();
+	$parametros = $objParametro->Listar_Parametros();
+
+	if (is_array($parametros) || is_object($parametros)){
+		foreach ($parametros as $row => $column){
+			$nombre_empresa = $column['nombre_empresa'];
+			$direccion_empresa = $column['direccion_empresa'];
+		}
+	}
+
+	//Recuperacion de datos sucursal
+	$objSucursal =  new Sucursal();
+	$sucursal = $objSucursal->Consultar_Sucursal($idsucursal);
+
+	if (is_array($sucursal) || is_object($sucursal)){
+		foreach ($sucursal as $row => $column){
+			$nombre_sucursal = $column['nombre'];
+			$direccion_sucursal = $column['direccion'];
+			$telefono_sucursal = $column['telefono'];
+		}
+	}
+
+    $direccion1 = $direccion_empresa;
+    $direccion2 = ' ';
+	if($idsucursal == 2){
+		$direccion2= $direccion_sucursal;
+	}else{
+		$sucursal2 = $objSucursal->Consultar_Sucursal(2);
+		if (is_array($sucursal2) || is_object($sucursal2)){
+			foreach ($sucursal2 as $row => $column){
+				$direccion_2 = $column['direccion'];
+			}
+			$direccion2= $direccion_2;
+		}
+	}
 
 	$pdf = new TICKET('P','mm',array(76,297));
 	$pdf->AddPage();
@@ -93,7 +128,7 @@
 
 		$pdf->SetFont('Arial', '', 9.2);
 		$pdf->Text(2, $get_YH + 1, '');
-		//$pdf->Text(2, $get_YH + 1, '------------------------------------------------------------------');
+		$pdf->Text(2, $get_YH + 1, '------------------------------------------------------------------');
 
 		$get_Y = $pdf->GetY();
 		$pdf->SetFont('Arial','B',14);
@@ -111,7 +146,7 @@
 	    DateTime::createFromFormat('Y-m-d', $fecha)->format('d/m/Y').' - '.date('H:i:s'), 0,'C',0 ,1);
 
 	    $pdf->SetFont('Arial','B',10);
-	    $pdf->Text(21,$get_Y + 31,'FACTURAS IMPRESOS');
+	    $pdf->Text(19,$get_Y + 31,'FACTURAS IMPRESOS');
 		$pdf->SetFont('Arial','B',10);
 
 		$pdf->Text(26,$get_Y + 36,'DESDE : ');
@@ -171,7 +206,7 @@
 		$pdf->SetFont('Arial','B',14);
 		$pdf->Text(16,$get_Y + 117,'TOTAL :');
 		$pdf->SetFont('Arial','B',14);
-		$pdf->Text(36,$get_Y + 117,'$ '.number_format(($p_total_venta + $p_total_venta2), 2));
+		$pdf->Text(37,$get_Y + 117,'$ '.number_format(($p_total_venta + $p_total_venta2), 2));
 
 		$pdf->SetFont('Arial', '', 10);
 		$pdf->Text(2, $get_Y + 122, '-------------------------------------------------------------');
@@ -179,12 +214,12 @@
 		$pdf->IncludeJS("print('true');");
 
 
-
 	} else {
 
 		$pdf->SetFont('Arial', '', 10);
 		$pdf->Text(7, 58, '* EL COMPROBANTE DE VENTA*');
 		$pdf->Text(20, 65, '* NO ES TICKET*');
+
 	}
 
 

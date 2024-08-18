@@ -9,14 +9,15 @@ class autorizar{
 
         //Respuesta procesamiento
         $retorno='';
-        //$correo='vlakdeath@gmail.com'; // Dev
+        //$correo='vlakdeath@gmail.com';
 
         if($correo==''){
-            $correo='cusinadriana@gmail.com';
+            $correo='lideresentecnologia1997@gmail.com';
         }
+
         //Ruta archivo p12
-        $firma = '../facturacionphp/controladores/6101215_identity.p12';
-        $clave = 'Adri@na.2022';
+        $firma = '../facturacionphp/controladores/5957905_identity.p12'; //6101215_identity.p12
+        $clave = 'Di3go.2022@';
 
         if (!$almacen_cert = file_get_contents($firma)) {
             return 'No se puede leer archivo del certificado';
@@ -40,7 +41,7 @@ class autorizar{
             /********/
             /* PATH */
             /********/
-            $CPANEL='/home/palaciod/public_html/web/facturacionphp';
+            $CPANEL='/home/lideres1/public_html/web/facturacionphp';
             $LOCAL='../facturacionphp';
             $path=$LOCAL;
 
@@ -49,7 +50,7 @@ class autorizar{
             $ruta_si_firmados = $path.'/comprobantes/si_firmados/';
             $ruta_autorizados = $path.'/comprobantes/autorizados/';
             $pathPdf = $path.'/comprobantes/pdf/';
-            $p12 = $path.'/controladores/6101215_identity.p12';
+            $p12 = $path.'/controladores/5957905_identity.p12';
             $tipo='FV';
             $nuevo_xml = $namefile.'.xml';
             $controlError = false;
@@ -63,7 +64,7 @@ class autorizar{
                 /********/
                 /* PATH */
                 /********/
-                $CPANEL2='/home/palaciod/public_html/web/firmaComprobanteElectronico/dist/firmaComprobanteElectronico.jar';
+                $CPANEL2='/home/lideres1/public_html/web/firmaComprobanteElectronico/dist/firmaComprobanteElectronico.jar';
                 $LOCAL2='../firmaComprobanteElectronico/dist/firmaComprobanteElectronico.jar';
                 $path2=$LOCAL2;
 
@@ -76,10 +77,11 @@ class autorizar{
                 //var_dump($comando);
                 //var_dump($resp);
 
-                    //$pdf = new pdf();
-                    //$pdf->pdfFactura($correo,$namefile,$id_venta,'10/01/2023 12:02:88', 2,'0801202301100433792700110020010000000011234567816');
-                    //$func->correos($correo,$namefile,'0801202301100433792700110020010000000011234567816');   
-                    //return 'Test pdf';
+                //PRUEBAS LOCALES
+                //$pdf = new pdf();
+                //$pdf->pdfFactura($correo,$namefile,$id_venta,'10/01/2023 12:02:88', 2,'0801202301100495356600110020010000000011234567816');
+                //$func->correos($correo,$namefile,'0801202301100495356600110020010000000011234567816');   
+                //return 'Test pdf';
 
                 switch (substr($resp, 0, 7)) {
                     case 'FIRMADO':

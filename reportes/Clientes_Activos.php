@@ -3,6 +3,13 @@ require('fpdf/fpdf.php');
 
 class PDF extends FPDF
 {
+    private $idsucursal;
+
+    // Pase imagen
+    function SetIdSucursal($idsucursal) {
+        $this->idsucursal = $idsucursal;
+    }
+
     // Page header
     function Header()
     { 
@@ -16,7 +23,11 @@ class PDF extends FPDF
             $this->Cell(105);
             // Title
             $this->Cell(105,10,'Reporte de clientes generalmente activos',0,0,'C');
-            $this->Image('../web/assets/images/Logo.png', 12, 8, 50, 0, '', '', '', true, 72);
+            if ($this->idsucursal == 1) {
+                $this->Image('../web/assets/images/logo.png', 8, 5, 45, 24, '', '', '', true, 72);
+            } else {
+                $this->Image('../web/assets/images/logo2.png', 8, 8, 70, 0, '', '', '', true, 72);
+            }    
             // Line break
             $this->Ln(20);
         }
@@ -43,6 +54,9 @@ class PDF extends FPDF
            require_once($controller);
     });
 
+    session_set_cookie_params(60*60*24*365); session_start();
+    $idsucursal = $_SESSION['sucursal_id'];	
+
     $objCliente = new Cliente();
     $listado = $objCliente->Listar_Clientes_Activos();
 
@@ -50,6 +64,7 @@ try {
     // Instanciation of inherited class
     $pdf = new PDF('L','mm',array(216,330));
     $pdf->AliasNbPages();
+    $pdf->SetIdSucursal($idsucursal);
     $pdf->AddPage();
     $pdf->SetFont('Arial','',10);
     $pdf->SetFillColor(255,255,255);
@@ -59,7 +74,7 @@ try {
     $pdf->Cell(45,5,'Telefono',0,0,'L',1);
     $pdf->Cell(60,5,'Email',0,0,'L',1);
     /*$pdf->Cell(42,5,'Cupo Credito $',0,0,'C',1);*/
-  /*  $pdf->Cell(22,5,'Stock',0,0,'C',1);*/
+    /*$pdf->Cell(22,5,'Stock',0,0,'C',1);*/
     $pdf->Line(322,28,10,28);
     $pdf->Line(322,37,10,37);
     $pdf->Ln(9);

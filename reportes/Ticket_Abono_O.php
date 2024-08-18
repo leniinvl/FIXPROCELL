@@ -6,11 +6,11 @@
 	{
 
     spl_autoload_register(function($className){
-            $model = "../model/". $className ."_model.php";
-            $controller = "../controller/". $className ."_controller.php";
+        $model = "../model/". $className ."_model.php";
+        $controller = "../controller/". $className ."_controller.php";
 
-           require_once($model);
-           require_once($controller);
+        require_once($model);
+        require_once($controller);
     });
 
     $objCredito = new Credito();
@@ -36,12 +36,50 @@
       $simbolo = $column["p_simbolo"];
       $cliente = $column["p_cliente"];
 			$usuario = $column["p_usuario"];
-        $idsucursal = $column["p_idsucursal"];
+      
+      $idsucursal = $column["p_idsucursal"];
+    }
+
+    //Recuperacion de datos empresa
+    $objParametro =  new Parametro();
+    $parametros = $objParametro->Listar_Parametros();
+
+    if (is_array($parametros) || is_object($parametros)){
+      foreach ($parametros as $row => $column){
+        $nombre_empresa = $column['nombre_empresa'];
+        $direccion_empresa = $column['direccion_empresa'];
+      }
+    }
+
+    //Recuperacion de datos sucursal
+    $objSucursal =  new Sucursal();
+    $sucursal = $objSucursal->Consultar_Sucursal($idsucursal);
+
+    if (is_array($sucursal) || is_object($sucursal)){
+      foreach ($sucursal as $row => $column){
+        $nombre_sucursal = $column['nombre'];
+        $direccion_sucursal = $column['direccion'];
+        $telefono_sucursal = $column['telefono'];
+      }
+    }
+
+    $direccion1 = $direccion_empresa;
+    $direccion2 = ' ';
+    if($idsucursal == 2){
+      $direccion2= $direccion_sucursal;
+    }else{
+      $sucursal2 = $objSucursal->Consultar_Sucursal(2);
+      if (is_array($sucursal2) || is_object($sucursal2)){
+        foreach ($sucursal2 as $row => $column){
+          $direccion_2 = $column['direccion'];
+        }
+        $direccion2= $direccion_2;
+      }
     }
 
     $p_fecha_abono = DateTime::createFromFormat('Y-m-d H:i:s', $p_fecha_abono)->format('d/m/Y H:i:s');
 
-		 $pdf = new TICKET('P','mm',array(76,297));
+		$pdf = new TICKET('P','mm',array(76,297));
     $pdf->AddPage();
     $pdf->SetFont('Arial', '', 10);
     $pdf->SetAutoPageBreak(true,1);
@@ -81,7 +119,7 @@
     $pdf->Text(9,$get_Y + 60,'Total Pendiente :');
     $pdf->Text(48,$get_Y + 60, $simbolo.' '.$p_restante_credito);
 
-  	    $pdf->Line(73,$get_YH + 80 ,5,$get_YH + 80);
+  	$pdf->Line(73,$get_YH + 80 ,5,$get_YH + 80);
 
     $pdf->SetFont('Arial','BI',8.5);
 

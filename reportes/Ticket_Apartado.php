@@ -12,6 +12,9 @@
            require_once($controller);
     });
 
+    session_set_cookie_params(60*60*24*365); session_start();
+    //$tipo_usuario = $_SESSION['user_tipo'];
+    $idsucursal = $_SESSION['sucursal_id'];
 
     $objApartado = new Apartado();
 
@@ -42,19 +45,53 @@
     	$descuento = $column["p_descuento"];
     	$total = $column["p_total"];
     	$numero_productos = $column["p_numero_productos"];
-			$restante_pagar = $column["p_restante_pagar"];
-      $abonado_apartado = $column["p_abonado_apartado"];
-			$fecha_limite_retiro = $column["p_fecha_limite_retiro"];
-			$moneda = $column["p_moneda"];
-			$estado = $column["p_estado"];
-			$diferencia = $column["p_diferencia_fechas"];
+		$restante_pagar = $column["p_restante_pagar"];
+        $abonado_apartado = $column["p_abonado_apartado"];
+		$fecha_limite_retiro = $column["p_fecha_limite_retiro"];
+		$moneda = $column["p_moneda"];
+		$estado = $column["p_estado"];
+		$diferencia = $column["p_diferencia_fechas"];
+
     }
 
-    
+    //Recuperacion de datos empresa
+	$objParametro =  new Parametro();
+	$parametros = $objParametro->Listar_Parametros();
 
+	if (is_array($parametros) || is_object($parametros)){
+		foreach ($parametros as $row => $column){
+			$nombre_empresa = $column['nombre_empresa'];
+			$direccion_empresa = $column['direccion_empresa'];
+		}
+	}
 
-		$fecha_limite_retiro = DateTime::createFromFormat('Y-m-d H:i:s', $fecha_limite_retiro)->format('d/m/Y H:i:s');
+	//Recuperacion de datos sucursal
+	$objSucursal =  new Sucursal();
+	$sucursal = $objSucursal->Consultar_Sucursal($idsucursal);
 
+	if (is_array($sucursal) || is_object($sucursal)){
+		foreach ($sucursal as $row => $column){
+			$nombre_sucursal = $column['nombre'];
+			$direccion_sucursal = $column['direccion'];
+			$telefono_sucursal = $column['telefono'];
+		}
+	}
+
+    $direccion1 = $direccion_empresa;
+    $direccion2 = ' ';
+	if($idsucursal == 2){
+		$direccion2= $direccion_sucursal;
+	}else{
+		$sucursal2 = $objSucursal->Consultar_Sucursal(2);
+		if (is_array($sucursal2) || is_object($sucursal2)){
+			foreach ($sucursal2 as $row => $column){
+				$direccion_2 = $column['direccion'];
+			}
+			$direccion2= $direccion_2;
+		}
+	}
+
+	$fecha_limite_retiro = DateTime::createFromFormat('Y-m-d H:i:s', $fecha_limite_retiro)->format('d/m/Y H:i:s');
 
 	$pdf = new TICKET('P','mm',array(76,297));
 	$pdf->AddPage();

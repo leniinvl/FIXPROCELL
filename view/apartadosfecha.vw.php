@@ -1,5 +1,6 @@
 <?php
 
+	$idsucursal = $_SESSION['sucursal_id'];
 	$objVenta =  new Venta();
 	$objApartado =  new Apartado();
 	$count_Apartados = $objApartado->Count_Apartados('FECHAS','','');
@@ -137,7 +138,7 @@
 															class="select-size-xs" style="text-transform:uppercase;"
 															onkeyup="javascript:this.value=this.value.toUpperCase();">
 																							<?php
-																$filas = $objVenta->Listar_Comprobantes();
+																$filas = $objVenta->Listar_Comprobantes($idsucursal);
 																if (is_array($filas) || is_object($filas))
 																{
 																foreach ($filas as $row => $column)

@@ -5,7 +5,7 @@
     define("DEFAULT_LAYOUT","general.lyt.php");// default para el resto del contenido
     define("PATH_VIEW",realpath("./view/"));// carpeta de vista
     define("PATH_LAYOUT",realpath("./layout"));// carpeta de layout
-    define("COMPANY","IMPERI CELL");// compania
+    define("COMPANY","DIEGO CELL");// compania
     define("MONEY","$");// money
 
 

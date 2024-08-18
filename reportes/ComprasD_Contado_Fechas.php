@@ -3,6 +3,13 @@ require('fpdf/fpdf.php');
 
 class PDF extends FPDF
 {
+    private $idsucursal;
+
+    // Pase imagen
+    function SetIdSucursal($idsucursal) {
+        $this->idsucursal = $idsucursal;
+    }
+
     // Page header
     function Header()
     {
@@ -14,12 +21,16 @@ class PDF extends FPDF
             // Logo
             //  $this->Image('logo.png',10,6,30);
             // Arial bold 15
-            $this->SetFont('Arial','B',15);
+            $this->SetFont('Arial','B',14);
             // Move to the right
             $this->Cell(98);
             // Title
             $this->Cell(120,10,'COMPRAS (DETALLADAS) AL CONTADO ENTRE EL '.$fecha1.' Y '.$fecha2,0,0,'C');
-            $this->Image('../web/assets/images/Logo.png', 12, 8, 50, 0, '', '', '', true, 72);
+            if ($this->idsucursal == 1) {
+                $this->Image('../web/assets/images/logo.png', 8, 5, 45, 24, '', '', '', true, 72);
+            } else {
+                $this->Image('../web/assets/images/logo2.png', 8, 8, 70, 0, '', '', '', true, 72);
+            }  
             // Line break
             $this->Ln(20);
         }
@@ -46,6 +57,9 @@ class PDF extends FPDF
            require_once($model);
            require_once($controller);
     });
+
+    session_set_cookie_params(60*60*24*365); session_start();
+	$idsucursal = $_SESSION['sucursal_id'];
 
     $fecha1 = isset($_GET['fecha1']) ? $_GET['fecha1'] : '';
     $fecha2 = isset($_GET['fecha2']) ? $_GET['fecha2'] : '';
@@ -79,6 +93,7 @@ try {
     // Instanciation of inherited class
     $pdf = new PDF('L','mm',array(216,330));
     $pdf->AliasNbPages();
+    $pdf->SetIdSucursal($idsucursal);
     $pdf->AddPage();
     $pdf->SetFont('Arial','',10);
     $pdf->SetFillColor(255,255,255);

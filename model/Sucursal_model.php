@@ -27,7 +27,30 @@
 				echo '<span class="label label-danger label-block">ERROR AL CARGAR LOS DATOS, PRESIONE F5</span>';
 			}
 		}
+		
+		public static function Consultar_Sucursal($idsucursal)
+		{
+			$dbconec = Conexion::Conectar();
 
+			try
+			{
+				$query = "CALL sp_consulta_sucursal(:idsucursal);";
+				$stmt = $dbconec->prepare($query);
+				$stmt->bindParam(":idsucursal",$idsucursal);
+				$stmt->execute();
+				$count = $stmt->rowCount();
+
+				if($count > 0)
+				{
+					return $stmt->fetchAll();
+				} 
+
+				$dbconec = null;
+			} catch (Exception $e) {
+				echo "Error al cargar el listado";
+			}
+			
+		}
 			
 		public static function Insertar_Sucursal($nombre, $direccion, $telefono)
 		{

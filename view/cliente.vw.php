@@ -249,7 +249,7 @@
 											<div class="col-sm-12">
 												<label>Direccion</label>
 												 <textarea rows="2" class="form-control"
-													placeholder="EJEMPLO: VILLAFLORA Y TORRES, CAYAMBE"
+													placeholder="EJEMPLO: LIBERTAD OE1-20 Y RESTAURACION"
 													id="txtDireccion" name="txtDireccion"
 													value="" style="text-transform:uppercase;"
 													onkeyup="javascript:this.value=this.value.toUpperCase();">

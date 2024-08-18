@@ -22,11 +22,11 @@ $fechaa=date('d/m/Y');
     <tr>
       <td colspan="2"><center><b>IMPERI CELL</b><center></td>
       <td><b>RUC</b></td>
-      <td>1004337927001</td>
+      <td>1004953566001</td>
     </tr>
     <tr>
       <td><b>Direccion<br>Matriz</b></b></td>
-      <td>CAYAMBE - LIBERTAD OE1-20 Y RESTAURACION</td>
+      <td>CAYAMBE</td>
       <td><b>Telefono</b></td>
       <td>0222451258</td>
     </tr>

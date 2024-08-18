@@ -461,7 +461,7 @@
 										<div class="row">
 											<div class="col-sm-12">
 												<label>Dirección <span class="text-danger"> * Obligatorio </span></label>
-												<input type="text" id="txtDireccion" name="txtDireccion" placeholder="EJEMPLO: AVENIDA NATALIA JARRIN, CAYAMBE"
+												<input type="text" id="txtDireccion" name="txtDireccion" placeholder="EJEMPLO: LIBERTAD OE1-20 Y RESTAURACION"
 												 class="form-control" style="text-transform:uppercase;"
                                         		onkeyup="javascript:this.value=this.value.toUpperCase();">
 											</div>
