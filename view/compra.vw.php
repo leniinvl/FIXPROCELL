@@ -2,6 +2,17 @@
 
 	$idsucursal = $_SESSION['sucursal_id'];
 	$objProducto =  new Producto();
+	//Recuperacion de datos empresa
+	$objParametro =  new Parametro();
+	$parametros = $objParametro->Listar_Parametros();
+	if (is_array($parametros) || is_object($parametros)){
+		foreach ($parametros as $row => $column){
+			$nombre_empresa = $column['nombre_empresa'];
+			$direccion_empresa = $column['direccion_empresa'];
+			$valorTarifaIVA = $column['porcentaje_iva'];
+		}
+	}
+    $textoPorcetajeIVA = (round((float)$valorTarifaIVA)).'%';
 	if($tipo_usuario==1){
 
 ?>
@@ -51,7 +62,7 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td>TARIFA 12%</td>
+												<td>TARIFA <?php echo $textoPorcetajeIVA?></td>
 												<td></td>
 												<td id="sumas"></td>
 												<td></td>
@@ -61,7 +72,7 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td>IVA 12%</td>
+												<td>IVA <?php echo $textoPorcetajeIVA?></td>
 												<td></td>
 												<td id="iva"></td>
 												<td></td>

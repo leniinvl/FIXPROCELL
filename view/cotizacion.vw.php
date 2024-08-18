@@ -18,6 +18,17 @@
 	$objProducto =  new Producto();
 	$objVenta = new Venta();
 
+	//Recuperacion de datos empresa
+	$objParametro =  new Parametro();
+	$parametros = $objParametro->Listar_Parametros();
+	if (is_array($parametros) || is_object($parametros)){
+		foreach ($parametros as $row => $column){
+			$nombre_empresa = $column['nombre_empresa'];
+			$direccion_empresa = $column['direccion_empresa'];
+			$valorTarifaIVA = $column['porcentaje_iva'];
+		}
+	}
+	$textoPorcetajeIVA = (round((float)$valorTarifaIVA)).'%';
 ?>
 			 <div class="row">
 				 <div class="col-md-12 col-lg-12">
@@ -104,7 +115,7 @@
 										<tfoot id="totales_foot">
 											<tr class="bg-info-800">
 												<td align="center" width="10%">SUBTOTAL</td>
-												<td align="center" width="26%">IVA 12%</td>
+												<td align="center" width="26%">IVA <?php echo $textoPorcetajeIVA?></td>
 												<td align="center" width="10%">TOTAL</td>
 												<td align="center" width="10%">RET. (-)</td>
 												<td align="center" width="10%">IVA 0%</td>

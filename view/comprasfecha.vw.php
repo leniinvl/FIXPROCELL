@@ -7,6 +7,18 @@
 	$objCompra =  new Compra();
 	$count_compras = $objCompra->Count_Compras('FECHAS','','',$idsucursal);
 
+	//Recuperacion de datos empresa
+	$objParametro =  new Parametro();
+	$parametros = $objParametro->Listar_Parametros();
+	if (is_array($parametros) || is_object($parametros)){
+		foreach ($parametros as $row => $column){
+			$nombre_empresa = $column['nombre_empresa'];
+			$direccion_empresa = $column['direccion_empresa'];
+			$valorTarifaIVA = $column['porcentaje_iva'];
+		}
+	}
+    $textoPorcetajeIVA = (round((float)$valorTarifaIVA)).'%';
+
 	if($tipo_usuario==1){
 
 	foreach ($count_compras as $row => $column) {
@@ -659,7 +671,7 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td width="10%">TARIFA 12%</td>
+												<td width="10%">TARIFA <?php echo $textoPorcetajeIVA?></td>
 												<td id="sumas"></td>
 												<td></td>
 											</tr>
@@ -667,7 +679,7 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td width="10%">IVA 12%</td>
+												<td width="10%">IVA <?php echo $textoPorcetajeIVA?></td>
 												<td id="iva"></td>
 												<td></td>
 											</tr>

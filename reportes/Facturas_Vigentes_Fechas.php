@@ -81,7 +81,19 @@ class PDF extends FPDF
 
     }
 
-
+    //Recuperacion de datos empresa
+	$objParametro =  new Parametro();
+	$parametros = $objParametro->Listar_Parametros();
+	if (is_array($parametros) || is_object($parametros)){
+		foreach ($parametros as $row => $column){
+			$nombre_empresa = $column['nombre_empresa'];
+			$direccion_empresa = $column['direccion_empresa'];
+			$valorTarifaIVA = $column['porcentaje_iva'];
+		}
+	}
+    $textoPorcetajeIVA = (round((float)$valorTarifaIVA)).'%';
+	$valorPorcentajeIVA = ( (float)$valorTarifaIVA ) / 100;
+	$porcentajeIVAMasUno = $valorPorcentajeIVA + 1;
 
     $fecha1 = DateTime::createFromFormat('Y-m-d', $fecha1)->format('d/m/Y');
     $fecha2 = DateTime::createFromFormat('Y-m-d', $fecha2)->format('d/m/Y');
@@ -102,7 +114,7 @@ try {
     $pdf->Cell(29,5,'Tipo Pago',0,0,'L',1);
     $pdf->Cell(15,5,'Subtotal',0,0,'L',1);
     $pdf->Cell(15,5,'IVA 0%',0,0,'L',1);
-    $pdf->Cell(15,5,'IVA 12%',0,0,'L',1);
+    $pdf->Cell(15,5,'IVA '.$textoPorcetajeIVA,0,0,'L',1);
     $pdf->Cell(15,5,'Desc.',0,0,'L',1);
     $pdf->Cell(15,5,'Total',0,0,'C',1);
     $pdf->Line(322,28,10,28);
@@ -177,7 +189,7 @@ try {
         $pdf->SetFont('Arial','B',11);
         $pdf->Text(10,$get_Y + 10,'VALOR SUBTOTAL : '.number_format($subtotal, 2, '.', ','));
         $pdf->Text(10,$get_Y + 15,'VALOR SIN IVA : '.number_format($iva0, 2, '.', ','));
-        $pdf->Text(10,$get_Y + 20,'VALOR IVA 12% : '.number_format($iva12, 2, '.', ','));
+        $pdf->Text(10,$get_Y + 20,'VALOR IVA '.$textoPorcetajeIVA.' : '.number_format($iva12, 2, '.', ','));
         $pdf->Text(10,$get_Y + 25,'VALOR DESCUENTO : '.number_format($descuento, 2, '.', ','));
         $pdf->Text(10,$get_Y + 30,'VALOR TOTAL INGRESADO POR VENTAS : '.number_format($total, 2, '.', ','));
         //$pdf->Text(10,$get_Y + 15,'PRECIOS EN : '.$moneda);
