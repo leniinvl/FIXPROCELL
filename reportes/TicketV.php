@@ -210,7 +210,7 @@
 			$pdf->Text(17.5,$get_Y+46, 'Documento sin validez tributaria' );
 
 			$pdf->SetFont('Arial','',8);
-			$pdf->Text(19, $get_Y+49, 'GRACIAS POR SU COMPRA');
+			$pdf->Text(19, $get_Y+49, '**GRACIAS POR SU COMPRA**');
 			
 			$pdf->SetFont('Arial','',7);
 			$pdf->Text(7, $get_Y+54, empty($desc)?'':'Garantia');
@@ -251,7 +251,7 @@
 			$pdf->Text(17.5,$get_Y+46, 'Documento sin validez tributaria' );
 
 			$pdf->SetFont('Arial','',8);
-			$pdf->Text(19, $get_Y+49, 'GRACIAS POR SU COMPRA');
+			$pdf->Text(19, $get_Y+49, '**GRACIAS POR SU COMPRA**');
 			
 			$pdf->SetFont('Arial','',7);
 			$pdf->Text(7, $get_Y+54, empty($desc)?'':'Garantia');
@@ -296,7 +296,7 @@
 			$pdf->Text(17.5,$get_Y+49, 'Documento sin validez tributaria' );
 
 			$pdf->SetFont('Arial','',8);
-			$pdf->Text(19, $get_Y+52, 'GRACIAS POR SU COMPRA');
+			$pdf->Text(19, $get_Y+52, '**GRACIAS POR SU COMPRA**');
 			
 			$pdf->SetFont('Arial','',7);
 			$pdf->Text(7, $get_Y+58, empty($desc)?'':'Garantia');
@@ -417,7 +417,7 @@
 				$pdf->Text(8, $get_Y + 69, empty($desc)?'':'Garantia:');
 				$pdf->Text(8, $get_Y + 72, $desc);
 
-				$pdf->Text(20, $get_Y + 64, 'GRACIAS POR SU COMPRA');
+				$pdf->Text(20, $get_Y + 64, '**GRACIAS POR SU COMPRA**');
 
 			} else if ($tipo_pago == 'TRANSFERENCIA'){
 				
@@ -460,7 +460,7 @@
 				$pdf->Text(8, $get_Y + 69, empty($desc)?'':'Garantia:');
 				$pdf->Text(8, $get_Y + 72, $desc);
 
-				$pdf->Text(20, $get_Y + 64, 'GRACIAS POR SU COMPRA');
+				$pdf->Text(20, $get_Y + 64, '**GRACIAS POR SU COMPRA**');
 
 			} else if ($tipo_pago == 'EFECTIVO Y TRANSFERENCIA'){ // Y TRANSFERENCIA
 				
@@ -505,7 +505,7 @@
 				$pdf->Text(8, $get_Y + 72, empty($desc)?'':'Garantia:');
 				$pdf->Text(8, $get_Y + 75, $desc);
 
-				$pdf->Text(20, $get_Y + 67, 'GRACIAS POR SU COMPRA');
+				$pdf->Text(20, $get_Y + 67, '**GRACIAS POR SU COMPRA**');
 
 			}
 	
@@ -606,7 +606,7 @@
 				$pdf->Text(17.5,$get_Y+45, 'Documento sin validez tributaria' );
 	
 				$pdf->SetFont('Arial','',8);
-				$pdf->Text(19, $get_Y+48, 'GRACIAS POR SU COMPRA');
+				$pdf->Text(19, $get_Y+48, '**GRACIAS POR SU COMPRA**');
 				//$pdf->SetFillColor(0,0,0);
 				//$pdf->Code39(9,$get_Y+64,$serie_comprobante,1,5);
 				//$pdf->Text(28, $get_Y+74, '*'.$numero_venta.'*');
@@ -642,7 +642,7 @@
 				$pdf->Text(17.5,$get_Y+45, 'Documento sin validez tributaria' );
 
 				$pdf->SetFont('Arial','',8);
-				$pdf->Text(19, $get_Y+48, 'GRACIAS POR SU COMPRA');
+				$pdf->Text(19, $get_Y+48, '**GRACIAS POR SU COMPRA**');
 				//$pdf->SetFillColor(0,0,0);
 				//$pdf->Code39(9,$get_Y+64,$numero_venta,1,5);
 				//$pdf->Text(28, $get_Y+74, '*'.$numero_venta.'*');
@@ -682,7 +682,7 @@
 				$pdf->Text(17.5,$get_Y+47, 'Documento sin validez tributaria' );
 
 				$pdf->SetFont('Arial','',8);
-				$pdf->Text(19, $get_Y+50, 'GRACIAS POR SU COMPRA');
+				$pdf->Text(19, $get_Y+50, '**GRACIAS POR SU COMPRA**');
 				//$pdf->SetFillColor(0,0,0);
 				//$pdf->Code39(9,$get_Y+75,$numero_venta,1,5);
 				//$pdf->Text(28, $get_Y+84, '*'.$numero_venta.'*');

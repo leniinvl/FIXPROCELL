@@ -130,6 +130,8 @@
 											$respuesta = 'EN PROCESO';
 										}else if(strlen(stristr($respuesta,'DEVUELTA'))>0){
 											$respuesta = 'DEVUELTA';
+										}else if(strlen(stristr($respuesta,'Sin respuesta SRI'))>0){
+											$respuesta = 'SIN RESPUESTA SRI';
 										}else if(strlen(stristr($respuesta,'n/a'))>0){
 											$respuesta = 'PENDIENTE FACTURAR';
 										}else{
@@ -142,22 +144,31 @@
 												<td><?php print($tipo_comprobante); ?></td>
 							                	<td><?php print($column['serie_comprobante']); ?></td>
 												<td><?php if($respuesta == 'AUTORIZADO Y ENVIADO'){
-															echo '<span class="label label-success label-rounded"><span
+														echo '<span class="label label-success label-rounded"><span
 															class="text-bold">AUTORIZADO Y ENVIADO</span></span>';
+
 													}else if($respuesta == 'NO AUTORIZADO'){
-															echo '<span class="label label-default label-rounded"><span
+														echo '<span class="label label-danger label-rounded"><span
 															class="text-bold">NO AUTORIZADO</span></span>';
+
 													}else if($respuesta == 'EN PROCESO'){
-															echo '<span class="label label-info label-rounded"><span
+														echo '<span class="label label-primary label-rounded"><span
 															class="text-bold">EN PROCESO</span></span>';
+
 													}else if($respuesta == 'DEVUELTA'){
-															echo '<span class="label label-primary label-rounded"><span
+														echo '<span class="label label-warning label-rounded"><span
 															class="text-bold">DEVUELTA</span></span>';
+
+													}else if($respuesta == 'SIN RESPUESTA SRI'){
+														echo '<span class="label label-danger label-rounded"><span
+															class="text-bold">SIN RESPUESTA SRI</span></span>';
+
 													}else if($respuesta == 'PENDIENTE FACTURAR'){
-															echo '<span class="label label-warning label-rounded"><span
+														echo '<span class="label label-info label-rounded"><span
 															class="text-bold">PENDIENTE FACTURAR</span></span>';
+
 													}else{
-															echo '<span class="label label-detail label-rounded"><span
+														echo '<span class="label label-default label-rounded"><span
 															class="text-bold">VALIDAR PROCESO</span></span>';
 													}?>
 												</td>

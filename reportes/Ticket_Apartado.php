@@ -166,7 +166,7 @@
 		$pdf->Text(3, $get_Y+52, 'Precios en : '.$moneda);
 
 		$pdf->SetFont('Arial','B',8.5);
-		$pdf->Text(19, $get_Y+62, 'GRACIAS POR SU COMPRA');
+		$pdf->Text(19, $get_Y+62, '**GRACIAS POR SU COMPRA**');
 		$pdf->SetFont('Arial','BI',8.5);
 		$pdf->setXY(6,$get_Y + 65);
     $pdf->MultiCell(65, 4.2, utf8_decode('* Recuerde que tiene un total de: '.$diferencia.' dias (hasta el '.$fecha_limite_retiro.'),

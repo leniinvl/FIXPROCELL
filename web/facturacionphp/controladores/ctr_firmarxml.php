@@ -16,7 +16,7 @@ class autorizar{
         }
 
         //Ruta archivo p12
-        $firma = '../facturacionphp/controladores/5957905_identity.p12'; //6101215_identity.p12
+        $firma = '../facturacionphp/controladores/5957905_identity.p12';
         $clave = 'Di3go.2022@';
 
         if (!$almacen_cert = file_get_contents($firma)) {

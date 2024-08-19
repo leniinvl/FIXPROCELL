@@ -127,7 +127,7 @@ class pdf extends FPDF{
 		$pdf->SetXY(10, 114);
 		$pdf->Cell(190, 173, '', 0, 1);
 		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(12, 54);$pdf->Cell(93, 10, $propietario , 0 , 1, 'L');
-		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(12, 59);$pdf->Cell(93, 10, $empresa , 0 , 1, 'L');
+		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(12, 59);$pdf->Cell(93, 10, $nombre_sucursal , 0 , 1, 'L');
 		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(12, 68);$pdf->MultiCell(15, 4, 'Direccion Matriz', 0 , 'L');
 		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(26, 68);$pdf->MultiCell(78, 4, $direccionMatriz, 0 , 'L');
 		$pdf->SetFont('Arial', '', 7);$pdf->SetXY(11, 80);$pdf->MultiCell(15, 4, 'Direccion Sucursal', 0 , 'C');
