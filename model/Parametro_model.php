@@ -209,6 +209,30 @@
 
 		}
 
+		public static function Consultar_Parametro_General($codigo){
+
+			$dbconec = Conexion::Conectar();
+
+			try {
+				$query = "CALL sp_consulta_parametro(:codigo)";
+				$stmt = $dbconec->prepare($query);
+				$stmt->bindParam(":codigo",$codigo);
+				$stmt->execute();
+				$count = $stmt->rowCount();
+
+				if($count > 0)
+				{
+					return $stmt->fetchAll();
+				}
+
+				$dbconec = null;
+
+			} catch (Exception $e) {
+				echo "Error al cargar el listado";
+			}
+
+		}
+
 	}
 
 

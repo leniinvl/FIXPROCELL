@@ -54,6 +54,13 @@
 
 		}
 
+		public static function Consultar_Parametro_General($codigo){
+
+			$filas = ParametroModel::Consultar_Parametro_General($codigo);
+			return $filas;
+
+		}
+
 	}
 
 

@@ -14,6 +14,17 @@
 
 	} 
 
+	//Recuperacion de parametros generales
+	$objParametro =  new Parametro();
+	$parametro_general = $objParametro->Consultar_Parametro_General('PRM_FACTURACION_HABILITAR_BOTON');
+	$prm_value_buttom = 'NO';
+	if (is_array($parametro_general) || is_object($parametro_general)){
+		foreach ($parametro_general as $row => $column){
+			$prm_value_buttom = $column['valor_cadena'];
+			$prm_status_buttom = $column['estado'];
+		}
+	}
+
  ?>
 
 			<!-- Labels -->
@@ -229,7 +240,7 @@
 																				       </i> Comprobante</a></li>
 
 																				    <!-- FACTURACION -->
-																						<?php if($respuesta == 'PENDIENTE FACTURAR'){ ?>
+																						<?php if($respuesta == 'PENDIENTE FACTURAR' && $prm_value_buttom == 'SI'){ ?>
 																							<li><a id="facturacion"
 																							data-id="<?php print($column['idventa']); ?>"
 																								href="javascript:void(0)">
