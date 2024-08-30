@@ -9,7 +9,7 @@
 								<li class="<?php if($_GET['View']=="Categoria"){echo 'active';} ?>" ><a href="./?View=Categoria"> <i class="icon-price-tag2"></i> Categoría</a></li>
 								<li class="<?php if($_GET['View']=="Marca"){echo 'active';} ?>" ><a href="./?View=Marca"> <i class="icon-pushpin"></i> Marca </a></li>
 								<li class="<?php if($_GET['View']=="Presentacion"){echo 'active';} ?>" ><a href="./?View=Presentacion"><i class="icon-attachment"></i> Modelo </a></li>
-								<li class="<?php if($_GET['View']=="Color"){echo 'active';} ?>" ><a href="./?View=Color"> <i class="icon-droplet"></i> Color</a></li>
+								<!-- <li class="<?php //if($_GET['View']=="Color"){echo 'active';} ?>" ><a href="./?View=Color"> <i class="icon-droplet"></i> Color</a></li> -->
 								<li class="<?php if($_GET['View']=="Perecederos"){echo 'active';} ?>" ><a href="./?View=Perecederos"> <i class="icon-calendar"></i> Caducidad</a></li>
 								<li class="<?php if($_GET['View']=="Codigo"){echo 'active';} ?>" ><a href="./?View=Codigo"> <i class="icon-qrcode"></i> Codificación</a></li>
 							</ul>
@@ -46,6 +46,17 @@
 						<!-- /Compras -->
 
 
+						<!-- Cotizaciones -->
+						<li>
+							<a href="#"><i class="icon-file-spreadsheet"></i> <span>Cotizaciones</span></a>
+							<ul>
+								<li class="<?php if($_GET['View']=="Cotizacion"){echo 'active';} ?>" ><a href="./?View=Cotizacion"> <i class="icon-stats-bars2"></i> Realizar Cotización</a></li>
+								<li class="<?php if($_GET['View']=="Cotizaciones"){echo 'active';} ?>" ><a href="./?View=Cotizaciones"> <i class="icon-eye"></i> Ver Cotizaciones</a></li>
+							</ul>
+						</li>
+						<!-- /Cotizaciones -->
+
+
 						<!-- Caja -->
 						<li>
 							<a href="#"><i class="icon-cash3"></i> <span>Caja</span></a>
@@ -67,6 +78,21 @@
 						</li>
 						<!-- /Creditos -->
 
+			
+						<!-- Cuentas -->
+						<li>
+							<a href="#"><i class="icon-file-zip"></i> <span>Facturas</span></a>
+							<ul>
+								<li class="<?php if($_GET['View']=="Consulta-factura"){echo 'active';} ?>" ><a href="./?View=Consulta-factura"> <i class="icon-file-text"></i> Gestión Facturas</a></li>	
+								<!-- 
+								<li class="<?//php if($_GET['View']=="null"){echo 'active';} ?>" ><a href="./?View="> <i class="icon-upload"></i>Control de gastos</a></li>
+								<li class="<?//php if($_GET['View']=="null"){echo 'active';} ?>" ><a href="./?View="> <i class="icon-download"></i> Control de ingresos</a></li>
+								<li class="<?//php if($_GET['View']=="null"){echo 'active';} ?>" ><a href="./?View="> <i class="icon-file-zip"></i> Estado Financiero</a></li>
+								-->
+							</ul>
+						</li>
+						<!-- /Cuentas-->
+
 
 						<!-- Taller  --->
 						<li>
@@ -77,17 +103,6 @@
 							</ul>
 						</li>
 						<!-- Taller --->
-
-
-						<!-- Cotizaciones -->
-						<li>
-							<a href="#"><i class="icon-file-spreadsheet"></i> <span>Cotizaciones</span></a>
-							<ul>
-								<li class="<?php if($_GET['View']=="Cotizacion"){echo 'active';} ?>" ><a href="./?View=Cotizacion"> <i class="icon-stats-bars2"></i> Realizar Cotización</a></li>
-								<li class="<?php if($_GET['View']=="Cotizaciones"){echo 'active';} ?>" ><a href="./?View=Cotizaciones"> <i class="icon-eye"></i> Ver Cotizaciones</a></li>
-							</ul>
-						</li>
-						<!-- /Cotizaciones -->
 
 
 						<!-- Ventas reservadas -->
@@ -114,21 +129,6 @@
 							</ul>
 						</li>
 						<!-- /Inventario -->
-
-
-						<!-- Cuentas -->
-						<li>
-							<a href="#"><i class="icon-file-zip"></i> <span>Facturas</span></a>
-							<ul>
-								<li class="<?php if($_GET['View']=="Consulta-factura"){echo 'active';} ?>" ><a href="./?View=Consulta-factura"> <i class="icon-file-text"></i> Gestión Facturas</a></li>	
-								<!-- 
-								<li class="<?//php if($_GET['View']=="null"){echo 'active';} ?>" ><a href="./?View="> <i class="icon-upload"></i>Control de gastos</a></li>
-								<li class="<?//php if($_GET['View']=="null"){echo 'active';} ?>" ><a href="./?View="> <i class="icon-download"></i> Control de ingresos</a></li>
-								<li class="<?//php if($_GET['View']=="null"){echo 'active';} ?>" ><a href="./?View="> <i class="icon-file-zip"></i> Estado Financiero</a></li>
-								-->
-							</ul>
-						</li>
-						<!-- /Cuentas-->
 
 
 						<!-- Usuarios -->
@@ -203,6 +203,15 @@
 						<!-- /Cotizaciones -->
 
 
+						<!-- Caja -->
+						<li>
+							<a href="#"><i class="icon-cash3"></i> <span>Caja</span></a>
+							<ul>
+								<li class="<?php if($_GET['View']=="Caja"){echo 'active';} ?>" ><a href="./?View=Caja"> <i class="icon-calculator3"></i> Gestionar Caja</a></li>
+							</ul>
+						</li>
+						<!-- /Caja -->
+
 						
 						<!-- Creditos  -->
 						<li>
@@ -213,16 +222,6 @@
 							</ul>
 						</li>
 						<!-- /Creditos -->
-
-
-						<!-- Caja -->
-						<li>
-							<a href="#"><i class="icon-cash3"></i> <span>Caja</span></a>
-							<ul>
-								<li class="<?php if($_GET['View']=="Caja"){echo 'active';} ?>" ><a href="./?View=Caja"> <i class="icon-calculator3"></i> Gestionar Caja</a></li>
-							</ul>
-						</li>
-						<!-- /Caja -->
 
 
 						<!-- Ventas reservadas -->
@@ -259,6 +258,7 @@
 						</li>
 						<!-- /Inventario -->
 
+						
 						<!-- /Acera de -->
 						<li>
 							<li class="<?php if($_GET['View']=="Acerca-de"){echo 'active';} ?>" ><a href="./?View=Acerca-de"> <i class="icon-info22"> </i> <span>Acerca de<span> </a></li>

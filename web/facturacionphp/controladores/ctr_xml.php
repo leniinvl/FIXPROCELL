@@ -81,14 +81,22 @@ class xml{
 			}
 		}
 
-		/****************************/
-		/****************************/
-		//PARAMETROS DE FACTURACION//
-		/****************************/
-		/****************************/
+		/***************************/
+		/***************************/
+		/*PARAMETROS DE FACTURACION*/
+		/***************************/
+		/***************************/
 
+		//Recuperacion de parametros generales
+		$parametro_general = $objParametro->Consultar_Parametro_General('PRM_FACTURACION_AMBIENTE');
 		$ambiente = '1'; // 1 Pruebas - 2 Produccion
-		
+		if (is_array($parametro_general) || is_object($parametro_general)){
+			foreach ($parametro_general as $row => $column){
+				$ambiente = $column['valor_cadena'];
+				$prm_ambiente = $column['estado'];
+			}
+		}
+
 		$codigoNumerico = '12345678';
 		$puntoEmision = '001';
 		$tipoComprobante = '01';
@@ -119,11 +127,11 @@ class xml{
 			$correo='lideresentecnologia1997@gmail.com';
 		}
 
-		/****************************/
-		/****************************/
-		//PARAMETROS DE FACTURACION//
-		/****************************/
-		/****************************/
+		/***************************/
+		/***************************/
+		/*PARAMETROS DE FACTURACION*/
+		/***************************/
+		/***************************/
 		
 		
 		$xml = new DOMDocument('1.0', 'UTF-8');

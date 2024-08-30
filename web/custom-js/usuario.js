@@ -91,14 +91,14 @@ $(function() {
 
       rules: {
         txtUser:{
-          maxlength:8,
+          maxlength: 16,
           minlength: 4,
           required: true
         },
         txtPassword:{
-          //maxlength:15,
-          //minlength: 4,
-          //required: true
+          maxlength:20,
+          minlength: 4,
+          required: true
         },
         txtTelefono:{
           required: true

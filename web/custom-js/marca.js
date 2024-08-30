@@ -12,7 +12,7 @@ $(function() {
     // Setting datatable defaults
     $.extend( $.fn.dataTable.defaults, {
         autoWidth: false,
-        pageLength: 25,
+        pageLength: 100,
         columnDefs: [{
             orderable: false,
             width: '100px'

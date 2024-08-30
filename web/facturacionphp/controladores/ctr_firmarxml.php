@@ -30,7 +30,16 @@ class autorizar{
             /***************************/
             /*PARAMETROS DE FACTURACION*/
             /***************************/
-            $vtipoambiente = 1; // 1 PRUEBAS - 2 PRODUCCION
+            //Recuperacion de parametros generales
+            $objParametro =  new Parametro();
+            $parametro_general = $objParametro->Consultar_Parametro_General('PRM_FACTURACION_AMBIENTE');
+            $vtipoambiente = 1; // 1 Pruebas - 2 Produccion
+            if (is_array($parametro_general) || is_object($parametro_general)){
+                foreach ($parametro_general as $row => $column){
+                    $vtipoambiente = $column['valor_cadena'];
+                    $prm_ambiente = $column['estado'];
+                }
+            }
             /***************************/
             /*PARAMETROS DE FACTURACION*/
             /***************************/

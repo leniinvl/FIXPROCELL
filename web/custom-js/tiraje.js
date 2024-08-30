@@ -155,25 +155,25 @@ $(function() {
 
     $("#txtDel").TouchSpin({
         min: 1,
-        max: 100000000,
+        max: 999999999,
         step: 1
     });
 
     $("#txtUsados").TouchSpin({
         min: 0,
-        max: 100000000,
+        max: 999999999,
         step: 1
     });
 
     $("#txtDispo").TouchSpin({
         min: 1,
-        max: 100000000,
+        max: 999999999,
         step: 1
     });
 
     $("#txtAl").TouchSpin({
         min: 1,
-        max: 100000000,
+        max: 999999999,
         step: 1
     });
 
@@ -250,7 +250,7 @@ function openTiraje(action, idtiraje, fecha_resolucion, numero_resolucion, clave
       $('#txtFechaT').prop( "disabled" , false);
       $('#txtNoResolucion').prop( "disabled" , false);
       $('#txtClave').prop( "disabled" , false);
-      $('#txtNoSerie').prop( "disabled" , false);
+      $('#txtNoSerie').prop( "disabled" , true);
       $('#txtDel').prop( "disabled" , false);
       $('#txtAl').prop( "disabled" , false);
       $('#txtDispo').prop( "disabled" , true);

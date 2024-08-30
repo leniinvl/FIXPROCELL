@@ -657,14 +657,6 @@ $objCategoria = new Categoria();
                         </div>
                     </div>
 
-                    <!--
-                    <div class="form-group">
-                        <div class="row">
-
-                        </div>
-                    </div>
-                    -->
-
                     <div class="form-group" >
                         <div class="row" >
 
@@ -751,7 +743,6 @@ $objCategoria = new Categoria();
                         </div>
                     </div>
                     <!-- hidden --> 
-
 
                 </div>
 

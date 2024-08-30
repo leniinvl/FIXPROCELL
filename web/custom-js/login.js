@@ -76,13 +76,13 @@ $(function() {
             },
             username: {
                 required:true,
-                maxlength: 8,
+                maxlength: 16,
                 minlength:4
             },
             password:{
                 required:true,
                 minlength:4,
-                maxlength: 12
+                maxlength: 20
             }
         },
         messages: {
