@@ -11,8 +11,9 @@
 			$username ='root'; //usuario
 			$passwd = ''; //contra
 
-
-
+			//BDD   : lideres1_db_datacell - lideres1_db_datacell_dev
+			//Server: lideres1_lideres1 - lideres1_password  
+			//Local : root - ''
 
 			$server=$driver.':host='.$host.';dbname='.$dbname;
 
