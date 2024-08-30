@@ -53,9 +53,9 @@
 								<div class="icon-obj border-slate-700 text-slate-700">
 									<?php
 										if($idsucursal == 1){
-											echo '<img src="web/assets/images/logo.png" width="500px" height="500px" class="img-responsive" alt="">';
+											echo '<img src="web/assets/images/logo.png" width="200px" height="200px" class="img-responsive" alt="">';
 										}else{
-											echo '<img src="web/assets/images/logo2.png" width="200px" height="200px" class="img-responsive" alt="">';
+											echo '<img src="web/assets/images/logo2.png" width="500px" height="500px" class="img-responsive" alt="">';
 										}
 									?>
 								</div>
