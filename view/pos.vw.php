@@ -446,7 +446,7 @@
 											<div class="col-sm-6">
 												<label>Email <span class="text-danger"> * Obligatorio </span></label>
 												<input type="email" id="txtEmail" name="txtEmail" placeholder="EJEMPLO: fraciscomorales@gmail.com"
-												 class="form-control">
+												 class="form-control" style="text-transform:lowercase;">
 											</div>
 											<div class="col-sm-6">
 												<label>Limite de Crédito <span class="text-danger">*</span></label>

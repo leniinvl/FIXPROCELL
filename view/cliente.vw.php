@@ -221,7 +221,7 @@
 											<div class="col-sm-6">
 												<label>Email</label>
 												<input type="email" id="txtEmail" name="txtEmail" placeholder="EJEMPLO: franavalos@hotmail.com"
-												 class="form-control">
+												 class="form-control" style="text-transform:lowercase;">
 											</div>
 											<div class="col-sm-6">
 												<label>Limite Crédito Venta <span class="text-danger">*</span></label>
